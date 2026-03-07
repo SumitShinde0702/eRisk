@@ -1,0 +1,6 @@
+transformers>=4.40
+peft
+accelerate
+torch
+openai
+python-dotenv

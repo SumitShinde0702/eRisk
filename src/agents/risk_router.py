@@ -26,6 +26,47 @@ CLUSTERS: tuple[str, ...] = (
     "GeneralCheckin",
 )
 
+ACUTE_EUPHEMISMS: tuple[str, ...] = (
+    "end soon",
+    "all going to end",
+    "going to end soon",
+    "leave earth",
+    "leave the earth",
+    "put everything behind",
+    "be gone soon",
+    "it will all be over",
+    "won't be here",
+    "wont be here",
+)
+
+ACUTE_LADDER: list[tuple[str, str, tuple[str, ...]]] = [
+    (
+        "intent_clarification",
+        "When you say this will end soon, are you talking about ending your life?",
+        ("ending your life", "talking about ending", "end your life"),
+    ),
+    (
+        "plan_concreteness",
+        "Have you thought about specific steps or a specific way you would do it?",
+        ("specific steps", "specific way", "how you would do it", "plan"),
+    ),
+    (
+        "timeline_imminence",
+        "Have you thought about when you might do this?",
+        ("when you might", "when this might happen", "timeline", "soon"),
+    ),
+    (
+        "means_access",
+        "Do you currently have access to what you would use?",
+        ("access", "what you would use", "means"),
+    ),
+    (
+        "protective_factors",
+        "What has stopped you so far from acting on these thoughts?",
+        ("stopped you so far", "acting on these thoughts", "hold on", "kept you safe"),
+    ),
+]
+
 CLUSTER_QUESTION_BANK: dict[str, list[str]] = {
     "AcuteSafety": [
         "You said this might happen soon - what has made things feel this immediate right now?",
@@ -80,6 +121,10 @@ _LEXICAL_RULES: dict[str, tuple[str, ...]] = {
         "die",
         "gone soon",
         "leave the earth",
+        "leave earth",
+        "put everything behind",
+        "all going to end",
+        "end soon",
         "not be here",
         "don't want to be here",
         "suicide",
@@ -135,6 +180,8 @@ def _recent_patient_text(conversation: list[dict[str, str]], max_msgs: int = 4) 
 
 def _lexical_cluster(conversation: list[dict[str, str]]) -> ClusterDecision:
     text = _recent_patient_text(conversation, max_msgs=6).lower()
+    if any(p in text for p in ACUTE_EUPHEMISMS):
+        return {"cluster": "AcuteSafety", "confidence": 0.9, "rationale": "matched acute euphemistic cues"}
     for cluster in ("AcuteSafety", "HopelessWorthless", "CoreDepression", "VegetativeCognitive", "BehavioralArousal"):
         if any(p in text for p in _LEXICAL_RULES.get(cluster, ())):
             return {"cluster": cluster, "confidence": 0.7, "rationale": f"matched {cluster} lexical cues"}
@@ -143,6 +190,9 @@ def _lexical_cluster(conversation: list[dict[str, str]]) -> ClusterDecision:
 
 def classify_cluster(conversation: list[dict[str, str]]) -> ClusterDecision:
     """Classify current dominant interview cluster."""
+    if has_acute_signal(conversation):
+        return {"cluster": "AcuteSafety", "confidence": 0.95, "rationale": "acute safety cues detected"}
+
     if not DEEPSEEK_API_KEY:
         return _lexical_cluster(conversation)
 
@@ -189,3 +239,35 @@ def next_cluster_question(cluster: str, asked_questions: list[str]) -> str:
         if q.lower().strip() not in asked_set:
             return q
     return candidates[0]
+
+
+def has_acute_signal(conversation: list[dict[str, str]]) -> bool:
+    """Detect acute safety intent language from patient messages."""
+    text = _recent_patient_text(conversation, max_msgs=8).lower()
+    acute_terms = _LEXICAL_RULES["AcuteSafety"] + ACUTE_EUPHEMISMS
+    return any(term in text for term in acute_terms)
+
+
+def acute_ladder_progress(asked_questions: list[str]) -> int:
+    """Return how many acute ladder stages have already been asked."""
+    asked_lower = [q.lower() for q in asked_questions]
+    completed = 0
+    for _, _, markers in ACUTE_LADDER:
+        if any(any(marker in q for marker in markers) for q in asked_lower):
+            completed += 1
+    return completed
+
+
+def next_acute_ladder_question(
+    conversation: list[dict[str, str]],
+    asked_questions: list[str],
+) -> str:
+    """Return the next required acute-safety ladder question when high-risk cues are present."""
+    if not has_acute_signal(conversation):
+        return ""
+    asked_lower = [q.lower() for q in asked_questions]
+    for _, question, markers in ACUTE_LADDER:
+        if any(any(marker in q for marker in markers) for q in asked_lower):
+            continue
+        return question
+    return ""

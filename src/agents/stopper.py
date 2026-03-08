@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from src.agents.risk_router import acute_ladder_progress, has_acute_signal
 from src.bdi_mapper import BDI_SYMPTOMS
 from src.config import MAX_MESSAGES, MIN_EXCHANGES_BEFORE_STOP, MIN_SYMPTOMS_FOR_EARLY_STOP
 
@@ -63,32 +64,6 @@ _POSITIVE_FRAMING = (
     "overall fine", "nothing to report", "i'm good", "i've been good",
 )
 
-_ACUTE_SAFETY_CUES = (
-    "end it",
-    "kill myself",
-    "going to do it",
-    "going to end",
-    "not be here",
-    "don't want to be here",
-    "wanna die",
-    "want to die",
-    "gone soon",
-    "leave the earth",
-    "ending it",
-)
-
-_SAFETY_PROBE_CUES = (
-    "soon",
-    "trigger",
-    "strongest",
-    "hold on",
-    "alone",
-    "what do you mean",
-    "immediate",
-    "waves",
-)
-
-
 def _has_positive_framing(conversation: list) -> bool:
     """Check if early assistant messages contain positive framing."""
     text = " ".join(
@@ -97,28 +72,6 @@ def _has_positive_framing(conversation: list) -> bool:
         if m.get("role") == "assistant"
     )
     return any(p in text for p in _POSITIVE_FRAMING)
-
-
-def _has_acute_safety_signals(conversation: list) -> bool:
-    """Detect high-risk language in patient responses."""
-    text = " ".join(
-        (m.get("message") or "").lower()
-        for m in conversation
-        if m.get("role") == "assistant"
-    )
-    return any(cue in text for cue in _ACUTE_SAFETY_CUES)
-
-
-def _count_safety_probes(conversation: list) -> int:
-    """Estimate how many risk-focused questions were asked."""
-    count = 0
-    for m in conversation:
-        if m.get("role") != "user":
-            continue
-        q = (m.get("message") or "").lower()
-        if any(cue in q for cue in _SAFETY_PROBE_CUES):
-            count += 1
-    return count
 
 
 def should_stop(
@@ -132,15 +85,20 @@ def should_stop(
     message_count = len(conversation) // 2
     total = sum(symptom_signals.get(s, 0) for s in BDI_SYMPTOMS)
     symptoms_with_signals = sum(1 for s in BDI_SYMPTOMS if symptom_signals.get(s, 0) > 0)
-    acute_risk = _has_acute_safety_signals(conversation)
+    asked_questions = [
+        (m.get("message") or "").strip()
+        for m in conversation
+        if m.get("role") == "user" and (m.get("message") or "").strip()
+    ]
+    acute_risk = has_acute_signal(conversation)
 
     # Risk-first policy: if acute safety cues exist, keep probing safety intent/context
     # before ending conversation, unless max cap is reached.
     if acute_risk and message_count < MAX_MESSAGES:
         if message_count < max(MIN_EXCHANGES_BEFORE_STOP, 12):
             return False, "acute_safety_min_depth"
-        if _count_safety_probes(conversation) < 4:
-            return False, "acute_safety_insufficient_probes"
+        if acute_ladder_progress(asked_questions) < 4:
+            return False, "acute_safety_ladder_incomplete"
 
     # If extractor has not produced any evidence yet, continue probing.
     if message_count < MIN_EXCHANGES_BEFORE_STOP:

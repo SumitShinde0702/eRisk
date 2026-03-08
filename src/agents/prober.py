@@ -5,7 +5,11 @@ from __future__ import annotations
 from openai import OpenAI
 
 from src.agents.evidence_memory import retrieve_relevant_patient_evidence
-from src.agents.risk_router import classify_cluster, next_cluster_question
+from src.agents.risk_router import (
+    classify_cluster,
+    next_acute_ladder_question,
+    next_cluster_question,
+)
 from src.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 from src.topic_hierarchy import (
     get_next_topic,
@@ -67,6 +71,11 @@ def get_next_question(
     last_patient_message = _last_assistant_message(conversation)
     cluster_decision = classify_cluster(conversation)
     active_cluster = cluster_decision["cluster"]
+
+    # Highest-priority policy: acute safety ladder (intent -> plan -> timeline -> means -> protective factors).
+    ladder_q = _normalize_question(next_acute_ladder_question(conversation, asked_questions))
+    if _is_usable_question(ladder_q, asked_questions):
+        return ladder_q
 
     # Force a direct red-flag follow-up before topic switching.
     red_flag_follow_up = _red_flag_follow_up(last_patient_message, asked_questions)

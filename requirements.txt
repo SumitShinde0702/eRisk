@@ -4,3 +4,4 @@ accelerate
 torch
 openai
 python-dotenv
+sentence-transformers

@@ -65,13 +65,10 @@ def main() -> None:
 
     use_extractor = bool(DEEPSEEK_API_KEY)
     if not use_extractor and not args.mock and not args.interactive:
-        print(
-            "Warning: DEEPSEEK_API_KEY not set. Extractor will not run. "
-            "Set it in .env for full pipeline. Using mock? Add --mock.",
-            file=sys.stderr,
+        parser.error(
+            "DEEPSEEK_API_KEY is required for non-mock runs. "
+            "Without extractor signals, BDI outputs may stay zero."
         )
-    if not use_extractor:
-        use_extractor = False
 
     if args.interactive:
         print("Interactive mode: You are the patient. Answer the doctor's questions.\n", flush=True)

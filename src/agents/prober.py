@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from openai import OpenAI
 
+from src.agents.evidence_memory import retrieve_relevant_patient_evidence
 from src.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 from src.topic_hierarchy import (
-    TOPIC_ORDER,
     get_next_topic,
     get_topic_by_id,
 )
@@ -33,6 +33,22 @@ TOPIC HIERARCHY (use this to guide your questions):
 Flow: Open general -> branch into topics based on what they say -> drill down within topic. Connect questions: "You said X - what about Y?"
 """
 
+_DISALLOWED_DIRECT_TERMS = ("depress", "depression", "mental health")
+
+_RED_FLAG_PATTERNS: tuple[str, ...] = (
+    "accepted my fate",
+    "know how this ends",
+    "ik how this ends",
+    "made my peace",
+    "it doesn't matter anymore",
+    "doesnt matter anymore",
+    "end it",
+    "better without me",
+    "not wanting to be here",
+    "want to die",
+    "wanna die",
+)
+
 
 def _get_client() -> OpenAI:
     return OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
@@ -46,8 +62,16 @@ def get_next_question(
     Get the next question using topic-based, conversational flow.
     General -> specific. Questions relate to each other.
     """
+    asked_questions = _recent_user_questions(conversation)
+    last_patient_message = _last_assistant_message(conversation)
+
+    # Force a direct red-flag follow-up before topic switching.
+    red_flag_follow_up = _red_flag_follow_up(last_patient_message, asked_questions)
+    if red_flag_follow_up:
+        return red_flag_follow_up
+
     if not DEEPSEEK_API_KEY:
-        return _fallback_question(conversation, probed_indices)
+        return _fallback_question(conversation, probed_indices, asked_questions)
 
     conv_text = "\n".join(
         f"{m['role']}: {m['message']}" for m in conversation
@@ -56,21 +80,40 @@ def get_next_question(
     next_topic = get_next_topic(covered_topics)
 
     topic_info = ""
+    retrieval_query = ""
     if next_topic:
         t = get_topic_by_id(next_topic)
         topic_info = f"\n\nNext topic to explore: {t['name']} (symptoms: {', '.join(t['symptoms'])}). Keywords for this topic: {', '.join(t['keywords'][:8])}."
+        retrieval_query = " ".join(
+            [
+                t["name"],
+                " ".join(t["symptoms"]),
+                " ".join(t["keywords"][:8]),
+                last_patient_message,
+            ]
+        ).strip()
+    evidence_snippets = retrieve_relevant_patient_evidence(
+        conversation,
+        retrieval_query or last_patient_message or "overall functioning",
+        top_k=3,
+    )
 
     user_content = f"""Conversation so far:
 {conv_text}
 
 Topics already explored: {covered_topics or 'none yet'}.{topic_info}
+Previously asked questions (avoid repeating these): {asked_questions or 'none'}.
+Most relevant prior patient evidence: {evidence_snippets or 'none yet'}.
 
 Generate the NEXT question. It should:
 - If they said something concerning or ambiguous (fate, how it ends, peace, doesn't matter), ask a follow-up FIRST. E.g. "You said you've accepted your fate—what does that mean to you?"
 - Otherwise, flow naturally from what they just said (reference it if relevant)
+- Ground your question in the most relevant prior evidence if possible
 - Explore the next topic or drill into the current one
 - Be indirect and conversational
 - ONE question only
+- Do not ask directly about depression or mental health
+- Do not repeat a previously asked question
 
 Output ONLY the question:"""
 
@@ -85,7 +128,10 @@ Output ONLY the question:"""
         temperature=0.4,
     )
     text = (resp.choices[0].message.content or "").strip()
-    return text.split("\n")[0].strip().strip('"') or "How have things been for you lately?"
+    candidate = _normalize_question(text)
+    if _is_usable_question(candidate, asked_questions):
+        return candidate
+    return _fallback_question(conversation, probed_indices, asked_questions)
 
 
 def _infer_covered_topics(conversation: list[dict[str, str]]) -> list[str]:
@@ -113,9 +159,13 @@ def _infer_covered_topics(conversation: list[dict[str, str]]) -> list[str]:
 def _fallback_question(
     conversation: list[dict[str, str]],
     probed_indices: set[int],
+    asked_questions: list[str] | None = None,
 ) -> str:
     """Fallback when no API key - use topic-based static questions."""
-    from src.topic_hierarchy import get_next_topic, get_topic_by_id
+    from src.topic_hierarchy import TOPICS, get_next_topic, get_topic_by_id
+
+    _ = probed_indices  # Reserved for future scoring-aware probing.
+    asked_questions = asked_questions or _recent_user_questions(conversation)
 
     covered = _infer_covered_topics(conversation)
     next_topic = get_next_topic(covered)
@@ -124,6 +174,66 @@ def _fallback_question(
         return "Is there anything else you'd like to share about how you've been feeling?"
 
     t = get_topic_by_id(next_topic)
-    if t.get("opening_questions"):
-        return t["opening_questions"][0]
+    for q in t.get("opening_questions", []):
+        candidate = _normalize_question(q)
+        if _is_usable_question(candidate, asked_questions):
+            return candidate
+    for topic in TOPICS:
+        for q in topic.follow_up_questions:
+            candidate = _normalize_question(q)
+            if _is_usable_question(candidate, asked_questions):
+                return candidate
     return f"How have things been for you in terms of {t['name'].lower()}?"
+
+def _normalize_question(text: str) -> str:
+    """Keep one clean, single-line question."""
+    line = (text or "").split("\n")[0].strip().strip('"').strip()
+    if not line:
+        return ""
+    if not line.endswith("?"):
+        line = f"{line.rstrip('.!')}?"
+    return line
+
+
+def _recent_user_questions(conversation: list[dict[str, str]]) -> list[str]:
+    """Return already-asked user questions (normalized)."""
+    return [
+        _normalize_question(m.get("message", ""))
+        for m in conversation
+        if m.get("role") == "user" and _normalize_question(m.get("message", ""))
+    ]
+
+
+def _last_assistant_message(conversation: list[dict[str, str]]) -> str:
+    """Return the latest patient response text."""
+    for msg in reversed(conversation):
+        if msg.get("role") == "assistant":
+            return (msg.get("message") or "").strip()
+    return ""
+
+
+def _red_flag_follow_up(last_message: str, asked_questions: list[str]) -> str:
+    """Return a mandatory follow-up if latest response contains critical language."""
+    if not last_message:
+        return ""
+    lowered = last_message.lower()
+    matched = next((p for p in _RED_FLAG_PATTERNS if p in lowered), "")
+    if not matched:
+        return ""
+    question = _normalize_question(
+        f"You mentioned '{matched}' earlier - what did you mean by that?"
+    )
+    if _is_usable_question(question, asked_questions):
+        return question
+    return ""
+
+
+def _is_usable_question(question: str, asked_questions: list[str]) -> bool:
+    """Validate quality constraints and repetition."""
+    if not question or len(question) < 10:
+        return False
+    lowered = question.lower()
+    if any(term in lowered for term in _DISALLOWED_DIRECT_TERMS):
+        return False
+    asked_set = {q.lower() for q in asked_questions}
+    return lowered not in asked_set

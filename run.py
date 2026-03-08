@@ -117,11 +117,13 @@ def main() -> None:
 
     run_ids: list[str] = []
     if args.run.lower() == "all":
+        # Keep official submission convention for "all".
         run_ids = ["1", "2", "3"]
-    elif args.run in ("1", "2", "3"):
+    elif args.run.isdigit() and int(args.run) >= 1:
+        # Allow any positive run id for development (e.g., --run 9, --run 42).
         run_ids = [args.run]
     else:
-        parser.error("--run must be 1, 2, 3, or 'all'")
+        parser.error("--run must be a positive integer (e.g., 1, 9, 42) or 'all'")
 
     manual_prefix = "manual_" if args.manual else ""
     args.output_dir.mkdir(parents=True, exist_ok=True)

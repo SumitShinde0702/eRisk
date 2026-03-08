@@ -28,7 +28,7 @@ DEEPSEEK_BASE_URL: str = "https://api.deepseek.com"
 DEEPSEEK_MODEL: str = "deepseek-chat"
 
 # --- Speed / Stopping Parameters ---
-MAX_MESSAGES: int = int(os.getenv("MAX_MESSAGES", "8"))
+MAX_MESSAGES: int = int(os.getenv("MAX_MESSAGES", "20"))
 MIN_SYMPTOMS_FOR_EARLY_STOP: int = int(os.getenv("MIN_SYMPTOMS_FOR_EARLY_STOP", "5"))
 MIN_EXCHANGES_BEFORE_STOP: int = int(os.getenv("MIN_EXCHANGES_BEFORE_STOP", "10"))
 CONFIDENCE_THRESHOLD: float = float(os.getenv("CONFIDENCE_THRESHOLD", "0.8"))

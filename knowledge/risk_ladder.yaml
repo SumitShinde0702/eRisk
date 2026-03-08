@@ -1,0 +1,25 @@
+version: 1
+name: acute_safety_ladder
+description: >
+  Ordered safety-focused interviewing stages when acute self-harm or suicidal intent cues appear.
+stages:
+  - id: intent_clarification
+    objective: confirm whether euphemistic language refers to ending life
+    example_question: "When you say this will end soon, are you talking about ending your life?"
+  - id: plan_concreteness
+    objective: assess whether patient has concrete method or steps
+    example_question: "Have you thought about specific steps or a specific way you would do it?"
+  - id: timeline_imminence
+    objective: assess immediacy of risk
+    example_question: "Have you thought about when you might do this?"
+  - id: means_access
+    objective: assess current access to means
+    example_question: "Do you currently have access to what you would use?"
+  - id: protective_factors
+    objective: identify existing barriers and support anchors
+    example_question: "What has stopped you so far from acting on these thoughts?"
+acute_cue_examples:
+  - "it is all going to end soon"
+  - "I am going to leave earth"
+  - "I am going to do it soon"
+  - "I am ending it"

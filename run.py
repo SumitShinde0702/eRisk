@@ -8,7 +8,7 @@ from pathlib import Path
 # Ensure src is on path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from src.config import DEEPSEEK_API_KEY, OUTPUT_DIR
+from src.config import DEEPSEEK_API_KEY, MAX_MESSAGES, MIN_EXCHANGES_BEFORE_STOP, OUTPUT_DIR
 from src.output_formatter import format_interactions, format_results, save_run_outputs
 from src.persona_client import HumanPatientClient, MOCK_PERSONA_MODES, get_persona_client
 from src.orchestrator import run_conversation
@@ -65,13 +65,15 @@ def main() -> None:
 
     use_extractor = bool(DEEPSEEK_API_KEY)
     if not use_extractor and not args.mock and not args.interactive:
-        print(
-            "Warning: DEEPSEEK_API_KEY not set. Extractor will not run. "
-            "Set it in .env for full pipeline. Using mock? Add --mock.",
-            file=sys.stderr,
+        parser.error(
+            "DEEPSEEK_API_KEY is required for non-mock runs. "
+            "Without extractor signals, BDI outputs may stay zero."
         )
-    if not use_extractor:
-        use_extractor = False
+    if MAX_MESSAGES < MIN_EXCHANGES_BEFORE_STOP:
+        parser.error(
+            f"Invalid config: MAX_MESSAGES ({MAX_MESSAGES}) must be >= "
+            f"MIN_EXCHANGES_BEFORE_STOP ({MIN_EXCHANGES_BEFORE_STOP})."
+        )
 
     if args.interactive:
         print("Interactive mode: You are the patient. Answer the doctor's questions.\n", flush=True)
@@ -120,11 +122,13 @@ def main() -> None:
 
     run_ids: list[str] = []
     if args.run.lower() == "all":
+        # Keep official submission convention for "all".
         run_ids = ["1", "2", "3"]
-    elif args.run in ("1", "2", "3"):
+    elif args.run.isdigit() and int(args.run) >= 1:
+        # Allow any positive run id for development (e.g., --run 9, --run 42).
         run_ids = [args.run]
     else:
-        parser.error("--run must be 1, 2, 3, or 'all'")
+        parser.error("--run must be a positive integer (e.g., 1, 9, 42) or 'all'")
 
     manual_prefix = "manual_" if args.manual else ""
     args.output_dir.mkdir(parents=True, exist_ok=True)

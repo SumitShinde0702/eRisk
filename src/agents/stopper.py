@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from src.agents.risk_router import acute_ladder_progress, has_acute_signal
 from src.bdi_mapper import BDI_SYMPTOMS
-from src.config import MIN_SYMPTOMS_FOR_EARLY_STOP, MAX_MESSAGES
+from src.config import MAX_MESSAGES, MIN_EXCHANGES_BEFORE_STOP, MIN_SYMPTOMS_FOR_EARLY_STOP
 
 
 def should_classify(
@@ -27,8 +28,8 @@ def should_classify(
     if message_count >= MAX_MESSAGES:
         return True
 
-    # Need at least 2 exchanges (1 user + 1 assistant) before we can classify
-    if message_count < 2:
+    # Enforce minimum interview length for stronger evidence collection.
+    if message_count < MIN_EXCHANGES_BEFORE_STOP:
         return False
 
     # Count how many symptoms we have signals for (score > 0)
@@ -63,7 +64,6 @@ _POSITIVE_FRAMING = (
     "overall fine", "nothing to report", "i'm good", "i've been good",
 )
 
-
 def _has_positive_framing(conversation: list) -> bool:
     """Check if early assistant messages contain positive framing."""
     text = " ".join(
@@ -85,10 +85,28 @@ def should_stop(
     message_count = len(conversation) // 2
     total = sum(symptom_signals.get(s, 0) for s in BDI_SYMPTOMS)
     symptoms_with_signals = sum(1 for s in BDI_SYMPTOMS if symptom_signals.get(s, 0) > 0)
+    asked_questions = [
+        (m.get("message") or "").strip()
+        for m in conversation
+        if m.get("role") == "user" and (m.get("message") or "").strip()
+    ]
+    acute_risk = has_acute_signal(conversation)
+
+    # Risk-first policy: if acute safety cues exist, keep probing safety intent/context
+    # before ending conversation, unless max cap is reached.
+    if acute_risk and message_count < MAX_MESSAGES:
+        if message_count < max(MIN_EXCHANGES_BEFORE_STOP, 12):
+            return False, "acute_safety_min_depth"
+        if acute_ladder_progress(asked_questions) < 4:
+            return False, "acute_safety_ladder_incomplete"
+
+    # If extractor has not produced any evidence yet, continue probing.
+    if message_count < MIN_EXCHANGES_BEFORE_STOP:
+        return False, "min_exchanges_not_reached"
 
     # If early responses have positive framing, use relaxed control threshold
     # (stops sooner to avoid over-probing and false symptom extraction)
-    if message_count >= 3 and _has_positive_framing(conversation):
+    if message_count >= MIN_EXCHANGES_BEFORE_STOP and _has_positive_framing(conversation):
         if total <= 8 and symptoms_with_signals <= 4:
             return True, "positive_framing_early_stop"
 

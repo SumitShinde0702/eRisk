@@ -8,7 +8,7 @@ from pathlib import Path
 # Ensure src is on path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from src.config import DEEPSEEK_API_KEY, OUTPUT_DIR
+from src.config import DEEPSEEK_API_KEY, MAX_MESSAGES, MIN_EXCHANGES_BEFORE_STOP, OUTPUT_DIR
 from src.output_formatter import format_interactions, format_results, save_run_outputs
 from src.persona_client import HumanPatientClient, MOCK_PERSONA_MODES, get_persona_client
 from src.orchestrator import run_conversation
@@ -68,6 +68,11 @@ def main() -> None:
         parser.error(
             "DEEPSEEK_API_KEY is required for non-mock runs. "
             "Without extractor signals, BDI outputs may stay zero."
+        )
+    if MAX_MESSAGES < MIN_EXCHANGES_BEFORE_STOP:
+        parser.error(
+            f"Invalid config: MAX_MESSAGES ({MAX_MESSAGES}) must be >= "
+            f"MIN_EXCHANGES_BEFORE_STOP ({MIN_EXCHANGES_BEFORE_STOP})."
         )
 
     if args.interactive:

@@ -5,6 +5,7 @@ from __future__ import annotations
 from openai import OpenAI
 
 from src.agents.evidence_memory import retrieve_relevant_patient_evidence
+from src.agents.risk_router import classify_cluster, next_cluster_question
 from src.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 from src.topic_hierarchy import (
     get_next_topic,
@@ -64,11 +65,19 @@ def get_next_question(
     """
     asked_questions = _recent_user_questions(conversation)
     last_patient_message = _last_assistant_message(conversation)
+    cluster_decision = classify_cluster(conversation)
+    active_cluster = cluster_decision["cluster"]
 
     # Force a direct red-flag follow-up before topic switching.
     red_flag_follow_up = _red_flag_follow_up(last_patient_message, asked_questions)
     if red_flag_follow_up:
         return red_flag_follow_up
+
+    # Risk-first routing: keep focus on high-risk clusters before broad topic sweep.
+    if active_cluster in ("AcuteSafety", "HopelessWorthless"):
+        cluster_q = _normalize_question(next_cluster_question(active_cluster, asked_questions))
+        if _is_usable_question(cluster_q, asked_questions):
+            return cluster_q
 
     if not DEEPSEEK_API_KEY:
         return _fallback_question(conversation, probed_indices, asked_questions)
@@ -102,11 +111,13 @@ def get_next_question(
 {conv_text}
 
 Topics already explored: {covered_topics or 'none yet'}.{topic_info}
+Active risk cluster: {active_cluster} (confidence {cluster_decision['confidence']:.2f}, reason: {cluster_decision['rationale'] or 'n/a'}).
 Previously asked questions (avoid repeating these): {asked_questions or 'none'}.
 Most relevant prior patient evidence: {evidence_snippets or 'none yet'}.
 
 Generate the NEXT question. It should:
 - If they said something concerning or ambiguous (fate, how it ends, peace, doesn't matter), ask a follow-up FIRST. E.g. "You said you've accepted your fate—what does that mean to you?"
+- If active cluster is AcuteSafety or HopelessWorthless, stay in that cluster instead of switching to generic physical topics
 - Otherwise, flow naturally from what they just said (reference it if relevant)
 - Ground your question in the most relevant prior evidence if possible
 - Explore the next topic or drill into the current one
@@ -166,6 +177,12 @@ def _fallback_question(
 
     _ = probed_indices  # Reserved for future scoring-aware probing.
     asked_questions = asked_questions or _recent_user_questions(conversation)
+    active_cluster = classify_cluster(conversation)["cluster"]
+
+    if active_cluster in ("AcuteSafety", "HopelessWorthless"):
+        candidate = _normalize_question(next_cluster_question(active_cluster, asked_questions))
+        if _is_usable_question(candidate, asked_questions):
+            return candidate
 
     covered = _infer_covered_topics(conversation)
     next_topic = get_next_topic(covered)

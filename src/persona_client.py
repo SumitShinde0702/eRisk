@@ -182,7 +182,6 @@ class LoRAPersonaClient(PersonaClient):
         self,
         adapter_path: str,
         base_model_id: str = "meta-llama/Meta-Llama-3-8B-Instruct",
-        device_map: str = "auto",
         seed: int | None = 42,
     ) -> None:
         """
@@ -191,7 +190,6 @@ class LoRAPersonaClient(PersonaClient):
         Args:
             adapter_path: HuggingFace repo, e.g. "Anxo/erisk26-task1-patient-04-adapter"
             base_model_id: Base model (must be Llama-3-8B-Instruct per task)
-            device_map: Device placement
             seed: Random seed for reproducibility
         """
         import torch
@@ -207,12 +205,25 @@ class LoRAPersonaClient(PersonaClient):
         self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
         self.tokenizer.padding_side = "left"
 
+        if torch.cuda.is_available():
+            self._device = "cuda"
+            torch_dtype = torch.float16
+        elif torch.backends.mps.is_available():
+            self._device = "mps"
+            torch_dtype = torch.float16
+        else:
+            self._device = "cpu"
+            torch_dtype = torch.float32
+
         self.base_model = AutoModelForCausalLM.from_pretrained(
             base_model_id,
-            torch_dtype=torch.float16,
-            device_map=device_map,
+            torch_dtype=torch_dtype,
+            device_map=None,
+            low_cpu_mem_usage=False,
         )
+        self.base_model.to(self._device)
         self.model = PeftModel.from_pretrained(self.base_model, adapter_path)
+        self.model.to(self._device)
 
         self.terminators = [
             self.tokenizer.eos_token_id,
@@ -231,7 +242,7 @@ class LoRAPersonaClient(PersonaClient):
             add_generation_prompt=True,
             return_tensors="pt",
             return_dict=True,
-        ).to(self.model.device)
+        ).to(self._device)
 
         with torch.no_grad():
             outputs = self.model.generate(

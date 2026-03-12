@@ -1,0 +1,22 @@
+[
+  {
+    "LLM": "6",
+    "bdi-score": 30,
+    "key-symptoms": [
+      "Concentration Difficulty",
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure"
+    ]
+  },
+  {
+    "LLM": "7",
+    "bdi-score": 25,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty",
+      "Irritability",
+      "Loss of Energy"
+    ]
+  }
+]

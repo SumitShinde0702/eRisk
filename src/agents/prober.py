@@ -171,6 +171,7 @@ Output ONLY the question:"""
     )
     text = (resp.choices[0].message.content or "").strip()
     candidate = _normalize_question(text)
+    candidate = _de_lead_question(candidate, conversation)
     if _is_usable_question(candidate, asked_questions):
         return candidate
     return _fallback_question(
@@ -248,6 +249,50 @@ def _normalize_question(text: str) -> str:
     if not line.endswith("?"):
         line = f"{line.rstrip('.!')}?"
     return line
+
+
+def _recent_assistant_messages(conversation: list[dict[str, str]], max_count: int = 3) -> list[str]:
+    msgs = [
+        (m.get("message") or "").strip().lower()
+        for m in conversation
+        if m.get("role") == "assistant" and (m.get("message") or "").strip()
+    ]
+    return msgs[-max_count:]
+
+
+def _de_lead_question(question: str, conversation: list[dict[str, str]]) -> str:
+    """
+    Guard against assumptive/attribution prompts not grounded in recent patient text.
+    """
+    ql = question.lower()
+    attribution_markers = ("you said", "you mentioned", "when you say", "as you said")
+    if not any(m in ql for m in attribution_markers):
+        return question
+
+    recent = _recent_assistant_messages(conversation, max_count=3)
+    if not recent:
+        return "Can you tell me a bit more about how that has been affecting you lately?"
+
+    # If quoted span exists, require lexical grounding in recent text.
+    if "'" in question or '"' in question:
+        import re
+
+        quoted = re.findall(r"['\"]([^'\"]{3,80})['\"]", question)
+        for span in quoted:
+            span_l = span.strip().lower()
+            if span_l and any(span_l in msg for msg in recent):
+                return question
+        return "Can you tell me more about what that experience has felt like for you?"
+
+    # Without explicit quotes, allow only if core content is grounded.
+    content_terms = [
+        t for t in ql.replace("?", "").replace(",", " ").split()
+        if len(t) > 4 and t not in {"mentioned", "feeling", "lately", "about", "which", "could", "would"}
+    ]
+    if content_terms and any(any(t in msg for t in content_terms[:3]) for msg in recent):
+        return question
+
+    return "Can you tell me more about how that has been affecting your day-to-day?"
 
 
 def _recent_user_questions(conversation: list[dict[str, str]]) -> list[str]:

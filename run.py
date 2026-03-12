@@ -8,7 +8,13 @@ from pathlib import Path
 # Ensure src is on path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from src.config import DEEPSEEK_API_KEY, MAX_MESSAGES, MIN_EXCHANGES_BEFORE_STOP, OUTPUT_DIR
+from src.config import (
+    DEEPSEEK_API_KEY,
+    MAX_MESSAGES,
+    MIN_EXCHANGES_BEFORE_STOP,
+    OUTPUT_DIR,
+    get_run_policy,
+)
 from src.output_formatter import format_interactions, format_results, save_run_outputs
 from src.persona_client import HumanPatientClient, MOCK_PERSONA_MODES, get_persona_client
 from src.orchestrator import run_conversation
@@ -134,6 +140,7 @@ def main() -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     for run_id in run_ids:
+        run_policy = get_run_policy(run_id)
         interactions: list[dict] = []
         results: list[dict] = []
 
@@ -145,6 +152,7 @@ def main() -> None:
                 persona,
                 str(pid),
                 use_extractor=use_extractor,
+                run_policy=run_policy,
             )
             interactions.append({"LLM": str(pid), "conversation": conv})
             results.append(

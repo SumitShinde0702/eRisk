@@ -1,0 +1,49 @@
+{
+  "run_id": "99",
+  "scores": {
+    "1": 33,
+    "2": 29,
+    "3": 17,
+    "4": 12,
+    "5": 7,
+    "6": 0,
+    "7": 1,
+    "8": 0
+  },
+  "trend": {
+    "ordered_scores": [
+      33,
+      29,
+      17,
+      12,
+      7,
+      0,
+      1,
+      0
+    ],
+    "monotonic_violations": [
+      [
+        6,
+        7,
+        0,
+        1
+      ]
+    ],
+    "is_monotonic_nonincreasing": false
+  },
+  "latency": {
+    "turns_by_persona": {
+      "1": 10,
+      "2": 10,
+      "3": 10,
+      "4": 10,
+      "5": 14,
+      "6": 10,
+      "7": 10,
+      "8": 10
+    },
+    "avg_turns": 10.5,
+    "min_turns": 10,
+    "max_turns": 14
+  }
+}

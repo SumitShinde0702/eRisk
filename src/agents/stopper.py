@@ -11,6 +11,11 @@ def should_classify(
     *,
     message_count: int,
     symptom_signals: dict[str, int],
+    recent_bdi_estimates: list[int] | None = None,
+    control_threshold: int = 5,
+    severe_threshold: int = 25,
+    consecutive_confirmations: int = 2,
+    min_symptoms_for_early_stop: int = MIN_SYMPTOMS_FOR_EARLY_STOP,
     last_bdi_estimate: int | None = None,
     prev_bdi_estimate: int | None = None,
 ) -> bool:
@@ -37,21 +42,21 @@ def should_classify(
     total_score = sum(symptom_signals.get(s, 0) for s in BDI_SYMPTOMS)
 
     # Clearly control: low total score, few symptoms
-    if message_count >= 3 and total_score <= 5 and symptoms_with_signals <= 2:
+    if message_count >= 3 and total_score <= control_threshold and symptoms_with_signals <= 2:
         return True
 
     # Clearly depressed: high score
-    if message_count >= 4 and total_score >= 25:
+    if message_count >= 4 and total_score >= severe_threshold:
         return True
 
-    # BDI estimate stable and enough coverage
-    if (
-        last_bdi_estimate is not None
-        and prev_bdi_estimate is not None
-        and last_bdi_estimate == prev_bdi_estimate
-        and symptoms_with_signals >= MIN_SYMPTOMS_FOR_EARLY_STOP
-        and message_count >= 4
-    ):
+    # Consecutive confirmation: require repeated similar risk levels before deciding.
+    if recent_bdi_estimates and len(recent_bdi_estimates) >= consecutive_confirmations:
+        tail = recent_bdi_estimates[-consecutive_confirmations:]
+        if max(tail) - min(tail) <= 1 and symptoms_with_signals >= min_symptoms_for_early_stop:
+            return True
+
+    # Backward compatibility stable check.
+    if last_bdi_estimate is not None and prev_bdi_estimate is not None and last_bdi_estimate == prev_bdi_estimate and symptoms_with_signals >= min_symptoms_for_early_stop and message_count >= 4:
         return True
 
     return False
@@ -78,6 +83,10 @@ def should_stop(
     conversation: list,
     symptom_signals: dict[str, int],
     probed_symptoms: set[int],
+    *,
+    risk_buffer: list[dict] | None = None,
+    run_policy: dict | None = None,
+    recent_bdi_estimates: list[int] | None = None,
 ) -> tuple[bool, str]:
     """
     Wrapper for orchestrator: (conversation, symptom_signals, probed_symptoms) -> (stop, reason).
@@ -85,34 +94,45 @@ def should_stop(
     message_count = len(conversation) // 2
     total = sum(symptom_signals.get(s, 0) for s in BDI_SYMPTOMS)
     symptoms_with_signals = sum(1 for s in BDI_SYMPTOMS if symptom_signals.get(s, 0) > 0)
+    policy = run_policy or {}
+    min_exchanges = int(policy.get("min_exchanges_before_stop", MIN_EXCHANGES_BEFORE_STOP))
+    control_threshold = int(policy.get("control_threshold", 5))
+    severe_threshold = int(policy.get("severe_threshold", 25))
+    consecutive = int(policy.get("consecutive_confirmations", 2))
+    required_acute_ladder = int(policy.get("required_acute_ladder_steps", 4))
+    positive_framing_threshold = int(policy.get("positive_framing_threshold", 8))
     asked_questions = [
         (m.get("message") or "").strip()
         for m in conversation
         if m.get("role") == "user" and (m.get("message") or "").strip()
     ]
-    acute_risk = has_acute_signal(conversation)
+    acute_risk = has_acute_signal(conversation, risk_buffer=risk_buffer)
 
     # Risk-first policy: if acute safety cues exist, keep probing safety intent/context
     # before ending conversation, unless max cap is reached.
     if acute_risk and message_count < MAX_MESSAGES:
-        if message_count < max(MIN_EXCHANGES_BEFORE_STOP, 12):
+        if message_count < max(min_exchanges, 12):
             return False, "acute_safety_min_depth"
-        if acute_ladder_progress(asked_questions) < 4:
+        if acute_ladder_progress(asked_questions) < required_acute_ladder:
             return False, "acute_safety_ladder_incomplete"
 
     # If extractor has not produced any evidence yet, continue probing.
-    if message_count < MIN_EXCHANGES_BEFORE_STOP:
+    if message_count < min_exchanges:
         return False, "min_exchanges_not_reached"
 
     # If early responses have positive framing, use relaxed control threshold
     # (stops sooner to avoid over-probing and false symptom extraction)
-    if message_count >= MIN_EXCHANGES_BEFORE_STOP and _has_positive_framing(conversation):
-        if total <= 8 and symptoms_with_signals <= 4:
+    if message_count >= min_exchanges and _has_positive_framing(conversation):
+        if total <= positive_framing_threshold and symptoms_with_signals <= 4:
             return True, "positive_framing_early_stop"
 
     stop = should_classify(
         message_count=message_count,
         symptom_signals=symptom_signals,
+        recent_bdi_estimates=recent_bdi_estimates,
+        control_threshold=control_threshold,
+        severe_threshold=severe_threshold,
+        consecutive_confirmations=consecutive,
         last_bdi_estimate=total,
         prev_bdi_estimate=total,
     )

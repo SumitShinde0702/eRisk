@@ -1,0 +1,120 @@
+version: 1
+source: bdi_ii_and_direct_descriptions
+templates:
+  - symptom: Sadness
+    group: indirect
+    texts:
+      - "I feel sad."
+      - "I feel down most days."
+      - "I feel low and empty."
+  - symptom: Pessimism
+    group: indirect
+    texts:
+      - "I am discouraged about my future."
+      - "I do not think things will get better."
+      - "The future feels hopeless."
+  - symptom: Past Failure
+    group: indirect
+    texts:
+      - "I always fail."
+      - "I feel like I keep letting people down."
+  - symptom: Loss of Pleasure
+    group: indirect
+    texts:
+      - "I do not get pleasure from things."
+      - "Things I used to enjoy feel empty now."
+  - symptom: Guilty Feelings
+    group: indirect
+    texts:
+      - "I feel quite guilty."
+      - "I feel guilty most of the time."
+  - symptom: Punishment Feelings
+    group: indirect
+    texts:
+      - "I expected to be punished."
+      - "I feel like I deserve bad outcomes."
+  - symptom: Self-Dislike
+    group: indirect
+    texts:
+      - "I am disappointed in myself."
+      - "I do not like myself."
+  - symptom: Self-Criticalness
+    group: indirect
+    texts:
+      - "I always criticize myself for my faults."
+      - "I blame myself for everything."
+  - symptom: Suicidal Thoughts or Wishes
+    group: indirect
+    texts:
+      - "I have thoughts of killing myself."
+      - "I do not want to be here anymore."
+      - "I am going to end it soon."
+      - "I will leave earth soon."
+  - symptom: Crying
+    group: indirect
+    texts:
+      - "I always cry."
+      - "I cry more easily than before."
+  - symptom: Agitation
+    group: indirect
+    texts:
+      - "I find it hard to stay still."
+      - "I feel restless and on edge."
+  - symptom: Loss of Interest
+    group: indirect
+    texts:
+      - "It is hard to get interested in things."
+      - "I stopped caring about what I used to do."
+  - symptom: Indecisiveness
+    group: indirect
+    texts:
+      - "I have trouble making decisions."
+      - "Even simple decisions feel hard."
+  - symptom: Worthlessness
+    group: indirect
+    texts:
+      - "I feel worthless."
+      - "Nothing I do matters."
+      - "People would be better without me."
+  - symptom: Loss of Energy
+    group: indirect
+    texts:
+      - "I do not have energy to do things."
+      - "I feel drained most of the day."
+  - symptom: Changes in Sleeping Pattern
+    group: indirect
+    texts:
+      - "I have changes in my sleeping pattern."
+      - "I wake up in the night and cannot sleep again."
+  - symptom: Irritability
+    group: indirect
+    texts:
+      - "I am always irritable."
+      - "I snap at people more than before."
+  - symptom: Changes in Appetite
+    group: indirect
+    texts:
+      - "I have changes in my appetite."
+      - "My appetite has changed a lot."
+  - symptom: Concentration Difficulty
+    group: indirect
+    texts:
+      - "I find it hard to concentrate on things."
+      - "My mind keeps drifting and I cannot focus."
+  - symptom: Tiredness or Fatigue
+    group: indirect
+    texts:
+      - "I am too tired to do things."
+      - "I feel exhausted all the time."
+  - symptom: Loss of Interest in Sex
+    group: indirect
+    texts:
+      - "I have lost my interest in sex."
+      - "My libido is much lower than before."
+direct_descriptions:
+  - symptom: Sadness
+    text: "I feel depressed."
+  - symptom: Sadness
+    text: "I was diagnosed with depression."
+  - symptom: Sadness
+    text: "I am treating my depression."

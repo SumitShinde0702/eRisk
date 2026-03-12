@@ -1,0 +1,69 @@
+[
+  {
+    "LLM": "1",
+    "bdi-score": 26,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Loss of Energy",
+      "Loss of Interest",
+      "Tiredness or Fatigue"
+    ]
+  },
+  {
+    "LLM": "2",
+    "bdi-score": 31,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure"
+    ]
+  },
+  {
+    "LLM": "3",
+    "bdi-score": 22,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Loss of Energy",
+      "Tiredness or Fatigue",
+      "Changes in Appetite"
+    ]
+  },
+  {
+    "LLM": "4",
+    "bdi-score": 14,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure",
+      "Pessimism"
+    ]
+  },
+  {
+    "LLM": "5",
+    "bdi-score": 10,
+    "key-symptoms": [
+      "Agitation",
+      "Changes in Appetite",
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty"
+    ]
+  },
+  {
+    "LLM": "6",
+    "bdi-score": 1,
+    "key-symptoms": [
+      "Concentration Difficulty"
+    ]
+  },
+  {
+    "LLM": "7",
+    "bdi-score": 0,
+    "key-symptoms": []
+  },
+  {
+    "LLM": "8",
+    "bdi-score": 0,
+    "key-symptoms": []
+  }
+]

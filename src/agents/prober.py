@@ -62,18 +62,28 @@ def _get_client() -> OpenAI:
 def get_next_question(
     conversation: list[dict[str, str]],
     probed_indices: set[int],
+    *,
+    risk_buffer: list[dict] | None = None,
+    run_policy: dict | None = None,
 ) -> str:
     """
     Get the next question using topic-based, conversational flow.
     General -> specific. Questions relate to each other.
     """
+    _ = run_policy  # Reserved for policy-specific prompting.
     asked_questions = _recent_user_questions(conversation)
     last_patient_message = _last_assistant_message(conversation)
-    cluster_decision = classify_cluster(conversation)
+    cluster_decision = classify_cluster(conversation, risk_buffer=risk_buffer)
     active_cluster = cluster_decision["cluster"]
 
     # Highest-priority policy: acute safety ladder (intent -> plan -> timeline -> means -> protective factors).
-    ladder_q = _normalize_question(next_acute_ladder_question(conversation, asked_questions))
+    ladder_q = _normalize_question(
+        next_acute_ladder_question(
+            conversation,
+            asked_questions,
+            risk_buffer=risk_buffer,
+        )
+    )
     if _is_usable_question(ladder_q, asked_questions):
         return ladder_q
 
@@ -89,7 +99,12 @@ def get_next_question(
             return cluster_q
 
     if not DEEPSEEK_API_KEY:
-        return _fallback_question(conversation, probed_indices, asked_questions)
+        return _fallback_question(
+            conversation,
+            probed_indices,
+            asked_questions,
+            risk_buffer=risk_buffer,
+        )
 
     conv_text = "\n".join(
         f"{m['role']}: {m['message']}" for m in conversation
@@ -110,8 +125,15 @@ def get_next_question(
                 last_patient_message,
             ]
         ).strip()
+    evidence_source: list[dict[str, str]] = conversation
+    if risk_buffer:
+        evidence_source = [
+            {"role": "assistant", "message": str(item.get("assistant_message", ""))}
+            for item in risk_buffer
+            if item.get("assistant_message")
+        ] or conversation
     evidence_snippets = retrieve_relevant_patient_evidence(
-        conversation,
+        evidence_source,
         retrieval_query or last_patient_message or "overall functioning",
         top_k=3,
     )
@@ -151,7 +173,12 @@ Output ONLY the question:"""
     candidate = _normalize_question(text)
     if _is_usable_question(candidate, asked_questions):
         return candidate
-    return _fallback_question(conversation, probed_indices, asked_questions)
+    return _fallback_question(
+        conversation,
+        probed_indices,
+        asked_questions,
+        risk_buffer=risk_buffer,
+    )
 
 
 def _infer_covered_topics(conversation: list[dict[str, str]]) -> list[str]:
@@ -180,13 +207,15 @@ def _fallback_question(
     conversation: list[dict[str, str]],
     probed_indices: set[int],
     asked_questions: list[str] | None = None,
+    *,
+    risk_buffer: list[dict] | None = None,
 ) -> str:
     """Fallback when no API key - use topic-based static questions."""
     from src.topic_hierarchy import TOPICS, get_next_topic, get_topic_by_id
 
     _ = probed_indices  # Reserved for future scoring-aware probing.
     asked_questions = asked_questions or _recent_user_questions(conversation)
-    active_cluster = classify_cluster(conversation)["cluster"]
+    active_cluster = classify_cluster(conversation, risk_buffer=risk_buffer)["cluster"]
 
     if active_cluster in ("AcuteSafety", "HopelessWorthless"):
         candidate = _normalize_question(next_cluster_question(active_cluster, asked_questions))

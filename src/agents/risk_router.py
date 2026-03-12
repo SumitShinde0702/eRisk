@@ -178,8 +178,22 @@ def _recent_patient_text(conversation: list[dict[str, str]], max_msgs: int = 4) 
     return "\n".join(msgs[-max_msgs:])
 
 
-def _lexical_cluster(conversation: list[dict[str, str]]) -> ClusterDecision:
-    text = _recent_patient_text(conversation, max_msgs=6).lower()
+def _risk_buffer_text(risk_buffer: list[dict[str, object]] | None, max_msgs: int = 6) -> str:
+    if not risk_buffer:
+        return ""
+    msgs = [
+        str(item.get("assistant_message", "")).strip()
+        for item in risk_buffer
+        if str(item.get("assistant_message", "")).strip()
+    ]
+    return "\n".join(msgs[:max_msgs])
+
+
+def _lexical_cluster(
+    conversation: list[dict[str, str]],
+    risk_buffer: list[dict[str, object]] | None = None,
+) -> ClusterDecision:
+    text = (_risk_buffer_text(risk_buffer, max_msgs=6) or _recent_patient_text(conversation, max_msgs=6)).lower()
     if any(p in text for p in ACUTE_EUPHEMISMS):
         return {"cluster": "AcuteSafety", "confidence": 0.9, "rationale": "matched acute euphemistic cues"}
     for cluster in ("AcuteSafety", "HopelessWorthless", "CoreDepression", "VegetativeCognitive", "BehavioralArousal"):
@@ -188,15 +202,19 @@ def _lexical_cluster(conversation: list[dict[str, str]]) -> ClusterDecision:
     return {"cluster": "GeneralCheckin", "confidence": 0.5, "rationale": "no strong lexical cue"}
 
 
-def classify_cluster(conversation: list[dict[str, str]]) -> ClusterDecision:
+def classify_cluster(
+    conversation: list[dict[str, str]],
+    *,
+    risk_buffer: list[dict[str, object]] | None = None,
+) -> ClusterDecision:
     """Classify current dominant interview cluster."""
-    if has_acute_signal(conversation):
+    if has_acute_signal(conversation, risk_buffer=risk_buffer):
         return {"cluster": "AcuteSafety", "confidence": 0.95, "rationale": "acute safety cues detected"}
 
     if not DEEPSEEK_API_KEY:
-        return _lexical_cluster(conversation)
+        return _lexical_cluster(conversation, risk_buffer=risk_buffer)
 
-    patient_excerpt = _recent_patient_text(conversation, max_msgs=6)
+    patient_excerpt = _risk_buffer_text(risk_buffer, max_msgs=6) or _recent_patient_text(conversation, max_msgs=6)
     if not patient_excerpt:
         return {"cluster": "GeneralCheckin", "confidence": 0.5, "rationale": "no patient history yet"}
 
@@ -217,7 +235,7 @@ Return dominant cluster now."""
     text = (resp.choices[0].message.content or "").strip()
     match = re.search(r"\{.*\}", text, re.DOTALL)
     if not match:
-        return _lexical_cluster(conversation)
+        return _lexical_cluster(conversation, risk_buffer=risk_buffer)
     try:
         parsed = json.loads(match.group())
         cluster = parsed.get("cluster", "GeneralCheckin")
@@ -228,7 +246,7 @@ Return dominant cluster now."""
         rationale = str(parsed.get("rationale", ""))
         return {"cluster": cluster, "confidence": confidence, "rationale": rationale[:200]}
     except Exception:
-        return _lexical_cluster(conversation)
+        return _lexical_cluster(conversation, risk_buffer=risk_buffer)
 
 
 def next_cluster_question(cluster: str, asked_questions: list[str]) -> str:
@@ -241,9 +259,13 @@ def next_cluster_question(cluster: str, asked_questions: list[str]) -> str:
     return candidates[0]
 
 
-def has_acute_signal(conversation: list[dict[str, str]]) -> bool:
+def has_acute_signal(
+    conversation: list[dict[str, str]],
+    *,
+    risk_buffer: list[dict[str, object]] | None = None,
+) -> bool:
     """Detect acute safety intent language from patient messages."""
-    text = _recent_patient_text(conversation, max_msgs=8).lower()
+    text = (_risk_buffer_text(risk_buffer, max_msgs=8) or _recent_patient_text(conversation, max_msgs=8)).lower()
     acute_terms = _LEXICAL_RULES["AcuteSafety"] + ACUTE_EUPHEMISMS
     return any(term in text for term in acute_terms)
 
@@ -261,9 +283,11 @@ def acute_ladder_progress(asked_questions: list[str]) -> int:
 def next_acute_ladder_question(
     conversation: list[dict[str, str]],
     asked_questions: list[str],
+    *,
+    risk_buffer: list[dict[str, object]] | None = None,
 ) -> str:
     """Return the next required acute-safety ladder question when high-risk cues are present."""
-    if not has_acute_signal(conversation):
+    if not has_acute_signal(conversation, risk_buffer=risk_buffer):
         return ""
     asked_lower = [q.lower() for q in asked_questions]
     for _, question, markers in ACUTE_LADDER:

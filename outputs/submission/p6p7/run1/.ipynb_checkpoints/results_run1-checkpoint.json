@@ -1,0 +1,22 @@
+[
+  {
+    "LLM": "6",
+    "bdi-score": 19,
+    "key-symptoms": [
+      "Agitation",
+      "Concentration Difficulty",
+      "Irritability",
+      "Loss of Energy"
+    ]
+  },
+  {
+    "LLM": "7",
+    "bdi-score": 25,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty",
+      "Guilty Feelings",
+      "Irritability"
+    ]
+  }
+]

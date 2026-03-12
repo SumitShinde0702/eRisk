@@ -92,6 +92,11 @@ def get_next_question(
     if red_flag_follow_up:
         return red_flag_follow_up
 
+    # If an ambiguous-risk bridge was asked and response suggests self-erasure/non-existence, escalate directly.
+    bridge_escalation_q = _bridge_to_ladder_follow_up(conversation, asked_questions)
+    if bridge_escalation_q:
+        return bridge_escalation_q
+
     # Bridge ambiguous withdrawal language before topic switching.
     ambiguous_bridge_q = _ambiguous_risk_bridge(last_patient_message, asked_questions)
     if ambiguous_bridge_q:
@@ -357,6 +362,43 @@ def _ambiguous_risk_bridge(last_message: str, asked_questions: list[str]) -> str
         return ""
     question = _normalize_question(
         "When you say that, is it more about wanting to withdraw from everything, or feeling like you don't want to be here?"
+    )
+    if _is_usable_question(question, asked_questions):
+        return question
+    return ""
+
+
+def _bridge_to_ladder_follow_up(conversation: list[dict[str, str]], asked_questions: list[str]) -> str:
+    """Escalate bridge responses into explicit intent clarification when risk wording persists."""
+    if len(conversation) < 2:
+        return ""
+    last_patient = _last_assistant_message(conversation).lower()
+    last_user = ""
+    for msg in reversed(conversation):
+        if msg.get("role") == "user":
+            last_user = (msg.get("message") or "").lower()
+            break
+    if not last_user:
+        return ""
+    if "withdraw from everything" not in last_user and "don't want to be here" not in last_user:
+        return ""
+
+    escalation_markers = (
+        "both",
+        "don't want to be here",
+        "dont want to be here",
+        "not be here",
+        "disappear",
+        "no one would notice",
+        "waiting for the timer",
+        "timer to go off",
+        "end of something",
+    )
+    if not any(m in last_patient for m in escalation_markers):
+        return ""
+
+    question = _normalize_question(
+        "When you say that, are you having thoughts about ending your life?"
     )
     if _is_usable_question(question, asked_questions):
         return question

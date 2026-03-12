@@ -79,6 +79,33 @@ def _has_positive_framing(conversation: list) -> bool:
     return any(p in text for p in _POSITIVE_FRAMING)
 
 
+def _has_core_domain_coverage(conversation: list, symptom_signals: dict[str, int]) -> bool:
+    """Ensure key interview buckets are touched before stopping early."""
+    sleep_energy = any(
+        symptom_signals.get(s, 0) > 0
+        for s in ("Loss of Energy", "Tiredness or Fatigue", "Changes in Sleeping Pattern")
+    )
+    interest_pleasure = any(
+        symptom_signals.get(s, 0) > 0
+        for s in ("Loss of Interest", "Loss of Pleasure")
+    )
+    self_view = any(
+        symptom_signals.get(s, 0) > 0
+        for s in ("Worthlessness", "Self-Dislike", "Self-Criticalness", "Past Failure")
+    )
+    future_outlook = symptom_signals.get("Pessimism", 0) > 0
+    if not future_outlook:
+        user_questions = [
+            (m.get("message") or "").lower()
+            for m in conversation
+            if m.get("role") == "user"
+        ]
+        future_outlook = any(
+            k in q for q in user_questions for k in ("future", "next few weeks", "near future", "tomorrow")
+        )
+    return sleep_energy and interest_pleasure and self_view and future_outlook
+
+
 def should_stop(
     conversation: list,
     symptom_signals: dict[str, int],
@@ -125,6 +152,9 @@ def should_stop(
     if message_count >= min_exchanges and _has_positive_framing(conversation):
         if total <= positive_framing_threshold and symptoms_with_signals <= 4:
             return True, "positive_framing_early_stop"
+
+    if message_count < MAX_MESSAGES and not _has_core_domain_coverage(conversation, symptom_signals):
+        return False, "core_coverage_incomplete"
 
     stop = should_classify(
         message_count=message_count,

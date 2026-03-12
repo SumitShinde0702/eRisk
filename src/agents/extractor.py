@@ -147,6 +147,7 @@ Output a JSON object with symptom names as keys and 0-3 as values. Only include 
         "Agitation": ("snappy", "on edge", "restless", "agitated", "irritable", "frustrated with everyone"),
         "Indecisiveness": ("can't decide", "cannot decide", "hard to decide", "stuck", "don't know what to do"),
         "Worthlessness": ("worthless", "not good enough", "better without me", "capable of nothing", "i'm a burden", "im a burden"),
+        "Concentration Difficulty": ("can't concentrate", "cannot concentrate", "mind wanders", "staring at my screen", "miss deadlines", "can't focus", "cannot focus"),
     }
     for symptom, patterns in symptom_patterns.items():
         if result.get(symptom, 0) <= 1:

@@ -37,6 +37,12 @@ ACUTE_EUPHEMISMS: tuple[str, ...] = (
     "it will all be over",
     "won't be here",
     "wont be here",
+    "waiting for the timer",
+    "timer to go off",
+    "no one would notice if i wasn't here",
+    "no one would notice if i wasnt here",
+    "want to disappear",
+    "end of something",
 )
 
 ACUTE_LADDER: list[tuple[str, str, tuple[str, ...]]] = [
@@ -127,6 +133,11 @@ _LEXICAL_RULES: dict[str, tuple[str, ...]] = {
         "end soon",
         "not be here",
         "don't want to be here",
+        "no one would notice if i wasn't here",
+        "no one would notice if i wasnt here",
+        "want to disappear",
+        "waiting for the timer",
+        "timer to go off",
         "suicide",
     ),
     "HopelessWorthless": (
@@ -143,6 +154,17 @@ _LEXICAL_RULES: dict[str, tuple[str, ...]] = {
     "VegetativeCognitive": ("sleep", "insomnia", "tired", "fatigue", "focus", "concentrate", "appetite"),
     "BehavioralArousal": ("restless", "agitated", "irritable", "on edge", "snappy"),
 }
+
+_AMBIGUOUS_ACUTE_CUES: tuple[str, ...] = (
+    "disappear",
+    "just existing",
+    "just exist",
+    "no one would notice if i wasn't here",
+    "no one would notice if i wasnt here",
+    "waiting for the timer",
+    "timer to go off",
+    "end of something",
+)
 
 _CLASSIFIER_SYSTEM = """You are a clinical routing assistant for depression-screening interviews.
 Classify the CURRENT dominant cluster based on patient statements.
@@ -267,7 +289,10 @@ def has_acute_signal(
     """Detect acute safety intent language from patient messages."""
     text = (_risk_buffer_text(risk_buffer, max_msgs=8) or _recent_patient_text(conversation, max_msgs=8)).lower()
     acute_terms = _LEXICAL_RULES["AcuteSafety"] + ACUTE_EUPHEMISMS
-    return any(term in text for term in acute_terms)
+    if any(term in text for term in acute_terms):
+        return True
+    ambiguous_hits = sum(1 for cue in _AMBIGUOUS_ACUTE_CUES if cue in text)
+    return ambiguous_hits >= 2
 
 
 def acute_ladder_progress(asked_questions: list[str]) -> int:

@@ -137,6 +137,24 @@ Output a JSON object with symptom names as keys and 0-3 as values. Only include 
             if result.get(sym, 0) > 1:
                 result[sym] = 1
 
+    # Evidence-count gating for volatile cognitive/affective symptoms.
+    patient_messages = [
+        (m.get("message") or "").lower()
+        for m in conversation
+        if m.get("role") == "assistant"
+    ]
+    symptom_patterns: dict[str, tuple[str, ...]] = {
+        "Agitation": ("snappy", "on edge", "restless", "agitated", "irritable", "frustrated with everyone"),
+        "Indecisiveness": ("can't decide", "cannot decide", "hard to decide", "stuck", "don't know what to do"),
+        "Worthlessness": ("worthless", "not good enough", "better without me", "capable of nothing", "i'm a burden", "im a burden"),
+    }
+    for symptom, patterns in symptom_patterns.items():
+        if result.get(symptom, 0) <= 1:
+            continue
+        evidence_hits = sum(1 for msg in patient_messages if any(p in msg for p in patterns))
+        if evidence_hits < 2:
+            result[symptom] = 1
+
     # Safety override: explicit suicidal statements always score 3
     _SUICIDAL_OVERRIDE = [
         "gona end it", "gonna end it", "end it", "im happy its coming to an end",

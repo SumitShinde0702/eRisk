@@ -2,6 +2,7 @@ version: 1
 default:
   risk_buffer_size: 6
   recency_weight: 0.15
+  prober_temperature: 0.35
   min_exchanges_before_stop: 10
   control_threshold: 5
   severe_threshold: 25
@@ -14,6 +15,7 @@ default:
 
 run1:
   name: balanced
+  prober_temperature: 0.25
   control_threshold: 5
   severe_threshold: 24
   consecutive_confirmations: 2
@@ -24,6 +26,7 @@ run1:
 
 run2:
   name: high_recall
+  prober_temperature: 0.25
   control_threshold: 6
   severe_threshold: 20
   consecutive_confirmations: 1
@@ -35,6 +38,7 @@ run2:
 
 run3:
   name: high_precision
+  prober_temperature: 0.25
   control_threshold: 4
   severe_threshold: 28
   consecutive_confirmations: 3

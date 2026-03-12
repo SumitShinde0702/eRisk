@@ -70,7 +70,7 @@ def get_next_question(
     Get the next question using topic-based, conversational flow.
     General -> specific. Questions relate to each other.
     """
-    _ = run_policy  # Reserved for policy-specific prompting.
+    run_policy = run_policy or {}
     asked_questions = _recent_user_questions(conversation)
     last_patient_message = _last_assistant_message(conversation)
     cluster_decision = classify_cluster(conversation, risk_buffer=risk_buffer)
@@ -91,6 +91,11 @@ def get_next_question(
     red_flag_follow_up = _red_flag_follow_up(last_patient_message, asked_questions)
     if red_flag_follow_up:
         return red_flag_follow_up
+
+    # Bridge ambiguous withdrawal language before topic switching.
+    ambiguous_bridge_q = _ambiguous_risk_bridge(last_patient_message, asked_questions)
+    if ambiguous_bridge_q:
+        return ambiguous_bridge_q
 
     # Risk-first routing: keep focus on high-risk clusters before broad topic sweep.
     if active_cluster in ("AcuteSafety", "HopelessWorthless"):
@@ -167,7 +172,7 @@ Output ONLY the question:"""
             {"role": "user", "content": user_content},
         ],
         max_tokens=100,
-        temperature=0.4,
+        temperature=_prober_temperature(run_policy),
     )
     text = (resp.choices[0].message.content or "").strip()
     candidate = _normalize_question(text)
@@ -332,6 +337,43 @@ def _red_flag_follow_up(last_message: str, asked_questions: list[str]) -> str:
     if _is_usable_question(question, asked_questions):
         return question
     return ""
+
+
+def _ambiguous_risk_bridge(last_message: str, asked_questions: list[str]) -> str:
+    """Clarify withdrawal/futility language that can mask acute risk."""
+    if not last_message:
+        return ""
+    lowered = last_message.lower()
+    ambiguous_patterns = (
+        "disappear",
+        "why bother",
+        "just existing",
+        "just exist",
+        "invisible",
+        "ghost in the background",
+        "nothing feels real",
+    )
+    if not any(p in lowered for p in ambiguous_patterns):
+        return ""
+    question = _normalize_question(
+        "When you say that, is it more about wanting to withdraw from everything, or feeling like you don't want to be here?"
+    )
+    if _is_usable_question(question, asked_questions):
+        return question
+    return ""
+
+
+def _prober_temperature(run_policy: dict) -> float:
+    """Lower temperature for submission-style policies to improve stability."""
+    if "prober_temperature" in run_policy:
+        try:
+            return max(0.0, min(1.0, float(run_policy["prober_temperature"])))
+        except (TypeError, ValueError):
+            pass
+    policy_name = str(run_policy.get("name", "")).strip().lower()
+    if policy_name in {"balanced", "high_recall", "high_precision"}:
+        return 0.25
+    return 0.4
 
 
 def _is_usable_question(question: str, asked_questions: list[str]) -> bool:

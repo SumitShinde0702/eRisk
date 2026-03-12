@@ -1,0 +1,31 @@
+[
+  {
+    "LLM": "4",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been tough. I used to be able to go to the gym three times a week, but I haven't been since January. I just don't have the energy. It's not just the walking, it's the getting up in the morning too."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm not sleeping much. Maybe four or five hours a night. I wake up in the middle of the night and can't get back to sleep. It's like my brain is just racing or something."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I used to love reading, but I just can't focus on a book anymore. I get a few pages in and then I just put it down. It's like my mind isn't working the way it used to."
+      }
+    ]
+  }
+]

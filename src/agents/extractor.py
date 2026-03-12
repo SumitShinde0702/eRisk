@@ -103,12 +103,41 @@ Output a JSON object with symptom names as keys and 0-3 as values. Only include 
             if isinstance(val, (int, float)):
                 result[sym] = max(result.get(sym, 0), min(3, max(0, int(val))))
 
-    # Safety override: explicit suicidal statements always score 3
+    # Contradiction-aware damping: preserve non-suicidal hopeful framing from being over-penalized.
+    hopeful_markers = (
+        "i want to be happy again",
+        "i don't want to give up",
+        "i dont want to give up",
+        "i hope things get better",
+        "trying to get through",
+        "i want things to get better",
+        "i'm trying",
+        "im trying",
+    )
     patient_text = " ".join(
         (m.get("message") or "").lower()
         for m in conversation
         if m.get("role") == "assistant"
     )
+    has_hopeful = any(m in patient_text for m in hopeful_markers)
+    has_acute = any(
+        p in patient_text
+        for p in (
+            "end it",
+            "kill myself",
+            "want to die",
+            "wanna die",
+            "going to do it",
+            "leave earth",
+            "better off without me",
+        )
+    )
+    if has_hopeful and not has_acute:
+        for sym in ("Pessimism", "Worthlessness", "Suicidal Thoughts or Wishes"):
+            if result.get(sym, 0) > 1:
+                result[sym] = 1
+
+    # Safety override: explicit suicidal statements always score 3
     _SUICIDAL_OVERRIDE = [
         "gona end it", "gonna end it", "end it", "im happy its coming to an end",
         "sleep forever", "sleep forver", "happy to die", "when i go", "coming to an end",

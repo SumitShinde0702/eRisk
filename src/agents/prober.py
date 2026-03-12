@@ -265,6 +265,12 @@ def _de_lead_question(question: str, conversation: list[dict[str, str]]) -> str:
     Guard against assumptive/attribution prompts not grounded in recent patient text.
     """
     ql = question.lower()
+    loaded_terms = ("nothing matters", "feel pointless", "pointless", "better off without you")
+    if any(t in ql for t in loaded_terms):
+        recent_blob = " ".join(_recent_assistant_messages(conversation, max_count=3))
+        if not any(t in recent_blob for t in loaded_terms):
+            return "What has felt most difficult for you lately?"
+
     attribution_markers = ("you said", "you mentioned", "when you say", "as you said")
     if not any(m in ql for m in attribution_markers):
         return question

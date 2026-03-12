@@ -76,8 +76,8 @@ CLUSTER_QUESTION_BANK: dict[str, list[str]] = {
         "How alone do you feel with this right now?",
     ],
     "HopelessWorthless": [
-        "You mentioned that things feel pointless - when did that start feeling this strong?",
-        "When you say nothing matters, what parts of life feel most empty lately?",
+        "When did this sense of emptiness start feeling this strong?",
+        "What parts of life feel most difficult or empty lately?",
         "How do you see the next few weeks unfolding for you?",
         "How much of this feels like giving up versus feeling exhausted?",
         "Do you feel like people would be better off without you, or is it more that you feel stuck?",

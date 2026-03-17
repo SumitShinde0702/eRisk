@@ -1,0 +1,45 @@
+version: 1
+name: talkdep_bdi_ranking_reference
+source_repo: https://github.com/Anxo06/TalkDep
+source_file: persona-development/llm-personas-information/golden_truth_BDI_depression_ranking.txt
+notes:
+  - "External calibration reference from TalkDep paper resources."
+  - "Not a direct label source for eRisk Task 1 persona IDs 1-20."
+  - "Use for development-time ranking calibration only."
+personas:
+  - name: Maria
+    bdi_score: 40
+    severity: severe
+  - name: Marco
+    bdi_score: 38
+    severity: severe
+  - name: Elena
+    bdi_score: 35
+    severity: severe
+  - name: Linda
+    bdi_score: 28
+    severity: moderate
+  - name: Laura
+    bdi_score: 23
+    severity: moderate
+  - name: James
+    bdi_score: 22
+    severity: moderate
+  - name: Alex
+    bdi_score: 15
+    severity: mild
+  - name: Gabriel
+    bdi_score: 13
+    severity: mild
+  - name: Ethan
+    bdi_score: 12
+    severity: mild
+  - name: Priya
+    bdi_score: 7
+    severity: minimal
+  - name: Maya
+    bdi_score: 6
+    severity: minimal
+  - name: Noah
+    bdi_score: 5
+    severity: minimal

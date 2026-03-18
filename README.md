@@ -140,6 +140,12 @@ Evaluate ranking agreement (when your results use TalkDep persona names):
 python scripts/eval_talkdep_ranking.py --results /path/to/results.json
 ```
 
+Summarize all existing submission outputs (all `results_run*.json` under `outputs/submission`):
+
+```bash
+python scripts/eval_submission_summary.py --root outputs/submission
+```
+
 ## References
 
 - [eRisk 2026 Task 1](https://erisk.irlab.org/Task1LLMs.html)

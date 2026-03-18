@@ -140,6 +140,24 @@ Evaluate ranking agreement (when your results use TalkDep persona names):
 python scripts/eval_talkdep_ranking.py --results /path/to/results.json
 ```
 
+Run end-to-end TalkDep evaluation (parse patient-only utterances, score, then report Spearman + MAE):
+
+```bash
+python scripts/run_talkdep_eval.py
+```
+
+If API/network is unavailable, run fallback extractor mode:
+
+```bash
+python scripts/run_talkdep_eval.py --fallback
+```
+
+To disable the evaluation-only calibration view (raw metrics only):
+
+```bash
+python scripts/run_talkdep_eval.py --no-eval-calibration
+```
+
 Summarize all existing submission outputs (all `results_run*.json` under `outputs/submission`):
 
 ```bash

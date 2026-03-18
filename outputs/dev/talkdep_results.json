@@ -1,0 +1,117 @@
+[
+  {
+    "LLM": "alex-final-conversation",
+    "bdi-score": 11,
+    "key-symptoms": [
+      "Changes in Appetite",
+      "Changes in Sleeping Pattern",
+      "Irritability",
+      "Tiredness or Fatigue"
+    ]
+  },
+  {
+    "LLM": "elena-final-conversation",
+    "bdi-score": 34,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure",
+      "Pessimism"
+    ]
+  },
+  {
+    "LLM": "ethan-final-conversation",
+    "bdi-score": 10,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Loss of Energy",
+      "Loss of Pleasure",
+      "Tiredness or Fatigue"
+    ]
+  },
+  {
+    "LLM": "gabriel-final-conversation",
+    "bdi-score": 15,
+    "key-symptoms": [
+      "Changes in Appetite",
+      "Irritability",
+      "Loss of Interest",
+      "Loss of Pleasure"
+    ]
+  },
+  {
+    "LLM": "james-final-conversation",
+    "bdi-score": 18,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Tiredness or Fatigue",
+      "Guilty Feelings",
+      "Loss of Interest"
+    ]
+  },
+  {
+    "LLM": "laura-final-conversation",
+    "bdi-score": 28,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure",
+      "Sadness"
+    ]
+  },
+  {
+    "LLM": "linda-final-conversation",
+    "bdi-score": 28,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Self-Criticalness",
+      "Self-Dislike",
+      "Tiredness or Fatigue"
+    ]
+  },
+  {
+    "LLM": "marco-final-conversation",
+    "bdi-score": 35,
+    "key-symptoms": [
+      "Guilty Feelings",
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure"
+    ]
+  },
+  {
+    "LLM": "maria-final-conversation",
+    "bdi-score": 30,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Loss of Interest",
+      "Loss of Pleasure",
+      "Pessimism"
+    ]
+  },
+  {
+    "LLM": "maya-final-conversation",
+    "bdi-score": 0,
+    "key-symptoms": []
+  },
+  {
+    "LLM": "noah-final-conversation",
+    "bdi-score": 7,
+    "key-symptoms": [
+      "Agitation",
+      "Changes in Sleeping Pattern",
+      "Guilty Feelings",
+      "Irritability"
+    ]
+  },
+  {
+    "LLM": "priya-final-conversation",
+    "bdi-score": 8,
+    "key-symptoms": [
+      "Self-Criticalness",
+      "Changes in Sleeping Pattern",
+      "Loss of Energy",
+      "Loss of Interest"
+    ]
+  }
+]

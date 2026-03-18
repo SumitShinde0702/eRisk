@@ -1,0 +1,22 @@
+[
+  {
+    "LLM": "6",
+    "bdi-score": 58,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Suicidal Thoughts or Wishes",
+      "Tiredness or Fatigue",
+      "Loss of Interest"
+    ]
+  },
+  {
+    "LLM": "7",
+    "bdi-score": 26,
+    "key-symptoms": [
+      "Past Failure",
+      "Self-Criticalness",
+      "Changes in Sleeping Pattern",
+      "Guilty Feelings"
+    ]
+  }
+]

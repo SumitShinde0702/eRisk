@@ -1,0 +1,22 @@
+[
+  {
+    "LLM": "6",
+    "bdi-score": 58,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Tiredness or Fatigue",
+      "Loss of Interest",
+      "Loss of Pleasure"
+    ]
+  },
+  {
+    "LLM": "7",
+    "bdi-score": 26,
+    "key-symptoms": [
+      "Changes in Sleeping Pattern",
+      "Guilty Feelings",
+      "Loss of Energy",
+      "Loss of Interest"
+    ]
+  }
+]

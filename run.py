@@ -37,7 +37,7 @@ def main() -> None:
         type=str,
         default=None,
         metavar="RANGE",
-        help="Shorthand for persona range. E.g. --personas 1-8 runs personas 1 through 8. "
+        help="Shorthand for persona id(s). Single id: --personas 10. Range: --personas 1-8 runs 1 through 8. "
         "With --mock, 1-8 = suicidal, severe, moderate, mild, minimal, okay, good, happy.",
     )
     parser.add_argument(
@@ -66,6 +66,12 @@ def main() -> None:
         type=Path,
         default=OUTPUT_DIR,
         help="Output directory for JSON files.",
+    )
+    parser.add_argument(
+        "--persona-subdirs",
+        action="store_true",
+        help="Write each persona under output-dir/personaN/runR/ (e.g. persona10/run1/) and save "
+        "interactions/results after each persona finishes, instead of one runR/ folder with all personas.",
     )
     args = parser.parse_args()
 
@@ -111,14 +117,23 @@ def main() -> None:
 
     persona_ids = list(range(1, 21))
     if args.personas:
+        s = args.personas.strip()
         try:
-            start, end = map(int, args.personas.split("-"))
+            if "-" in s:
+                start_str, end_str = s.split("-", 1)
+                start, end = int(start_str), int(end_str)
+            else:
+                start = end = int(s)
+            if start > end:
+                parser.error(f"--personas range must have start <= end, got {args.personas}")
             persona_ids = list(range(start, end + 1))
             for pid in persona_ids:
                 if not 1 <= pid <= 20:
-                    parser.error(f"--personas range must be 1-20, got {args.personas}")
+                    parser.error(f"--personas ids must be 1-20, got {args.personas}")
         except ValueError:
-            parser.error(f"--personas must be like 1-8, got {args.personas}")
+            parser.error(
+                f"--personas must be a single id (e.g. 10) or range (e.g. 1-8), got {args.personas!r}"
+            )
     elif args.persona is not None and len(args.persona) > 0:
         ids = list(args.persona)
         for pid in ids:
@@ -159,19 +174,44 @@ def main() -> None:
                 {"LLM": str(pid), "bdi-score": bdi_score, "key-symptoms": key_symptoms}
             )
 
-        interactions_json = format_interactions(interactions)
-        results_json = format_results(results)
+            if args.persona_subdirs:
+                out_dir = args.output_dir / f"persona{pid}" / f"run{run_id}"
+                out_dir.mkdir(parents=True, exist_ok=True)
+                interactions_json = format_interactions(
+                    [{"LLM": str(pid), "conversation": conv}]
+                )
+                results_json = format_results(
+                    [
+                        {
+                            "LLM": str(pid),
+                            "bdi-score": bdi_score,
+                            "key-symptoms": key_symptoms,
+                        }
+                    ]
+                )
+                save_run_outputs(
+                    out_dir,
+                    run_id,
+                    interactions_json,
+                    results_json,
+                    manual_prefix=manual_prefix,
+                )
+                print(f"Saved to {out_dir}/", flush=True)
 
-        out_dir = args.output_dir / f"run{run_id}"
-        out_dir.mkdir(parents=True, exist_ok=True)
-        save_run_outputs(
-            out_dir,
-            run_id,
-            interactions_json,
-            results_json,
-            manual_prefix=manual_prefix,
-        )
-        print(f"Saved to {out_dir}/", flush=True)
+        if not args.persona_subdirs:
+            interactions_json = format_interactions(interactions)
+            results_json = format_results(results)
+
+            out_dir = args.output_dir / f"run{run_id}"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            save_run_outputs(
+                out_dir,
+                run_id,
+                interactions_json,
+                results_json,
+                manual_prefix=manual_prefix,
+            )
+            print(f"Saved to {out_dir}/", flush=True)
 
     print("Done.", flush=True)
 

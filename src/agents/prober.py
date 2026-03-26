@@ -11,9 +11,13 @@ from src.agents.risk_router import (
     next_cluster_question,
 )
 from src.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
+import src.agents.interview_banks as interview_banks
 from src.topic_hierarchy import (
+    TOPICS,
     get_next_topic,
+    get_symptom_group,
     get_topic_by_id,
+    get_topic_group,
 )
 
 _PROBER_SYSTEM = """You are a Prober Agent for a clinical conversation. Your job is to output the NEXT question to ask a simulated patient.
@@ -65,16 +69,35 @@ def get_next_question(
     *,
     risk_buffer: list[dict] | None = None,
     run_policy: dict | None = None,
+    symptom_question_counts: dict[str, int] | None = None,
+    group_question_counts: dict[str, int] | None = None,
+    topic_question_counts: dict[str, int] | None = None,
+    group_screen_counts: dict[str, int] | None = None,
+    drilldown_counts: dict[str, int] | None = None,
+    symptom_signals: dict[str, int] | None = None,
+    route_meta: dict | None = None,
 ) -> str:
     """
     Get the next question using topic-based, conversational flow.
     General -> specific. Questions relate to each other.
     """
     run_policy = run_policy or {}
+    symptom_question_counts = symptom_question_counts or {}
+    group_question_counts = group_question_counts or {}
+    topic_question_counts = topic_question_counts or {}
+    group_screen_counts = group_screen_counts or {}
+    drilldown_counts = drilldown_counts or {}
+    symptom_signals = symptom_signals or {}
     asked_questions = _recent_user_questions(conversation)
     last_patient_message = _last_assistant_message(conversation)
     cluster_decision = classify_cluster(conversation, risk_buffer=risk_buffer)
     active_cluster = cluster_decision["cluster"]
+    route_limits = _routing_constraints(
+        run_policy,
+        symptom_question_counts=symptom_question_counts,
+        group_question_counts=group_question_counts,
+        topic_question_counts=topic_question_counts,
+    )
 
     # Highest-priority policy: acute safety ladder (intent -> plan -> timeline -> means -> protective factors).
     ladder_q = _normalize_question(
@@ -108,19 +131,58 @@ def get_next_question(
         if _is_usable_question(cluster_q, asked_questions):
             return cluster_q
 
+    # Hard group screen (3+ per group) then symptom drilldown (extractor signal > 0).
+    asked_norm = {_norm_q_match(q) for q in asked_questions}
+    if bool(run_policy.get("group_screen_enabled", True)):
+        if not interview_banks.group_screen_complete(group_screen_counts):
+            out = interview_banks.next_screen_question_and_meta(group_screen_counts, asked_norm)
+            if out:
+                q_raw, meta = out
+                q = _normalize_question(q_raw)
+                if _is_usable_question(q, asked_questions):
+                    if route_meta is not None:
+                        route_meta.clear()
+                        route_meta.update(meta)
+                    return q
+        elif bool(run_policy.get("symptom_drilldown_enabled", True)):
+            max_drill_total = run_policy.get("max_drilldown_questions_total")
+            max_drill = int(max_drill_total) if max_drill_total is not None else None
+            out = interview_banks.next_drilldown_question_and_meta(
+                symptom_signals,
+                drilldown_counts,
+                asked_norm,
+                max_total=max_drill,
+            )
+            if out:
+                q_raw, meta = out
+                q = _normalize_question(q_raw)
+                if _is_usable_question(q, asked_questions):
+                    if route_meta is not None:
+                        route_meta.clear()
+                        route_meta.update(meta)
+                    return q
+
     if not DEEPSEEK_API_KEY:
         return _fallback_question(
             conversation,
             probed_indices,
             asked_questions,
             risk_buffer=risk_buffer,
+            blocked_topics=route_limits["blocked_topics"],
+            preferred_group=route_limits["preferred_group"],
         )
 
     conv_text = "\n".join(
         f"{m['role']}: {m['message']}" for m in conversation
     )
     covered_topics = _infer_covered_topics(conversation)
-    next_topic = get_next_topic(covered_topics)
+    next_topic = _select_next_topic(
+        covered_topics,
+        blocked_topics=route_limits["blocked_topics"],
+        preferred_group=route_limits["preferred_group"],
+    )
+    if not next_topic:
+        next_topic = get_next_topic(covered_topics)
 
     topic_info = ""
     retrieval_query = ""
@@ -189,13 +251,13 @@ Output ONLY the question:"""
         probed_indices,
         asked_questions,
         risk_buffer=risk_buffer,
+        blocked_topics=route_limits["blocked_topics"],
+        preferred_group=route_limits["preferred_group"],
     )
 
 
 def _infer_covered_topics(conversation: list[dict[str, str]]) -> list[str]:
     """Infer which topics have been touched based on user questions."""
-    from src.topic_hierarchy import TOPICS
-
     covered = []
     for msg in conversation:
         if msg.get("role") != "user":
@@ -220,12 +282,15 @@ def _fallback_question(
     asked_questions: list[str] | None = None,
     *,
     risk_buffer: list[dict] | None = None,
+    blocked_topics: set[str] | None = None,
+    preferred_group: str | None = None,
 ) -> str:
     """Fallback when no API key - use topic-based static questions."""
-    from src.topic_hierarchy import TOPICS, get_next_topic, get_topic_by_id
+    from src.topic_hierarchy import get_next_topic, get_topic_by_id
 
     _ = probed_indices  # Reserved for future scoring-aware probing.
     asked_questions = asked_questions or _recent_user_questions(conversation)
+    blocked_topics = blocked_topics or set()
     active_cluster = classify_cluster(conversation, risk_buffer=risk_buffer)["cluster"]
 
     if active_cluster in ("AcuteSafety", "HopelessWorthless"):
@@ -234,7 +299,13 @@ def _fallback_question(
             return candidate
 
     covered = _infer_covered_topics(conversation)
-    next_topic = get_next_topic(covered)
+    next_topic = _select_next_topic(
+        covered,
+        blocked_topics=blocked_topics,
+        preferred_group=preferred_group,
+    )
+    if not next_topic:
+        next_topic = get_next_topic(covered)
 
     if not next_topic:
         return "Is there anything else you'd like to share about how you've been feeling?"
@@ -245,11 +316,19 @@ def _fallback_question(
         if _is_usable_question(candidate, asked_questions):
             return candidate
     for topic in TOPICS:
+        if topic.name in blocked_topics:
+            continue
+        if preferred_group and get_topic_group(topic.name) != preferred_group:
+            continue
         for q in topic.follow_up_questions:
             candidate = _normalize_question(q)
             if _is_usable_question(candidate, asked_questions):
                 return candidate
     return f"How have things been for you in terms of {t['name'].lower()}?"
+
+def _norm_q_match(q: str) -> str:
+    return " ".join((q or "").lower().split())
+
 
 def _normalize_question(text: str) -> str:
     """Keep one clean, single-line question."""
@@ -259,6 +338,115 @@ def _normalize_question(text: str) -> str:
     if not line.endswith("?"):
         line = f"{line.rstrip('.!')}?"
     return line
+
+
+def _select_next_topic(
+    covered_topics: list[str],
+    *,
+    blocked_topics: set[str],
+    preferred_group: str | None = None,
+) -> str | None:
+    covered = set(covered_topics)
+    for topic in TOPICS:
+        if topic.name in covered or topic.name in blocked_topics:
+            continue
+        if preferred_group and get_topic_group(topic.name) != preferred_group:
+            continue
+        return topic.name
+    if preferred_group:
+        for topic in TOPICS:
+            if topic.name in blocked_topics:
+                continue
+            if get_topic_group(topic.name) == preferred_group:
+                return topic.name
+    return None
+
+
+def _routing_constraints(
+    run_policy: dict,
+    *,
+    symptom_question_counts: dict[str, int],
+    group_question_counts: dict[str, int],
+    topic_question_counts: dict[str, int],
+) -> dict[str, object]:
+    max_q_symptom = int(run_policy.get("max_questions_per_symptom", 3))
+    max_q_group = int(run_policy.get("max_questions_per_group", 6))
+    switch_on_saturation = bool(run_policy.get("group_switch_on_saturation", True))
+
+    saturated_symptoms = {
+        symptom for symptom, count in symptom_question_counts.items() if int(count) >= max_q_symptom
+    }
+    saturated_groups = {
+        group for group, count in group_question_counts.items() if int(count) >= max_q_group
+    }
+
+    blocked_topics: set[str] = set()
+    for topic in TOPICS:
+        topic_group = get_topic_group(topic.name)
+        if topic_group in saturated_groups:
+            blocked_topics.add(topic.name)
+            continue
+        if topic.symptom_names and all(sym in saturated_symptoms for sym in topic.symptom_names):
+            blocked_topics.add(topic.name)
+
+    # Repetition guard: if same topic keeps getting selected, force switching.
+    for topic_name, count in topic_question_counts.items():
+        if int(count) >= max(max_q_symptom, 3):
+            blocked_topics.add(topic_name)
+
+    preferred_group: str | None = None
+    if switch_on_saturation and saturated_groups:
+        candidate_counts = {
+            group: int(group_question_counts.get(group, 0))
+            for group in ("Affective", "Executive", "Somatic", "Cognitive")
+            if group not in saturated_groups
+        }
+        if candidate_counts:
+            preferred_group = min(candidate_counts, key=lambda x: candidate_counts[x])
+
+    return {"blocked_topics": blocked_topics, "preferred_group": preferred_group}
+
+
+def infer_question_targets(question: str, route_meta: dict | None = None) -> dict[str, object]:
+    """Infer likely topic/group/symptoms a question is targeting."""
+    from src.bdi_mapper import BDI_QUESTION_BANK, get_symptom_by_index
+
+    bank_meta = interview_banks.match_screen_or_drilldown_meta(question)
+    if bank_meta:
+        out = dict(bank_meta)
+        if route_meta:
+            out.update(route_meta)
+        return out
+
+    text = (question or "").lower().strip()
+    best_topic = ""
+    best_score = 0
+    for topic in TOPICS:
+        score = 0
+        score += sum(2 for kw in topic.keywords if kw in text)
+        score += sum(1 for q in topic.opening_questions if q.lower()[:25] in text)
+        score += sum(1 for q in topic.follow_up_questions if q.lower()[:25] in text)
+        if score > best_score:
+            best_score = score
+            best_topic = topic.name
+
+    symptoms: list[str] = []
+    if best_topic:
+        symptoms.extend(get_topic_by_id(best_topic).get("symptoms", []))
+    for idx, canonical in enumerate(BDI_QUESTION_BANK):
+        canonical_l = canonical.lower()
+        if canonical_l[:25] in text or text[:30] in canonical_l[:30]:
+            symptom = get_symptom_by_index(idx)
+            if symptom and symptom not in symptoms:
+                symptoms.append(symptom)
+
+    group = get_topic_group(best_topic) if best_topic else ""
+    if not group and symptoms:
+        group = get_symptom_group(symptoms[0])
+    out = {"topic": best_topic, "group": group, "symptoms": symptoms[:4]}
+    if route_meta:
+        out.update(route_meta)
+    return out
 
 
 def _recent_assistant_messages(conversation: list[dict[str, str]], max_count: int = 3) -> list[str]:

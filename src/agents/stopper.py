@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from src.agents.risk_router import acute_ladder_progress, has_acute_signal
+import src.agents.interview_banks as interview_banks
 from src.bdi_mapper import BDI_SYMPTOMS
 from src.config import MAX_MESSAGES, MIN_EXCHANGES_BEFORE_STOP, MIN_SYMPTOMS_FOR_EARLY_STOP
 
@@ -114,6 +115,8 @@ def should_stop(
     risk_buffer: list[dict] | None = None,
     run_policy: dict | None = None,
     recent_bdi_estimates: list[int] | None = None,
+    group_question_counts: dict[str, int] | None = None,
+    group_screen_counts: dict[str, int] | None = None,
 ) -> tuple[bool, str]:
     """
     Wrapper for orchestrator: (conversation, symptom_signals, probed_symptoms) -> (stop, reason).
@@ -122,12 +125,15 @@ def should_stop(
     total = sum(symptom_signals.get(s, 0) for s in BDI_SYMPTOMS)
     symptoms_with_signals = sum(1 for s in BDI_SYMPTOMS if symptom_signals.get(s, 0) > 0)
     policy = run_policy or {}
+    group_question_counts = group_question_counts or {}
+    group_screen_counts = group_screen_counts or {}
     min_exchanges = int(policy.get("min_exchanges_before_stop", MIN_EXCHANGES_BEFORE_STOP))
     control_threshold = int(policy.get("control_threshold", 5))
     severe_threshold = int(policy.get("severe_threshold", 25))
     consecutive = int(policy.get("consecutive_confirmations", 2))
     required_acute_ladder = int(policy.get("required_acute_ladder_steps", 4))
     positive_framing_threshold = int(policy.get("positive_framing_threshold", 8))
+    min_groups_before_stop = int(policy.get("min_groups_before_stop", 3))
     asked_questions = [
         (m.get("message") or "").strip()
         for m in conversation
@@ -146,6 +152,22 @@ def should_stop(
     # If extractor has not produced any evidence yet, continue probing.
     if message_count < min_exchanges:
         return False, "min_exchanges_not_reached"
+
+    # Hard minimum: each functional group must receive min_questions_per_group_screen screening questions.
+    if bool(policy.get("group_screen_enabled", True)):
+        min_sq = int(
+            policy.get(
+                "min_questions_per_group_screen",
+                interview_banks.get_min_questions_per_group_screen(),
+            )
+        )
+        for g in interview_banks.get_group_order():
+            if int(group_screen_counts.get(g, 0)) < min_sq:
+                return False, "group_screen_incomplete"
+
+    groups_covered = sum(1 for _, count in group_question_counts.items() if int(count) > 0)
+    if message_count < MAX_MESSAGES and groups_covered < min_groups_before_stop:
+        return False, "group_coverage_incomplete"
 
     # If early responses have positive framing, use relaxed control threshold
     # (stops sooner to avoid over-probing and false symptom extraction)

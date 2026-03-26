@@ -1,0 +1,41 @@
+{
+  "persona": 9,
+  "run_id": "1",
+  "interaction_file": "/Users/itzsihui/eRisk/outputs/submission/persona9/run1/interactions_run1.json",
+  "analysis": {
+    "total_turns": 10,
+    "symptom_counts": {
+      "Sadness": 4,
+      "Loss of Pleasure": 5,
+      "Loss of Interest": 1,
+      "Loss of Interest in Sex": 1,
+      "Pessimism": 1,
+      "Past Failure": 1,
+      "Worthlessness": 1,
+      "Self-Dislike": 1,
+      "Indecisiveness": 2,
+      "Concentration Difficulty": 2
+    },
+    "group_counts": {
+      "Affective": 5,
+      "Cognitive": 1,
+      "Executive": 2
+    },
+    "topic_counts": {
+      "General_Mood": 4,
+      "Motivation": 1,
+      "Self_Outlook": 1,
+      "Cognitive": 2
+    },
+    "forced_group_switches": 4,
+    "cap_config": {
+      "max_questions_per_symptom": 3,
+      "max_questions_per_group": 6
+    },
+    "symptom_cap_violations": {
+      "Sadness": 4,
+      "Loss of Pleasure": 5
+    },
+    "group_cap_violations": {}
+  }
+}

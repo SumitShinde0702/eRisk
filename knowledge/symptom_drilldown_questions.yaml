@@ -1,0 +1,69 @@
+# One to two follow-up questions per BDI-II symptom to narrow severity (indirect).
+# Scoring remains via Extractor (0–3); these elicit clearer evidence.
+version: 1
+max_questions_per_symptom: 2
+
+symptoms:
+  Sadness:
+    - "When you say things have been rough, is that most days or just now and then?"
+    - "Does anything briefly lift your mood, or does it stay flat?"
+  Pessimism:
+    - "When you picture the future, does anything feel workable, or mostly closed off?"
+    - "Do you catch yourself expecting things to go wrong before they happen?"
+  Past Failure:
+    - "When something goes wrong, how much do you put that on yourself?"
+    - "Do you replay what you should have done differently?"
+  Loss of Pleasure:
+    - "When you try to do something you used to like, what happens in the moment?"
+    - "Is it more 'not fun' or 'can't be bothered to start'?"
+  Guilty Feelings:
+    - "Is there something specific you feel bad about lately, or a general sense of blame?"
+    - "How long does that guilty feeling stick around?"
+  Punishment Feelings:
+    - "Do you ever feel like you deserve things to go badly?"
+    - "Does that feel connected to something you did, or more general?"
+  Self-Dislike:
+    - "How do you talk to yourself in your head when you mess something up?"
+    - "Has that inner voice gotten harsher than it used to be?"
+  Self-Criticalness:
+    - "Are you harder on yourself than you would be on a friend in the same spot?"
+    - "What kind of standards are you holding yourself to lately?"
+  Suicidal Thoughts or Wishes:
+    - "When things feel really heavy, what thoughts show up about getting through it?"
+    - "Have you had moments of wishing you weren't here, even if you didn't plan anything?"
+  Crying:
+    - "Do you tear up or get choked up more easily than before?"
+    - "Is that mostly alone or around others too?"
+  Agitation:
+    - "Do you feel physically restless or on edge in your body?"
+    - "Is it worse when you have to sit still or wait?"
+  Loss of Interest:
+    - "What have you dropped or avoided lately that you wish you still did?"
+    - "Is it lack of interest or lack of energy — or both?"
+  Indecisiveness:
+    - "When you need to choose, do you get stuck or go back and forth?"
+    - "Does even a simple choice feel like too much sometimes?"
+  Worthlessness:
+    - "Do you feel like you matter to people around you right now?"
+    - "When you're quiet, what story about yourself runs in the background?"
+  Loss of Energy:
+    - "Is it more 'heavy and slow' or 'drained after little effort'?"
+    - "Does rest actually help, or are you still flat afterward?"
+  Changes in Sleeping Pattern:
+    - "Is the problem falling asleep, staying asleep, waking too early, or sleeping too much?"
+    - "How many nights a week is it like that?"
+  Irritability:
+    - "What kinds of things set you off lately that wouldn't have bothered you before?"
+    - "How long does the irritable feeling last after it starts?"
+  Changes in Appetite:
+    - "Has your weight or how your clothes fit changed without trying?"
+    - "Is it more loss of appetite or eating without really wanting to?"
+  Concentration Difficulty:
+    - "When you read or work, how often do you have to re-read or restart?"
+    - "Is it worse at certain times of day?"
+  Tiredness or Fatigue:
+    - "Even after sleep, do you wake up already tired?"
+    - "Does fatigue hit you in waves or stay steady all day?"
+  Loss of Interest in Sex:
+    - "Has your interest in intimacy or closeness shifted compared with before?"
+    - "Is that more about desire or about not feeling up to it?"

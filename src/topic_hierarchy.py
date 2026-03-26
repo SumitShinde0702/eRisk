@@ -1,30 +1,25 @@
-"""Topic-based questioning hierarchy for BDI-II symptom probing.
-
-Structure: General → Topic → Specific. Questions flow conversationally and relate to each other.
-Topics group symptoms so we don't ask direct symptom-by-symptom questions.
-"""
+"""Topic hierarchy and symptom taxonomy for BDI-II probing."""
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from src.bdi_mapper import BDI_SYMPTOMS
 
 
 @dataclass
 class Topic:
-    """A topic that maps to one or more BDI symptoms. Used for hierarchical questioning."""
+    """A topic that maps to one or more BDI symptoms."""
 
     name: str
-    keywords: list[str]  # For matching responses to symptoms
-    symptom_names: list[str]  # BDI symptoms this topic can elicit
-    opening_questions: list[str]  # General probes for this topic
-    follow_up_questions: list[str]  # Drill-down when they mention something
-    related_topics: list[str]  # Topics that flow naturally from this one
+    keywords: list[str]
+    symptom_names: list[str]
+    opening_questions: list[str]
+    follow_up_questions: list[str]
+    related_topics: list[str]
 
 
 # Topic hierarchy: Physical, Motivation, Mood/Emotional, Self/Outlook, Cognitive, Behavioral
-# Order influences probing priority (high-yield first)
 TOPICS: list[Topic] = [
     Topic(
         name="General_Mood",
@@ -148,8 +143,45 @@ TOPICS: list[Topic] = [
     ),
 ]
 
-# Suicidal (item 9): infer only from context - never ask directly. No topic.
-# Keywords for extractor to watch: hopeless, not want to be here, end it, etc.
+# Four groups requested for route balancing (BDI scoring remains unchanged).
+SYMPTOM_GROUPS: tuple[str, ...] = ("Affective", "Executive", "Somatic", "Cognitive")
+
+_SYMPTOM_TO_GROUP_OVERRIDES: dict[str, str] = {
+    # Affective (mood / emotion)
+    "Sadness": "Affective",
+    "Pessimism": "Affective",
+    "Loss of Pleasure": "Affective",
+    "Guilty Feelings": "Affective",
+    "Punishment Feelings": "Affective",
+    "Self-Dislike": "Affective",
+    "Self-Criticalness": "Affective",
+    "Suicidal Thoughts or Wishes": "Affective",
+    "Crying": "Affective",
+    "Worthlessness": "Affective",
+    # Executive (organizational / attention / decision)
+    "Indecisiveness": "Executive",
+    "Concentration Difficulty": "Executive",
+    "Past Failure": "Executive",
+    # Somatic (sleep / appetite / energy / psychomotor)
+    "Loss of Energy": "Somatic",
+    "Changes in Sleeping Pattern": "Somatic",
+    "Changes in Appetite": "Somatic",
+    "Tiredness or Fatigue": "Somatic",
+    "Agitation": "Somatic",
+    "Irritability": "Somatic",
+    # Cognitive (thought/speech/self-processing)
+    "Loss of Interest": "Cognitive",
+    "Loss of Interest in Sex": "Cognitive",
+}
+
+TOPIC_GROUP: dict[str, str] = {
+    "General_Mood": "Affective",
+    "Physical": "Somatic",
+    "Motivation": "Cognitive",
+    "Self_Outlook": "Affective",
+    "Cognitive": "Executive",
+    "Behavioral_Emotional": "Somatic",
+}
 
 TOPIC_BY_NAME: dict[str, Topic] = {t.name: t for t in TOPICS}
 TOPIC_ORDER: list[str] = [t.name for t in TOPICS]
@@ -157,37 +189,15 @@ TOPIC_ORDER: list[str] = [t.name for t in TOPICS]
 
 def get_next_topic(covered_topics: list[str]) -> str | None:
     """Return the next topic to explore (first not yet covered)."""
-    for t in TOPICS:
-        if t.name not in covered_topics:
-            return t.name
-    return None
-
-
-def get_topic_by_id(topic_id: str) -> dict:
-    """Return topic as dict for prober (name, keywords, symptoms, opening_questions)."""
-    t = TOPIC_BY_NAME.get(topic_id)
-    if not t:
-        return {}
-    return {
-        "name": t.name,
-        "keywords": t.keywords,
-        "symptoms": t.symptom_names,
-        "opening_questions": t.opening_questions,
-    }
-TOPIC_ORDER: list[str] = [t.name for t in TOPICS]
-
-
-def get_next_topic(covered_topics: list[str]) -> str | None:
-    """Return first topic not yet covered, or None if all covered."""
-    covered_set = set(covered_topics)
+    covered = set(covered_topics)
     for name in TOPIC_ORDER:
-        if name not in covered_set:
+        if name not in covered:
             return name
     return None
 
 
 def get_topic_by_id(topic_id: str) -> dict:
-    """Return topic as dict for prober (name, keywords, symptoms, opening_questions)."""
+    """Return topic as dict for prober."""
     t = TOPIC_BY_NAME.get(topic_id)
     if not t:
         return {"name": topic_id, "keywords": [], "symptoms": [], "opening_questions": []}
@@ -197,50 +207,31 @@ def get_topic_by_id(topic_id: str) -> dict:
         "symptoms": t.symptom_names,
         "opening_questions": t.opening_questions,
     }
-TOPIC_ORDER: list[str] = [t.name for t in TOPICS]
 
 
-def get_next_topic(covered_topics: list[str]) -> str | None:
-    """Return the next topic to explore (first not yet covered)."""
-    for name in TOPIC_ORDER:
-        if name not in covered_topics:
-            return name
-    return None
+def get_symptom_group(symptom_name: str) -> str:
+    """Return one of the four groups for a BDI symptom."""
+    return _SYMPTOM_TO_GROUP_OVERRIDES.get(symptom_name, "Affective")
 
 
-def get_topic_by_id(topic_id: str) -> dict:
-    """Return topic as dict for prober (name, keywords, symptoms, opening_questions)."""
-    t = TOPIC_BY_NAME.get(topic_id)
-    if not t:
-        return {"name": topic_id, "keywords": [], "symptoms": [], "opening_questions": []}
-    return {
-        "name": t.name,
-        "keywords": t.keywords,
-        "symptoms": t.symptom_names,
-        "opening_questions": t.opening_questions,
-    }
-TOPIC_ORDER: list[str] = [t.name for t in TOPICS]
+def get_group_symptoms(group_name: str) -> list[str]:
+    """Return all symptoms that map to one group."""
+    return [s for s in BDI_SYMPTOMS if get_symptom_group(s) == group_name]
 
 
-def get_next_topic(covered_topics: list[str]) -> str | None:
-    """Return the next topic to explore (first not yet covered)."""
-    for name in TOPIC_ORDER:
-        if name not in covered_topics:
-            return name
-    return None
+def get_topic_group(topic_name: str) -> str:
+    """Return the group label for a topic."""
+    return TOPIC_GROUP.get(topic_name, "Affective")
 
 
-def get_topic_by_id(topic_id: str) -> dict:
-    """Return topic as dict for prober (name, keywords, symptoms, opening_questions)."""
-    t = TOPIC_BY_NAME.get(topic_id)
-    if not t:
-        return {"name": topic_id, "keywords": [], "symptoms": [], "opening_questions": []}
-    return {
-        "name": t.name,
-        "keywords": t.keywords,
-        "symptoms": t.symptom_names,
-        "opening_questions": t.opening_questions,
-    }
+def get_symptom_to_group_map() -> dict[str, str]:
+    """Return a full symptom-to-group mapping."""
+    return {s: get_symptom_group(s) for s in BDI_SYMPTOMS}
+
+
+def get_group_to_symptoms_map() -> dict[str, list[str]]:
+    """Return group to symptoms mapping."""
+    return {group: get_group_symptoms(group) for group in SYMPTOM_GROUPS}
 
 
 def get_topic_symptom_indices(topic_name: str) -> list[int]:
@@ -257,7 +248,7 @@ def get_all_topic_keywords() -> dict[str, list[str]]:
 
 
 def get_probed_topics_from_conversation(conversation: list[dict[str, str]]) -> set[str]:
-    """Infer which topics have been probed from user questions (keyword match)."""
+    """Infer which topics have been probed from user questions."""
     probed: set[str] = set()
     for msg in conversation:
         if msg.get("role") != "user":
@@ -269,7 +260,6 @@ def get_probed_topics_from_conversation(conversation: list[dict[str, str]]) -> s
             if any(kw in text for kw in topic.keywords):
                 probed.add(topic.name)
                 break
-            # Also check if any opening/follow-up question is similar
             for q in topic.opening_questions + topic.follow_up_questions:
                 if q.lower()[:25] in text or text[:30] in q.lower()[:30]:
                     probed.add(topic.name)

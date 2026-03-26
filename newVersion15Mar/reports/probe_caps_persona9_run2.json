@@ -1,0 +1,39 @@
+{
+  "persona": 9,
+  "run_id": "2",
+  "interaction_file": "/Users/itzsihui/eRisk/outputs/submission/persona9/run2/interactions_run2.json",
+  "analysis": {
+    "total_turns": 10,
+    "symptom_counts": {
+      "Sadness": 5,
+      "Loss of Pleasure": 5,
+      "Changes in Sleeping Pattern": 1,
+      "Tiredness or Fatigue": 1,
+      "Loss of Energy": 1,
+      "Changes in Appetite": 1,
+      "Pessimism": 1,
+      "Past Failure": 1,
+      "Worthlessness": 1,
+      "Self-Dislike": 1
+    },
+    "group_counts": {
+      "Affective": 6,
+      "Somatic": 1
+    },
+    "topic_counts": {
+      "General_Mood": 5,
+      "Physical": 1,
+      "Self_Outlook": 1
+    },
+    "forced_group_switches": 2,
+    "cap_config": {
+      "max_questions_per_symptom": 3,
+      "max_questions_per_group": 6
+    },
+    "symptom_cap_violations": {
+      "Sadness": 5,
+      "Loss of Pleasure": 5
+    },
+    "group_cap_violations": {}
+  }
+}

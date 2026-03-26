@@ -28,18 +28,101 @@ def _normalize_name(stem: str) -> str:
     return stem.replace("-final-conversation", "").strip().title()
 
 
-def _extract_patient_utterances(transcript: str, persona_name: str) -> list[str]:
-    """
-    Extract only patient lines like:
-    **Maria:** text
-    1. **Maria:** text
-    """
+def _extract_labeled_speaker_lines(transcript: str) -> list[tuple[str, str]]:
+    """Extract lines of form **Speaker:** text (optionally prefixed by numbering)."""
     pattern = re.compile(
-        rf"^\s*(?:\d+\.\s*)?\*\*{re.escape(persona_name)}:\*\*\s*(.+?)\s*$",
+        r"^\s*(?:\d+\.\s*)?\*\*\s*([^:*]+)\s*:\*\*\s*(.+?)\s*$",
         re.IGNORECASE | re.MULTILINE,
     )
-    lines = [m.strip() for m in pattern.findall(transcript)]
+    out: list[tuple[str, str]] = []
+    for speaker, text in pattern.findall(transcript):
+        sp = speaker.strip()
+        msg = text.strip()
+        if sp and msg:
+            out.append((sp, msg))
+    return out
+
+
+def _choose_patient_speaker(
+    labeled_lines: list[tuple[str, str]],
+    persona_name: str,
+) -> str:
+    """
+    Choose patient speaker robustly:
+    1) exact persona-name match, else
+    2) most frequent non-therapist speaker tag.
+    """
+    if not labeled_lines:
+        return ""
+    therapist_aliases = {
+        "therapist",
+        "doctor",
+        "dr",
+        "dr.",
+        "interviewer",
+        "clinician",
+        "counselor",
+        "counsellor",
+    }
+    persona_l = persona_name.strip().lower()
+    speakers = [s for s, _ in labeled_lines]
+    unique_lower = {s.lower() for s in speakers}
+    if persona_l in unique_lower:
+        return persona_name
+
+    counts: dict[str, int] = {}
+    display_name: dict[str, str] = {}
+    for speaker, _ in labeled_lines:
+        key = speaker.strip().lower()
+        if key in therapist_aliases:
+            continue
+        counts[key] = counts.get(key, 0) + 1
+        display_name[key] = speaker.strip()
+    if not counts:
+        return ""
+    best = max(counts, key=lambda k: counts[k])
+    return display_name[best]
+
+
+def _extract_patient_utterances(transcript: str, persona_name: str) -> list[str]:
+    """
+    Extract patient utterances robustly from markdown-labeled transcripts.
+    Handles mismatched speaker tags by choosing the dominant non-therapist speaker.
+    """
+    labeled = _extract_labeled_speaker_lines(transcript)
+    if not labeled:
+        return []
+    patient_speaker = _choose_patient_speaker(labeled, persona_name)
+    if not patient_speaker:
+        return []
+    patient_l = patient_speaker.lower()
+    lines = [msg for sp, msg in labeled if sp.strip().lower() == patient_l]
     return [x for x in lines if x]
+
+
+def _fallback_extract_lines(raw: str) -> list[str]:
+    """Last-resort extraction when labeled speaker parsing fails."""
+    out: list[str] = []
+    for line in raw.splitlines():
+        ln = line.strip()
+        if not ln:
+            continue
+        ll = ln.lower()
+        if ll.startswith("patient name:"):
+            continue
+        if ll.startswith("###"):
+            continue
+        if ll.startswith("---"):
+            continue
+        if "therapist:" in ll or "interviewer:" in ll or "doctor:" in ll or "dr.:" in ll:
+            continue
+        if "conversation" in ll:
+            continue
+        # If there is still a markdown speaker prefix, strip it.
+        ln = re.sub(r"^\s*(?:\d+\.\s*)?\*\*\s*[^:*]+\s*:\*\*\s*", "", ln).strip()
+        if ln:
+            out.append(ln)
+    return out
 
 
 def _rank(values: list[int]) -> list[int]:
@@ -95,8 +178,14 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("outputs/dev/talkdep_results_named.json"),
+        default=Path("outputs/TalkDep/talkdep_results_named.json"),
         help="Where to save predicted result JSON.",
+    )
+    parser.add_argument(
+        "--conversations-output",
+        type=Path,
+        default=Path("outputs/TalkDep/talkdep_interactions_named.json"),
+        help="Where to save parsed TalkDep conversations used for scoring.",
     )
     parser.add_argument(
         "--fallback",
@@ -121,19 +210,16 @@ def main() -> None:
         raise FileNotFoundError(f"No .txt files found in: {args.talkdep_dir}")
 
     predictions: list[dict[str, object]] = []
+    parsed_conversations: list[dict[str, object]] = []
     for path in transcript_files:
         name = _normalize_name(path.stem)
         raw = path.read_text(encoding="utf-8", errors="ignore")
         patient_lines = _extract_patient_utterances(raw, name)
         if not patient_lines:
-            # Last-resort fallback: strip obvious therapist lines and use remaining text.
-            all_lines = [ln.strip() for ln in raw.splitlines() if ln.strip()]
-            patient_lines = [
-                ln for ln in all_lines
-                if "therapist:" not in ln.lower() and "conversation" not in ln.lower()
-            ]
+            patient_lines = _fallback_extract_lines(raw)
 
         conversation = [{"role": "assistant", "message": line} for line in patient_lines]
+        parsed_conversations.append({"LLM": name, "conversation": conversation})
         if args.fallback:
             signals = extract_symptoms_fallback(conversation)
         else:
@@ -145,6 +231,11 @@ def main() -> None:
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(predictions, indent=2, ensure_ascii=False), encoding="utf-8")
+    args.conversations_output.parent.mkdir(parents=True, exist_ok=True)
+    args.conversations_output.write_text(
+        json.dumps(parsed_conversations, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
     pred_map = {str(x["LLM"]): int(x["bdi-score"]) for x in predictions}
     overlap = sorted(set(reference.keys()) & set(pred_map.keys()))
@@ -181,6 +272,7 @@ def main() -> None:
 
     report = {
         "predictions_file": str(args.output),
+        "conversations_file": str(args.conversations_output),
         "fallback_mode": bool(args.fallback),
         "eval_calibration_enabled": use_calibration,
         "overlap_count": len(overlap),

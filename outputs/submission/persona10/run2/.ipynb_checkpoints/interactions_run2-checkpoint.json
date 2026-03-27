@@ -1,0 +1,167 @@
+[
+  {
+    "LLM": "10",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "Tired. It feels like I am dragging myself through the day. I just want to get home and rest."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it takes me a bit longer to get into a task. I keep thinking about things I need to do at home, and it takes me a minute to refocus."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I wake up in the middle of the night, thinking about work stuff. I usually just lie there until the alarm goes off."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I have been too busy with work. I am looking forward to the weekend, just so I can relax for a bit."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "More of the same. Just trying to get through the days. I am not really thinking about the long term right now, just getting through the week."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. It feels like I am stuck in neutral. I don't know how to make a decision, so I just wait until the last minute."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I am running on fumes. I just get through the day and then crash."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I used to love playing guitar, but I haven't picked it up in months. It feels like I am just going through the motions right now."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Work. It's just not what I thought it would be. I wish I could switch, but I have a mortgage and bills."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Like I'm stuck. I don't feel like I am moving forward. It's frustrating, but what can I do about it?"
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been off. I'm not really hungry in the evenings. I usually just grab something quick and go to bed."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I get annoyed over little things. I'm just on edge, I guess."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'heavy and slow' or 'drained after little effort'?"
+      },
+      {
+        "role": "assistant",
+        "message": "More drained. I feel like I'm running on empty."
+      },
+      {
+        "role": "user",
+        "message": "Does rest actually help, or are you still flat afterward?"
+      },
+      {
+        "role": "assistant",
+        "message": "It helps a bit, but I'm still tired. It's like my body is running on autopilot."
+      },
+      {
+        "role": "user",
+        "message": "Even after sleep, do you wake up already tired?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, usually. I wake up feeling like I haven't slept at all."
+      },
+      {
+        "role": "user",
+        "message": "Does fatigue hit you in waves or stay steady all day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It stays steady. I'm just tired all the time."
+      },
+      {
+        "role": "user",
+        "message": "When you try to do something you used to like, what happens in the moment?"
+      },
+      {
+        "role": "assistant",
+        "message": "I get bored. It's like I'm just going through the motions."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'not fun' or 'can't be bothered to start'?"
+      },
+      {
+        "role": "assistant",
+        "message": "Can't be bothered to start. Even the thought of it feels like too much."
+      },
+      {
+        "role": "user",
+        "message": "What have you dropped or avoided lately that you wish you still did?"
+      },
+      {
+        "role": "assistant",
+        "message": "Hobbies. I used to play guitar and stuff. I haven't touched it in years."
+      },
+      {
+        "role": "user",
+        "message": "Is it lack of interest or lack of energy — or both?"
+      },
+      {
+        "role": "assistant",
+        "message": "Both. I used to love it, but now I just can't find the energy to pick it up."
+      }
+    ]
+  }
+]

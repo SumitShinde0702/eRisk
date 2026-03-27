@@ -1,12 +1,12 @@
 [
   {
     "LLM": "10",
-    "bdi-score": 20,
+    "bdi-score": 27,
     "key-symptoms": [
       "Loss of Energy",
       "Tiredness or Fatigue",
-      "Changes in Sleeping Pattern",
-      "Indecisiveness"
+      "Changes in Appetite",
+      "Changes in Sleeping Pattern"
     ]
   }
 ]

@@ -124,11 +124,11 @@
       },
       {
         "role": "user",
-        "message": "How long has taking the kids to school felt like such a big task?"
+        "message": "How long has it felt like a massive task to do things like taking the kids to school?"
       },
       {
         "role": "assistant",
-        "message": "A few weeks, I think. It used to be easy. Now I just feel like I'm dragging myself there."
+        "message": "I don't know, a few months? It started when I stopped playing football. I just lost my energy, I guess."
       },
       {
         "role": "user",
@@ -136,15 +136,15 @@
       },
       {
         "role": "assistant",
-        "message": "Not really. I used to love playing football, but I can't run anymore. I just don't have the energy for hobbies."
+        "message": "No. I used to love football, but I can't keep up with it anymore. I just don't have the energy."
       },
       {
         "role": "user",
-        "message": "What's it like when you try to start something you used to enjoy?"
+        "message": "How long has it felt like too much effort to enjoy football?"
       },
       {
         "role": "assistant",
-        "message": "It feels like a chore. I look at the TV remote and think, 'I don't have the energy for this either.' I just sit there."
+        "message": "A few years, I guess. I just got older and couldn't keep up."
       },
       {
         "role": "user",
@@ -152,15 +152,15 @@
       },
       {
         "role": "assistant",
-        "message": "Just the fact that I'm 40 and I feel like I've lost my way. I wish I could just turn back the clock and be the person I used to be."
+        "message": "Just the routine. I wish I could turn it off, but I don't know how."
       },
       {
         "role": "user",
-        "message": "What do you miss most about the person you used to be?"
+        "message": "What part of the routine feels heaviest to you?"
       },
       {
         "role": "assistant",
-        "message": "The energy. I used to be able to do stuff, to keep up. Now I just feel like I'm running on empty all the time."
+        "message": "Just the daily grind. It feels like I'm stuck in a rut, but I don't know how to get out of it."
       },
       {
         "role": "user",
@@ -168,15 +168,15 @@
       },
       {
         "role": "assistant",
-        "message": "I don't know. It's just... I thought I was supposed to be further along by now. I guess I'm just stuck."
+        "message": "I don't know. It feels like I've lost my way a bit. I used to have goals and stuff, but now I just feel lost."
       },
       {
         "role": "user",
-        "message": "What does being \"further along\" look like to you?"
+        "message": "What kind of goals used to feel important to you?"
       },
       {
         "role": "assistant",
-        "message": "I don't know. I guess it means having a career, being in a better place financially... I don't know what I'm doing with my life anymore."
+        "message": "Just the usual stuff. Get a promotion, pay off the mortgage, that sort of thing. Now it all feels distant."
       },
       {
         "role": "user",
@@ -184,15 +184,15 @@
       },
       {
         "role": "assistant",
-        "message": "Bad. I'm always tired, so I don't eat much. I just grab something quick and go back to bed."
+        "message": "It's been off. I eat because I have to, but I don't really enjoy it."
       },
       {
         "role": "user",
-        "message": "How long has the tiredness been affecting your eating like this?"
+        "message": "Has the lack of enjoyment made it hard to finish your meals?"
       },
       {
         "role": "assistant",
-        "message": "A few months. It's just been a constant struggle."
+        "message": "Yeah. Sometimes I just can't be bothered. I'll leave the plate half full and just go to bed."
       },
       {
         "role": "user",
@@ -200,7 +200,127 @@
       },
       {
         "role": "assistant",
-        "message": "Yeah. I get frustrated with the kids for no reason. I just feel like I'm on edge all the time."
+        "message": "Yeah, a bit. I get annoyed about little things, and then I feel bad for being short with the kids. It's just stress, I guess."
+      },
+      {
+        "role": "user",
+        "message": "How long has that feeling of being easily annoyed been going on?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few months, maybe? It's just the pressure of working and not being able to do anything about it."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'heavy and slow' or 'drained after little effort'?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just heavy. It's like I'm walking through mud."
+      },
+      {
+        "role": "user",
+        "message": "How long does that heavy feeling usually last after you start moving?"
+      },
+      {
+        "role": "assistant",
+        "message": "It doesn't really go away. I just get used to it."
+      },
+      {
+        "role": "user",
+        "message": "Does rest actually help, or are you still flat afterward?"
+      },
+      {
+        "role": "assistant",
+        "message": "It helps a bit, but I still feel like I'm running on empty."
+      },
+      {
+        "role": "user",
+        "message": "How long does that bit of relief from resting usually last for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not long. I'm back to square one in a few hours."
+      },
+      {
+        "role": "user",
+        "message": "Even after sleep, do you wake up already tired?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I wake up feeling like I've been up all night."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you've been up all night when you wake?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few months. It started when my wife started working the night shift."
+      },
+      {
+        "role": "user",
+        "message": "Does fatigue hit you in waves or stay steady all day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Steady. It's just a constant feeling."
+      },
+      {
+        "role": "user",
+        "message": "How much does this constant feeling interfere with your daily activities?"
+      },
+      {
+        "role": "assistant",
+        "message": "It stops me from doing stuff I used to do. I just can't keep up anymore."
+      },
+      {
+        "role": "user",
+        "message": "When you try to do something you used to like, what happens in the moment?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just get tired. I look at the TV and think, 'I can't even watch that.'"
+      },
+      {
+        "role": "user",
+        "message": "What is it about watching TV that feels like too much right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. It's just the effort. I'd rather just sit there."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'not fun' or 'can't be bothered to start'?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just can't be bothered."
+      },
+      {
+        "role": "user",
+        "message": "What's something you used to enjoy that feels that way now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Playing with the kids. I used to love it. Now I just sit there."
+      },
+      {
+        "role": "user",
+        "message": "What have you dropped or avoided lately that you wish you still did?"
+      },
+      {
+        "role": "assistant",
+        "message": "Playing football. I used to play with my mates, but I can't keep up anymore."
+      },
+      {
+        "role": "user",
+        "message": "What's kept you from getting back out there with your mates?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the running. I'm 40 now. I can't keep up with the young ones."
       }
     ]
   }

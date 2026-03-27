@@ -108,11 +108,11 @@
       },
       {
         "role": "user",
-        "message": "How often do you find yourself putting things off because they feel too difficult to start?"
+        "message": "How long has it felt easier to just ignore things like the laundry?"
       },
       {
         "role": "assistant",
-        "message": "Every day. I have a list of things to do, but I just can't get started. I'll stare at the screen for hours and do nothing."
+        "message": "I don't know, a few months maybe? It just feels like I'm carrying a heavy weight, and doing the laundry is just too much for me right now."
       },
       {
         "role": "user",
@@ -120,15 +120,15 @@
       },
       {
         "role": "assistant",
-        "message": "No. I'm usually running on fumes. I get home and just collapse on the couch."
+        "message": "No. I feel like I'm running on empty. Even little things, like taking the kids to school, feels like a massive task."
       },
       {
         "role": "user",
-        "message": "How long has it been since you've felt like you're running on fumes?"
+        "message": "How long has it felt like such a big task to do things like getting the kids to school?"
       },
       {
         "role": "assistant",
-        "message": "A few years, I guess. It's just what happens when you get older. I'm just tired."
+        "message": "I don't know, a few months? It started when my wife went back to work. I just feel like I'm the only one working now, and it's exhausting."
       },
       {
         "role": "user",
@@ -136,15 +136,15 @@
       },
       {
         "role": "assistant",
-        "message": "Not really. I used to love playing football, but I haven't had the energy for it in years. I'm just stuck in a rut, I guess."
+        "message": "No. I used to love playing football, but I haven't picked up a ball in years. I just don't have the energy for it anymore."
       },
       {
         "role": "user",
-        "message": "How long has it felt like you've been stuck in this rut?"
+        "message": "What else that you used to enjoy feels like too much effort now?"
       },
       {
         "role": "assistant",
-        "message": "A while. Maybe five years or so. It's just what happens when you get a family and a mortgage."
+        "message": "Just about everything. I used to love going out with friends, but now I just want to stay home."
       },
       {
         "role": "user",
@@ -152,15 +152,15 @@
       },
       {
         "role": "assistant",
-        "message": "The kids are growing up, and I'm missing it. I wish I could turn back time and be more involved."
+        "message": "Yeah. I wish I could be the dad I used to be. But I'm just too tired to try anymore."
       },
       {
         "role": "user",
-        "message": "How does that wish to turn back time sit with you day to day?"
+        "message": "What's changed that makes you feel too tired to try?"
       },
       {
         "role": "assistant",
-        "message": "It's just a thought. I know it's impossible. I just wish I could be the dad I used to be, but that's gone now."
+        "message": "I don't know. I just feel old. I used to be able to handle everything, but now I'm just done."
       },
       {
         "role": "user",
@@ -168,15 +168,23 @@
       },
       {
         "role": "assistant",
-        "message": "I feel like I've missed out. I should have done things differently, but it's too late now."
+        "message": "Like I've failed. I used to be the one who was strong, but now I'm just struggling to keep up."
       },
       {
         "role": "user",
-        "message": "What would you have done differently if you could go back?"
+        "message": "What does \"keeping up\" look like for you right now?"
       },
       {
         "role": "assistant",
-        "message": "I would have worked harder. I would have spent more time with the kids. I would have been more involved."
+        "message": "Just getting through the day. I feel like I'm just existing, not living."
+      },
+      {
+        "role": "user",
+        "message": "Have you thought about specific steps or a specific way you would do it?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I just know I can't keep going like this."
       },
       {
         "role": "user",
@@ -184,15 +192,15 @@
       },
       {
         "role": "assistant",
-        "message": "It's been off. I'm not hungry. I eat because I have to, but I don't enjoy it."
+        "message": "Non-existent. I'm just eating to keep the engine running."
       },
       {
         "role": "user",
-        "message": "Have you noticed any changes in your weight because of this?"
+        "message": "How long has it felt like just fueling up?"
       },
       {
         "role": "assistant",
-        "message": "Yeah. I've lost a bit of weight. It's not a big deal, but it's noticeable."
+        "message": "A few months, maybe? It started when my wife started working nights."
       },
       {
         "role": "user",
@@ -200,7 +208,7 @@
       },
       {
         "role": "assistant",
-        "message": "Yeah, a bit. I get annoyed about little things, and I feel like I'm on edge all the time."
+        "message": "Yeah. I get teary just thinking about the kids growing up."
       }
     ]
   }

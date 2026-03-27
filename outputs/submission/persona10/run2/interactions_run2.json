@@ -12,11 +12,27 @@
       },
       {
         "role": "user",
+        "message": "How long has it felt like you're dragging through the day?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few months, I guess. It started around the time the kids went back to school. I just didn't have the energy to keep up with the pace anymore."
+      },
+      {
+        "role": "user",
         "message": "Is it harder to focus or concentrate than it used to be?"
       },
       {
         "role": "assistant",
-        "message": "Yeah, it takes me a bit longer to get into a task. I keep thinking about things I need to do at home, and it takes me a minute to refocus."
+        "message": "Yeah, it's like my brain is foggy. I'll be sitting at my desk, and I'll just stare at the screen because I can't think of what to do next."
+      },
+      {
+        "role": "user",
+        "message": "How long does that feeling of being stuck at your screen usually last?"
+      },
+      {
+        "role": "assistant",
+        "message": "It depends. Sometimes I get a task done, and I'm fine. Other times it just lingers, and I have to force myself to do something."
       },
       {
         "role": "user",
@@ -24,7 +40,15 @@
       },
       {
         "role": "assistant",
-        "message": "Not great. I wake up in the middle of the night, thinking about work stuff. I usually just lie there until the alarm goes off."
+        "message": "Badly. I wake up in the middle of the night, and I can't get back to sleep. I just lie there thinking about the stuff I have to do the next day."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been waking up with these thoughts about the next day?"
+      },
+      {
+        "role": "assistant",
+        "message": "A while now. I guess it's just the stress of work and trying to keep up with the bills."
       },
       {
         "role": "user",
@@ -32,7 +56,15 @@
       },
       {
         "role": "assistant",
-        "message": "Not really. I have been too busy with work. I am looking forward to the weekend, just so I can relax for a bit."
+        "message": "Not really. I used to play football with the lads, but I haven't been able to keep up with that either. Just haven't had the energy."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you've been without that energy?"
+      },
+      {
+        "role": "assistant",
+        "message": "About a year, I think. I used to be the one who organized the games, but now I just can't be bothered."
       },
       {
         "role": "user",
@@ -40,7 +72,15 @@
       },
       {
         "role": "assistant",
-        "message": "More of the same. Just trying to get through the days. I am not really thinking about the long term right now, just getting through the week."
+        "message": "More of the same. Just trying to get through the week without falling asleep at my desk."
+      },
+      {
+        "role": "user",
+        "message": "Does it feel like you're just going through the motions to make it to the weekend?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it feels like that. I just want to get to Saturday and Sunday, and then sleep for 12 hours."
       },
       {
         "role": "user",
@@ -48,7 +88,15 @@
       },
       {
         "role": "assistant",
-        "message": "Yeah, a bit. It feels like I am stuck in neutral. I don't know how to make a decision, so I just wait until the last minute."
+        "message": "Yeah, a lot of the time. I'll be in the supermarket, and I'll just stand there thinking about what to buy because I don't have the energy to decide."
+      },
+      {
+        "role": "user",
+        "message": "How long do you usually find yourself standing there, trying to decide?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a few minutes. I usually end up grabbing whatever I can find so I can just get out of there."
       },
       {
         "role": "user",
@@ -56,7 +104,15 @@
       },
       {
         "role": "assistant",
-        "message": "No, not really. I am running on fumes. I just get through the day and then crash."
+        "message": "No. I feel like I'm running on empty."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you're running on empty?"
+      },
+      {
+        "role": "assistant",
+        "message": "About six months now. I just feel drained all the time."
       },
       {
         "role": "user",
@@ -64,7 +120,15 @@
       },
       {
         "role": "assistant",
-        "message": "Not really. I used to love playing guitar, but I haven't picked it up in months. It feels like I am just going through the motions right now."
+        "message": "Not really. I used to love watching football, but now I just can't be bothered."
+      },
+      {
+        "role": "user",
+        "message": "Has that feeling of not being bothered spread to other hobbies or activities you used to enjoy?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, pretty much everything. I used to like playing the guitar, but I haven't picked it up in months."
       },
       {
         "role": "user",
@@ -72,7 +136,15 @@
       },
       {
         "role": "assistant",
-        "message": "Work. It's just not what I thought it would be. I wish I could switch, but I have a mortgage and bills."
+        "message": "Just the general feeling of being stuck. I wish I could wake up one morning and have the energy to do something about it."
+      },
+      {
+        "role": "user",
+        "message": "What does that stuck feeling keep you from doing that you wish you could start?"
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I look at my friends who are all doing stuff, and I'm just sitting here."
       },
       {
         "role": "user",
@@ -80,7 +152,15 @@
       },
       {
         "role": "assistant",
-        "message": "Like I'm stuck. I don't feel like I am moving forward. It's frustrating, but what can I do about it?"
+        "message": "Like I've hit a dead end."
+      },
+      {
+        "role": "user",
+        "message": "What feels like it's at a dead end right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "My career. I feel like I'm 35 and I'm still just doing the same job."
       },
       {
         "role": "user",
@@ -88,7 +168,15 @@
       },
       {
         "role": "assistant",
-        "message": "It's been off. I'm not really hungry in the evenings. I usually just grab something quick and go to bed."
+        "message": "It's been off. I just eat because I have to, not because I'm hungry."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in your weight because of that?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've put on a bit. Just can't seem to shift it."
       },
       {
         "role": "user",
@@ -96,7 +184,15 @@
       },
       {
         "role": "assistant",
-        "message": "Yeah, I get annoyed over little things. I'm just on edge, I guess."
+        "message": "Sometimes. Just small things set me off."
+      },
+      {
+        "role": "user",
+        "message": "Can you give me an example of one of those small things?"
+      },
+      {
+        "role": "assistant",
+        "message": "My wife asks me to help with the shopping, and I get annoyed. It's just little stuff, but I can't seem to handle it anymore."
       },
       {
         "role": "user",
@@ -104,7 +200,15 @@
       },
       {
         "role": "assistant",
-        "message": "More drained. I feel like I'm running on empty."
+        "message": "Heavy and slow. It feels like I'm moving through mud."
+      },
+      {
+        "role": "user",
+        "message": "How long does that heavy feeling usually last when it comes on?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few hours, usually. But it's always there, just waiting to kick in again."
       },
       {
         "role": "user",
@@ -112,7 +216,15 @@
       },
       {
         "role": "assistant",
-        "message": "It helps a bit, but I'm still tired. It's like my body is running on autopilot."
+        "message": "It helps for a bit, but then I'm back to square one."
+      },
+      {
+        "role": "user",
+        "message": "How long does that bit of relief usually last?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few hours, tops. Then I'm running on empty again."
       },
       {
         "role": "user",
@@ -120,7 +232,15 @@
       },
       {
         "role": "assistant",
-        "message": "Yeah, usually. I wake up feeling like I haven't slept at all."
+        "message": "Yeah. It's like my body doesn't get the rest it needs, even when I'm sleeping."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like your sleep isn't refreshing you?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few months, I guess. It just feels like I'm going through the motions, not actually living."
       },
       {
         "role": "user",
@@ -128,7 +248,15 @@
       },
       {
         "role": "assistant",
-        "message": "It stays steady. I'm just tired all the time."
+        "message": "It's steady. I just feel tired all the time."
+      },
+      {
+        "role": "user",
+        "message": "How much does this constant tiredness interfere with your daily routine?"
+      },
+      {
+        "role": "assistant",
+        "message": "A lot. I just want to sit on the sofa and not move."
       },
       {
         "role": "user",
@@ -136,7 +264,15 @@
       },
       {
         "role": "assistant",
-        "message": "I get bored. It's like I'm just going through the motions."
+        "message": "I get tired. I start doing it, and then I just stop because I don't have the energy."
+      },
+      {
+        "role": "user",
+        "message": "What kind of things do you find yourself stopping most often?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just simple stuff like cleaning or fixing things around the house."
       },
       {
         "role": "user",
@@ -144,7 +280,15 @@
       },
       {
         "role": "assistant",
-        "message": "Can't be bothered to start. Even the thought of it feels like too much."
+        "message": "Can't be bothered to start. It feels like too much work."
+      },
+      {
+        "role": "user",
+        "message": "When you think about starting something, what makes it feel like too much work?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just getting moving. It feels like I'm dragging myself through the mud."
       },
       {
         "role": "user",
@@ -152,7 +296,15 @@
       },
       {
         "role": "assistant",
-        "message": "Hobbies. I used to play guitar and stuff. I haven't touched it in years."
+        "message": "Everything. I used to play football with the lads, but I haven't been able to keep up with that either."
+      },
+      {
+        "role": "user",
+        "message": "What's kept you from keeping up with the football?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just lack of energy."
       },
       {
         "role": "user",
@@ -160,7 +312,15 @@
       },
       {
         "role": "assistant",
-        "message": "Both. I used to love it, but now I just can't find the energy to pick it up."
+        "message": "Both. I used to love it, but I just can't keep up anymore."
+      },
+      {
+        "role": "user",
+        "message": "What was it about it that you used to love?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the exercise, I guess. Now I'm too tired for that."
       }
     ]
   }

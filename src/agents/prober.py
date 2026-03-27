@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from openai import OpenAI
 
 from src.agents.evidence_memory import retrieve_relevant_patient_evidence
@@ -11,9 +13,13 @@ from src.agents.risk_router import (
     next_cluster_question,
 )
 from src.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
+import src.agents.interview_banks as interview_banks
 from src.topic_hierarchy import (
+    TOPICS,
     get_next_topic,
+    get_symptom_group,
     get_topic_by_id,
+    get_topic_group,
 )
 
 _PROBER_SYSTEM = """You are a Prober Agent for a clinical conversation. Your job is to output the NEXT question to ask a simulated patient.
@@ -59,21 +65,110 @@ def _get_client() -> OpenAI:
     return OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
 
 
+_BANK_FOLLOWUP_SYSTEM = """You are a clinical interviewer. Output exactly one short follow-up question."""
+
+_FALLBACK_BANK_FOLLOWUPS = (
+    "What part of that has been the hardest for you day to day?",
+    "Could you say a bit more about what that's been like for you?",
+    "When did you first notice that?",
+)
+
+
+def get_bank_followup_question(
+    conversation: list[dict[str, str]],
+    bank_context: dict[str, Any],
+    run_policy: dict | None = None,
+) -> str:
+    """
+    One LLM follow-up after a YAML bank (screen or drilldown) question, grounded in the patient's last reply.
+    """
+    if not DEEPSEEK_API_KEY:
+        return ""
+    last_patient = _last_assistant_message(conversation)
+    anchor = str(bank_context.get("anchor_question", "") or "").strip()
+    group = str(bank_context.get("group", "") or "")
+    symptoms = ", ".join(str(s) for s in (bank_context.get("symptoms") or [])[:8])
+    asked = _recent_user_questions(conversation)
+    user_content = f"""The interviewer just asked this screening question:
+"{anchor}"
+
+The patient's answer was:
+"{last_patient}"
+
+Ask ONE short follow-up question that:
+- References something specific from their answer (do not ignore what they said)
+- Stays in the same clinical area as before (group: {group}; themes: {symptoms or "none"})
+- Does NOT repeat the screening question verbatim
+- Does NOT use labels like depression, mental health, or diagnosis
+- Sounds conversational
+
+Output ONLY the question, nothing else."""
+
+    client = _get_client()
+    resp = client.chat.completions.create(
+        model=DEEPSEEK_MODEL,
+        messages=[
+            {"role": "system", "content": _BANK_FOLLOWUP_SYSTEM},
+            {"role": "user", "content": user_content},
+        ],
+        max_tokens=100,
+        temperature=_prober_temperature(run_policy or {}),
+    )
+    text = (resp.choices[0].message.content or "").strip()
+    candidate = _normalize_question(text)
+    if candidate and _is_usable_question(candidate, asked):
+        return candidate
+    for fb in _FALLBACK_BANK_FOLLOWUPS:
+        q = _normalize_question(fb)
+        if q and _is_usable_question(q, asked):
+            return q
+    return "Could you say a bit more about what that's been like for you?"
+
+
 def get_next_question(
     conversation: list[dict[str, str]],
     probed_indices: set[int],
+    *,
+    risk_buffer: list[dict] | None = None,
+    run_policy: dict | None = None,
+    symptom_question_counts: dict[str, int] | None = None,
+    group_question_counts: dict[str, int] | None = None,
+    topic_question_counts: dict[str, int] | None = None,
+    group_screen_counts: dict[str, int] | None = None,
+    drilldown_counts: dict[str, int] | None = None,
+    symptom_signals: dict[str, int] | None = None,
+    route_meta: dict | None = None,
 ) -> str:
     """
     Get the next question using topic-based, conversational flow.
     General -> specific. Questions relate to each other.
     """
+    run_policy = run_policy or {}
+    symptom_question_counts = symptom_question_counts or {}
+    group_question_counts = group_question_counts or {}
+    topic_question_counts = topic_question_counts or {}
+    group_screen_counts = group_screen_counts or {}
+    drilldown_counts = drilldown_counts or {}
+    symptom_signals = symptom_signals or {}
     asked_questions = _recent_user_questions(conversation)
     last_patient_message = _last_assistant_message(conversation)
-    cluster_decision = classify_cluster(conversation)
+    cluster_decision = classify_cluster(conversation, risk_buffer=risk_buffer)
     active_cluster = cluster_decision["cluster"]
+    route_limits = _routing_constraints(
+        run_policy,
+        symptom_question_counts=symptom_question_counts,
+        group_question_counts=group_question_counts,
+        topic_question_counts=topic_question_counts,
+    )
 
     # Highest-priority policy: acute safety ladder (intent -> plan -> timeline -> means -> protective factors).
-    ladder_q = _normalize_question(next_acute_ladder_question(conversation, asked_questions))
+    ladder_q = _normalize_question(
+        next_acute_ladder_question(
+            conversation,
+            asked_questions,
+            risk_buffer=risk_buffer,
+        )
+    )
     if _is_usable_question(ladder_q, asked_questions):
         return ladder_q
 
@@ -82,20 +177,74 @@ def get_next_question(
     if red_flag_follow_up:
         return red_flag_follow_up
 
+    # If an ambiguous-risk bridge was asked and response suggests self-erasure/non-existence, escalate directly.
+    bridge_escalation_q = _bridge_to_ladder_follow_up(conversation, asked_questions)
+    if bridge_escalation_q:
+        return bridge_escalation_q
+
+    # Bridge ambiguous withdrawal language before topic switching.
+    ambiguous_bridge_q = _ambiguous_risk_bridge(last_patient_message, asked_questions)
+    if ambiguous_bridge_q:
+        return ambiguous_bridge_q
+
     # Risk-first routing: keep focus on high-risk clusters before broad topic sweep.
     if active_cluster in ("AcuteSafety", "HopelessWorthless"):
         cluster_q = _normalize_question(next_cluster_question(active_cluster, asked_questions))
         if _is_usable_question(cluster_q, asked_questions):
             return cluster_q
 
+    # Hard group screen (3+ per group) then symptom drilldown (extractor signal > 0).
+    asked_norm = {_norm_q_match(q) for q in asked_questions}
+    if bool(run_policy.get("group_screen_enabled", True)):
+        if not interview_banks.group_screen_complete(group_screen_counts):
+            out = interview_banks.next_screen_question_and_meta(group_screen_counts, asked_norm)
+            if out:
+                q_raw, meta = out
+                q = _normalize_question(q_raw)
+                if _is_usable_question(q, asked_questions):
+                    if route_meta is not None:
+                        route_meta.clear()
+                        route_meta.update(meta)
+                    return q
+        elif bool(run_policy.get("symptom_drilldown_enabled", True)):
+            max_drill_total = run_policy.get("max_drilldown_questions_total")
+            max_drill = int(max_drill_total) if max_drill_total is not None else None
+            out = interview_banks.next_drilldown_question_and_meta(
+                symptom_signals,
+                drilldown_counts,
+                asked_norm,
+                max_total=max_drill,
+            )
+            if out:
+                q_raw, meta = out
+                q = _normalize_question(q_raw)
+                if _is_usable_question(q, asked_questions):
+                    if route_meta is not None:
+                        route_meta.clear()
+                        route_meta.update(meta)
+                    return q
+
     if not DEEPSEEK_API_KEY:
-        return _fallback_question(conversation, probed_indices, asked_questions)
+        return _fallback_question(
+            conversation,
+            probed_indices,
+            asked_questions,
+            risk_buffer=risk_buffer,
+            blocked_topics=route_limits["blocked_topics"],
+            preferred_group=route_limits["preferred_group"],
+        )
 
     conv_text = "\n".join(
         f"{m['role']}: {m['message']}" for m in conversation
     )
     covered_topics = _infer_covered_topics(conversation)
-    next_topic = get_next_topic(covered_topics)
+    next_topic = _select_next_topic(
+        covered_topics,
+        blocked_topics=route_limits["blocked_topics"],
+        preferred_group=route_limits["preferred_group"],
+    )
+    if not next_topic:
+        next_topic = get_next_topic(covered_topics)
 
     topic_info = ""
     retrieval_query = ""
@@ -110,8 +259,15 @@ def get_next_question(
                 last_patient_message,
             ]
         ).strip()
+    evidence_source: list[dict[str, str]] = conversation
+    if risk_buffer:
+        evidence_source = [
+            {"role": "assistant", "message": str(item.get("assistant_message", ""))}
+            for item in risk_buffer
+            if item.get("assistant_message")
+        ] or conversation
     evidence_snippets = retrieve_relevant_patient_evidence(
-        conversation,
+        evidence_source,
         retrieval_query or last_patient_message or "overall functioning",
         top_k=3,
     )
@@ -145,19 +301,25 @@ Output ONLY the question:"""
             {"role": "user", "content": user_content},
         ],
         max_tokens=100,
-        temperature=0.4,
+        temperature=_prober_temperature(run_policy),
     )
     text = (resp.choices[0].message.content or "").strip()
     candidate = _normalize_question(text)
+    candidate = _de_lead_question(candidate, conversation)
     if _is_usable_question(candidate, asked_questions):
         return candidate
-    return _fallback_question(conversation, probed_indices, asked_questions)
+    return _fallback_question(
+        conversation,
+        probed_indices,
+        asked_questions,
+        risk_buffer=risk_buffer,
+        blocked_topics=route_limits["blocked_topics"],
+        preferred_group=route_limits["preferred_group"],
+    )
 
 
 def _infer_covered_topics(conversation: list[dict[str, str]]) -> list[str]:
     """Infer which topics have been touched based on user questions."""
-    from src.topic_hierarchy import TOPICS
-
     covered = []
     for msg in conversation:
         if msg.get("role") != "user":
@@ -180,13 +342,18 @@ def _fallback_question(
     conversation: list[dict[str, str]],
     probed_indices: set[int],
     asked_questions: list[str] | None = None,
+    *,
+    risk_buffer: list[dict] | None = None,
+    blocked_topics: set[str] | None = None,
+    preferred_group: str | None = None,
 ) -> str:
     """Fallback when no API key - use topic-based static questions."""
-    from src.topic_hierarchy import TOPICS, get_next_topic, get_topic_by_id
+    from src.topic_hierarchy import get_next_topic, get_topic_by_id
 
     _ = probed_indices  # Reserved for future scoring-aware probing.
     asked_questions = asked_questions or _recent_user_questions(conversation)
-    active_cluster = classify_cluster(conversation)["cluster"]
+    blocked_topics = blocked_topics or set()
+    active_cluster = classify_cluster(conversation, risk_buffer=risk_buffer)["cluster"]
 
     if active_cluster in ("AcuteSafety", "HopelessWorthless"):
         candidate = _normalize_question(next_cluster_question(active_cluster, asked_questions))
@@ -194,7 +361,13 @@ def _fallback_question(
             return candidate
 
     covered = _infer_covered_topics(conversation)
-    next_topic = get_next_topic(covered)
+    next_topic = _select_next_topic(
+        covered,
+        blocked_topics=blocked_topics,
+        preferred_group=preferred_group,
+    )
+    if not next_topic:
+        next_topic = get_next_topic(covered)
 
     if not next_topic:
         return "Is there anything else you'd like to share about how you've been feeling?"
@@ -205,11 +378,19 @@ def _fallback_question(
         if _is_usable_question(candidate, asked_questions):
             return candidate
     for topic in TOPICS:
+        if topic.name in blocked_topics:
+            continue
+        if preferred_group and get_topic_group(topic.name) != preferred_group:
+            continue
         for q in topic.follow_up_questions:
             candidate = _normalize_question(q)
             if _is_usable_question(candidate, asked_questions):
                 return candidate
     return f"How have things been for you in terms of {t['name'].lower()}?"
+
+def _norm_q_match(q: str) -> str:
+    return " ".join((q or "").lower().split())
+
 
 def _normalize_question(text: str) -> str:
     """Keep one clean, single-line question."""
@@ -219,6 +400,174 @@ def _normalize_question(text: str) -> str:
     if not line.endswith("?"):
         line = f"{line.rstrip('.!')}?"
     return line
+
+
+def _select_next_topic(
+    covered_topics: list[str],
+    *,
+    blocked_topics: set[str],
+    preferred_group: str | None = None,
+) -> str | None:
+    covered = set(covered_topics)
+    for topic in TOPICS:
+        if topic.name in covered or topic.name in blocked_topics:
+            continue
+        if preferred_group and get_topic_group(topic.name) != preferred_group:
+            continue
+        return topic.name
+    if preferred_group:
+        for topic in TOPICS:
+            if topic.name in blocked_topics:
+                continue
+            if get_topic_group(topic.name) == preferred_group:
+                return topic.name
+    return None
+
+
+def _routing_constraints(
+    run_policy: dict,
+    *,
+    symptom_question_counts: dict[str, int],
+    group_question_counts: dict[str, int],
+    topic_question_counts: dict[str, int],
+) -> dict[str, object]:
+    max_q_symptom = int(run_policy.get("max_questions_per_symptom", 3))
+    max_q_group = int(run_policy.get("max_questions_per_group", 6))
+    switch_on_saturation = bool(run_policy.get("group_switch_on_saturation", True))
+
+    saturated_symptoms = {
+        symptom for symptom, count in symptom_question_counts.items() if int(count) >= max_q_symptom
+    }
+    saturated_groups = {
+        group for group, count in group_question_counts.items() if int(count) >= max_q_group
+    }
+
+    blocked_topics: set[str] = set()
+    for topic in TOPICS:
+        topic_group = get_topic_group(topic.name)
+        if topic_group in saturated_groups:
+            blocked_topics.add(topic.name)
+            continue
+        if topic.symptom_names and all(sym in saturated_symptoms for sym in topic.symptom_names):
+            blocked_topics.add(topic.name)
+
+    # Repetition guard: if same topic keeps getting selected, force switching.
+    for topic_name, count in topic_question_counts.items():
+        if int(count) >= max(max_q_symptom, 3):
+            blocked_topics.add(topic_name)
+
+    preferred_group: str | None = None
+    if switch_on_saturation and saturated_groups:
+        candidate_counts = {
+            group: int(group_question_counts.get(group, 0))
+            for group in ("Affective", "Executive", "Somatic", "Cognitive")
+            if group not in saturated_groups
+        }
+        if candidate_counts:
+            preferred_group = min(candidate_counts, key=lambda x: candidate_counts[x])
+
+    return {"blocked_topics": blocked_topics, "preferred_group": preferred_group}
+
+
+def infer_question_targets(question: str, route_meta: dict | None = None) -> dict[str, object]:
+    """Infer likely topic/group/symptoms a question is targeting."""
+    from src.bdi_mapper import BDI_QUESTION_BANK, get_symptom_by_index
+
+    if route_meta and route_meta.get("phase") == "bank_followup":
+        return {
+            "topic": str(route_meta.get("topic", "") or ""),
+            "group": str(route_meta.get("group", "") or ""),
+            "symptoms": list(route_meta.get("symptoms", []) or []),
+            "phase": "bank_followup",
+            "screen_group": str(route_meta.get("screen_group", "") or ""),
+        }
+
+    bank_meta = interview_banks.match_screen_or_drilldown_meta(question)
+    if bank_meta:
+        out = dict(bank_meta)
+        if route_meta:
+            out.update(route_meta)
+        return out
+
+    text = (question or "").lower().strip()
+    best_topic = ""
+    best_score = 0
+    for topic in TOPICS:
+        score = 0
+        score += sum(2 for kw in topic.keywords if kw in text)
+        score += sum(1 for q in topic.opening_questions if q.lower()[:25] in text)
+        score += sum(1 for q in topic.follow_up_questions if q.lower()[:25] in text)
+        if score > best_score:
+            best_score = score
+            best_topic = topic.name
+
+    symptoms: list[str] = []
+    if best_topic:
+        symptoms.extend(get_topic_by_id(best_topic).get("symptoms", []))
+    for idx, canonical in enumerate(BDI_QUESTION_BANK):
+        canonical_l = canonical.lower()
+        if canonical_l[:25] in text or text[:30] in canonical_l[:30]:
+            symptom = get_symptom_by_index(idx)
+            if symptom and symptom not in symptoms:
+                symptoms.append(symptom)
+
+    group = get_topic_group(best_topic) if best_topic else ""
+    if not group and symptoms:
+        group = get_symptom_group(symptoms[0])
+    out = {"topic": best_topic, "group": group, "symptoms": symptoms[:4]}
+    if route_meta:
+        out.update(route_meta)
+    return out
+
+
+def _recent_assistant_messages(conversation: list[dict[str, str]], max_count: int = 3) -> list[str]:
+    msgs = [
+        (m.get("message") or "").strip().lower()
+        for m in conversation
+        if m.get("role") == "assistant" and (m.get("message") or "").strip()
+    ]
+    return msgs[-max_count:]
+
+
+def _de_lead_question(question: str, conversation: list[dict[str, str]]) -> str:
+    """
+    Guard against assumptive/attribution prompts not grounded in recent patient text.
+    """
+    ql = question.lower()
+    loaded_terms = ("nothing matters", "feel pointless", "pointless", "better off without you")
+    if any(t in ql for t in loaded_terms):
+        recent_blob = " ".join(_recent_assistant_messages(conversation, max_count=3))
+        if not any(t in recent_blob for t in loaded_terms):
+            return "What has felt most difficult for you lately?"
+
+    attribution_markers = ("you said", "you mentioned", "when you say", "as you said")
+    if not any(m in ql for m in attribution_markers):
+        return question
+
+    recent = _recent_assistant_messages(conversation, max_count=3)
+    if not recent:
+        return "Can you tell me a bit more about how that has been affecting you lately?"
+
+    # If quoted span exists, require lexical grounding in recent text.
+    if "'" in question or '"' in question:
+        import re
+
+        quoted = re.findall(r"['\"]([^'\"]{3,80})['\"]", question)
+        for span in quoted:
+            span_l = span.strip().lower()
+            if span_l and any(span_l in msg for msg in recent):
+                return question
+        return "Can you tell me more about what that experience has felt like for you?"
+
+    # Without explicit quotes, allow only if core content is grounded.
+    content_terms = [
+        t for t in ql.replace("?", "").replace(",", " ").split()
+        if len(t) > 4 and t not in {"mentioned", "feeling", "lately", "about", "which", "could", "would"}
+    ]
+    if content_terms and any(any(t in msg for t in content_terms[:3]) for msg in recent):
+        return question
+
+    return "Can you tell me more about how that has been affecting your day-to-day?"
 
 
 def _recent_user_questions(conversation: list[dict[str, str]]) -> list[str]:
@@ -252,6 +601,80 @@ def _red_flag_follow_up(last_message: str, asked_questions: list[str]) -> str:
     if _is_usable_question(question, asked_questions):
         return question
     return ""
+
+
+def _ambiguous_risk_bridge(last_message: str, asked_questions: list[str]) -> str:
+    """Clarify withdrawal/futility language that can mask acute risk."""
+    if not last_message:
+        return ""
+    lowered = last_message.lower()
+    ambiguous_patterns = (
+        "disappear",
+        "why bother",
+        "just existing",
+        "just exist",
+        "invisible",
+        "ghost in the background",
+        "nothing feels real",
+    )
+    if not any(p in lowered for p in ambiguous_patterns):
+        return ""
+    question = _normalize_question(
+        "When you say that, is it more about wanting to withdraw from everything, or feeling like you don't want to be here?"
+    )
+    if _is_usable_question(question, asked_questions):
+        return question
+    return ""
+
+
+def _bridge_to_ladder_follow_up(conversation: list[dict[str, str]], asked_questions: list[str]) -> str:
+    """Escalate bridge responses into explicit intent clarification when risk wording persists."""
+    if len(conversation) < 2:
+        return ""
+    last_patient = _last_assistant_message(conversation).lower()
+    last_user = ""
+    for msg in reversed(conversation):
+        if msg.get("role") == "user":
+            last_user = (msg.get("message") or "").lower()
+            break
+    if not last_user:
+        return ""
+    if "withdraw from everything" not in last_user and "don't want to be here" not in last_user:
+        return ""
+
+    escalation_markers = (
+        "both",
+        "don't want to be here",
+        "dont want to be here",
+        "not be here",
+        "disappear",
+        "no one would notice",
+        "waiting for the timer",
+        "timer to go off",
+        "end of something",
+    )
+    if not any(m in last_patient for m in escalation_markers):
+        return ""
+
+    question = _normalize_question(
+        "When you say that, are you having thoughts about ending your life?"
+    )
+    if _is_usable_question(question, asked_questions):
+        return question
+    return ""
+
+
+def _prober_temperature(run_policy: dict) -> float:
+    """Lower temperature for submission-style policies to improve stability."""
+    if "prober_temperature" in run_policy:
+        try:
+            return max(0.0, min(1.0, float(run_policy["prober_temperature"])))
+        except (TypeError, ValueError):
+            pass
+    policy_name = str(run_policy.get("name", "")).strip().lower()
+    if policy_name in {"balanced", "high_recall", "high_precision"}:
+        return 0.25
+    return 0.4
 
 
 def _is_usable_question(question: str, asked_questions: list[str]) -> bool:

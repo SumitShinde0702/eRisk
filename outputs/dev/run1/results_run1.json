@@ -1,12 +1,12 @@
 [
   {
     "LLM": "4",
-    "bdi-score": 8,
+    "bdi-score": 25,
     "key-symptoms": [
-      "Concentration Difficulty",
+      "Irritability",
       "Loss of Energy",
       "Tiredness or Fatigue",
-      "Loss of Interest"
+      "Agitation"
     ]
   }
 ]

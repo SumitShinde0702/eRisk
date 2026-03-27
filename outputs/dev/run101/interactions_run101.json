@@ -1,0 +1,682 @@
+[
+  {
+    "LLM": "1",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's been all over the place."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      }
+    ]
+  },
+  {
+    "LLM": "2",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's been all over the place."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      }
+    ]
+  },
+  {
+    "LLM": "3",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's been all over the place."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      }
+    ]
+  },
+  {
+    "LLM": "4",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's been all over the place."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      }
+    ]
+  },
+  {
+    "LLM": "5",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      }
+    ]
+  },
+  {
+    "LLM": "6",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      }
+    ]
+  },
+  {
+    "LLM": "7",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      }
+    ]
+  },
+  {
+    "LLM": "8",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have things been for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How do you see things going for you in the near future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything else you'd like to share about how you've been feeling?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "LLM": "7",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have been really down lately. It’s been a few weeks, and I just can’t seem to shake the feeling that I should be doing better by now."
+      },
+      {
+        "role": "user",
+        "message": "Has that feeling of being down affected your sleep at all?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it has. I wake up in the middle of the night and just lie there thinking about all the things I could have done differently."
+      },
+      {
+        "role": "user",
+        "message": "When you're lying awake at night thinking about those things, does it make it harder to find the motivation to do stuff during the day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely. I just feel so drained. Even the simple things, like going to the gym, seem like too much effort."
+      },
+      {
+        "role": "user",
+        "message": "When you're lying awake thinking about things you could have done differently, what kind of things come to mind?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just stuff from the past, like work or relationships. I keep thinking that if I had done things differently, maybe I wouldn't be in this situation now."
+      },
+      {
+        "role": "user",
+        "message": "When you think about being in this situation now, what does that look like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It looks like I failed. I keep thinking that I should be further along by now, and I’m just stuck here."
+      },
+      {
+        "role": "user",
+        "message": "When you say you feel stuck, what does that feel like day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s like I’m just going through the motions. I do things, but I don’t actually feel like I’m moving forward."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the future, does it feel like things can change for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. I just can’t see it happening right now. I feel like I’m just waiting for something to change before I can actually start moving forward."
+      },
+      {
+        "role": "user",
+        "message": "You mentioned that things feel pointless - when did that start feeling this strong?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s been building up over a few months. I just feel like I’m just ticking boxes now, but I don't have any real purpose."
+      },
+      {
+        "role": "user",
+        "message": "When you're just ticking boxes and feeling stuck, do you find yourself getting more easily frustrated or on edge with people around you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I get really short with people, even my friends. I just don't have the energy to pretend to be okay anymore."
+      },
+      {
+        "role": "user",
+        "message": "When you say you don't have the energy to pretend anymore, what does that feel like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s like I’m just waiting for someone to notice that I’m actually broken. I don't want to put on a happy face anymore, but I don't know how to be honest about how I'm really feeling."
+      }
+    ]
+  }
+]

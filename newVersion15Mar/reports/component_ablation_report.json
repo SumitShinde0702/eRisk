@@ -1,0 +1,1101 @@
+{
+  "personas": [
+    1
+  ],
+  "run_id": "1",
+  "mock": true,
+  "static_mock_persona": true,
+  "offline": false,
+  "disable_memory_embeddings": true,
+  "disable_template_embeddings": true,
+  "quick_live": true,
+  "api_key_present": true,
+  "summary": [
+    {
+      "variant": "baseline",
+      "avg_turns": 10.0,
+      "mae_vs_baseline": 0.0,
+      "score_delta_vs_baseline": {
+        "1": 0
+      },
+      "monotonic_nonincreasing": true,
+      "violation_count": 0
+    },
+    {
+      "variant": "no_memory",
+      "avg_turns": 20.0,
+      "mae_vs_baseline": 7.0,
+      "score_delta_vs_baseline": {
+        "1": 7
+      },
+      "monotonic_nonincreasing": true,
+      "violation_count": 0
+    },
+    {
+      "variant": "no_template_risk",
+      "avg_turns": 20.0,
+      "mae_vs_baseline": 0.0,
+      "score_delta_vs_baseline": {
+        "1": 0
+      },
+      "monotonic_nonincreasing": true,
+      "violation_count": 0
+    },
+    {
+      "variant": "no_stopper",
+      "avg_turns": 20.0,
+      "mae_vs_baseline": 4.0,
+      "score_delta_vs_baseline": {
+        "1": -4
+      },
+      "monotonic_nonincreasing": true,
+      "violation_count": 0
+    },
+    {
+      "variant": "fallback_extractor",
+      "avg_turns": 20.0,
+      "mae_vs_baseline": 14.0,
+      "score_delta_vs_baseline": {
+        "1": -14
+      },
+      "monotonic_nonincreasing": true,
+      "violation_count": 0
+    },
+    {
+      "variant": "no_acute_calibration",
+      "avg_turns": 20.0,
+      "mae_vs_baseline": 4.0,
+      "score_delta_vs_baseline": {
+        "1": -4
+      },
+      "monotonic_nonincreasing": true,
+      "violation_count": 0
+    }
+  ],
+  "variants": [
+    {
+      "variant": "baseline",
+      "scores": {
+        "1": 16
+      },
+      "turns": {
+        "1": 10
+      },
+      "avg_turns": 10.0,
+      "trend": {
+        "ordered_personas": [
+          1
+        ],
+        "ordered_scores": [
+          16
+        ],
+        "monotonic_nonincreasing": true,
+        "violations": []
+      },
+      "conversations": {
+        "1": [
+          {
+            "role": "user",
+            "message": "How have you been feeling lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me a bit more about what \"not great\" feels like?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "How's your sleep been lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What kinds of things have you been doing with your time?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about what that experience has felt like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You said things are hard—has that made it tough to get started on things you usually enjoy?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "When you say nothing interests you anymore, how does that make you feel about yourself?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you say things feel \"not great,\" does that color how you see the future?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you say things are \"not great,\" does it feel hard to focus or make decisions?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When things feel \"not great,\" do you find yourself getting more irritable or on edge than usual?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          }
+        ]
+      }
+    },
+    {
+      "variant": "no_memory",
+      "scores": {
+        "1": 23
+      },
+      "turns": {
+        "1": 20
+      },
+      "avg_turns": 20.0,
+      "trend": {
+        "ordered_personas": [
+          1
+        ],
+        "ordered_scores": [
+          23
+        ],
+        "monotonic_nonincreasing": true,
+        "violations": []
+      },
+      "conversations": {
+        "1": [
+          {
+            "role": "user",
+            "message": "How have you been feeling lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me a bit more about what \"not great\" feels like?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "How has your sleep been lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What kinds of things have you been doing to pass the time?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about what that experience has felt like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything you used to enjoy that just doesn't seem worth the effort anymore?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "When you say nothing interests you, how does that make you feel about yourself?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you think about the future, what comes to mind?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "When you try to focus on something, like reading or watching a show, what happens?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Have you found yourself feeling more on edge or irritable lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—what's the hardest part of the day for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about how that has been affecting your day-to-day?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "When you say things are hard, is there a particular time of day when that feeling is strongest?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What's the first thing you notice when you wake up in the morning?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "When you say things are hard, does it feel more like a heavy weight or like everything is moving too fast?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "How has your appetite been lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          }
+        ]
+      }
+    },
+    {
+      "variant": "no_template_risk",
+      "scores": {
+        "1": 16
+      },
+      "turns": {
+        "1": 20
+      },
+      "avg_turns": 20.0,
+      "trend": {
+        "ordered_personas": [
+          1
+        ],
+        "ordered_scores": [
+          16
+        ],
+        "monotonic_nonincreasing": true,
+        "violations": []
+      },
+      "conversations": {
+        "1": [
+          {
+            "role": "user",
+            "message": "How have you been feeling lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me a bit more about what \"not great\" feels like?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Has the way you've been feeling been affecting your sleep at all?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Have you found yourself not really caring about things you used to enjoy?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "When you say nothing interests you anymore, how does that make you think about yourself?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "When you think about the future, what comes to mind?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—does that make it tough to focus on everyday tasks?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—does that make you feel more on edge or irritable with people?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—what's the hardest part about it right now?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things are hard and not great—has that feeling made it harder to get through your day?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel \"not great\" a few times—what does a typical day look like for you right now?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel \"not great\"—what's one small thing that used to make your day a little better?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said \"not great\" a few times—is there a particular moment when that feeling is strongest?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you say \"not great,\" is there a particular feeling that comes with it, like heaviness or emptiness?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What's the first thing you notice when you wake up in the morning?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—has that changed how much energy you have for daily things?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel \"not great\" and \"hard\"—has that made it harder to connect with people around you?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've mentioned things feel \"not great\" and \"hard\"—has that made it harder to eat or changed your appetite?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about how that has been affecting your day-to-day?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "When you say things are hard, what’s the first thing that feels difficult when you start your day?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          }
+        ]
+      }
+    },
+    {
+      "variant": "no_stopper",
+      "scores": {
+        "1": 12
+      },
+      "turns": {
+        "1": 20
+      },
+      "avg_turns": 20.0,
+      "trend": {
+        "ordered_personas": [
+          1
+        ],
+        "ordered_scores": [
+          12
+        ],
+        "monotonic_nonincreasing": true,
+        "violations": []
+      },
+      "conversations": {
+        "1": [
+          {
+            "role": "user",
+            "message": "How have you been feeling lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me a bit more about what \"not great\" feels like?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Has that feeling of not being great been affecting your sleep at all?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Have you found yourself not really caring about things you used to enjoy?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "When you say nothing interests you anymore, how does that make you think about yourself?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "When you think about the future, what comes to mind?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—does that make it tough to focus on everyday tasks?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Have you noticed feeling more on edge or irritable lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about what that experience has felt like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—what does a typical day look like for you right now?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel \"not great\" a few times—what's the hardest part about that?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said \"not great\" a few times—what does a good day look like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've mentioned things feel hard—what's one small thing that feels a little easier to manage?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said \"not great\" a few times—what's one thing that would make today feel a little better?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said \"not great\" a few times—what's the first thing you notice when you wake up in the morning?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          }
+        ]
+      }
+    },
+    {
+      "variant": "fallback_extractor",
+      "scores": {
+        "1": 2
+      },
+      "turns": {
+        "1": 20
+      },
+      "avg_turns": 20.0,
+      "trend": {
+        "ordered_personas": [
+          1
+        ],
+        "ordered_scores": [
+          2
+        ],
+        "monotonic_nonincreasing": true,
+        "violations": []
+      },
+      "conversations": {
+        "1": [
+          {
+            "role": "user",
+            "message": "How have you been feeling lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me a bit more about what \"not great\" feels like?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Has the way you've been feeling been affecting your sleep at all?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Have you found yourself not wanting to do things you usually enjoy?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "You said nothing really interests you anymore—how does that make you feel about yourself?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you think about the future, what comes to mind?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—does that make it tough to focus on things?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Have you noticed feeling more on edge or irritable lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about what that experience has felt like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—what's the hardest part of your day?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What does a typical day look like for you right now?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—can you give me an example of something that felt particularly hard recently?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What's the first thing you notice when you wake up in the morning?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—does that make it tough to get started with your day?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you say things feel hard, what kind of thoughts go through your head?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've mentioned things feel hard—what does that \"hard\" feel like in your body?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said \"not great\" a few times—what would the opposite of that look like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—has that made it difficult to eat or changed your appetite?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          }
+        ]
+      }
+    },
+    {
+      "variant": "no_acute_calibration",
+      "scores": {
+        "1": 12
+      },
+      "turns": {
+        "1": 20
+      },
+      "avg_turns": 20.0,
+      "trend": {
+        "ordered_personas": [
+          1
+        ],
+        "ordered_scores": [
+          12
+        ],
+        "monotonic_nonincreasing": true,
+        "violations": []
+      },
+      "conversations": {
+        "1": [
+          {
+            "role": "user",
+            "message": "How have you been feeling lately?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me a bit more about what \"not great\" feels like?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Has the way you've been feeling been affecting your sleep at all?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Have you found yourself not wanting to do things you usually enjoy?"
+          },
+          {
+            "role": "assistant",
+            "message": "Nothing really interests me anymore."
+          },
+          {
+            "role": "user",
+            "message": "You said nothing interests you anymore—how does that make you feel about yourself?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you think about the future, what comes to mind?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "When things feel hard, does it make it tough to focus on everyday tasks?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When things feel hard, do you find yourself getting more irritable or on edge?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You mentioned things feel hard—what makes them feel that way?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "What's a typical day been like for you recently?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about what that experience has felt like for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—what's the hardest part of the day for you?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "You've said things feel hard—what does that \"hard\" feel like in your body?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Can you tell me more about how that has been affecting your day-to-day?"
+          },
+          {
+            "role": "assistant",
+            "message": "I don't know. Things are just... hard."
+          },
+          {
+            "role": "user",
+            "message": "When you say things feel hard, is there a particular time of day that feels a little easier?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "When you say things feel hard, does it feel like a weight or something else?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          },
+          {
+            "role": "user",
+            "message": "Is there anything else you'd like to share about how you've been feeling?"
+          },
+          {
+            "role": "assistant",
+            "message": "Uh... not great, honestly."
+          }
+        ]
+      }
+    }
+  ]
+}

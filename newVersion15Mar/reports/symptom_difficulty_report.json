@@ -1,0 +1,452 @@
+{
+  "model_extractor_used": true,
+  "api_key_present": true,
+  "fallback_only": false,
+  "persona_count": 11,
+  "hardest_symptoms_top10": [
+    {
+      "symptom": "Self-Criticalness",
+      "n": 11,
+      "fallback_prevalence": 0.0909,
+      "model_prevalence": 0.9091,
+      "fallback_avg_score": 0.0909,
+      "model_avg_score": 1.8182,
+      "disagreement_rate": 0.9091,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.4545
+    },
+    {
+      "symptom": "Loss of Pleasure",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.8182,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 1.6364,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.5455
+    },
+    {
+      "symptom": "Sadness",
+      "n": 11,
+      "fallback_prevalence": 0.7273,
+      "model_prevalence": 0.3636,
+      "fallback_avg_score": 1.4545,
+      "model_avg_score": 1.0,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.4545,
+      "severe_miss_fallback_rate": 0.0909
+    },
+    {
+      "symptom": "Tiredness or Fatigue",
+      "n": 11,
+      "fallback_prevalence": 0.9091,
+      "model_prevalence": 0.9091,
+      "fallback_avg_score": 1.8182,
+      "model_avg_score": 2.0,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.0909,
+      "severe_miss_fallback_rate": 0.0909
+    },
+    {
+      "symptom": "Changes in Sleeping Pattern",
+      "n": 11,
+      "fallback_prevalence": 0.9091,
+      "model_prevalence": 0.5455,
+      "fallback_avg_score": 0.9091,
+      "model_avg_score": 1.1818,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Loss of Interest",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.7273,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 1.5455,
+      "disagreement_rate": 0.7273,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.5455
+    },
+    {
+      "symptom": "Loss of Energy",
+      "n": 11,
+      "fallback_prevalence": 0.5455,
+      "model_prevalence": 0.8182,
+      "fallback_avg_score": 1.0909,
+      "model_avg_score": 1.8182,
+      "disagreement_rate": 0.7273,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Pessimism",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.5455,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 1.3636,
+      "disagreement_rate": 0.5455,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.5455
+    },
+    {
+      "symptom": "Self-Dislike",
+      "n": 11,
+      "fallback_prevalence": 0.1818,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.3636,
+      "model_avg_score": 1.1818,
+      "disagreement_rate": 0.4545,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.2727
+    },
+    {
+      "symptom": "Guilty Feelings",
+      "n": 11,
+      "fallback_prevalence": 0.2727,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.2727,
+      "model_avg_score": 1.1818,
+      "disagreement_rate": 0.4545,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.1818
+    }
+  ],
+  "sleep_symptom_detail": {
+    "symptom": "Changes in Sleeping Pattern",
+    "n": 11,
+    "fallback_prevalence": 0.9091,
+    "model_prevalence": 0.5455,
+    "fallback_avg_score": 0.9091,
+    "model_avg_score": 1.1818,
+    "disagreement_rate": 0.8182,
+    "severe_miss_model_rate": 0.0,
+    "severe_miss_fallback_rate": 0.0
+  },
+  "agitation_symptom_detail": {
+    "symptom": "Agitation",
+    "n": 11,
+    "fallback_prevalence": 0.1818,
+    "model_prevalence": 0.3636,
+    "fallback_avg_score": 0.1818,
+    "model_avg_score": 0.5455,
+    "disagreement_rate": 0.2727,
+    "severe_miss_model_rate": 0.0,
+    "severe_miss_fallback_rate": 0.0
+  },
+  "symptom_stats": [
+    {
+      "symptom": "Sadness",
+      "n": 11,
+      "fallback_prevalence": 0.7273,
+      "model_prevalence": 0.3636,
+      "fallback_avg_score": 1.4545,
+      "model_avg_score": 1.0,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.4545,
+      "severe_miss_fallback_rate": 0.0909
+    },
+    {
+      "symptom": "Pessimism",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.5455,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 1.3636,
+      "disagreement_rate": 0.5455,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.5455
+    },
+    {
+      "symptom": "Past Failure",
+      "n": 11,
+      "fallback_prevalence": 0.2727,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.5455,
+      "model_avg_score": 1.0909,
+      "disagreement_rate": 0.3636,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.1818
+    },
+    {
+      "symptom": "Loss of Pleasure",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.8182,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 1.6364,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.5455
+    },
+    {
+      "symptom": "Guilty Feelings",
+      "n": 11,
+      "fallback_prevalence": 0.2727,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.2727,
+      "model_avg_score": 1.1818,
+      "disagreement_rate": 0.4545,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.1818
+    },
+    {
+      "symptom": "Punishment Feelings",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.0,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 0.0,
+      "disagreement_rate": 0.0,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Self-Dislike",
+      "n": 11,
+      "fallback_prevalence": 0.1818,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.3636,
+      "model_avg_score": 1.1818,
+      "disagreement_rate": 0.4545,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.2727
+    },
+    {
+      "symptom": "Self-Criticalness",
+      "n": 11,
+      "fallback_prevalence": 0.0909,
+      "model_prevalence": 0.9091,
+      "fallback_avg_score": 0.0909,
+      "model_avg_score": 1.8182,
+      "disagreement_rate": 0.9091,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.4545
+    },
+    {
+      "symptom": "Suicidal Thoughts or Wishes",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.0909,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 0.1818,
+      "disagreement_rate": 0.0909,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0909
+    },
+    {
+      "symptom": "Crying",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.0,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 0.0,
+      "disagreement_rate": 0.0,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Agitation",
+      "n": 11,
+      "fallback_prevalence": 0.1818,
+      "model_prevalence": 0.3636,
+      "fallback_avg_score": 0.1818,
+      "model_avg_score": 0.5455,
+      "disagreement_rate": 0.2727,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Loss of Interest",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.7273,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 1.5455,
+      "disagreement_rate": 0.7273,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.5455
+    },
+    {
+      "symptom": "Indecisiveness",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 0.6364,
+      "disagreement_rate": 0.4545,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0909
+    },
+    {
+      "symptom": "Worthlessness",
+      "n": 11,
+      "fallback_prevalence": 0.2727,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.8182,
+      "model_avg_score": 0.6364,
+      "disagreement_rate": 0.3636,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Loss of Energy",
+      "n": 11,
+      "fallback_prevalence": 0.5455,
+      "model_prevalence": 0.8182,
+      "fallback_avg_score": 1.0909,
+      "model_avg_score": 1.8182,
+      "disagreement_rate": 0.7273,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Changes in Sleeping Pattern",
+      "n": 11,
+      "fallback_prevalence": 0.9091,
+      "model_prevalence": 0.5455,
+      "fallback_avg_score": 0.9091,
+      "model_avg_score": 1.1818,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Irritability",
+      "n": 11,
+      "fallback_prevalence": 0.2727,
+      "model_prevalence": 0.2727,
+      "fallback_avg_score": 0.2727,
+      "model_avg_score": 0.4545,
+      "disagreement_rate": 0.1818,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Changes in Appetite",
+      "n": 11,
+      "fallback_prevalence": 0.0909,
+      "model_prevalence": 0.2727,
+      "fallback_avg_score": 0.0909,
+      "model_avg_score": 0.5455,
+      "disagreement_rate": 0.2727,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.1818
+    },
+    {
+      "symptom": "Concentration Difficulty",
+      "n": 11,
+      "fallback_prevalence": 0.7273,
+      "model_prevalence": 0.4545,
+      "fallback_avg_score": 0.7273,
+      "model_avg_score": 0.6364,
+      "disagreement_rate": 0.3636,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    },
+    {
+      "symptom": "Tiredness or Fatigue",
+      "n": 11,
+      "fallback_prevalence": 0.9091,
+      "model_prevalence": 0.9091,
+      "fallback_avg_score": 1.8182,
+      "model_avg_score": 2.0,
+      "disagreement_rate": 0.8182,
+      "severe_miss_model_rate": 0.0909,
+      "severe_miss_fallback_rate": 0.0909
+    },
+    {
+      "symptom": "Loss of Interest in Sex",
+      "n": 11,
+      "fallback_prevalence": 0.0,
+      "model_prevalence": 0.0,
+      "fallback_avg_score": 0.0,
+      "model_avg_score": 0.0,
+      "disagreement_rate": 0.0,
+      "severe_miss_model_rate": 0.0,
+      "severe_miss_fallback_rate": 0.0
+    }
+  ],
+  "per_persona": [
+    {
+      "name": "Marco",
+      "reference_bdi": 38,
+      "disagreement_symptom_count": 15,
+      "fallback_total": 16,
+      "model_total": 41
+    },
+    {
+      "name": "Laura",
+      "reference_bdi": 23,
+      "disagreement_symptom_count": 13,
+      "fallback_total": 7,
+      "model_total": 33
+    },
+    {
+      "name": "Linda",
+      "reference_bdi": 28,
+      "disagreement_symptom_count": 13,
+      "fallback_total": 10,
+      "model_total": 29
+    },
+    {
+      "name": "Maria",
+      "reference_bdi": 40,
+      "disagreement_symptom_count": 13,
+      "fallback_total": 15,
+      "model_total": 40
+    },
+    {
+      "name": "James",
+      "reference_bdi": 22,
+      "disagreement_symptom_count": 12,
+      "fallback_total": 10,
+      "model_total": 22
+    },
+    {
+      "name": "Gabriel",
+      "reference_bdi": 13,
+      "disagreement_symptom_count": 9,
+      "fallback_total": 4,
+      "model_total": 12
+    },
+    {
+      "name": "Noah",
+      "reference_bdi": 5,
+      "disagreement_symptom_count": 8,
+      "fallback_total": 5,
+      "model_total": 7
+    },
+    {
+      "name": "Alex",
+      "reference_bdi": 15,
+      "disagreement_symptom_count": 6,
+      "fallback_total": 9,
+      "model_total": 12
+    },
+    {
+      "name": "Ethan",
+      "reference_bdi": 12,
+      "disagreement_symptom_count": 5,
+      "fallback_total": 7,
+      "model_total": 11
+    },
+    {
+      "name": "Maya",
+      "reference_bdi": 6,
+      "disagreement_symptom_count": 5,
+      "fallback_total": 6,
+      "model_total": 1
+    },
+    {
+      "name": "Priya",
+      "reference_bdi": 7,
+      "disagreement_symptom_count": 5,
+      "fallback_total": 6,
+      "model_total": 6
+    }
+  ]
+}

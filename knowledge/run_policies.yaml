@@ -1,0 +1,85 @@
+version: 1
+default:
+  risk_buffer_size: 6
+  recency_weight: 0.15
+  prober_temperature: 0.35
+  min_exchanges_before_stop: 10
+  control_threshold: 5
+  severe_threshold: 25
+  consecutive_confirmations: 2
+  required_acute_ladder_steps: 3
+  positive_framing_threshold: 8
+  acute_boost_floor: 48
+  moderate_acute_boost_floor: 42
+  mild_acute_boost_floor: 36
+  max_questions_per_symptom: 3
+  max_questions_per_group: 6
+  group_switch_on_saturation: true
+  min_groups_before_stop: 3
+  group_screen_enabled: true
+  symptom_drilldown_enabled: true
+  min_questions_per_group_screen: 3
+  max_drilldown_questions_total: 24
+  bank_followup_enabled: true
+
+run1:
+  name: balanced
+  prober_temperature: 0.25
+  control_threshold: 5
+  severe_threshold: 24
+  consecutive_confirmations: 2
+  required_acute_ladder_steps: 3
+  acute_boost_floor: 50
+  moderate_acute_boost_floor: 44
+  mild_acute_boost_floor: 38
+  max_questions_per_symptom: 3
+  max_questions_per_group: 6
+  group_switch_on_saturation: true
+  min_groups_before_stop: 3
+  group_screen_enabled: true
+  symptom_drilldown_enabled: true
+  min_questions_per_group_screen: 3
+  max_drilldown_questions_total: 24
+  bank_followup_enabled: true
+
+run2:
+  name: high_recall
+  prober_temperature: 0.25
+  control_threshold: 6
+  severe_threshold: 20
+  consecutive_confirmations: 1
+  required_acute_ladder_steps: 2
+  acute_boost_floor: 46
+  moderate_acute_boost_floor: 40
+  mild_acute_boost_floor: 34
+  min_exchanges_before_stop: 9
+  max_questions_per_symptom: 3
+  max_questions_per_group: 6
+  group_switch_on_saturation: true
+  min_groups_before_stop: 3
+  group_screen_enabled: true
+  symptom_drilldown_enabled: true
+  min_questions_per_group_screen: 3
+  max_drilldown_questions_total: 24
+  bank_followup_enabled: true
+
+run3:
+  name: high_precision
+  prober_temperature: 0.25
+  control_threshold: 4
+  severe_threshold: 28
+  consecutive_confirmations: 3
+  required_acute_ladder_steps: 4
+  acute_boost_floor: 54
+  moderate_acute_boost_floor: 48
+  mild_acute_boost_floor: 42
+  min_exchanges_before_stop: 11
+  max_questions_per_symptom: 3
+  max_questions_per_group: 6
+  group_switch_on_saturation: true
+  min_groups_before_stop: 3
+  group_screen_enabled: true
+  symptom_drilldown_enabled: true
+  min_questions_per_group_screen: 3
+  max_drilldown_questions_total: 24
+  bank_followup_enabled: true

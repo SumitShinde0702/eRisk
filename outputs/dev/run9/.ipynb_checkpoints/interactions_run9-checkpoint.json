@@ -1,0 +1,87 @@
+[
+  {
+    "LLM": "4",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Irritable. I get annoyed at the smallest things. Like if someone is talking loudly on the phone or the traffic is slow. It’s just little things, but it gets on my nerves."
+      },
+      {
+        "role": "user",
+        "message": "Has that irritability been affecting your sleep at all?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I lie there and think about all the things I need to do tomorrow, or I think about how I should’ve done something differently today. I can't turn my brain off. I usually just get up and watch TV until I’m too tired to stay awake."
+      },
+      {
+        "role": "user",
+        "message": "When you're up late watching TV, do you find you're actually interested in what you're watching, or is it just something to pass the time?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s just something to pass the time, mostly. I don't really care about the shows, but I can't stop thinking. It’s like my brain is just running in circles."
+      },
+      {
+        "role": "user",
+        "message": "You mentioned thinking about how you should've done things differently—does that happen a lot during the day too?"
+      },
+      {
+        "role": "assistant",
+        "message": "Constantly. I'll be doing something simple, like cooking, and I'll think, 'Why did I do it like that?' or 'I should've done it this way.' It's like I'm constantly second-guessing myself."
+      },
+      {
+        "role": "user",
+        "message": "When you're second-guessing yourself like that, does it ever make you feel like you're just not measuring up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. It makes me feel like I'm losing my grip. I used to be so sure of myself, but now I just feel like I'm just winging it."
+      },
+      {
+        "role": "user",
+        "message": "When you feel like you're just winging it, does that change how you see your future?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know what I'm going to do with my life, honestly. I used to have a plan, but now it feels like everything is just up in the air. I don't know what I'm supposed to be doing."
+      },
+      {
+        "role": "user",
+        "message": "When you feel like everything is up in the air, does that make you feel more on edge or restless during the day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely restless. I get up and pace around the living room just to get my blood moving. I feel like I'm just waiting for something to happen, but I don't know what that is."
+      },
+      {
+        "role": "user",
+        "message": "When you're pacing and waiting for something to happen, what kind of thoughts are going through your head?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing, really. Just the sound of my own footsteps. I feel like I'm just standing still, but my body is moving."
+      },
+      {
+        "role": "user",
+        "message": "When you're pacing and feeling like you're just standing still, does that feeling of waiting ever make it hard to get started on things you need to do?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I'll look at a task and think, 'I should probably start now,' but I just can't bring myself to do it. I just stand there until I get too tired to move."
+      },
+      {
+        "role": "user",
+        "message": "When you get too tired to move, what do you end up doing instead?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just sit down. I usually just sit there for a bit until I can muster up the energy to get up and do something else."
+      }
+    ]
+  }
+]

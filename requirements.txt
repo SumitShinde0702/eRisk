@@ -5,3 +5,6 @@ torch
 openai
 python-dotenv
 sentence-transformers
+pyyaml
+# opentelemetry-proto wants protobuf>=5; tensorflow 2.18 wants protobuf<6 — use [5,6). If embed errors, DISABLE_TEMPLATE_EMBEDDINGS=1
+protobuf>=5.0,<6.0

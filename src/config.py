@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+import yaml
 
 load_dotenv()
 
@@ -28,7 +29,7 @@ DEEPSEEK_BASE_URL: str = "https://api.deepseek.com"
 DEEPSEEK_MODEL: str = "deepseek-chat"
 
 # --- Speed / Stopping Parameters ---
-MAX_MESSAGES: int = int(os.getenv("MAX_MESSAGES", "20"))
+MAX_MESSAGES: int = int(os.getenv("MAX_MESSAGES", "40"))
 MIN_SYMPTOMS_FOR_EARLY_STOP: int = int(os.getenv("MIN_SYMPTOMS_FOR_EARLY_STOP", "5"))
 MIN_EXCHANGES_BEFORE_STOP: int = int(os.getenv("MIN_EXCHANGES_BEFORE_STOP", "10"))
 CONFIDENCE_THRESHOLD: float = float(os.getenv("CONFIDENCE_THRESHOLD", "0.8"))
@@ -41,6 +42,46 @@ PERSONA_MAX_NEW_TOKENS: int = 256
 # --- Paths ---
 PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent
 OUTPUT_DIR: Path = PROJECT_ROOT / "outputs"
+RUN_POLICIES_PATH: Path = PROJECT_ROOT / "knowledge" / "run_policies.yaml"
 
 # --- Reproducibility ---
 RANDOM_SEED: int = int(os.getenv("RANDOM_SEED", "42"))
+
+
+def get_run_policy(run_id: str) -> dict:
+    """
+    Resolve policy for a run id.
+    - run1/run2/run3 use explicit policy entries.
+    - other dev runs fall back to default.
+    """
+    defaults = {
+        "risk_buffer_size": 6,
+        "recency_weight": 0.15,
+        "min_exchanges_before_stop": MIN_EXCHANGES_BEFORE_STOP,
+        "control_threshold": 5,
+        "severe_threshold": 25,
+        "consecutive_confirmations": 2,
+        "required_acute_ladder_steps": 4,
+        "positive_framing_threshold": 8,
+        "acute_boost_floor": 38,
+        "max_questions_per_symptom": 3,
+        "max_questions_per_group": 6,
+        "group_switch_on_saturation": True,
+        "min_groups_before_stop": 3,
+        "group_screen_enabled": True,
+        "symptom_drilldown_enabled": True,
+        "min_questions_per_group_screen": 3,
+        "max_drilldown_questions_total": 24,
+        "bank_followup_enabled": True,
+    }
+    if not RUN_POLICIES_PATH.exists():
+        return defaults
+    try:
+        data = yaml.safe_load(RUN_POLICIES_PATH.read_text(encoding="utf-8")) or {}
+        merged = dict(defaults)
+        merged.update(data.get("default", {}))
+        key = f"run{run_id}"
+        merged.update(data.get(key, {}))
+        return merged
+    except Exception:
+        return defaults

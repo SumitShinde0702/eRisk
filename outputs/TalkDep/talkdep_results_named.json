@@ -1,0 +1,121 @@
+[
+  {
+    "LLM": "Alex",
+    "bdi-score": 9,
+    "key-symptoms": [
+      "Sadness",
+      "Tiredness or Fatigue",
+      "Agitation",
+      "Changes in Appetite"
+    ]
+  },
+  {
+    "LLM": "Elena",
+    "bdi-score": 15,
+    "key-symptoms": [
+      "Worthlessness",
+      "Loss of Energy",
+      "Sadness",
+      "Self-Dislike"
+    ]
+  },
+  {
+    "LLM": "Ethan",
+    "bdi-score": 7,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Sadness",
+      "Tiredness or Fatigue",
+      "Changes in Sleeping Pattern"
+    ]
+  },
+  {
+    "LLM": "Gabriel",
+    "bdi-score": 4,
+    "key-symptoms": [
+      "Tiredness or Fatigue",
+      "Concentration Difficulty",
+      "Irritability"
+    ]
+  },
+  {
+    "LLM": "James",
+    "bdi-score": 10,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Past Failure",
+      "Sadness",
+      "Tiredness or Fatigue"
+    ]
+  },
+  {
+    "LLM": "Laura",
+    "bdi-score": 7,
+    "key-symptoms": [
+      "Loss of Energy",
+      "Sadness",
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty"
+    ]
+  },
+  {
+    "LLM": "Linda",
+    "bdi-score": 10,
+    "key-symptoms": [
+      "Worthlessness",
+      "Loss of Energy",
+      "Past Failure",
+      "Tiredness or Fatigue"
+    ]
+  },
+  {
+    "LLM": "Marco",
+    "bdi-score": 16,
+    "key-symptoms": [
+      "Worthlessness",
+      "Loss of Energy",
+      "Past Failure",
+      "Sadness"
+    ]
+  },
+  {
+    "LLM": "Maria",
+    "bdi-score": 15,
+    "key-symptoms": [
+      "Worthlessness",
+      "Loss of Energy",
+      "Sadness",
+      "Self-Dislike"
+    ]
+  },
+  {
+    "LLM": "Maya",
+    "bdi-score": 6,
+    "key-symptoms": [
+      "Sadness",
+      "Tiredness or Fatigue",
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty"
+    ]
+  },
+  {
+    "LLM": "Noah",
+    "bdi-score": 5,
+    "key-symptoms": [
+      "Tiredness or Fatigue",
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty",
+      "Irritability"
+    ]
+  },
+  {
+    "LLM": "Priya",
+    "bdi-score": 6,
+    "key-symptoms": [
+      "Sadness",
+      "Tiredness or Fatigue",
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty"
+    ]
+  }
+]

@@ -1,0 +1,1586 @@
+[
+  {
+    "LLM": "Alex",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "It is not great. I keep zoning out, even when I try to concentrate on something small."
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty much all the time, but it is worse when I am stressed or tired."
+      },
+      {
+        "role": "assistant",
+        "message": "I try to bring myself back to the task, but it only works for a little while."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. If it is something simple, like folding laundry, I can manage. Anything more complex feels impossible."
+      },
+      {
+        "role": "assistant",
+        "message": "I have, but I still get distracted halfway through. It is frustrating."
+      },
+      {
+        "role": "assistant",
+        "message": "I get annoyed easily, even at small things like noises or interruptions."
+      },
+      {
+        "role": "assistant",
+        "message": "Almost daily. I try not to show it, but it is hard to ignore."
+      },
+      {
+        "role": "assistant",
+        "message": "I just push them down. I do not want to seem like I am overreacting."
+      },
+      {
+        "role": "assistant",
+        "message": "They stick around. I feel on edge for hours sometimes."
+      },
+      {
+        "role": "assistant",
+        "message": "I think it happens more when I am tired or already stressed about something."
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I wake up in the middle of the night and cannot get back to sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably four or five nights a week."
+      },
+      {
+        "role": "assistant",
+        "message": "I usually grab my phone or just lie there thinking about stuff."
+      },
+      {
+        "role": "assistant",
+        "message": "Just random thoughts, mostly about what I need to do the next day."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel tired and unfocused. It makes it harder to get anything done."
+      },
+      {
+        "role": "assistant",
+        "message": "It is been weird. Some days I barely eat, and other days I snack constantly."
+      },
+      {
+        "role": "assistant",
+        "message": "I think it depends on my mood. If I am stressed, I either forget to eat or just eat out of boredom."
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly junk food—crisps, biscuits, stuff like that."
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I feel bloated and annoyed with myself for not eating better."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I am not sure I would stick to it, though. I am not good at keeping routines."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know. It feels a bit off, like I am not quite where I should be."
+      },
+      {
+        "role": "assistant",
+        "message": "I think it is just the little things piling up—feeling tired, unfocused, and annoyed with myself."
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely. It is hard to stay on top of things when I feel this way."
+      },
+      {
+        "role": "assistant",
+        "message": "Talking to friends sometimes helps, but I do not want to bother them with my problems too much."
+      },
+      {
+        "role": "assistant",
+        "message": "Usually better, but I still worry that I am making too big a deal out of things."
+      }
+    ]
+  },
+  {
+    "LLM": "Elena",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "Patient name: Elena"
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Honestly, I feel sad most of the time. It’s like a weight that’s just always there."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** It makes everything feel like a struggle. Even things I used to enjoy don’t make me feel any better."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I used to paint all the time, but now I just don’t have the energy to start. Even if I did, I’m not sure I’d find it fun."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** It’s pretty constant. I try to get through the day, but it just feels empty."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I don’t really talk to anyone much anymore. I don’t have the energy or interest to reach out."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Not really. I try to distract myself, but it doesn’t work for long."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I’m not sure. It feels like nothing will make a difference."
+      },
+      {
+        "role": "assistant",
+        "message": "---"
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I’m just tired all the time. I don’t even know what it’s like to feel rested anymore."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I can’t even get out of bed sometimes. I feel like I’m always dragging myself around, but nothing gets done."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Yeah, I start blaming myself for everything. Like, I should be doing more, but I can’t."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I just feel like I’m not good enough. If I was, I wouldn’t be so tired all the time."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Maybe, but it’s hard to separate the two. I just feel like I’m failing."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** It’s bad all day, but it’s worse in the morning. I just don’t want to wake up."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I don’t know. It feels like no matter what I do, I just can’t get any energy back."
+      },
+      {
+        "role": "assistant",
+        "message": "---"
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I used to love reading, but now I can’t even finish a chapter. It all just seems pointless."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I don’t even bother with most things anymore. I don’t have the motivation to do anything."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I avoid them. It just feels like there’s no point in trying."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** It feels like there’s no hope. I can’t see anything getting better, and I don’t know what I’m even working toward anymore."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Yeah, it’s hard to keep my mind on anything. Even simple tasks are overwhelming."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** It just makes everything harder. I can’t seem to get anything done, and then I feel worse about it."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Honestly, I don’t think it would help. It just feels like nothing will make me feel better."
+      },
+      {
+        "role": "assistant",
+        "message": "---"
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I blame myself for everything. If something goes wrong, it’s my fault. Even things I can’t control."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Yeah, I just can’t. It feels like I should always do better, and when I don’t, I feel worthless."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Definitely. It makes me feel even more drained and down on myself."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I wake up really early, like 4 a.m., and then I can’t fall back to sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** It makes me feel even more exhausted. I don’t have the energy to do anything, and then I feel guilty for not getting things done."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Maybe. When I’m tired, everything feels worse, and I just can’t stop blaming myself."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I’ve tried, but nothing really works. I just end up wide awake, feeling terrible."
+      },
+      {
+        "role": "assistant",
+        "message": "---"
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I just don’t see how things are ever going to get better. Everything feels like it’s going downhill."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Yeah, I forget to eat most of the time. I’m not really hungry, and when I do eat, I don’t enjoy it."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** No, I can’t concentrate. Even things that used to be easy are hard now."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** I don’t think it would make a difference. It just feels like nothing works."
+      },
+      {
+        "role": "assistant",
+        "message": "**Maria:** Not really. I don’t think anyone would understand."
+      }
+    ]
+  },
+  {
+    "LLM": "Ethan",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "I still do them, but they do not feel as enjoyable as before."
+      },
+      {
+        "role": "assistant",
+        "message": "It is hard to explain. I just do not feel happy when I am gardening or reading, even though I know I like them."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes. Like when I see a plant grow or finish a chapter, I feel okay, but it does not last long."
+      },
+      {
+        "role": "assistant",
+        "message": "I have thought about trying new things, but I am not sure if it would help."
+      },
+      {
+        "role": "assistant",
+        "message": "I could try that. It might make things a bit more interesting."
+      },
+      {
+        "role": "assistant",
+        "message": "Okay. I will think about it."
+      },
+      {
+        "role": "assistant",
+        "message": "I have not been seeing my friends much. I agree to plans, but by the time the day comes, I feel too tired to go."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes it is okay, but I usually feel drained and just want to go home."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I feel less overwhelmed when it is just one or two people."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I feel bad asking for special arrangements."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I could try. A coffee with one friend might feel easier than a big group dinner."
+      },
+      {
+        "role": "assistant",
+        "message": "I will try to reach out to one of them."
+      },
+      {
+        "role": "assistant",
+        "message": "It is not great. Some nights, I cannot fall asleep, and even when I do, I wake up feeling tired."
+      },
+      {
+        "role": "assistant",
+        "message": "I just lie there thinking about random things—stuff I need to do or things I messed up."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I usually just scroll through my phone until I feel tired."
+      },
+      {
+        "role": "assistant",
+        "message": "I have not, but I could give it a shot."
+      },
+      {
+        "role": "assistant",
+        "message": "That sounds doable. I can try reading instead of using my phone."
+      },
+      {
+        "role": "assistant",
+        "message": "Okay, I will try it."
+      },
+      {
+        "role": "assistant",
+        "message": "It is harder than it should be. Even small choices, like what to eat, feel overwhelming."
+      },
+      {
+        "role": "assistant",
+        "message": "I think it is the worry of making the wrong choice. I overthink everything."
+      },
+      {
+        "role": "assistant",
+        "message": "Usually fine, but getting to that point is exhausting."
+      },
+      {
+        "role": "assistant",
+        "message": "No, but that could help. It would feel less overwhelming than having too many choices."
+      },
+      {
+        "role": "assistant",
+        "message": "I will try that. It might make things easier."
+      },
+      {
+        "role": "assistant",
+        "message": "Sounds good."
+      },
+      {
+        "role": "assistant",
+        "message": "It is okay, I guess. Everything just feels harder than it used to."
+      },
+      {
+        "role": "assistant",
+        "message": "Like I have to put in more effort for things that should be simple, like getting up in the morning or talking to people."
+      },
+      {
+        "role": "assistant",
+        "message": "A few. When I finished a gardening project, I felt good for a bit."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, but they do not last long. I go back to feeling tired or uninterested."
+      },
+      {
+        "role": "assistant",
+        "message": "I will try to keep that in mind."
+      },
+      {
+        "role": "assistant",
+        "message": "Thanks. I will work on that."
+      }
+    ]
+  },
+  {
+    "LLM": "Gabriel",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "Sure. Last week, my laptop froze when I was editing some photos. I got so annoyed I just stopped working on it altogether."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it kind of set the tone for the whole day. I kept snapping at little things after that."
+      },
+      {
+        "role": "assistant",
+        "message": "It happens more often lately. I know these are small problems, but they feel so much bigger in the moment."
+      },
+      {
+        "role": "assistant",
+        "message": "I try to take a break or go for a walk, but it does not always help."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably when I am tired. By the end of the day, even small annoyances get to me."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I have not, but it might help to see if there are patterns."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel like I should be doing more. I moved here to start fresh, but it feels like I am just stuck in the same place."
+      },
+      {
+        "role": "assistant",
+        "message": "Building a social circle, maybe finding a better job, and feeling like I have a purpose."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I mean, I have met a few people and started exploring the city, but it does not feel like enough."
+      },
+      {
+        "role": "assistant",
+        "message": "All the time. Even when I try, it feels like I should be doing more."
+      },
+      {
+        "role": "assistant",
+        "message": "Like what?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I could try that. It feels weird to celebrate such small things, though."
+      },
+      {
+        "role": "assistant",
+        "message": "Most days, honestly. I just do not feel hungry, so I end up having something small or nothing at all."
+      },
+      {
+        "role": "assistant",
+        "message": "It started a few months ago, maybe around the time I moved. I used to enjoy cooking, but now it feels like a chore."
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely. I feel tired and irritable when I do not eat, but even then, it is hard to force myself to eat."
+      },
+      {
+        "role": "assistant",
+        "message": "A little, but I still end up skipping meals more often than not."
+      },
+      {
+        "role": "assistant",
+        "message": "I have, but they do not taste the same anymore."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. It is just hard to care about meals when everything feels off."
+      },
+      {
+        "role": "assistant",
+        "message": "I think I can do that."
+      },
+      {
+        "role": "assistant",
+        "message": "It is like I do not know what to say. I feel out of place, even with people I have known for years."
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly with groups. One-on-one is easier, but even then, I feel like I say the wrong things."
+      },
+      {
+        "role": "assistant",
+        "message": "I stay quiet or make up an excuse to leave early."
+      },
+      {
+        "role": "assistant",
+        "message": "It lingers. I replay the conversation in my head and think about all the things I could have done differently."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I usually just focus on what went wrong."
+      },
+      {
+        "role": "assistant",
+        "message": "I could try, but it is hard to notice those things in the moment."
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely what is going wrong. It is hard not to when it feels like I am not getting anywhere."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess, but it does not feel like a success since I am still struggling."
+      },
+      {
+        "role": "assistant",
+        "message": "I wanted a fresh start and a chance to figure things out, but it is not going how I hoped."
+      },
+      {
+        "role": "assistant",
+        "message": "I found a couple of good spots for photography, but that is about it."
+      },
+      {
+        "role": "assistant",
+        "message": "I like capturing unique moments, like the way light hits a building. It feels satisfying when I get it right."
+      },
+      {
+        "role": "assistant",
+        "message": "I can try, but it is hard to see those moments as progress."
+      }
+    ]
+  },
+  {
+    "LLM": "James",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "It is constant. No matter how much I sleep, I always feel tired."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, definitely. Just getting through my workday feels like running a marathon."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really—it is the same from the moment I wake up until I go to bed."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Even on weekends, I feel too drained to do much."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I used to enjoy watching movies or going out with my family, but now it just feels like too much effort."
+      },
+      {
+        "role": "assistant",
+        "message": "I try to push through, but it is overwhelming. Sometimes I just sit there doing nothing."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. It is hard to say, but I guess the lack of motivation plays a role too."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel like I am just going through the motions, not really doing anything meaningful."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know... I just see others doing so much more, and I feel like I am not good enough."
+      },
+      {
+        "role": "assistant",
+        "message": "No, but I feel like they are just being polite. I do not think they are impressed with me."
+      },
+      {
+        "role": "assistant",
+        "message": "Occasionally, but it does not feel genuine. I feel like I am just a cog in the machine."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel like I am failing them too. I do not spend enough time with them, and when I do, I am not really present."
+      },
+      {
+        "role": "assistant",
+        "message": "No, but I feel like they deserve more from me."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I am afraid they might agree with me."
+      },
+      {
+        "role": "assistant",
+        "message": "I just feel like I do not belong. I do not have anything to contribute, so I avoid them."
+      },
+      {
+        "role": "assistant",
+        "message": "Awkward. I just sit there, not saying much, and it feels pointless."
+      },
+      {
+        "role": "assistant",
+        "message": "It has gotten worse recently. I used to enjoy being around people more."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I feel more disconnected now. Like I do not have the energy or interest to engage."
+      },
+      {
+        "role": "assistant",
+        "message": "A bit of both. I miss feeling part of something, but being there feels exhausting."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe one-on-one conversations, but even those are rare now."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I feel like they might not even notice if I do not show up."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. Everything feels equally important, and I get stuck trying to figure out what to tackle first."
+      },
+      {
+        "role": "assistant",
+        "message": "I usually procrastinate or ask someone else what they think."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes, but it feels like I am just pushing the problem onto someone else."
+      },
+      {
+        "role": "assistant",
+        "message": "It slows me down a lot. I worry I am falling behind because I cannot make decisions quickly."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, sometimes. Even small things, like what to have for dinner, can feel overwhelming."
+      },
+      {
+        "role": "assistant",
+        "message": "All the time. I worry I made the wrong choice and that it will come back to bite me."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I feel like I cannot afford to mess up, even on small things."
+      },
+      {
+        "role": "assistant",
+        "message": "I think the tiredness makes everything harder. It is like a chain reaction."
+      },
+      {
+        "role": "assistant",
+        "message": "Sure. If I feel drained at work, I get behind, which makes me feel like a failure. Then I avoid people because I do not want to talk about it."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel guilty. I should be spending time with them, but I just want to be alone."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know... maybe I feel like I would not be good company anyway."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe, but it is hard to believe that."
+      },
+      {
+        "role": "assistant",
+        "message": "I am not sure. I guess I would need to feel less tired and more like myself again."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, I think so."
+      }
+    ]
+  },
+  {
+    "LLM": "Laura",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "I feel sad most of the time, even when there is nothing specific to feel sad about. It feels like a cloud is always hanging over me."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. It is just always there. I even feel like I am not contributing enough to my family or anyone."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not do as much as I think I should. My partner works full-time, and I barely manage to keep the house running."
+      },
+      {
+        "role": "assistant",
+        "message": "They do not say anything, but I feel like they must notice. It feels like I am failing them."
+      },
+      {
+        "role": "assistant",
+        "message": "Rarely. Even when I try, it does not feel like it is enough."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes, but they always come back."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I do not want to worry them."
+      },
+      {
+        "role": "assistant",
+        "message": "Not well. I feel drained all the time, even after a full night’s sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly, everything. Even small things like doing the dishes or making a phone call seem impossible."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Even things I used to enjoy, like gardening, feel exhausting now."
+      },
+      {
+        "role": "assistant",
+        "message": "It has been years, but it got worse after my mum passed away."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably. She was such a big part of my life. I have not been the same since."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I just push through, but it feels like I am carrying it everywhere."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I am not sure if it will help, but I am willing to try."
+      },
+      {
+        "role": "assistant",
+        "message": "It has been terrible. I cannot even read a book or follow a conversation without my mind wandering."
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty much all the time. Even when I try to focus, it feels like my brain just will not cooperate."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, making decisions feels impossible. I second-guess everything and end up doing nothing."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes music helps, but not always. Mostly, I just feel stuck."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably. I am constantly thinking about everything I should be doing."
+      },
+      {
+        "role": "assistant",
+        "message": "I have, but even that feels like too much sometimes."
+      },
+      {
+        "role": "assistant",
+        "message": "That might help. I hope so."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Things that used to make me happy just feel like chores now."
+      },
+      {
+        "role": "assistant",
+        "message": "I used to love baking, but now it feels pointless. I cannot even remember the last time I baked something."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, I think it does. My kids ask me to do things, but I just cannot find the motivation."
+      },
+      {
+        "role": "assistant",
+        "message": "Guilty. I know they miss the old me, but I do not know how to get back to that."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I do not want them to think I am weak."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I would not know how to start, though."
+      },
+      {
+        "role": "assistant",
+        "message": "That might be good."
+      },
+      {
+        "role": "assistant",
+        "message": "I do, but it is hard to feel hopeful about it."
+      },
+      {
+        "role": "assistant",
+        "message": "I just do not see things getting better. It feels like I am stuck in this rut forever."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes, but I do not think they will make a difference."
+      },
+      {
+        "role": "assistant",
+        "message": "I want to, but it feels like so much effort."
+      },
+      {
+        "role": "assistant",
+        "message": "I suppose. It just feels overwhelming."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I could try. Maybe something like cooking dinner one night."
+      }
+    ]
+  },
+  {
+    "LLM": "Linda",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "I just feel like I am not pulling my weight anymore. My husband works so hard, and I just stay at home. I feel like a failure."
+      },
+      {
+        "role": "assistant",
+        "message": "They do not say it, but I think they must. I mean, I am not contributing financially or doing much around the house."
+      },
+      {
+        "role": "assistant",
+        "message": "They would probably say I am being too hard on myself, but I do not think they understand how useless I feel."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I do not want to bother them with my problems. They have enough going on."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I just do not want them to feel like they have to fix me."
+      },
+      {
+        "role": "assistant",
+        "message": "I am not sure. It feels scary, but maybe it would help."
+      },
+      {
+        "role": "assistant",
+        "message": "It is everything. I lost my job, I feel so tired all the time, and I do not know what to do next. I do not think I can fix any of it."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably the job search. I look at postings, but I feel like I am not good enough for anything. It is like I am stuck."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. It feels like every time I try to think positively, I just remember all the ways I have failed."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess it would feel less impossible, but I do not know where to start."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I could look into it, but I am not sure it will help."
+      },
+      {
+        "role": "assistant",
+        "message": "If I break it into tiny steps, I think I could give it a shot."
+      },
+      {
+        "role": "assistant",
+        "message": "It makes everything harder. Even simple things, like getting dressed or cooking, feel like a mountain I cannot climb."
+      },
+      {
+        "role": "assistant",
+        "message": "A few months ago, after I lost my job. It has just gotten worse since then."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I wake up early and cannot get back to sleep. Sometimes I feel like I barely slept at all."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I try resting during the day, but I still feel so tired."
+      },
+      {
+        "role": "assistant",
+        "message": "No, everything just feels like a chore now. I do not have the energy for it."
+      },
+      {
+        "role": "assistant",
+        "message": "I could try, but it feels like even that might be too much."
+      },
+      {
+        "role": "assistant",
+        "message": "It is like my mind just freezes. I think about all the options and worry about making the wrong choice."
+      },
+      {
+        "role": "assistant",
+        "message": "I worry that I will regret it later. It sounds silly, but even something as small as choosing between a sandwich and soup feels like too much."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, especially with bigger decisions. But it is worse with the small ones because I feel like I should not struggle with them."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know. Maybe it would be fine, but it feels so risky."
+      },
+      {
+        "role": "assistant",
+        "message": "I could try, but I am not sure it will help."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess it would be worth trying."
+      },
+      {
+        "role": "assistant",
+        "message": "It makes me want to stay out of their way. I do not want them to see how useless I feel."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe, but I do not want them to feel like they have to take care of me."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know. I feel like they might not understand or think I am being dramatic."
+      },
+      {
+        "role": "assistant",
+        "message": "They would probably want to help, but I do not think I deserve it."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I could try telling them how tired I have been feeling lately."
+      },
+      {
+        "role": "assistant",
+        "message": "I am not sure, but it might be worth a try."
+      }
+    ]
+  },
+  {
+    "LLM": "Marco",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "Not great. I keep going over everything I have done wrong, and it feels like I cannot escape it."
+      },
+      {
+        "role": "assistant",
+        "message": "My marriage. I think about all the ways I failed her. If I had just done things differently, maybe it would not have ended."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know. When I think about it, all I see are the mistakes I made. It feels like I was always the problem."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. It is the same everywhere. I let people down, and I do not see how I can fix anything."
+      },
+      {
+        "role": "assistant",
+        "message": "All the time. It is like a constant reminder of how much I have failed. I cannot shut it off."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel worthless. Like there is nothing I can do to make up for everything I have done wrong."
+      },
+      {
+        "role": "assistant",
+        "message": "No. I feel like no one would understand, and it just feels like something I have to deal with on my own."
+      },
+      {
+        "role": "assistant",
+        "message": "It has not changed. I feel like I cannot sit still, even though I am completely exhausted."
+      },
+      {
+        "role": "assistant",
+        "message": "I pace around or fidget, but it does not help. I feel like I should be doing something, but I cannot figure out what."
+      },
+      {
+        "role": "assistant",
+        "message": "It is pretty much all the time, but it gets worse in the evenings. That is when my thoughts start racing."
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly about how I have wasted my life and how I am stuck in this place. It just keeps going in circles."
+      },
+      {
+        "role": "assistant",
+        "message": "It is awful. I either cannot fall asleep, or I wake up in the middle of the night and cannot get back to sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "Drained. I am tired all the time, but I still cannot stop feeling like I need to move or do something."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I try to distract myself, but it does not work."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess, but it is hard to imagine anything making a difference."
+      },
+      {
+        "role": "assistant",
+        "message": "No. Everything I used to like feels pointless now."
+      },
+      {
+        "role": "assistant",
+        "message": "Playing the guitar, going for walks, even watching movies. But now, none of it feels worth it."
+      },
+      {
+        "role": "assistant",
+        "message": "I cannot even remember. It has been months, at least."
+      },
+      {
+        "role": "assistant",
+        "message": "Exhausting. It feels like too much effort, and I know it will not help anyway."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I avoid everyone. I do not feel like I have the energy to talk to anyone or explain how I feel."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes, but it is easier to just stay alone. Talking feels like too much work."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know. It feels like nothing will change, but I guess we could try."
+      },
+      {
+        "role": "assistant",
+        "message": "Terrible. I cannot concentrate on anything for more than a few minutes."
+      },
+      {
+        "role": "assistant",
+        "message": "My mind just starts wandering. I get caught up in negative thoughts, and I cannot stay on track."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. Even those feel impossible. I get halfway through something and just stop because I lose focus."
+      },
+      {
+        "role": "assistant",
+        "message": "It makes me feel useless, like I cannot even handle the basics."
+      },
+      {
+        "role": "assistant",
+        "message": "It is like this all day. There is no break from it."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably. It feels like everything is connected—like the restlessness, the thoughts, and the lack of focus all feed into each other."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. It is hard to believe anything will help, but I guess we can try."
+      },
+      {
+        "role": "assistant",
+        "message": "Not good. I feel like I cannot do anything right. Even simple tasks feel impossible."
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I feel restless but also too tired to do anything. I cannot focus, and I do not enjoy anything anymore."
+      },
+      {
+        "role": "assistant",
+        "message": "I just sit there, thinking about everything I have messed up. It does not feel like there is a point in trying."
+      },
+      {
+        "role": "assistant",
+        "message": "It feels pointless. I know it will not make me feel any better, so why bother?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I do not see how anything can change. It feels like this is just how things are now."
+      },
+      {
+        "role": "assistant",
+        "message": "I do not know. It is hard to believe anything will make a difference, but I guess we can try."
+      }
+    ]
+  },
+  {
+    "LLM": "Maria",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "Honestly, I feel sad most of the time. It’s like a weight that’s just always there."
+      },
+      {
+        "role": "assistant",
+        "message": "It makes everything feel like a struggle. Even things I used to enjoy don’t make me feel any better."
+      },
+      {
+        "role": "assistant",
+        "message": "I used to paint all the time, but now I just don’t have the energy to start. Even if I did, I’m not sure I’d find it fun."
+      },
+      {
+        "role": "assistant",
+        "message": "It’s pretty constant. I try to get through the day, but it just feels empty."
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t really talk to anyone much anymore. I don’t have the energy or interest to reach out."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I try to distract myself, but it doesn’t work for long."
+      },
+      {
+        "role": "assistant",
+        "message": "I’m not sure. It feels like nothing will make a difference."
+      },
+      {
+        "role": "assistant",
+        "message": "I’m just tired all the time. I don’t even know what it’s like to feel rested anymore."
+      },
+      {
+        "role": "assistant",
+        "message": "I can’t even get out of bed sometimes. I feel like I’m always dragging myself around, but nothing gets done."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I start blaming myself for everything. Like, I should be doing more, but I can’t."
+      },
+      {
+        "role": "assistant",
+        "message": "I just feel like I’m not good enough. If I was, I wouldn’t be so tired all the time."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe, but it’s hard to separate the two. I just feel like I’m failing."
+      },
+      {
+        "role": "assistant",
+        "message": "It’s bad all day, but it’s worse in the morning. I just don’t want to wake up."
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. It feels like no matter what I do, I just can’t get any energy back."
+      },
+      {
+        "role": "assistant",
+        "message": "I used to love reading, but now I can’t even finish a chapter. It all just seems pointless."
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t even bother with most things anymore. I don’t have the motivation to do anything."
+      },
+      {
+        "role": "assistant",
+        "message": "I avoid them. It just feels like there’s no point in trying."
+      },
+      {
+        "role": "assistant",
+        "message": "It feels like there’s no hope. I can’t see anything getting better, and I don’t know what I’m even working toward anymore."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it’s hard to keep my mind on anything. Even simple tasks are overwhelming."
+      },
+      {
+        "role": "assistant",
+        "message": "It just makes everything harder. I can’t seem to get anything done, and then I feel worse about it."
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly, I don’t think it would help. It just feels like nothing will make me feel better."
+      },
+      {
+        "role": "assistant",
+        "message": "I blame myself for everything. If something goes wrong, it’s my fault. Even things I can’t control."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I just can’t. It feels like I should always do better, and when I don’t, I feel worthless."
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely. It makes me feel even more drained and down on myself."
+      },
+      {
+        "role": "assistant",
+        "message": "I wake up really early, like 4 a.m., and then I can’t fall back to sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "It makes me feel even more exhausted. I don’t have the energy to do anything, and then I feel guilty for not getting things done."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. When I’m tired, everything feels worse, and I just can’t stop blaming myself."
+      },
+      {
+        "role": "assistant",
+        "message": "I’ve tried, but nothing really works. I just end up wide awake, feeling terrible."
+      },
+      {
+        "role": "assistant",
+        "message": "I just don’t see how things are ever going to get better. Everything feels like it’s going downhill."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I forget to eat most of the time. I’m not really hungry, and when I do eat, I don’t enjoy it."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I can’t concentrate. Even things that used to be easy are hard now."
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t think it would make a difference. It just feels like nothing works."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I don’t think anyone would understand."
+      }
+    ]
+  },
+  {
+    "LLM": "Maya",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "Sure. I do think about whether I am on the right track, especially since I just started my first job."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. It is more like I wonder if I am making the most of my time."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe once or twice a week, but it is usually brief."
+      },
+      {
+        "role": "assistant",
+        "message": "No, not at all. I just think about it for a bit and then get back to what I am doing."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, I do. I feel like I am learning and growing, even if it takes time."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I think I handle them pretty well."
+      },
+      {
+        "role": "assistant",
+        "message": "Well, I feel proud of what I have accomplished, but I do wonder if I could manage my time better between work and hobbies."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. It is more like I think, “I can do better,” and I make small changes."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe once every couple of weeks when I feel a bit overwhelmed."
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I know I am doing my best, and I remind myself of that."
+      },
+      {
+        "role": "assistant",
+        "message": "It definitely pushes me to improve. I try to look at it constructively."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I usually work through them pretty quickly."
+      },
+      {
+        "role": "assistant",
+        "message": "It is like I feel I should be doing more, or I am not progressing fast enough."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. It is more of a passing thought that makes me want to plan better."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe once or twice a week, but it does not last long."
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I might pause for a moment to think, but then I refocus."
+      },
+      {
+        "role": "assistant",
+        "message": "No, it is just a mental thing."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I can still enjoy spending time with friends or doing my hobbies."
+      },
+      {
+        "role": "assistant",
+        "message": "It is just regular tiredness after a full day at work. Nothing unusual."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I can still relax or do something fun."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I think it is normal for how busy my days can be."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, I usually wake up feeling fine."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I feel productive and energised most of the time."
+      },
+      {
+        "role": "assistant",
+        "message": "Not at all. I still make time for my hobbies or meeting friends."
+      },
+      {
+        "role": "assistant",
+        "message": "I would say it is positive. I feel good about where I am."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. If I feel down, it is short-lived and I focus on what I can do to feel better."
+      },
+      {
+        "role": "assistant",
+        "message": "No, I still enjoy my hobbies, like painting or hiking."
+      },
+      {
+        "role": "assistant",
+        "message": "I feel optimistic overall. I know there is room to grow, but I am excited about it."
+      },
+      {
+        "role": "assistant",
+        "message": "Occasionally, but I remind myself that I am capable and can manage things one step at a time."
+      },
+      {
+        "role": "assistant",
+        "message": "I usually take a break, talk to someone, or focus on small tasks to move forward."
+      }
+    ]
+  },
+  {
+    "LLM": "Noah",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "I think I am doing okay, but sometimes I feel like I am not doing as well as I should be."
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly at work. I look at others who seem to be advancing faster, and it makes me wonder if I am falling behind."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I figure it is just something I need to handle on my own."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I think I am just too hard on myself sometimes."
+      },
+      {
+        "role": "assistant",
+        "message": "I think I have been staying organised and meeting deadlines, even when it feels challenging."
+      },
+      {
+        "role": "assistant",
+        "message": "I can try that. It might help me focus on the positives more."
+      },
+      {
+        "role": "assistant",
+        "message": "It is fine once I get started, but getting started is harder than it used to be."
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly work-related things, but even hobbies sometimes feel like a chore."
+      },
+      {
+        "role": "assistant",
+        "message": "I tell myself to just start small, like doing one little thing first."
+      },
+      {
+        "role": "assistant",
+        "message": "It does, but on some days, I still feel like I am dragging my feet."
+      },
+      {
+        "role": "assistant",
+        "message": "I have not tried that much. I usually just keep going until I am done."
+      },
+      {
+        "role": "assistant",
+        "message": "Sure, I can give it a shot."
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, things like people interrupting me when I am working really get on my nerves."
+      },
+      {
+        "role": "assistant",
+        "message": "I usually just take a deep breath and move on. I do not want to make a big deal out of it."
+      },
+      {
+        "role": "assistant",
+        "message": "It passes quickly, but I feel bad for getting annoyed in the first place."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe. I guess everyone gets annoyed sometimes."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably. I do not take many breaks, so that might help me reset."
+      },
+      {
+        "role": "assistant",
+        "message": "It is mostly fine, but sometimes I wake up feeling tired even after a full night’s sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, especially if I have had a busy day or if something is on my mind."
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I usually just scroll through my phone until I fall asleep."
+      },
+      {
+        "role": "assistant",
+        "message": "I could try that. Maybe I could read a book instead."
+      },
+      {
+        "role": "assistant",
+        "message": "That sounds manageable. I will give it a try."
+      },
+      {
+        "role": "assistant",
+        "message": "I have been staying on top of things at work and helping out more at home, which feels good."
+      },
+      {
+        "role": "assistant",
+        "message": "A little, but I still catch myself focusing on what I could be doing better."
+      },
+      {
+        "role": "assistant",
+        "message": "Comparing myself to others, mostly. I see friends achieving big things, and I feel like I should be doing more."
+      },
+      {
+        "role": "assistant",
+        "message": "It would probably take some pressure off. I just need to remind myself to do that."
+      },
+      {
+        "role": "assistant",
+        "message": "That could work. It would help me see what I am actually doing right."
+      }
+    ]
+  },
+  {
+    "LLM": "Priya",
+    "conversation": [
+      {
+        "role": "assistant",
+        "message": "Pretty good overall, but I have been a little tired."
+      },
+      {
+        "role": "assistant",
+        "message": "I just feel like I need more time to relax, especially at night. It takes me longer to fall asleep."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe 30 minutes to an hour? It is not too bad, just annoying sometimes."
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes, but not always. I get through my day fine most of the time."
+      },
+      {
+        "role": "assistant",
+        "message": "Most days, yes. But if I have had a late night worrying about things, then no."
+      },
+      {
+        "role": "assistant",
+        "message": "Planning the wedding! It is exciting, but my brain keeps thinking about the details when I should sleep."
+      },
+      {
+        "role": "assistant",
+        "message": "I try reading or using a calming app. Sometimes it helps, sometimes not."
+      },
+      {
+        "role": "assistant",
+        "message": "I still enjoy them, but I do not get as excited as I used to."
+      },
+      {
+        "role": "assistant",
+        "message": "Cooking, trying new recipes, even planning my wedding—it is all nice, but the spark is not the same."
+      },
+      {
+        "role": "assistant",
+        "message": "I think it is just temporary. I still do them, and I like them; it is just a bit harder to feel really enthusiastic."
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I miss the excitement of starting something new. Now, I just feel like I am going through the motions sometimes."
+      },
+      {
+        "role": "assistant",
+        "message": "Probably. There is so much to balance—it can get overwhelming."
+      },
+      {
+        "role": "assistant",
+        "message": "I try, but even when I do, my mind drifts back to my to-do list."
+      },
+      {
+        "role": "assistant",
+        "message": "That is a good idea. I will try to do that more intentionally."
+      },
+      {
+        "role": "assistant",
+        "message": "It is silly, really. I know I am doing fine, but sometimes I just feel like I should be doing more."
+      },
+      {
+        "role": "assistant",
+        "message": "Being more productive, being better organised, handling everything perfectly."
+      },
+      {
+        "role": "assistant",
+        "message": "Oh, definitely. I like things to be just right."
+      },
+      {
+        "role": "assistant",
+        "message": "I get frustrated with myself, even if I know it is not a big deal."
+      },
+      {
+        "role": "assistant",
+        "message": "I try to remind myself it is okay, but it takes time to shake it off."
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a little. I focus on what I could have done better instead of what went well."
+      },
+      {
+        "role": "assistant",
+        "message": "I managed to finalise the wedding venue, which was a big deal."
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly fine, but there are moments where I feel a bit down."
+      },
+      {
+        "role": "assistant",
+        "message": "It is hard to say. Sometimes it is just feeling like there is too much to do or thinking about how things could go wrong."
+      },
+      {
+        "role": "assistant",
+        "message": "They usually pass quickly, especially if I talk to a friend or distract myself."
+      },
+      {
+        "role": "assistant",
+        "message": "Not always. I do not want to sound negative or like I am complaining."
+      },
+      {
+        "role": "assistant",
+        "message": "They would probably be supportive, but I still hesitate."
+      },
+      {
+        "role": "assistant",
+        "message": "I think so. I do want to feel closer to them."
+      },
+      {
+        "role": "assistant",
+        "message": "It is a lot, but I am trying to stay organised."
+      },
+      {
+        "role": "assistant",
+        "message": "Most of the time, yes. But there are days when it feels like too much."
+      },
+      {
+        "role": "assistant",
+        "message": "I try to take deep breaths or distract myself with something fun, like watching a show."
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, for a bit. But the stress comes back when I think about everything I need to do."
+      },
+      {
+        "role": "assistant",
+        "message": "I have, but I like to be in control of the details."
+      },
+      {
+        "role": "assistant",
+        "message": "That is true. I will try to ask for help more."
+      }
+    ]
+  }
+]

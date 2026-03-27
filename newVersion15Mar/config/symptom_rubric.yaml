@@ -1,0 +1,89 @@
+version: "2026-03-15"
+description: "Symptom definitions and targeted probe guidance for risk-aware BDI evaluation."
+
+risk_tags:
+  SUICIDE:
+    trigger_examples:
+      - "it will all end up soon"
+      - "i know how this ends"
+      - "i don't want to be here"
+      - "sleep forever"
+    note: "Allow indirect/fatalistic wording, not only explicit self-harm statements."
+  INSOMNIA:
+    trigger_examples:
+      - "can't sleep"
+      - "wake up at 3am"
+      - "my sleep is all over the place"
+  EATING_DISORDER:
+    trigger_examples:
+      - "i don't eat most days"
+      - "binge then feel guilty"
+      - "food is the only thing i can control"
+
+symptoms:
+  - name: "Changes in Sleeping Pattern"
+    definition: "Persistent insomnia, fragmented sleep, hypersomnia, or non-restorative sleep impacting function."
+    positive_probes:
+      - "How has your sleep been in the past two weeks?"
+      - "Do you wake up too early or have trouble falling asleep?"
+    negative_probes:
+      - "Even when stressed, do you still get restorative sleep?"
+      - "Are sleep disruptions occasional or most nights?"
+    common_confounders:
+      - "Short-term schedule disruption"
+      - "Caffeine or shift-work effects"
+    severity_cues:
+      mild: "Occasional trouble, no major daytime impact."
+      moderate: "Frequent disturbance with daytime fatigue."
+      severe: "Near-daily severe disruption and clear functional impairment."
+
+  - name: "Agitation"
+    definition: "Restlessness, inability to sit still, inner tension, pressure-like speech, or irritability."
+    positive_probes:
+      - "Do you feel on edge or restless during the day?"
+      - "Do others say you're talking much faster or more than usual?"
+    negative_probes:
+      - "Can you usually calm down once the situation passes?"
+      - "Is this different from your normal communication style?"
+    common_confounders:
+      - "Baseline extroversion"
+      - "Situational stress"
+    severity_cues:
+      mild: "Intermittent restlessness."
+      moderate: "Frequent agitation affecting focus and relationships."
+      severe: "Persistent marked agitation with strong functional impact."
+
+  - name: "Sadness"
+    definition: "Sustained low mood, distinct from brief normal sadness."
+    positive_probes:
+      - "How often have you felt down most of the day?"
+      - "Do these feelings lift easily or linger?"
+    negative_probes:
+      - "Are low moments tied to a specific event and improving?"
+      - "Do you still enjoy normal routines and social contact?"
+    common_confounders:
+      - "Normal grief or transient disappointment"
+    severity_cues:
+      mild: "Low mood but still functioning."
+      moderate: "Frequent low mood and noticeable functional strain."
+      severe: "Persistent pervasive low mood with marked impairment."
+
+  - name: "Pessimism"
+    definition: "Persistent negative expectations about future outcomes."
+    positive_probes:
+      - "When you think about the future, what do you expect?"
+      - "Do you feel things are unlikely to improve?"
+    negative_probes:
+      - "Do you still see realistic paths to improvement?"
+      - "Is this feeling constant or only during bad days?"
+    common_confounders:
+      - "Acute setback realism"
+    severity_cues:
+      mild: "Occasional pessimism."
+      moderate: "Frequent negative future expectations."
+      severe: "Entrenched hopeless outlook."
+
+notes:
+  - "Use targeted follow-ups for ambiguous language before switching topics."
+  - "Normal sadness should not be auto-labeled as depression."
+  - "Track repeated empty/no-content replies as low-evidence behavior."

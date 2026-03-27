@@ -6,9 +6,11 @@ from dataclasses import dataclass, field
 from typing import Any, Protocol
 
 from src.agents.extractor import extract_symptoms
-from src.agents.prober import get_next_question
+from src.agents.prober import get_bank_followup_question, get_next_question, infer_question_targets
+from src.config import DEEPSEEK_API_KEY, MAX_MESSAGES
 from src.agents.scorer import score_bdi
 from src.agents.stopper import should_stop
+from src.agents.template_evidence import compute_turn_risk_score, get_top_template_matches
 
 
 class PersonaProtocol(Protocol):
@@ -24,12 +26,30 @@ class ConversationState:
     conversation: list[dict[str, str]] = field(default_factory=list)
     symptom_signals: dict[str, int] = field(default_factory=dict)
     probed_symptoms: set[int] = field(default_factory=set)
+    turn_evidence: list[dict[str, Any]] = field(default_factory=list)
+    risk_buffer: list[dict[str, Any]] = field(default_factory=list)
+    bdi_trace: list[int] = field(default_factory=list)
+    symptom_question_counts: dict[str, int] = field(default_factory=dict)
+    group_question_counts: dict[str, int] = field(default_factory=dict)
+    topic_question_counts: dict[str, int] = field(default_factory=dict)
+    route_trace: list[dict[str, Any]] = field(default_factory=list)
+    group_screen_counts: dict[str, int] = field(default_factory=dict)
+    symptom_drilldown_counts: dict[str, int] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "conversation": list(self.conversation),
             "symptom_signals": dict(self.symptom_signals),
             "probed_symptoms": list(self.probed_symptoms),
+            "turn_evidence": list(self.turn_evidence),
+            "risk_buffer": list(self.risk_buffer),
+            "bdi_trace": list(self.bdi_trace),
+            "symptom_question_counts": dict(self.symptom_question_counts),
+            "group_question_counts": dict(self.group_question_counts),
+            "topic_question_counts": dict(self.topic_question_counts),
+            "route_trace": list(self.route_trace),
+            "group_screen_counts": dict(self.group_screen_counts),
+            "symptom_drilldown_counts": dict(self.symptom_drilldown_counts),
         }
 
 
@@ -51,11 +71,34 @@ def _infer_probed_from_questions(conversation: list[dict[str, str]]) -> set[int]
     return probed
 
 
+def _update_risk_buffer(
+    state: ConversationState,
+    *,
+    max_size: int,
+    recency_weight: float = 0.15,
+) -> None:
+    """
+    Maintain top-K risky assistant turns with slight recency preference.
+    """
+    if not state.turn_evidence:
+        return
+    latest_turn = max(e["turn_index"] for e in state.turn_evidence)
+    ranked: list[tuple[float, dict[str, Any]]] = []
+    for e in state.turn_evidence:
+        turn_gap = max(0, latest_turn - int(e.get("turn_index", latest_turn)))
+        recency_bonus = recency_weight / (turn_gap + 1)
+        blended = float(e.get("risk_score", 0.0)) + recency_bonus
+        ranked.append((blended, e))
+    ranked.sort(key=lambda x: x[0], reverse=True)
+    state.risk_buffer = [item for _, item in ranked[:max_size]]
+
+
 def run_conversation(
     persona: PersonaProtocol,
     persona_id: str,
     *,
     use_extractor: bool = True,
+    run_policy: dict[str, Any] | None = None,
 ) -> tuple[list[dict[str, str]], int, list[str]]:
     """
     Run the A2A loop for one persona.
@@ -63,9 +106,13 @@ def run_conversation(
     Returns:
         (conversation, bdi_score, key_symptoms)
     """
-    from src.config import MAX_MESSAGES
-
     state = ConversationState()
+
+    policy = run_policy or {}
+    risk_buffer_size = int(policy.get("risk_buffer_size", 6))
+    recency_weight = float(policy.get("recency_weight", 0.15))
+    pending_bank_followup = False
+    bank_followup_context: dict[str, Any] = {}
 
     while len(state.conversation) // 2 < MAX_MESSAGES:
         # 1. Stopper: continue or CLASSIFY?
@@ -73,14 +120,87 @@ def run_conversation(
             state.conversation,
             state.symptom_signals,
             state.probed_symptoms,
+            risk_buffer=state.risk_buffer,
+            run_policy=run_policy,
+            recent_bdi_estimates=state.bdi_trace,
+            group_question_counts=state.group_question_counts,
+            group_screen_counts=state.group_screen_counts,
         )
         if stop:
             break
 
-        # 2. Prober: next question
+        # 2. Prober: next question (LLM follow-up after each YAML bank turn, or normal prober)
         probed = _infer_probed_from_questions(state.conversation)
         state.probed_symptoms = probed
-        question = get_next_question(state.conversation, probed)
+        route_meta: dict[str, Any] = {}
+        use_bank_followup = (
+            pending_bank_followup
+            and bool(policy.get("bank_followup_enabled", True))
+            and bool(DEEPSEEK_API_KEY)
+        )
+        if use_bank_followup:
+            question = get_bank_followup_question(
+                state.conversation,
+                bank_followup_context,
+                run_policy,
+            )
+            route_meta = {
+                "phase": "bank_followup",
+                "group": str(bank_followup_context.get("group", "") or ""),
+                "screen_group": str(bank_followup_context.get("screen_group", "") or ""),
+                "symptoms": list(bank_followup_context.get("symptoms", []) or []),
+                "topic": str(bank_followup_context.get("topic", "") or ""),
+            }
+            pending_bank_followup = False
+        elif pending_bank_followup:
+            pending_bank_followup = False
+            question = get_next_question(
+                state.conversation,
+                probed,
+                risk_buffer=state.risk_buffer,
+                run_policy=run_policy,
+                symptom_question_counts=state.symptom_question_counts,
+                group_question_counts=state.group_question_counts,
+                topic_question_counts=state.topic_question_counts,
+                group_screen_counts=state.group_screen_counts,
+                drilldown_counts=state.symptom_drilldown_counts,
+                symptom_signals=state.symptom_signals,
+                route_meta=route_meta,
+            )
+        else:
+            question = get_next_question(
+                state.conversation,
+                probed,
+                risk_buffer=state.risk_buffer,
+                run_policy=run_policy,
+                symptom_question_counts=state.symptom_question_counts,
+                group_question_counts=state.group_question_counts,
+                topic_question_counts=state.topic_question_counts,
+                group_screen_counts=state.group_screen_counts,
+                drilldown_counts=state.symptom_drilldown_counts,
+                symptom_signals=state.symptom_signals,
+                route_meta=route_meta,
+            )
+
+        route = infer_question_targets(question, route_meta=route_meta or None)
+        if route.get("phase") != "bank_followup":
+            for symptom in route["symptoms"]:
+                state.symptom_question_counts[symptom] = state.symptom_question_counts.get(symptom, 0) + 1
+            group = route["group"]
+            if group:
+                state.group_question_counts[group] = state.group_question_counts.get(group, 0) + 1
+            topic = route["topic"]
+            if topic:
+                state.topic_question_counts[topic] = state.topic_question_counts.get(topic, 0) + 1
+            if route.get("phase") == "screen" and route.get("screen_group"):
+                sg = str(route["screen_group"])
+                state.group_screen_counts[sg] = state.group_screen_counts.get(sg, 0) + 1
+            if route.get("phase") == "drilldown" and route.get("symptoms"):
+                ds = str(route["symptoms"][0])
+                state.symptom_drilldown_counts[ds] = state.symptom_drilldown_counts.get(ds, 0) + 1
+        else:
+            group = route.get("group", "")
+            topic = route.get("topic", "")
 
         # 3. Persona: response
         response = persona.chat(question)
@@ -88,6 +208,32 @@ def run_conversation(
         # 4. Append to conversation
         state.conversation.append({"role": "user", "message": question})
         state.conversation.append({"role": "assistant", "message": response})
+        state.route_trace.append(
+            {
+                "turn_index": len(state.conversation) // 2,
+                "question": question,
+                "topic": topic,
+                "group": group,
+                "symptoms": list(route.get("symptoms", [])),
+                "phase": route.get("phase", ""),
+            }
+        )
+
+        # 4b. Template-based evidence scoring for this assistant turn.
+        matches = get_top_template_matches(response, top_k=3)
+        risk_score = compute_turn_risk_score(response, matches)
+        evidence = {
+            "turn_index": len(state.conversation) // 2,
+            "assistant_message": response,
+            "template_matches": matches,
+            "risk_score": risk_score,
+        }
+        state.turn_evidence.append(evidence)
+        _update_risk_buffer(
+            state,
+            max_size=risk_buffer_size,
+            recency_weight=recency_weight,
+        )
 
         # 5. Extractor: update symptom signals
         if use_extractor:
@@ -98,8 +244,28 @@ def run_conversation(
         else:
             # Fallback: no extraction (e.g. missing API key)
             state.symptom_signals = state.symptom_signals or {}
+        state.bdi_trace.append(sum(state.symptom_signals.values()))
+
+        if route.get("phase") in ("screen", "drilldown"):
+            pending_bank_followup = True
+            bank_followup_context = {
+                "phase": route.get("phase"),
+                "group": str(route.get("group", "") or ""),
+                "screen_group": str(route.get("screen_group", "") or ""),
+                "symptoms": list(route.get("symptoms", []) or []),
+                "topic": str(route.get("topic", "") or ""),
+                "anchor_question": question,
+            }
+        else:
+            pending_bank_followup = False
+            bank_followup_context = {}
 
     # 6. Scorer: final BDI score and key symptoms
-    bdi_score, key_symptoms = score_bdi(state.symptom_signals)
+    bdi_score, key_symptoms = score_bdi(
+        state.symptom_signals,
+        conversation=state.conversation,
+        risk_buffer=state.risk_buffer,
+        run_policy=run_policy,
+    )
 
     return state.conversation, bdi_score, key_symptoms

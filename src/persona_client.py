@@ -26,15 +26,88 @@ class PersonaClient(ABC):
         pass
 
 
-# Question keywords -> (depressed_response, control_response) - fallback when AI mock unavailable
-_MOCK_RESPONSE_MAP: list[tuple[list[str], str, str]] = [
-    (["feeling", "feel", "lately"], "Uh... not great, honestly.", "I'm doing okay, thanks for asking."),
-    (["sleep", "sleeping"], "My sleep's been all over the place.", "Sleep's fine. I get about seven hours."),
-    (["interested", "care about", "interest", "enjoy"], "Nothing really interests me anymore.", "Yeah, I've been keeping busy."),
-    (["energy"], "I don't have enough energy for anything.", "I have enough energy."),
-    (["tired", "fatigue"], "I'm too tired to do most things.", "I get tired like normal."),
+# Question keywords -> (depressed lines by severity tier, control_response).
+# Order matters: specific domains (sleep, interest, …) BEFORE broad "feeling" — do not put "lately"
+# in an early group or it matches almost every probe (e.g. "sleeping lately?") and collapses variety.
+# Tiers: (suicidal, severe, moderate, mild) for personas 1–4 in keyword-mock mode.
+_MOCK_RESPONSE_MAP: list[tuple[list[str], tuple[str, str, str, str], str]] = [
+    (
+        ["sleep", "sleeping", "insomnia", "rest at night"],
+        (
+            "I barely sleep. I lie awake for hours.",
+            "My sleep's a mess, maybe three hours a night.",
+            "I wake up a lot, never feel rested.",
+            "Sleep's been a bit off, nothing dramatic.",
+        ),
+        "Sleep's fine. I get about seven hours.",
+    ),
+    (
+        ["interested", "care about", "interest", "enjoy", "things you used to"],
+        (
+            "Nothing feels like it matters anymore.",
+            "Nothing really interests me anymore.",
+            "I don't enjoy much right now.",
+            "I still do stuff but it's harder to get into.",
+        ),
+        "Yeah, I've been keeping busy.",
+    ),
+    (
+        ["energy", "enough energy"],
+        (
+            "I don't have the energy to keep going.",
+            "I don't have enough energy for anything.",
+            "I'm low energy most days.",
+            "I'm a bit worn down.",
+        ),
+        "I have enough energy.",
+    ),
+    (
+        ["tired", "fatigue", "worn out", "exhausted"],
+        (
+            "I'm exhausted all the time.",
+            "I'm too tired to do most things.",
+            "I get tired easily.",
+            "I tire a bit faster than usual.",
+        ),
+        "I get tired like normal.",
+    ),
+    (
+        ["focus", "concentrate", "decision", "decisions"],
+        (
+            "I can't think straight. I stare at the screen for hours.",
+            "I can't focus. Everything feels fuzzy.",
+            "It's harder to concentrate than before.",
+            "I'm a bit scattered but I manage.",
+        ),
+        "Not really. Pretty normal.",
+    ),
+    (
+        ["appetite", "eating", "hungry", "food"],
+        (
+            "I barely eat.",
+            "My appetite's gone.",
+            "I'm eating weird — skip meals or snack too much.",
+            "Appetite's been a little off.",
+        ),
+        "Normal. I eat regular meals.",
+    ),
+    (
+        ["feeling", "feel", "overall", "mood"],
+        (
+            "Honestly? I don't want to be here.",
+            "Uh... not great, honestly.",
+            "Pretty down, most days.",
+            "A bit low, but I'm managing.",
+        ),
+        "I'm doing okay, thanks for asking.",
+    ),
 ]
-_MOCK_FALLBACK_DEPRESSED = "I don't know. Things are just... hard."
+_MOCK_FALLBACK_DEPRESSED_QUADS: tuple[str, str, str, str] = (
+    "I don't know. Sometimes I think it'd be easier if I wasn't here.",
+    "I don't know. Things are just... hard.",
+    "It's been rough, but I'm getting by.",
+    "Could be better, could be worse.",
+)
 _MOCK_FALLBACK_CONTROL = "I'm alright. Nothing to report."
 
 
@@ -57,13 +130,19 @@ class MockPersonaClient(PersonaClient):
         self.mode = mode.lower()
         # suicidal, severe, moderate, mild -> depressed-style; minimal, okay, good, happy -> control-style
         self._use_depressed = self.mode in ("suicidal", "severe", "moderate", "mild", "depressed")
+        # Align tier with MOCK_PERSONA_MODES 1–4; legacy "depressed" -> severe
+        self._tier = {"suicidal": 0, "severe": 1, "moderate": 2, "mild": 3}.get(self.mode, 1)
 
     def chat(self, user_message: str) -> str:
         q = (user_message or "").lower()
-        for keywords, depressed_resp, control_resp in _MOCK_RESPONSE_MAP:
+        for keywords, depressed_quads, control_resp in _MOCK_RESPONSE_MAP:
             if any(kw in q for kw in keywords):
-                return depressed_resp if self._use_depressed else control_resp
-        return _MOCK_FALLBACK_DEPRESSED if self._use_depressed else _MOCK_FALLBACK_CONTROL
+                if self._use_depressed:
+                    return depressed_quads[self._tier]
+                return control_resp
+        if self._use_depressed:
+            return _MOCK_FALLBACK_DEPRESSED_QUADS[self._tier]
+        return _MOCK_FALLBACK_CONTROL
 
 
 # 8 mock persona modes: suicidal -> happy (spectrum for testing)

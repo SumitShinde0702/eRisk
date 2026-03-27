@@ -2,15 +2,21 @@
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 
 
 @lru_cache(maxsize=1)
 def _get_embedder():
     """Lazy-load embedding model to avoid startup overhead."""
-    from sentence_transformers import SentenceTransformer
+    if os.getenv("DISABLE_TEMPLATE_EMBEDDINGS", "0") == "1":
+        return None
+    try:
+        from sentence_transformers import SentenceTransformer
 
-    return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+        return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+    except Exception:
+        return None
 
 
 def _lexical_fallback(
@@ -51,6 +57,8 @@ def retrieve_relevant_patient_evidence(
         import numpy as np
 
         embedder = _get_embedder()
+        if embedder is None:
+            return _lexical_fallback(patient_messages, query_text, top_k)
         msg_emb = embedder.encode(patient_messages, convert_to_numpy=True, normalize_embeddings=True)
         q_emb = embedder.encode([query_text], convert_to_numpy=True, normalize_embeddings=True)[0]
         sims = np.dot(msg_emb, q_emb)

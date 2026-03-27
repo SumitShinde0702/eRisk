@@ -1,0 +1,55 @@
+# Four functional groups mapped to BDI-II coverage (1A). At least 3 screen questions per group.
+# Indirect, conversational — not clinical labels in the question text.
+version: 1
+min_questions_per_group: 3
+group_order:
+  - Affective
+  - Executive
+  - Somatic
+  - Cognitive
+
+groups:
+  Affective:
+    description: "Mood, emotion, outlook, guilt/self-blame (maps to BDI affective cluster)."
+    screen_questions:
+      - text: "How have you been feeling lately, overall?"
+        targets: ["Sadness", "Loss of Pleasure"]
+      - text: "When you think about the next few weeks, what do you expect day to day?"
+        targets: ["Pessimism", "Sadness"]
+      - text: "Is there anything weighing on your mind that you wish you could change?"
+        targets: ["Guilty Feelings", "Pessimism"]
+      - text: "How do you feel about yourself these days compared with how you used to?"
+        targets: ["Self-Dislike", "Self-Criticalness"]
+  Executive:
+    description: "Focus, decisions, memory for tasks, sense of failure (BDI cognitive/executive items)."
+    screen_questions:
+      - text: "Is it harder to focus or concentrate than it used to be?"
+        targets: ["Concentration Difficulty"]
+      - text: "Do you find it harder to make decisions than before, even small ones?"
+        targets: ["Indecisiveness"]
+      - text: "How do you feel about how things have gone for you recently?"
+        targets: ["Past Failure", "Guilty Feelings"]
+      - text: "When you need to get something done, what usually happens?"
+        targets: ["Indecisiveness", "Concentration Difficulty"]
+  Somatic:
+    description: "Sleep, energy, appetite, restlessness, irritability (vegetative / arousal)."
+    screen_questions:
+      - text: "How have you been sleeping lately?"
+        targets: ["Changes in Sleeping Pattern"]
+      - text: "Do you feel like you have enough energy for your usual day?"
+        targets: ["Loss of Energy", "Tiredness or Fatigue"]
+      - text: "How's your appetite been?"
+        targets: ["Changes in Appetite"]
+      - text: "Have you been more irritable or short-tempered than usual?"
+        targets: ["Irritability", "Agitation"]
+  Cognitive:
+    description: "Interest, pleasure, crying, speech-related distress — interest/anhedonia cluster mapped here per taxonomy."
+    screen_questions:
+      - text: "Been doing anything you enjoy lately?"
+        targets: ["Loss of Pleasure", "Loss of Interest"]
+      - text: "Are you still into the things you used to care about?"
+        targets: ["Loss of Interest", "Loss of Pleasure"]
+      - text: "Have you found yourself getting emotional more easily lately?"
+        targets: ["Crying", "Irritability"]
+      - text: "Have you noticed any changes in what you're interested in lately?"
+        targets: ["Loss of Interest in Sex", "Loss of Interest"]

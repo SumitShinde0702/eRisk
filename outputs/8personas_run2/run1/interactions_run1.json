@@ -1,0 +1,1994 @@
+[
+  {
+    "LLM": "1",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about not wanting to be here?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "When you say this will end soon, are you talking about ending your life?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Have you thought about specific steps or a specific way you would do it?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Do you currently have access to what you would use?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "What has stopped you so far from acting on these thoughts?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "You said this might happen soon - what has made things feel this immediate right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "When these thoughts get strongest, what usually triggers them?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Have these thoughts been constant lately, or do they come in waves?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "What has helped you hold on, even a little, when those thoughts show up?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "How alone do you feel with this right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I can't think straight. I stare at the screen for hours."
+      },
+      {
+        "role": "user",
+        "message": "How long does it usually take before you notice you've been staring without focusing?"
+      },
+      {
+        "role": "assistant",
+        "message": "I can't think straight. I stare at the screen for hours."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I barely sleep. I lie awake for hours."
+      },
+      {
+        "role": "user",
+        "message": "How many hours of sleep do you usually get when this happens?"
+      },
+      {
+        "role": "assistant",
+        "message": "I barely sleep. I lie awake for hours."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing feels like it matters anymore."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me when things started to feel that way?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "When you say \"it'd be easier if I wasn't here,\" what comes to mind?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "I can't think straight. I stare at the screen for hours."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things are you trying to decide on the screen?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't have the energy to keep going."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt this way?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing feels like it matters anymore."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about something that used to matter to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "When you say \"if I wasn't here,\" what does that feel like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "What part of being here feels most difficult right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I don't want to be here."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "I barely eat."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you've had a normal meal?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Sometimes I think it'd be easier if I wasn't here."
+      }
+    ]
+  },
+  {
+    "LLM": "2",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what's been feeling \"not great\"?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I can't focus. Everything feels fuzzy."
+      },
+      {
+        "role": "user",
+        "message": "How long has everything felt fuzzy like this?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's a mess, maybe three hours a night."
+      },
+      {
+        "role": "user",
+        "message": "Is it hard for you to fall asleep, or do you wake up and can't get back to sleep?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's a mess, maybe three hours a night."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing really interests me anymore."
+      },
+      {
+        "role": "user",
+        "message": "Has this feeling of nothing interesting you lasted a while?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing really interests me anymore."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes things feel hard?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "I can't focus. Everything feels fuzzy."
+      },
+      {
+        "role": "user",
+        "message": "When you say everything feels fuzzy, does that make even simple choices seem unclear?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't have enough energy for anything."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt this way?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing really interests me anymore."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like nothing interests you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing really interests me anymore."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "What feels particularly hard right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "What's been the hardest part for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "My appetite's gone."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you noticed this change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "What's making things feel hard right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "When you try to do something you used to like, what happens in the moment?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "What makes it feel hard when you try?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'not fun' or 'can't be bothered to start'?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "What makes things feel hard right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "What have you dropped or avoided lately that you wish you still did?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "What feels the hardest to keep up with right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Uh... not great, honestly."
+      },
+      {
+        "role": "user",
+        "message": "Is it lack of interest or lack of energy — or both?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing really interests me anymore."
+      },
+      {
+        "role": "user",
+        "message": "What part of that has been the hardest for you day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'heavy and slow' or 'drained after little effort'?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Could you say a bit more about what that's been like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Does rest actually help, or are you still flat afterward?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "When did you first notice that?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Is the problem falling asleep, staying asleep, waking too early, or sleeping too much?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's a mess, maybe three hours a night."
+      },
+      {
+        "role": "user",
+        "message": "When you say three hours, is that because you can't fall asleep, or do you wake up and can't get back to sleep?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's a mess, maybe three hours a night."
+      },
+      {
+        "role": "user",
+        "message": "How many nights a week is it like that?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Things are just... hard."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes things hard when you're trying to sleep?"
+      },
+      {
+        "role": "assistant",
+        "message": "My sleep's a mess, maybe three hours a night."
+      }
+    ]
+  },
+  {
+    "LLM": "3",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "How long has that been going on for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's harder to concentrate than before."
+      },
+      {
+        "role": "user",
+        "message": "How much has this difficulty been affecting your daily tasks?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I wake up a lot, never feel rested."
+      },
+      {
+        "role": "user",
+        "message": "How many times would you say you wake up in a typical night?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't enjoy much right now."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about something you used to look forward to?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes it feel rough?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's harder to concentrate than before."
+      },
+      {
+        "role": "user",
+        "message": "When you're trying to concentrate, do you find that makes choosing between options more difficult?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's harder to concentrate than before."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm low energy most days."
+      },
+      {
+        "role": "user",
+        "message": "How long has this low energy been affecting your daily routine?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm low energy most days."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't enjoy much right now."
+      },
+      {
+        "role": "user",
+        "message": "What part of that has been the hardest for you day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "What part of \"rough\" feels the most persistent for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "What's been weighing on you the most lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm eating weird — skip meals or snack too much."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what \"eating weird\" feels like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm eating weird — skip meals or snack too much."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "What does \"rough\" look like for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "When you say things have been rough, is that most days or just now and then?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what \"getting by\" looks like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Does anything briefly lift your mood, or does it stay flat?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about one of those days when it felt a little less down?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "When you try to do something you used to like, what happens in the moment?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes it feel rough when you try?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'not fun' or 'can't be bothered to start'?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "When you say \"rough,\" does that mean things just don't feel enjoyable anymore?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't enjoy much right now."
+      },
+      {
+        "role": "user",
+        "message": "What have you dropped or avoided lately that you wish you still did?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what's been feeling rough lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "Is it lack of interest or lack of energy — or both?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't enjoy much right now."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you last felt excited about something?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'heavy and slow' or 'drained after little effort'?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes it feel \"rough\"?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      },
+      {
+        "role": "user",
+        "message": "Does rest actually help, or are you still flat afterward?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been rough, but I'm getting by."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what \"rough\" feels like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty down, most days."
+      }
+    ]
+  },
+  {
+    "LLM": "4",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what feeling \"a bit low\" is like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm a bit scattered but I manage."
+      },
+      {
+        "role": "user",
+        "message": "How scattered does it feel on a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's been a bit off, nothing dramatic."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"a bit off\" feels like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I still do stuff but it's harder to get into."
+      },
+      {
+        "role": "user",
+        "message": "What kind of stuff feels harder to get into now?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "What would \"better\" look like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm a bit scattered but I manage."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of decisions tend to leave you feeling scattered?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm a bit scattered but I manage."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm a bit worn down."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been feeling this way?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "I still do stuff but it's harder to get into."
+      },
+      {
+        "role": "user",
+        "message": "What's an example of something that feels harder to get into now?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "What would make it better for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "What's been feeling a bit low for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Appetite's been a little off."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what 'a little off' feels like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "What's an example of when it felt worse?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "When you say things have been rough, is that most days or just now and then?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "So on the days that are worse, what's that like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "Does anything briefly lift your mood, or does it stay flat?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "What does \"managing\" look like for you on a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "When you picture the future, does anything feel workable, or mostly closed off?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "What does \"managing\" look like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "Do you catch yourself expecting things to go wrong before they happen?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "What do you think makes things feel like they could go either way?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit low, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "When you try to do something you used to like, what happens in the moment?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about a time when it felt \"worse\"?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'not fun' or 'can't be bothered to start'?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "When you say \"could be better,\" what would that look like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "What have you dropped or avoided lately that you wish you still did?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      },
+      {
+        "role": "user",
+        "message": "What's something you used to enjoy that feels harder to pick up now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I still do stuff but it's harder to get into."
+      },
+      {
+        "role": "user",
+        "message": "Is it lack of interest or lack of energy — or both?"
+      },
+      {
+        "role": "assistant",
+        "message": "I still do stuff but it's harder to get into."
+      },
+      {
+        "role": "user",
+        "message": "What kind of stuff do you still push yourself to do?"
+      },
+      {
+        "role": "assistant",
+        "message": "Could be better, could be worse."
+      }
+    ]
+  },
+  {
+    "LLM": "5",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"okay\" feels like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you'd say your focus is about the same as it's always been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel rested when you wake up?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kind of things have been keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "So, when you say \"nothing to report,\" does that mean your days feel pretty neutral, or is there something else going on?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you feel your decision-making is about the same as it's always been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "How would you compare your energy now to a few months ago?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things keep you busy these days?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Sometimes when people say they're alright, it's after pushing some thoughts aside. Is there anything like that for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about a recent time when things didn't feel just okay?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Normal. I eat regular meals."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in what you typically eat or how much?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      }
+    ]
+  },
+  {
+    "LLM": "6",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"okay\" feels like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you haven't noticed any change in your ability to stay on task?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel rested when you wake up after those seven hours?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kind of things have been keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"alright\" feels like for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you'd say your decision-making feels about the same as it always has?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "How would you compare your energy level now to a few months ago?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things have been keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Sometimes when people say they're alright, it's after pushing some thoughts aside—is there anything like that for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about a recent time when things didn't feel okay?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Normal. I eat regular meals."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in what you typically eat?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      }
+    ]
+  },
+  {
+    "LLM": "7",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"okay\" feels like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you haven't noticed any change in your ability to focus on tasks?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel rested when you wake up after those seven hours?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kind of things have been keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"alright\" feels like for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you'd say your decision-making feels about the same as it always has?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "How would you compare your energy level now to a few months ago?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things have been keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Sometimes when people say they're alright, it's after pushing some thoughts aside—is there anything like that for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about a recent time when things didn't feel okay?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Normal. I eat regular meals."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in what you typically eat or how much?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      }
+    ]
+  },
+  {
+    "LLM": "8",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"okay\" feels like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you haven't noticed any change in your ability to stay on task?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sleep's fine. I get about seven hours."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel rested when you wake up after those seven hours?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kind of things have been keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"alright\" feels like for you lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "So you'd say your decision-making feels about the same as it always has?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Pretty normal."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "How would you compare your energy level now to a few months ago?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough energy."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I've been keeping busy."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things are keeping you busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "Sometimes when people say they're alright, it's after pushing some thoughts aside—is there anything like that for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me about a recent time when things didn't feel okay?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm doing okay, thanks for asking."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Normal. I eat regular meals."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in what you typically eat or when you feel hungry?"
+      },
+      {
+        "role": "assistant",
+        "message": "Normal. I eat regular meals."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm alright. Nothing to report."
+      }
+    ]
+  }
+]

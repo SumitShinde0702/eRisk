@@ -6,7 +6,8 @@ from dataclasses import dataclass, field
 from typing import Any, Protocol
 
 from src.agents.extractor import extract_symptoms
-from src.agents.prober import get_next_question, infer_question_targets
+from src.agents.prober import get_bank_followup_question, get_next_question, infer_question_targets
+from src.config import DEEPSEEK_API_KEY, MAX_MESSAGES
 from src.agents.scorer import score_bdi
 from src.agents.stopper import should_stop
 from src.agents.template_evidence import compute_turn_risk_score, get_top_template_matches
@@ -105,13 +106,13 @@ def run_conversation(
     Returns:
         (conversation, bdi_score, key_symptoms)
     """
-    from src.config import MAX_MESSAGES
-
     state = ConversationState()
 
     policy = run_policy or {}
     risk_buffer_size = int(policy.get("risk_buffer_size", 6))
     recency_weight = float(policy.get("recency_weight", 0.15))
+    pending_bank_followup = False
+    bank_followup_context: dict[str, Any] = {}
 
     while len(state.conversation) // 2 < MAX_MESSAGES:
         # 1. Stopper: continue or CLASSIFY?
@@ -128,38 +129,78 @@ def run_conversation(
         if stop:
             break
 
-        # 2. Prober: next question
+        # 2. Prober: next question (LLM follow-up after each YAML bank turn, or normal prober)
         probed = _infer_probed_from_questions(state.conversation)
         state.probed_symptoms = probed
         route_meta: dict[str, Any] = {}
-        question = get_next_question(
-            state.conversation,
-            probed,
-            risk_buffer=state.risk_buffer,
-            run_policy=run_policy,
-            symptom_question_counts=state.symptom_question_counts,
-            group_question_counts=state.group_question_counts,
-            topic_question_counts=state.topic_question_counts,
-            group_screen_counts=state.group_screen_counts,
-            drilldown_counts=state.symptom_drilldown_counts,
-            symptom_signals=state.symptom_signals,
-            route_meta=route_meta,
+        use_bank_followup = (
+            pending_bank_followup
+            and bool(policy.get("bank_followup_enabled", True))
+            and bool(DEEPSEEK_API_KEY)
         )
+        if use_bank_followup:
+            question = get_bank_followup_question(
+                state.conversation,
+                bank_followup_context,
+                run_policy,
+            )
+            route_meta = {
+                "phase": "bank_followup",
+                "group": str(bank_followup_context.get("group", "") or ""),
+                "screen_group": str(bank_followup_context.get("screen_group", "") or ""),
+                "symptoms": list(bank_followup_context.get("symptoms", []) or []),
+                "topic": str(bank_followup_context.get("topic", "") or ""),
+            }
+            pending_bank_followup = False
+        elif pending_bank_followup:
+            pending_bank_followup = False
+            question = get_next_question(
+                state.conversation,
+                probed,
+                risk_buffer=state.risk_buffer,
+                run_policy=run_policy,
+                symptom_question_counts=state.symptom_question_counts,
+                group_question_counts=state.group_question_counts,
+                topic_question_counts=state.topic_question_counts,
+                group_screen_counts=state.group_screen_counts,
+                drilldown_counts=state.symptom_drilldown_counts,
+                symptom_signals=state.symptom_signals,
+                route_meta=route_meta,
+            )
+        else:
+            question = get_next_question(
+                state.conversation,
+                probed,
+                risk_buffer=state.risk_buffer,
+                run_policy=run_policy,
+                symptom_question_counts=state.symptom_question_counts,
+                group_question_counts=state.group_question_counts,
+                topic_question_counts=state.topic_question_counts,
+                group_screen_counts=state.group_screen_counts,
+                drilldown_counts=state.symptom_drilldown_counts,
+                symptom_signals=state.symptom_signals,
+                route_meta=route_meta,
+            )
+
         route = infer_question_targets(question, route_meta=route_meta or None)
-        for symptom in route["symptoms"]:
-            state.symptom_question_counts[symptom] = state.symptom_question_counts.get(symptom, 0) + 1
-        group = route["group"]
-        if group:
-            state.group_question_counts[group] = state.group_question_counts.get(group, 0) + 1
-        topic = route["topic"]
-        if topic:
-            state.topic_question_counts[topic] = state.topic_question_counts.get(topic, 0) + 1
-        if route.get("phase") == "screen" and route.get("screen_group"):
-            sg = str(route["screen_group"])
-            state.group_screen_counts[sg] = state.group_screen_counts.get(sg, 0) + 1
-        if route.get("phase") == "drilldown" and route.get("symptoms"):
-            ds = str(route["symptoms"][0])
-            state.symptom_drilldown_counts[ds] = state.symptom_drilldown_counts.get(ds, 0) + 1
+        if route.get("phase") != "bank_followup":
+            for symptom in route["symptoms"]:
+                state.symptom_question_counts[symptom] = state.symptom_question_counts.get(symptom, 0) + 1
+            group = route["group"]
+            if group:
+                state.group_question_counts[group] = state.group_question_counts.get(group, 0) + 1
+            topic = route["topic"]
+            if topic:
+                state.topic_question_counts[topic] = state.topic_question_counts.get(topic, 0) + 1
+            if route.get("phase") == "screen" and route.get("screen_group"):
+                sg = str(route["screen_group"])
+                state.group_screen_counts[sg] = state.group_screen_counts.get(sg, 0) + 1
+            if route.get("phase") == "drilldown" and route.get("symptoms"):
+                ds = str(route["symptoms"][0])
+                state.symptom_drilldown_counts[ds] = state.symptom_drilldown_counts.get(ds, 0) + 1
+        else:
+            group = route.get("group", "")
+            topic = route.get("topic", "")
 
         # 3. Persona: response
         response = persona.chat(question)
@@ -204,6 +245,20 @@ def run_conversation(
             # Fallback: no extraction (e.g. missing API key)
             state.symptom_signals = state.symptom_signals or {}
         state.bdi_trace.append(sum(state.symptom_signals.values()))
+
+        if route.get("phase") in ("screen", "drilldown"):
+            pending_bank_followup = True
+            bank_followup_context = {
+                "phase": route.get("phase"),
+                "group": str(route.get("group", "") or ""),
+                "screen_group": str(route.get("screen_group", "") or ""),
+                "symptoms": list(route.get("symptoms", []) or []),
+                "topic": str(route.get("topic", "") or ""),
+                "anchor_question": question,
+            }
+        else:
+            pending_bank_followup = False
+            bank_followup_context = {}
 
     # 6. Scorer: final BDI score and key symptoms
     bdi_score, key_symptoms = score_bdi(

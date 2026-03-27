@@ -29,7 +29,7 @@ DEEPSEEK_BASE_URL: str = "https://api.deepseek.com"
 DEEPSEEK_MODEL: str = "deepseek-chat"
 
 # --- Speed / Stopping Parameters ---
-MAX_MESSAGES: int = int(os.getenv("MAX_MESSAGES", "20"))
+MAX_MESSAGES: int = int(os.getenv("MAX_MESSAGES", "40"))
 MIN_SYMPTOMS_FOR_EARLY_STOP: int = int(os.getenv("MIN_SYMPTOMS_FOR_EARLY_STOP", "5"))
 MIN_EXCHANGES_BEFORE_STOP: int = int(os.getenv("MIN_EXCHANGES_BEFORE_STOP", "10"))
 CONFIDENCE_THRESHOLD: float = float(os.getenv("CONFIDENCE_THRESHOLD", "0.8"))
@@ -72,6 +72,7 @@ def get_run_policy(run_id: str) -> dict:
         "symptom_drilldown_enabled": True,
         "min_questions_per_group_screen": 3,
         "max_drilldown_questions_total": 24,
+        "bank_followup_enabled": True,
     }
     if not RUN_POLICIES_PATH.exists():
         return defaults

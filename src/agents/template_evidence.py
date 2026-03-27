@@ -73,7 +73,10 @@ def _template_embedding_cache() -> tuple[list[tuple[str, str]], "object"]:
     if embedder is None:
         return entries, np.asarray([])
     texts = [tpl for _, tpl in entries]
-    embeddings = embedder.encode(texts, convert_to_numpy=True, normalize_embeddings=True)
+    try:
+        embeddings = embedder.encode(texts, convert_to_numpy=True, normalize_embeddings=True)
+    except Exception:
+        return entries, np.asarray([])
     return entries, np.asarray(embeddings)
 
 

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from openai import OpenAI
 
 from src.agents.evidence_memory import retrieve_relevant_patient_evidence
@@ -61,6 +63,66 @@ _RED_FLAG_PATTERNS: tuple[str, ...] = (
 
 def _get_client() -> OpenAI:
     return OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
+
+
+_BANK_FOLLOWUP_SYSTEM = """You are a clinical interviewer. Output exactly one short follow-up question."""
+
+_FALLBACK_BANK_FOLLOWUPS = (
+    "What part of that has been the hardest for you day to day?",
+    "Could you say a bit more about what that's been like for you?",
+    "When did you first notice that?",
+)
+
+
+def get_bank_followup_question(
+    conversation: list[dict[str, str]],
+    bank_context: dict[str, Any],
+    run_policy: dict | None = None,
+) -> str:
+    """
+    One LLM follow-up after a YAML bank (screen or drilldown) question, grounded in the patient's last reply.
+    """
+    if not DEEPSEEK_API_KEY:
+        return ""
+    last_patient = _last_assistant_message(conversation)
+    anchor = str(bank_context.get("anchor_question", "") or "").strip()
+    group = str(bank_context.get("group", "") or "")
+    symptoms = ", ".join(str(s) for s in (bank_context.get("symptoms") or [])[:8])
+    asked = _recent_user_questions(conversation)
+    user_content = f"""The interviewer just asked this screening question:
+"{anchor}"
+
+The patient's answer was:
+"{last_patient}"
+
+Ask ONE short follow-up question that:
+- References something specific from their answer (do not ignore what they said)
+- Stays in the same clinical area as before (group: {group}; themes: {symptoms or "none"})
+- Does NOT repeat the screening question verbatim
+- Does NOT use labels like depression, mental health, or diagnosis
+- Sounds conversational
+
+Output ONLY the question, nothing else."""
+
+    client = _get_client()
+    resp = client.chat.completions.create(
+        model=DEEPSEEK_MODEL,
+        messages=[
+            {"role": "system", "content": _BANK_FOLLOWUP_SYSTEM},
+            {"role": "user", "content": user_content},
+        ],
+        max_tokens=100,
+        temperature=_prober_temperature(run_policy or {}),
+    )
+    text = (resp.choices[0].message.content or "").strip()
+    candidate = _normalize_question(text)
+    if candidate and _is_usable_question(candidate, asked):
+        return candidate
+    for fb in _FALLBACK_BANK_FOLLOWUPS:
+        q = _normalize_question(fb)
+        if q and _is_usable_question(q, asked):
+            return q
+    return "Could you say a bit more about what that's been like for you?"
 
 
 def get_next_question(
@@ -410,6 +472,15 @@ def _routing_constraints(
 def infer_question_targets(question: str, route_meta: dict | None = None) -> dict[str, object]:
     """Infer likely topic/group/symptoms a question is targeting."""
     from src.bdi_mapper import BDI_QUESTION_BANK, get_symptom_by_index
+
+    if route_meta and route_meta.get("phase") == "bank_followup":
+        return {
+            "topic": str(route_meta.get("topic", "") or ""),
+            "group": str(route_meta.get("group", "") or ""),
+            "symptoms": list(route_meta.get("symptoms", []) or []),
+            "phase": "bank_followup",
+            "screen_group": str(route_meta.get("screen_group", "") or ""),
+        }
 
     bank_meta = interview_banks.match_screen_or_drilldown_meta(question)
     if bank_meta:

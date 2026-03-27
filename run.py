@@ -52,6 +52,12 @@ def main() -> None:
         help="Use mock persona (no GPU/HF needed).",
     )
     parser.add_argument(
+        "--keyword-mock",
+        action="store_true",
+        help="With --mock: use deterministic keyword replies instead of DeepSeek (no API). "
+        "If omitted and DEEPSEEK_API_KEY is set, mock personas use AI-generated replies.",
+    )
+    parser.add_argument(
         "--manual",
         action="store_true",
         help="Mark as manual run (prefix filenames with manual_).",
@@ -162,7 +168,11 @@ def main() -> None:
         for pid in persona_ids:
             mode_str = f" ({MOCK_PERSONA_MODES[pid - 1]})" if args.mock and 1 <= pid <= 8 else ""
             print(f"Run {run_id} | Persona {pid}{mode_str}...", flush=True)
-            persona = get_persona_client(pid, use_mock=args.mock)
+            persona = get_persona_client(
+                pid,
+                use_mock=args.mock,
+                use_ai_mock=not args.keyword_mock,
+            )
             conv, bdi_score, key_symptoms = run_conversation(
                 persona,
                 str(pid),

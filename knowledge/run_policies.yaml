@@ -20,6 +20,7 @@ default:
   symptom_drilldown_enabled: true
   min_questions_per_group_screen: 3
   max_drilldown_questions_total: 24
+  bank_followup_enabled: true
 
 run1:
   name: balanced
@@ -39,6 +40,7 @@ run1:
   symptom_drilldown_enabled: true
   min_questions_per_group_screen: 3
   max_drilldown_questions_total: 24
+  bank_followup_enabled: true
 
 run2:
   name: high_recall
@@ -59,6 +61,7 @@ run2:
   symptom_drilldown_enabled: true
   min_questions_per_group_screen: 3
   max_drilldown_questions_total: 24
+  bank_followup_enabled: true
 
 run3:
   name: high_precision
@@ -79,3 +82,4 @@ run3:
   symptom_drilldown_enabled: true
   min_questions_per_group_screen: 3
   max_drilldown_questions_total: 24
+  bank_followup_enabled: true

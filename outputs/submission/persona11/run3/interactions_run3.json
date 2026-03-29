@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "11",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I’m okay, I guess. Just a bit tired. I haven’t been sleeping well, and I think it’s catching up with me."
+      },
+      {
+        "role": "user",
+        "message": "How long has the tiredness been affecting your day?"
+      },
+      {
+        "role": "assistant",
+        "message": "About a week, maybe two? I get through the morning, but by lunchtime, I just want to go back to bed."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I sit down to do my work, and my mind just starts to wander. It’s like I’m reading a sentence, but I have no idea what it says."
+      },
+      {
+        "role": "user",
+        "message": "How long does it usually take before your mind starts to wander like that?"
+      },
+      {
+        "role": "assistant",
+        "message": "Usually just a few minutes. It’s like my brain just hits a wall and stops."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I wake up a lot, usually around 2 or 3 am, and then I just lie there. It’s like I’m waiting for something to happen, but I don't know what."
+      },
+      {
+        "role": "user",
+        "message": "When you're lying awake at that hour, what kinds of thoughts or feelings come up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just worries, mostly. I worry I'm not doing enough, or that I’m wasting my time. It’s stupid, I know, but it’s hard to quiet my brain sometimes."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I haven't had the energy for much. I usually just sit and scroll through my phone until I fall asleep."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like too much effort to do the things you usually enjoy?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few months, maybe? It’s like I used to love reading or watching movies, but now it just feels like a chore."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't really know. I just try to get through the next day and then worry about the next one later."
+      },
+      {
+        "role": "user",
+        "message": "Does it feel like each day is something you have to push through?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. It feels like I’m just going through the motions, waiting for something to change or for my energy to come back."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a lot. I just want to pick the easiest option usually. I don't have the energy to weigh all the possibilities."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like too much effort to weigh your options?"
+      },
+      {
+        "role": "assistant",
+        "message": "About the same amount of time, I think. It’s like I used to be able to decide what to wear in the morning, and now it takes me 20 minutes just to pick a shirt."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, definitely not. I have to pace myself just to get through the day."
+      },
+      {
+        "role": "user",
+        "message": "What does pacing yourself look like on a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I take a lot of breaks. I sit down for 15 minutes, then get up and do something else. It helps, but it feels like I’m just putting off the inevitable crash later."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "A little, but not as much. I used to love my history course, but now it just feels like a chore."
+      },
+      {
+        "role": "user",
+        "message": "What's something else that used to bring you joy but now feels like a chore?"
+      },
+      {
+        "role": "assistant",
+        "message": "Probably just seeing my friends. I love them, but I just can't keep up the conversation anymore."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I just wish I could be more normal, you know? Like I’m not tired all the time."
+      },
+      {
+        "role": "user",
+        "message": "What does being \"normal\" look like to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just being able to get through the day without feeling like I’m running on empty."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I’m just... frustrated. I want to be able to do more, but I can’t even make it through a day without wanting to go to bed."
+      },
+      {
+        "role": "user",
+        "message": "What's stopping you from doing the things you want to do?"
+      },
+      {
+        "role": "assistant",
+        "message": "My energy, mostly. I just get tired, and then I’m useless for the rest of the day."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s been okay, I guess. I eat when I can, but I’m not really hungry most of the time."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in your weight because of that?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit, maybe. I’ve lost a few pounds, but I don't really care."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, sorry. I get a little overwhelmed sometimes, and then I just... snap."
+      }
+    ]
+  }
+]

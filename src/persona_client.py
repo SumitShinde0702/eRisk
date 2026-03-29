@@ -296,7 +296,7 @@ class LoRAPersonaClient(PersonaClient):
 
         self.base_model = AutoModelForCausalLM.from_pretrained(
             base_model_id,
-            torch_dtype=torch_dtype,
+            dtype=torch_dtype,
             device_map=None,
             low_cpu_mem_usage=False,
         )
@@ -324,10 +324,12 @@ class LoRAPersonaClient(PersonaClient):
         ).to(self._device)
 
         with torch.no_grad():
+            # Avoid max_length from model.generation_config clashing with max_new_tokens (HF warning).
             outputs = self.model.generate(
                 input_ids=inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
                 max_new_tokens=256,
+                max_length=None,
                 eos_token_id=self.terminators,
                 pad_token_id=self.tokenizer.eos_token_id,
                 do_sample=True,

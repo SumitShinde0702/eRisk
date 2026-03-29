@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "1",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit off. I get tired easily, and sometimes my concentration drifts. But I have no idea what is causing it."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been feeling this tiredness and lack of focus?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a month or so? It started when I finished uni and didn't have as much structure in my days."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I sit down to work on a project and I end up scrolling through social media for an hour."
+      },
+      {
+        "role": "user",
+        "message": "How often would you say that happens when you try to start a task?"
+      },
+      {
+        "role": "assistant",
+        "message": "A lot. I mean, it's probably just me being lazy, but it is annoying."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty badly. I wake up a lot, especially in the middle of the night."
+      },
+      {
+        "role": "user",
+        "message": "How many times would you say you're waking up on a typical night?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know... a few times? It's hard to keep track."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I've been trying to apply for jobs, but it's hard to stay motivated when I'm tired all the time."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been feeling too tired to enjoy things?"
+      },
+      {
+        "role": "assistant",
+        "message": "Since I finished uni. I guess I just need to find a job already so I can get back to a normal routine."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just more of the same, probably. Trying to get a job, applying, and waiting to hear back."
+      },
+      {
+        "role": "user",
+        "message": "Does the waiting part make it hard to keep your spirits up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it is a bit. It feels like everyone else is moving forward and I'm just stuck in neutral."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Kind of. I find myself overthinking things, like what to eat for lunch."
+      },
+      {
+        "role": "user",
+        "message": "How often does that overthinking about small choices happen in a day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Probably a few times. It's annoying, but I guess it's just a side effect of being bored."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I feel like I should be doing more, but I just don't have the energy for it."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you should be doing more but can't?"
+      },
+      {
+        "role": "assistant",
+        "message": "Since I finished uni. I think I was just used to being busy with classes and now I'm not."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not as much. I used to love reading philosophy, but I haven't picked up a book in months."
+      },
+      {
+        "role": "user",
+        "message": "What's it like when you try to pick up a book now?"
+      },
+      {
+        "role": "assistant",
+        "message": "I get a few pages in and then I fall asleep."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the job situation. It's frustrating being stuck in this limbo, but I guess it's normal for a lot of people."
+      },
+      {
+        "role": "user",
+        "message": "What about the job situation feels most like being stuck to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the uncertainty. Not knowing if I'll get a job or when."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's just a bit of a mess. I wish I could figure out what I'm doing wrong, but I guess it takes time."
+      },
+      {
+        "role": "user",
+        "message": "What feels like the biggest part of the mess right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the lack of structure. No routine, no goals."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Good, I guess. I eat when I'm bored or stressed, so that's probably why."
+      },
+      {
+        "role": "user",
+        "message": "Does eating when you're bored or stressed feel different from your usual hunger?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it is. I just grab something to do something with my hands, not because I'm actually hungry."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I get frustrated sometimes, but I don't get angry or anything."
+      }
+    ]
+  }
+]

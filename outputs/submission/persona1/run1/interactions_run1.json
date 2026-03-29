@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "1",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit off. I get tired easily, and sometimes my concentration drifts. But I have no idea what is causing it."
+      },
+      {
+        "role": "user",
+        "message": "How long have you noticed it's been harder to focus?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a month or so? It started when I finished uni. I thought I'd just get used to the routine again, but it's been a bit of a struggle."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I can sit down to watch a movie and just zone out after five minutes."
+      },
+      {
+        "role": "user",
+        "message": "Has this been happening with other activities, like reading or working?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, everything. I try to read a book and I just can't get past the first page. It's weird."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I wake up in the middle of the night and can't go back to sleep."
+      },
+      {
+        "role": "user",
+        "message": "How long do you usually lie awake after waking up?"
+      },
+      {
+        "role": "assistant",
+        "message": "About an hour. Then I just get up and do something until I'm tired enough to sleep again."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I've been meaning to get back into playing guitar, but I haven't had the energy."
+      },
+      {
+        "role": "user",
+        "message": "What's been getting in the way of your energy for it?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just tiredness, I guess. I don't have any specific reason to pick up the guitar, so I just haven't bothered."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "More of the same. Just trying to get through it until something changes."
+      },
+      {
+        "role": "user",
+        "message": "What kind of change are you hoping for?"
+      },
+      {
+        "role": "assistant",
+        "message": "Something to give me a routine again. Maybe a job or something."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. Like deciding what to eat for dinner. It feels like a big deal, even though it's just food."
+      },
+      {
+        "role": "user",
+        "message": "How often does that feeling of a small choice feeling like a big deal happen?"
+      },
+      {
+        "role": "assistant",
+        "message": "A lot, honestly. It's probably just me being a bit dramatic."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, I don't. I usually crash after lunch."
+      },
+      {
+        "role": "user",
+        "message": "How long does that crash typically last?"
+      },
+      {
+        "role": "assistant",
+        "message": "Until dinner, usually. Then I can perk up a bit."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I used to love music, but now I just listen to it in the background. I don't really have the energy to go to shows or anything."
+      },
+      {
+        "role": "user",
+        "message": "When you listen to music now, does it still feel the same as it used to?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I used to be so into it, but now I just put it on and zone out."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the job situation, I guess. It's frustrating, but I don't know what else to do."
+      },
+      {
+        "role": "user",
+        "message": "What feels most frustrating about your job situation right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just being stuck in this limbo. I don't have a job, but I'm not a student anymore. It's weird."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit down, I guess. It's just weird to be 22 and not know what I'm doing."
+      },
+      {
+        "role": "user",
+        "message": "What feels weird about not knowing what you're doing?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just that I went to uni for three years and expected something more concrete at the end of it."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I'm eating more snacks than actual meals."
+      },
+      {
+        "role": "user",
+        "message": "How often would you say you're choosing snacks over meals?"
+      },
+      {
+        "role": "assistant",
+        "message": "Most days. I don't really have the energy to cook a proper lunch."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. I get annoyed easily."
+      }
+    ]
+  }
+]

@@ -1,0 +1,303 @@
+[
+  {
+    "LLM": "1",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit off. I get tired easily, and sometimes my concentration drifts. But I have no idea what is causing it."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been feeling this tiredness and lack of focus?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a month or so? It started when I finished uni and didn't have as much structure in my days."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I sit down to work on a project and I end up scrolling through social media for an hour."
+      },
+      {
+        "role": "user",
+        "message": "How often does that happen when you're trying to get something done?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty often. I try to tell myself it's just a phase, but it's annoying when I know I should be doing something else."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Bad. I wake up in the middle of the night and can't get back to sleep. Then I just lie there for ages."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been waking up like this?"
+      },
+      {
+        "role": "assistant",
+        "message": "Since the summer probably. I don't know why, maybe it's just the heat."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Just watching TV and hanging out with mates. Nothing too exciting."
+      },
+      {
+        "role": "user",
+        "message": "What kind of shows have you been watching?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just whatever is on Netflix. I've been through a lot of documentaries recently."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "More of the same, probably. I'll probably just be trying to find a job or something."
+      },
+      {
+        "role": "user",
+        "message": "Does \"more of the same\" feel pretty heavy to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit. It feels like I'm just drifting, but I don't know what else to do right now."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. I just sort of sit there and wonder what to do."
+      },
+      {
+        "role": "user",
+        "message": "How long do you usually find yourself sitting there, wondering?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a few minutes. Then I usually just decide on something, but it's annoying."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I'm always tired. I just try to get through it."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you've felt this way?"
+      },
+      {
+        "role": "assistant",
+        "message": "Since I finished uni. I guess it's just adjusting to not having a set routine anymore."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not as much. I used to love reading, but now I just don't have the time."
+      },
+      {
+        "role": "user",
+        "message": "What kind of books did you used to love reading?"
+      },
+      {
+        "role": "assistant",
+        "message": "History mostly. I don't know why I stopped."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the fact that I'm not doing anything I went to uni for. It feels like a waste."
+      },
+      {
+        "role": "user",
+        "message": "What would you like to be doing differently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Working, probably. Just something that uses my degree."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit frustrated. I feel like I'm just drifting and I don't know how to get back on track."
+      },
+      {
+        "role": "user",
+        "message": "What does being \"back on track\" look like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just having a job, you know? Something to do with my degree."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Okay, I guess. I eat when I'm hungry, but I'm not really thinking about food all the time."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any change in how often you feel hungry?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I just eat when I need to."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit. I get annoyed with small things, but I try to just calm down."
+      },
+      {
+        "role": "user",
+        "message": "What are some of the small things that tend to annoy you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just people not listening or being slow. Stuff like that."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'heavy and slow' or 'drained after little effort'?"
+      },
+      {
+        "role": "assistant",
+        "message": "I think it's more the latter. I just get annoyed easily, then I realize it's nothing."
+      },
+      {
+        "role": "user",
+        "message": "When you realize it's nothing, what happens to your energy then?"
+      },
+      {
+        "role": "assistant",
+        "message": "It goes back up, mostly. I just take a deep breath and move on."
+      },
+      {
+        "role": "user",
+        "message": "Does rest actually help, or are you still flat afterward?"
+      },
+      {
+        "role": "assistant",
+        "message": "Rest helps a bit, but I'm still tired. I guess it's just the way things are right now."
+      },
+      {
+        "role": "user",
+        "message": "How long has this been the way things are for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Since I finished uni, probably."
+      },
+      {
+        "role": "user",
+        "message": "Is the problem falling asleep, staying asleep, waking too early, or sleeping too much?"
+      },
+      {
+        "role": "assistant",
+        "message": "Waking up in the middle of the night."
+      },
+      {
+        "role": "user",
+        "message": "How often does that happen?"
+      },
+      {
+        "role": "assistant",
+        "message": "Most nights, I guess."
+      },
+      {
+        "role": "user",
+        "message": "How many nights a week is it like that?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know, five or six."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what those nights are like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just lying there, awake. I try to go back to sleep, but it takes a while."
+      },
+      {
+        "role": "user",
+        "message": "Even after sleep, do you wake up already tired?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, pretty much. I wake up tired and stay tired."
+      },
+      {
+        "role": "user",
+        "message": "How long has that tired feeling lasted into your day?"
+      },
+      {
+        "role": "assistant",
+        "message": "All day, usually."
+      },
+      {
+        "role": "user",
+        "message": "Does fatigue hit you in waves or stay steady all day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's steady, mostly."
+      },
+      {
+        "role": "user",
+        "message": "When you say \"mostly,\" are there times when it feels a bit different?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, when I'm doing something I like, I can push through the tiredness a bit."
+      },
+      {
+        "role": "user",
+        "message": "When you picture the future, does anything feel workable, or mostly closed off?"
+      },
+      {
+        "role": "assistant",
+        "message": "Mostly closed off."
+      }
+    ]
+  }
+]

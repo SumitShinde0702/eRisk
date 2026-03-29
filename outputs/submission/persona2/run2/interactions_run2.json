@@ -1,0 +1,327 @@
+[
+  {
+    "LLM": "2",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I’m fine, just a bit tired. I work a lot, so I don't get as much rest as I should."
+      },
+      {
+        "role": "user",
+        "message": "How has being tired affected the things you usually enjoy?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not too much, really. I still watch TV after dinner, but I might doze off a bit faster than usual."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I get a bit distracted easier now. I just try to take breaks and get back to it."
+      },
+      {
+        "role": "user",
+        "message": "How long do those breaks usually need to be before you can refocus?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a few minutes. I can usually get back to it pretty quickly."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been okay. I wake up a bit in the night sometimes, but it doesn't bother me too much."
+      },
+      {
+        "role": "user",
+        "message": "How many times would you say you wake up on a typical night?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe once or twice? It's nothing too crazy."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I went to a concert last weekend. It was a lot of fun."
+      },
+      {
+        "role": "user",
+        "message": "What kind of music was it?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a local band. They were pretty good, though!"
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the usual stuff. Work, work, work. Maybe I'll take a weekend trip or something, but nothing too big."
+      },
+      {
+        "role": "user",
+        "message": "Does the idea of that weekend trip feel like something you're genuinely looking forward to, or more like something you feel you should do?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit of both, probably. I like the idea of it, but I'm also just trying to get out of the house for a bit."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a bit. I overthink things sometimes. But I just try to tell myself it doesn't matter that much and move on."
+      },
+      {
+        "role": "user",
+        "message": "When you overthink, what kind of things tend to get stuck in your mind?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just little things like what to eat for lunch. I'll look at a menu for 10 minutes deciding."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I do. I just might be a bit more tired than usual."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me a bit more about what \"a bit more tired than usual\" feels like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a bit more heavy, I guess. I still get things done, but I might not be as bouncy as usual."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, totally. I just might not have as much time for them right now."
+      },
+      {
+        "role": "user",
+        "message": "What's one thing you wish you had more time for right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just to relax more, I think. I'm always doing something."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just work stuff. It's a bit stressful, but it's not anything I can really change."
+      },
+      {
+        "role": "user",
+        "message": "What about the work stress makes it feel unchangeable to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the fact that it's my job, I guess. I have to do it."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been okay. Just a bit of a slog, but it's normal."
+      },
+      {
+        "role": "user",
+        "message": "What makes it feel like a slog lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the daily grind, I guess. It's the same thing every day."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been good. I eat fine."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in what you're craving lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. Just the usual stuff."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a bit. I get frustrated with traffic sometimes."
+      },
+      {
+        "role": "user",
+        "message": "What else tends to bring out that frustration for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just small things like when my internet is slow. It's just annoying."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel physically restless or on edge in your body?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I just get a bit snappish sometimes."
+      },
+      {
+        "role": "user",
+        "message": "When you feel snappish, do you notice any tension in your body?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a bit in my shoulders. I just roll them back and it goes away."
+      },
+      {
+        "role": "user",
+        "message": "Is it worse when you have to sit still or wait?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. When I'm waiting in line, I get a bit fidgety."
+      },
+      {
+        "role": "user",
+        "message": "Does that fidgeting feel like a physical restlessness you can't control?"
+      },
+      {
+        "role": "assistant",
+        "message": "Kind of. I just pace back and forth until I can leave."
+      },
+      {
+        "role": "user",
+        "message": "When you need to choose, do you get stuck or go back and forth?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. I'll scroll through my phone for 10 minutes deciding what to watch."
+      },
+      {
+        "role": "user",
+        "message": "Does that kind of hesitation happen when you're making bigger decisions, too?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not usually. Just little things."
+      },
+      {
+        "role": "user",
+        "message": "Does even a simple choice feel like too much sometimes?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a bit. I'll look at a menu and be like, 'Ugh, I don't know what to eat.'"
+      },
+      {
+        "role": "user",
+        "message": "Does that feeling of not knowing what to eat happen with other everyday choices, too?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not usually. It's just food."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'heavy and slow' or 'drained after little effort'?"
+      },
+      {
+        "role": "assistant",
+        "message": "More heavy and slow, I think. I just feel like I'm moving through molasses."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like moving through molasses?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a few weeks, I guess. It's nothing new."
+      },
+      {
+        "role": "user",
+        "message": "Does rest actually help, or are you still flat afterward?"
+      },
+      {
+        "role": "assistant",
+        "message": "It usually helps a bit. I just feel a bit more tired than usual, but I can still do stuff."
+      },
+      {
+        "role": "user",
+        "message": "How long does that bit of extra tiredness usually last?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a few hours. I'm fine by evening."
+      },
+      {
+        "role": "user",
+        "message": "Is the problem falling asleep, staying asleep, waking too early, or sleeping too much?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just waking up a bit in the night. It doesn't keep me up long, though."
+      },
+      {
+        "role": "user",
+        "message": "What part of that has been the hardest for you day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just getting out of bed. It takes a bit longer than usual."
+      },
+      {
+        "role": "user",
+        "message": "How many nights a week is it like that?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe three or four."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what those nights are like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's just annoying, I guess. I'll just get up and do something quiet until I can fall back asleep."
+      }
+    ]
+  }
+]

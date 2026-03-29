@@ -1,0 +1,239 @@
+[
+  {
+    "LLM": "11",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I’m okay, I guess. Just a bit tired. I haven’t been sleeping well, and I think it’s catching up with me."
+      },
+      {
+        "role": "user",
+        "message": "How long has the tiredness been affecting your day?"
+      },
+      {
+        "role": "assistant",
+        "message": "About a week, maybe two? I get through the morning, but by lunchtime, I just want to go back to bed."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I sit down to do my work, and my mind just starts to wander. It’s like I’m reading a sentence, but I have no idea what it says."
+      },
+      {
+        "role": "user",
+        "message": "How long does it usually take before you notice your mind starting to wander like that?"
+      },
+      {
+        "role": "assistant",
+        "message": "Usually around 20 minutes. It’s like my brain just hits a wall."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s been pretty bad. I wake up a lot during the night, and then I just lie there."
+      },
+      {
+        "role": "user",
+        "message": "How long do you usually lie awake when you wake up?"
+      },
+      {
+        "role": "assistant",
+        "message": "About an hour or two, sometimes three. I just can’t seem to get back to sleep."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I tried to read a book last night, but I couldn’t focus on it. I think I’m just too tired to enjoy anything."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt too tiring to enjoy things?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few weeks, maybe? It’s been a while since I just sat back and enjoyed a movie or something."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just try to get through the days. I guess I’m hoping things will get better, but I don't really see how they will."
+      },
+      {
+        "role": "user",
+        "message": "What would need to change for you to start seeing how things could get better?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. Maybe if I got more sleep? But even then, I don’t know if I’d be able to get the energy to do much with it."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I usually just sit there for a while, thinking about it, before I decide to do anything. It’s like my brain is just moving really slow."
+      },
+      {
+        "role": "user",
+        "message": "How long would you say you typically sit there before you can decide?"
+      },
+      {
+        "role": "assistant",
+        "message": "Like 10, 15 minutes? Sometimes more. I just stare at the screen, trying to decide what to do, and I get nothing done."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I usually get through it, but I’m exhausted by the end of it."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you've felt this exhausted by the end of the day?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few months? Maybe longer. I used to be able to go out with friends or help my parents, but now I just go home and sleep."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I still want to do them, but I just don't have the energy."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things feel too tiring to start?"
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I used to love reading, but even that takes too much effort now."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just feel like I’m stuck in this rut and I don't know how to get out of it."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what feeling stuck is like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s like I’m just going through the motions. I look at my life and I think, \"This isn't it. I'm supposed to be doing more.\" But I don't know what that is or how to get there."
+      },
+      {
+        "role": "user",
+        "message": "When did this sense of emptiness start feeling this strong?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess it started a few months ago. I just feel like I'm just waiting for something to happen, but I have no idea what that is."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just feel... flat. Like I'm just existing, not really living."
+      },
+      {
+        "role": "user",
+        "message": "When you say you're just existing, does that feeling connect to anything you feel you should be doing differently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I feel like I’m not doing what I’m supposed to be doing, but I don't know what that is or how to get there."
+      },
+      {
+        "role": "user",
+        "message": "When you say this will end soon, are you talking about ending your life?"
+      },
+      {
+        "role": "assistant",
+        "message": "I... I don't know. I didn't mean it like that. I just mean that I know I’m not going to feel this way forever, but I don’t know how to get out of it right now."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been pretty low. I eat, but I don't really taste anything."
+      },
+      {
+        "role": "user",
+        "message": "Has the lack of taste made you less interested in eating?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I just sit there, and then I think, \"Oh, I forgot to eat.\""
+      },
+      {
+        "role": "user",
+        "message": "What parts of life feel most difficult or empty lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I look at my life, and I just think, \"This isn't it. I'm supposed to be doing more.\""
+      },
+      {
+        "role": "user",
+        "message": "How do you see the next few weeks unfolding for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. I just try to get through the days. I guess I’m hoping things will get better, but I don't really see how they will."
+      },
+      {
+        "role": "user",
+        "message": "How much of this feels like giving up versus feeling exhausted?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. I guess it’s a mix of both. I feel like I’m just too tired to keep pushing forward, but I also feel like I’m just... done."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like people would be better off without you, or is it more that you feel stuck?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just feel like I’m just holding everyone back."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I get really upset about little things, like if someone is late or if I spill something."
+      }
+    ]
+  }
+]

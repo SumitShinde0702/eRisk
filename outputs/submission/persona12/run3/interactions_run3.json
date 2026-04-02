@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "12",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have been really tired. I used to be able to get up and go, but now I just feel like I am dragging myself through the day."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you felt like you could get up and go?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been a few years now. I used to work full-time, but I had to stop because I just couldn't keep up."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I sit down to watch TV, and I can't even follow the plot. I just find myself staring at the screen, but I don't know what's going on."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you could comfortably follow a TV show?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months. It used to be my favorite thing to do, but now I can't even stay awake long enough to finish an episode."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't sleep much. I wake up a lot during the night, and when I do, I just lie there."
+      },
+      {
+        "role": "user",
+        "message": "How long do you usually lie awake when you wake up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Hours. Sometimes I don't even get out of bed until the sun is up."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I used to love gardening, but I haven't been able to get out there in ages. I just miss doing things that make me happy, you know?"
+      },
+      {
+        "role": "user",
+        "message": "What's kept you from getting out to the garden?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the energy. I used to love being in the sun, but now it just makes me tired."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "More of the same, I suppose. Just trying to get through the days without too much pain."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes the days feel like something to just get through?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's just the exhaustion. I don't know what's wrong with me, but I just can't seem to get out of this fog."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I look at the calendar, and I just can't decide what to do. It sounds silly, but I used to be able to plan a whole day, and now I can't even decide what to eat for breakfast."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you could easily plan your day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Years. It used to be my thing, keeping everything organized. Now I just have to get through the day without losing my train of thought."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I used to be the one who kept everyone going, and now I'm just... nothing."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you've gone from keeping everyone going to feeling this way?"
+      },
+      {
+        "role": "assistant",
+        "message": "A long time. I just feel like I've lost the person I used to be."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I used to love reading, but I haven't picked up a book in years."
+      },
+      {
+        "role": "user",
+        "message": "What else that you used to enjoy feels different now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I used to love music, but I haven't listened to a single song in months."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "My energy levels. I wish I could just wake up feeling normal again."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like your energy hasn't been normal?"
+      },
+      {
+        "role": "assistant",
+        "message": "Years. It's just... I used to be the one who kept everyone going, and now I'm just... nothing."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just feel like I've lost my life."
+      },
+      {
+        "role": "user",
+        "message": "What feels like it's been lost?"
+      },
+      {
+        "role": "assistant",
+        "message": "My identity. I used to be the person who made things happen, and now I'm just... there."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's terrible. I eat because I have to, but I have no appetite for the things I used to love."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in your weight because of this?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I've lost a lot of weight, and it's just... I don't know how to stop it."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I cry a lot. It's just... I don't know what's wrong with me."
+      }
+    ]
+  }
+]

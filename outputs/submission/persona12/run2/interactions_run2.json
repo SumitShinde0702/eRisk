@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "12",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have been really tired. I used to be able to get up and go, but now I just feel like I am dragging myself through the day."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you felt like you could get up and go?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been a few years now. I used to work full-time, but I had to stop because I just couldn't keep up."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I sit down to watch TV, and I can't even follow the plot. I just find myself staring at the screen, but I don't know what's going on."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you could comfortably follow a TV show?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months. It used to be my favorite thing to do, but now I can't even stay awake long enough to finish an episode."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't sleep much. I wake up a lot during the night, and when I do, I just lie there."
+      },
+      {
+        "role": "user",
+        "message": "When you wake up during the night, what kinds of thoughts or feelings come to mind?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just worries, mostly. I lie there thinking about bills and money, and I just can't seem to shut my brain off."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I used to love gardening, but I haven't been able to get out there in months. I miss it, but I just don't have the energy."
+      },
+      {
+        "role": "user",
+        "message": "What's been making it hard to find the energy for things like gardening?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I used to be so active, but now I just feel like I am running on empty all the time."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just more of the same, I suppose. I will probably just sit around the house, trying to find the energy to do something, but mostly just feeling tired."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things do you wish you had the energy for?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just normal things. I look at my friends on Facebook, and they are all out doing things, and I just feel so left out."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, it is really hard. I look at a menu, and there are just so many options, and I can't seem to decide on anything."
+      },
+      {
+        "role": "user",
+        "message": "How long does it usually take you to finally choose something from the menu?"
+      },
+      {
+        "role": "assistant",
+        "message": "A long time. I usually end up just ordering the same thing every time because it is the easiest option."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I used to be able to get everything done, but now I just feel like I am barely keeping my head above water."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you're just barely keeping up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Years. It feels like I've been running on empty for years, just going through the motions."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "I used to love reading, but I haven't picked up a book in months. I just don't have the energy to focus on anything anymore."
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about that feeling of not having the energy to focus?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's just like my brain is foggy. I look at a page, and the words just blur together, and I can't seem to make sense of anything."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "My husband. He passed away a few years ago, and I wish I could turn back time and be there for him."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you could have done something differently back then?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I regret not telling him how much I loved him more often."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sad. I miss him so much, and I just wish I could turn back time and be the wife he deserved."
+      },
+      {
+        "role": "user",
+        "message": "What do you wish you had done differently as a wife?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just that I had been more present for him. I was so busy working, and I didn't appreciate him enough when he was still here."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's terrible. I used to love cooking, but now I just can't seem to eat much of anything."
+      },
+      {
+        "role": "user",
+        "message": "Has your enjoyment of cooking changed along with your appetite?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, completely. I used to love making dinner for my family, but now I just can't be bothered to stand in the kitchen."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, a lot. I cry a lot, mostly at night, just thinking about him and how much I miss him."
+      }
+    ]
+  }
+]

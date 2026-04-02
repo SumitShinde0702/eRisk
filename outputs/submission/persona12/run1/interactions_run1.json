@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "12",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have been really tired. I used to be able to get up and go, but now I just feel like I am dragging myself through the day."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you've felt like you could get up and go?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months, maybe a year? It started after my mum passed away. I think I just stopped living, you know?"
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it is. I sit there trying to watch TV, but I just can't follow the plot. I end up just staring at the screen, feeling like my brain has gone foggy."
+      },
+      {
+        "role": "user",
+        "message": "How long does that foggy feeling usually last when you're trying to focus?"
+      },
+      {
+        "role": "assistant",
+        "message": "It just stays. It’s like I am stuck in this cloud, and I can’t find my way out."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not at all. I just lie there, thinking about the past, and I never seem to get the rest I need."
+      },
+      {
+        "role": "user",
+        "message": "How long has this been happening?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months, I suppose. It started when my mum passed away, and it just never really went away."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I used to love gardening, but I haven't touched it in ages. I just can't seem to find the energy to do anything that used to bring me joy."
+      },
+      {
+        "role": "user",
+        "message": "What's it like when you think about starting something like gardening now?"
+      },
+      {
+        "role": "assistant",
+        "message": "It sounds like too much work. I look at the garden and I just feel guilty that I haven't been able to keep it up."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "More of the same, I suppose. Just existing. I don't really see a way out of it."
+      },
+      {
+        "role": "user",
+        "message": "What does \"just existing\" feel like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "It feels like I am just going through the motions. I am not really living."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, I find it really hard to decide what to eat for dinner, let alone anything bigger."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been a struggle to choose something like dinner?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months, I think. Ever since my mum died, I have just felt so lost."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, I don't. I am always tired."
+      },
+      {
+        "role": "user",
+        "message": "How long has this tiredness been affecting your daily routine?"
+      },
+      {
+        "role": "assistant",
+        "message": "It started after my mum passed away."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, I have lost interest in everything."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like nothing holds your interest?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months. I used to be the one who kept things going, but now I just don't have the energy."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "I wish I could turn back the clock. I miss her so much."
+      },
+      {
+        "role": "user",
+        "message": "Who is the 'her' you miss?"
+      },
+      {
+        "role": "assistant",
+        "message": "My mum."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I am sorry."
+      },
+      {
+        "role": "user",
+        "message": "What are you sorry for?"
+      },
+      {
+        "role": "assistant",
+        "message": "For not being the person I used to be."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't eat much."
+      },
+      {
+        "role": "user",
+        "message": "Has that been a recent change for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes, since my mum passed away."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yes. I just miss her so much."
+      }
+    ]
+  }
+]

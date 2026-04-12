@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "15",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I have been feeling pretty tired lately. I wake up in the middle of the night and can't go back to sleep."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you've felt rested after waking up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Months, maybe? It feels like I've been running on empty for a long time."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I get distracted easily. I'll be in a meeting and suddenly I'm thinking about something else."
+      },
+      {
+        "role": "user",
+        "message": "How often does that happen during meetings?"
+      },
+      {
+        "role": "assistant",
+        "message": "It happens a lot, to be honest. I try to stay engaged, but my mind starts to wander."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not well. I wake up a lot, and I usually don't fall back asleep until morning."
+      },
+      {
+        "role": "user",
+        "message": "How many times would you say you're waking up in a typical night?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe five or six times? I don't know, it feels like a lot."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I used to like hiking, but I haven't done that in a while. I just don't have the energy for it lately."
+      },
+      {
+        "role": "user",
+        "message": "How long has it felt like you've been without that energy for things you used to enjoy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess a year? Maybe longer. It just feels like I'm stuck in neutral lately."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. It feels like I'm just going through the motions. I guess I'll just keep showing up and trying to get through each day."
+      },
+      {
+        "role": "user",
+        "message": "What does \"just going through the motions\" look like for you on a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just sit there. I look at the screen, but I don't really see anything. I'm just waiting for the day to be over."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I find myself second-guessing everything. I used to be more decisive, but now I just get stuck."
+      },
+      {
+        "role": "user",
+        "message": "How long does that feeling of being stuck usually last?"
+      },
+      {
+        "role": "assistant",
+        "message": "Hours, maybe. Sometimes days. I guess I just freeze up until I have to do something."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I feel like I'm running on empty by lunchtime."
+      },
+      {
+        "role": "user",
+        "message": "What does \"running on empty\" feel like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Like I'm just going to crash. I have to sit down and rest for a bit before I can even think about getting back to work."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I used to love photography, but I haven't picked up the camera in months."
+      },
+      {
+        "role": "user",
+        "message": "What's kept you from picking up the camera lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I guess I just don't have the time or energy for it right now."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I guess I wish I could go back and make different choices."
+      },
+      {
+        "role": "user",
+        "message": "What kind of choices do you find yourself thinking about the most?"
+      },
+      {
+        "role": "assistant",
+        "message": "The big ones. I wish I could go back and fix some things that didn't work out."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I'm just disappointed. I thought things would get better by now, but they haven't."
+      },
+      {
+        "role": "user",
+        "message": "What were you hoping would be better by now?"
+      },
+      {
+        "role": "assistant",
+        "message": "My life. I guess I thought I would have figured things out by now."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I eat, but I don't really taste anything."
+      },
+      {
+        "role": "user",
+        "message": "Has this change in taste made you eat less than usual?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I guess I just don't have much interest in food lately."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I cry a lot, actually. I don't know why."
+      }
+    ]
+  }
+]

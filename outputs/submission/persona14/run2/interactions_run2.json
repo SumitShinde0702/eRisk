@@ -1,0 +1,231 @@
+[
+  {
+    "LLM": "14",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "Honestly? I’ve been really down. I used to love coming home to my apartment, but now it just feels empty. I don't know how to make it feel... right again."
+      },
+      {
+        "role": "user",
+        "message": "What do you think would help your apartment feel less empty?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I've tried cleaning, decorating... nothing sticks. I just end up sitting on the couch and staring at the walls. It’s like I’m just going through the motions."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I read a page in a book and I forget what I read. It's like my mind is just... wandering. I get frustrated because I can't even finish a sentence."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you could read a page and remember it easily?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know... a year? Maybe two? It used to be my favorite thing to do. Now it’s just hard."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Badly. I wake up in the middle of the night and just lie there. I can't turn my brain off. It's like I’m stuck in this... this limbo."
+      },
+      {
+        "role": "user",
+        "message": "How long do you usually lie awake once you wake up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Hours. Sometimes I get up and walk around, but mostly I just stare at the ceiling. I don't know how to make it stop."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing. I used to love hiking, but now it feels like too much work. I just... I don't know, I feel like I've lost my spark."
+      },
+      {
+        "role": "user",
+        "message": "When did you first notice that feeling of losing your spark?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know... it was gradual, I guess. I used to have plans for the future, but now... I don't know what I want. It feels like I'm just drifting."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just... I exist. I go through the motions, but there's no excitement, no joy. It’s just... dull."
+      },
+      {
+        "role": "user",
+        "message": "When you say it's just dull, what does that feel like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It feels... numb. Like I'm just a shell of who I used to be. I'm not living anymore. I'm just... existing."
+      },
+      {
+        "role": "user",
+        "message": "When did this sense of emptiness start feeling this strong?"
+      },
+      {
+        "role": "assistant",
+        "message": "I think it started after the breakup. We were together for a long time, and then... it just ended. I felt lost, like I didn't know who I was anymore. And I never found my way back."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. Like, what to eat for dinner? It feels like a huge choice. I get overwhelmed and just... I don't know, I usually just end up eating something bland."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since choosing something simple, like a meal, started to feel so overwhelming?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know... a year? Maybe two? It used to be easy. Now it’s just... exhausting."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I'm always tired. I get up, go through the motions, and then... I just want to go back to bed."
+      },
+      {
+        "role": "user",
+        "message": "How long has it been since you've felt this way?"
+      },
+      {
+        "role": "assistant",
+        "message": "A year. Maybe two. It just... it feels like it’s been going on forever."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "No. I don't know... I used to love music, but I haven't listened to a new album in months. I just... I don't have the energy for it."
+      },
+      {
+        "role": "user",
+        "message": "When you think about listening to music now, what comes to mind?"
+      },
+      {
+        "role": "assistant",
+        "message": "Nothing. I look at my phone, and I think, \"Why?\" It used to make me so happy, but now... it just feels like too much work."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I wish I could go back and... I don't know, fix things. Make different choices. But I can't. I just have to... deal with it."
+      },
+      {
+        "role": "user",
+        "message": "What's one choice you wish you could go back and make differently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I wish I had stayed in the relationship. It was bad, but at least it was something. Now... I have nothing."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I feel like I've failed. I had a life, and I let it slip away. I don't know how to fix it, so I just... I just sit here and wait for it to end."
+      },
+      {
+        "role": "user",
+        "message": "What does 'waiting for it to end' look like for you on a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It looks like me sitting on the couch, staring at the wall. Waiting for... something. I don't know what. I just want it to be over."
+      },
+      {
+        "role": "user",
+        "message": "What parts of life feel most difficult or empty lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Everything. I used to have a life, and now... I just have this emptiness."
+      },
+      {
+        "role": "user",
+        "message": "How do you see the next few weeks unfolding for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. I just... I'll keep existing, I guess. Until... until I don't."
+      },
+      {
+        "role": "user",
+        "message": "How much of this feels like giving up versus feeling exhausted?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s both. I’m exhausted, but I’m also just... done. I don't know how to keep going anymore."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like people would be better off without you, or is it more that you feel stuck?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don't know. Maybe they would be better off. I don't know how to fix this."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's... gone. I don't have any interest in eating. It just feels like a waste of time."
+      },
+      {
+        "role": "user",
+        "message": "How long has eating felt like a waste of time to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "A year? Maybe two? I used to love food. Now... it just tastes like nothing."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "All the time. I cry over stupid things. Like a commercial. Or a song. It’s embarrassing."
+      }
+    ]
+  }
+]

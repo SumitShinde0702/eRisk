@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "17",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty good, mostly. Just a bit tired here and there, but that's just work and stuff. I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "How has that tiredness been affecting the things you usually enjoy?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not too much, really. I still like to go out with friends, but I might just sit out a bit more if we stay out late."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes, yeah. I'll be doing a task and just zone out for a second, but I snap back pretty quick."
+      },
+      {
+        "role": "user",
+        "message": "How often does that zoning out happen during a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not that often, maybe once or twice. It’s not like it’s a constant thing or anything."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty good, mostly. I get a full night’s sleep, so I don’t think it’s the sleep itself."
+      },
+      {
+        "role": "user",
+        "message": "What do you think might be affecting you, if not the sleep itself?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know, maybe just stress or work stuff. I’m trying to focus on the positive and not worry too much about it."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I went hiking last weekend. That was really nice. It was just what I needed to clear my head."
+      },
+      {
+        "role": "user",
+        "message": "What's it like when you get that feeling of clearing your head?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s like a weight lifts off, you know? I feel more focused and just more... me, I guess."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the usual stuff, work and chores. I’m sure I’ll get through it."
+      },
+      {
+        "role": "user",
+        "message": "Does \"just the usual\" feel heavy or draining to you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really, no. It’s just routine. I can handle it."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, I’m fine with that. I just weigh the pros and cons, and then I know what to do."
+      },
+      {
+        "role": "user",
+        "message": "Has that approach always worked for you, or have you noticed it taking longer lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s always worked, but maybe it takes a second longer now. I don’t mind, though."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I do. I might not be as energetic as I used to be, but I can handle my tasks."
+      },
+      {
+        "role": "user",
+        "message": "What tasks feel more tiring now than they used to?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the bigger ones, like paperwork. It feels like I’m spending more time on it, but I get it done."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I still like my hobbies and stuff. It’s just life is busier, so I don’t have as much time for it."
+      },
+      {
+        "role": "user",
+        "message": "What's one hobby you wish you had more time for right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Photography. I used to take my camera out all the time, but I haven't had the chance recently."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, I don't think so. Like I said, I'm just tired sometimes, but I'm managing."
+      },
+      {
+        "role": "user",
+        "message": "When you say you're managing, what does that look like on a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just get through it. I don't let it stop me from doing things. I just power through."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I think I’m doing all right. I'm just tired sometimes, but I'm handling it."
+      },
+      {
+        "role": "user",
+        "message": "What's been making you feel tired lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just work, I guess. I've been putting in some long hours, so that's probably it."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s been okay. I eat, but I don’t really notice if I’m eating more or less."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in what you feel like eating, or how food tastes to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I still like the same foods, so I haven’t noticed anything different."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, I don't get upset over little things. I'm pretty level-headed, so I don't think I’m getting emotional more often."
+      }
+    ]
+  }
+]

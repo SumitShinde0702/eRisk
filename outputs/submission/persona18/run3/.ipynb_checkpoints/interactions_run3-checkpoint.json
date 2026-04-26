@@ -1,0 +1,327 @@
+[
+  {
+    "LLM": "18",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "I’m fine, just a bit tired. I used to have more energy for social things, but now I prefer just to stay in and catch up on shows. It’s not a big deal, really."
+      },
+      {
+        "role": "user",
+        "message": "You mentioned you used to have more energy for social things—what changed that?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the wedding planning, I think. It’s a lot of work, and I’m happy to do it, but I’m definitely not bouncing off the walls like I used to."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. I have to make myself sit down and focus, otherwise I just get stuck scrolling through my phone."
+      },
+      {
+        "role": "user",
+        "message": "How long does it usually take before you can pull yourself away from your phone and get started?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe 10-15 minutes? It’s just a bit of a struggle to get going, but I manage eventually."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s been okay. I usually get a few hours, which is better than nothing, right? I just don’t get as much rest as I used to."
+      },
+      {
+        "role": "user",
+        "message": "How has your sleep been different from when you were getting more rest?"
+      },
+      {
+        "role": "assistant",
+        "message": "I wake up a bit more often, I guess. It’s not super bad, but it’s noticeable."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I went for a run yesterday. It was nice to get out and clear my head."
+      },
+      {
+        "role": "user",
+        "message": "What was it like to clear your head during the run?"
+      },
+      {
+        "role": "assistant",
+        "message": "It was fine. I just focused on my breathing and the route. It helped, but I didn’t really feel like I was \"clearing my head\" like I used to."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s going to be busy, but I’m managing. I’m just taking it one day at a time, really."
+      },
+      {
+        "role": "user",
+        "message": "What does \"managing\" look like for you on the tougher days?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just put on a face mask and watch a rom-com. It’s not a big deal, really."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a little. I have to think about it for a bit longer before I decide."
+      },
+      {
+        "role": "user",
+        "message": "Can you give me an example of a small decision that's been taking you longer lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Like choosing a tablecloth for the wedding. I was staring at the fabric for a long time deciding which one to pick. It’s silly, really."
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "I have enough to get through the day, but I'm not exactly bouncing off the walls like I used to."
+      },
+      {
+        "role": "user",
+        "message": "How does that energy level compare to a typical day a few months ago?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s definitely lower. I used to have so much energy and just go, go, go. Now I'm happy to just get through the day."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I just... enjoy them less, I guess. It’s not the same high as before."
+      },
+      {
+        "role": "user",
+        "message": "When you say it's not the same high—can you describe what changed?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just don't feel that rush of excitement when I start a project. It’s more like, \"Okay, let's get this done.\""
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the wedding planning, really. It's a lot to handle, and sometimes I wish I could just slow down."
+      },
+      {
+        "role": "user",
+        "message": "What part of the planning makes you wish you could just slow it all down?"
+      },
+      {
+        "role": "assistant",
+        "message": "The guest list. It’s a lot of work to keep everyone happy, and it feels like a big responsibility."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I'm fine, really. I'm just... a bit tired. It’s a normal part of life, I think."
+      },
+      {
+        "role": "user",
+        "message": "You mentioned feeling tired—does that ever make it harder to get through things you need to do?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes I have to drag myself out of bed, but once I'm up, I'm okay. It's just a bit of a struggle to get started, really."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s been fine. I eat what I need to, and I’m good."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any changes in your interest in food or the way food tastes lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not really. I still enjoy eating, but I don't get that same rush of excitement over trying new recipes."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a little. I get a bit teary over small things, but it’s not a big deal."
+      },
+      {
+        "role": "user",
+        "message": "Can you give me an example of a small thing that made you teary recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a silly thing, really. I saw a post about a friend’s new baby and got a bit choked up."
+      },
+      {
+        "role": "user",
+        "message": "When you try to do something you used to like, what happens in the moment?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just do it. It’s not as much fun as it used to be, but I know I'll enjoy the result, so I stick with it."
+      },
+      {
+        "role": "user",
+        "message": "You mentioned you stick with it because you know you'll enjoy the result—what does that enjoyment feel like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "It’s more of a sense of relief than excitement, really. I'm happy I did it, but I don't have that same buzz I used to get."
+      },
+      {
+        "role": "user",
+        "message": "Is it more 'not fun' or 'can't be bothered to start'?"
+      },
+      {
+        "role": "assistant",
+        "message": "More 'can't be bothered to start', I think. Once I'm in, I'm fine, but getting there is a bit of a struggle."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things are hardest to get started on?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the creative stuff, really. I used to love brainstorming and planning, but now it feels like a chore."
+      },
+      {
+        "role": "user",
+        "message": "Do you tear up or get choked up more easily than before?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. I get teary over small things, but it’s not a big deal."
+      },
+      {
+        "role": "user",
+        "message": "Can you give me an example of a small thing that recently made you tear up?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just seeing a post about a friend’s new baby. It was a nice moment, but I got a bit choked up."
+      },
+      {
+        "role": "user",
+        "message": "Is that mostly alone or around others too?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just alone, really. I don't want to be a downer in front of everyone."
+      },
+      {
+        "role": "user",
+        "message": "What is it about being around others that makes you hold back?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just don't want to be a burden. I know everyone's busy with their own things, so I just keep it to myself."
+      },
+      {
+        "role": "user",
+        "message": "What have you dropped or avoided lately that you wish you still did?"
+      },
+      {
+        "role": "assistant",
+        "message": "I used to go to yoga, but I haven't been in a while. It’s nice to have the time, but I’m just not really missing it."
+      },
+      {
+        "role": "user",
+        "message": "What do you think changed about how you feel toward yoga?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. I think I just got a bit tired of the same routine. It was fun, but it’s not a priority right now."
+      },
+      {
+        "role": "user",
+        "message": "Is it lack of interest or lack of energy — or both?"
+      },
+      {
+        "role": "assistant",
+        "message": "Maybe a bit of both? I don't have the same energy for it, and I don't really feel the urge to go."
+      },
+      {
+        "role": "user",
+        "message": "When you say you don't feel the urge, is that something new for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I guess so. I used to be super motivated to try new things. Now it’s more like, 'I'll get to it eventually.'"
+      },
+      {
+        "role": "user",
+        "message": "When you need to choose, do you get stuck or go back and forth?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit, yeah. It takes me a minute to decide. I just take my time and then pick something."
+      },
+      {
+        "role": "user",
+        "message": "Can you give me an example of a recent time when taking your time to decide felt frustrating?"
+      },
+      {
+        "role": "assistant",
+        "message": "I was trying to pick a new lipstick. I looked at like 10 options and just couldn’t decide. It was silly, really."
+      },
+      {
+        "role": "user",
+        "message": "Does even a simple choice feel like too much sometimes?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, it feels like a mountain sometimes. But I know it’s not that big a deal, so I just... *sigh*... I just get it over with."
+      },
+      {
+        "role": "user",
+        "message": "When you say you \"get it over with,\" what does that actually look like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "I just make the decision and then I'm done. I don't really dwell on it. It’s fine."
+      }
+    ]
+  }
+]

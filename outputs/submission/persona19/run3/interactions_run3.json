@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "19",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit tired, to be honest. I’ve been putting in a lot of overtime and it’s catching up with me. I just want to relax and recharge for a bit."
+      },
+      {
+        "role": "user",
+        "message": "What’s been the hardest part about not being able to recharge?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the little things, like cooking dinner. I usually love it, but lately, I just want to order takeout. It’s like I’m running on empty."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Definitely. I’ll be sitting at my desk, and my mind will just start wandering. I'll look at a report and think, 'I really should be doing that,' but I just can't seem to get started."
+      },
+      {
+        "role": "user",
+        "message": "How long does it usually take before you realize your mind has wandered off?"
+      },
+      {
+        "role": "assistant",
+        "message": "A minute or two. I catch myself staring at the wall, and I think, 'Okay, time to refocus.' But it’s hard to shake off."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I wake up in the middle of the night and can’t fall back asleep. I just lie there thinking about work and stressing about things that aren’t even my responsibility."
+      },
+      {
+        "role": "user",
+        "message": "How often does this happen each week?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few times. It’s like my brain is still going even when I’m trying to sleep."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not much, honestly. I keep saying I should go for a walk, but I just can’t find the energy. Maybe this weekend, though."
+      },
+      {
+        "role": "user",
+        "message": "What do you think stops you from having the energy to go for that walk?"
+      },
+      {
+        "role": "assistant",
+        "message": "I don’t know. Just feels like a big effort, you know? I’m more tired than I should be."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just more of the same, to be honest. Busy, tired, and trying to keep my head above water."
+      },
+      {
+        "role": "user",
+        "message": "What does \"keeping your head above water\" feel like for you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just trying to keep things together, you know? Not letting things get too out of control. It feels like a constant effort."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah. I’ll look at a recipe and think, 'I should really make that,' but then I just order takeout instead. It’s like I’m just going through the motions."
+      },
+      {
+        "role": "user",
+        "message": "When you say you're 'just going through the motions,' does that feeling of being on autopilot happen in other parts of your day too?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, pretty much all day. I just feel like I’m just getting through it, you know?"
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I’m just trying to get through it. I know I’m not functioning at my best, but I’m hoping it passes soon."
+      },
+      {
+        "role": "user",
+        "message": "How long have you been feeling like you're just trying to get through the day?"
+      },
+      {
+        "role": "assistant",
+        "message": "A few weeks, I guess. It’s been building up."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, I guess. I just don't have the energy to do them."
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things have you tried to do but felt too drained for?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just stuff around the house, really. I look at the paint I bought and think, 'I should really do that,' but I just can't find the motivation."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the general feeling that I’m stuck, I guess. I wish I could shake it off and be more motivated, but it feels like I’m just stuck in a rut."
+      },
+      {
+        "role": "user",
+        "message": "When you say you feel stuck in a rut, does that come with a sense of guilt about not being able to get out of it?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I look at friends who are doing amazing things and I’m just like, 'Why can’t I do that?' It’s hard not to compare myself and feel like I’m wasting my time."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I guess I just feel a bit disappointed. I thought I’d be further along by now, but I’m just not."
+      },
+      {
+        "role": "user",
+        "message": "What specifically feels like it hasn’t moved forward the way you hoped?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just my career, I guess. I feel like I’m just going through the motions."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not great. I've been eating a lot of junk food, which is not good."
+      },
+      {
+        "role": "user",
+        "message": "What's been making you reach for junk food instead of other options?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just exhaustion, I guess. I don't have the energy to cook or do anything healthy."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, a bit. I'll get annoyed at something stupid and just burst out laughing. It's not a good sign, I know."
+      }
+    ]
+  }
+]

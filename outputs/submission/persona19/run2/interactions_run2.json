@@ -1,0 +1,191 @@
+[
+  {
+    "LLM": "19",
+    "conversation": [
+      {
+        "role": "user",
+        "message": "How have you been feeling lately, overall?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit tired, to be honest. I’ve been putting in a lot of overtime and it’s catching up with me. I just want to relax and recharge for a bit."
+      },
+      {
+        "role": "user",
+        "message": "What’s been the hardest part about not being able to recharge like you’d want?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the constant fatigue, I guess. I feel like I should be able to do more, but I just can’t. It’s frustrating, but I’m trying to be patient with myself."
+      },
+      {
+        "role": "user",
+        "message": "Is it harder to focus or concentrate than it used to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I’ll be sitting at my desk and suddenly think, \"Wait, what was I doing?\" It’s like my brain is just a bit foggy."
+      },
+      {
+        "role": "user",
+        "message": "How often does that foggy feeling happen during a typical day?"
+      },
+      {
+        "role": "assistant",
+        "message": "Pretty often, unfortunately. It’s just become normal for me, so I just roll with it."
+      },
+      {
+        "role": "user",
+        "message": "How have you been sleeping lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Okay, I guess. I wake up a bit groggy, but I get out of bed and go. It’s not ideal, but I’m managing."
+      },
+      {
+        "role": "user",
+        "message": "What time do you usually go to bed and wake up?"
+      },
+      {
+        "role": "assistant",
+        "message": "I usually get in around 11 or 12, and then I’m up by 7:30. It’s not the most ideal routine, but it works for now."
+      },
+      {
+        "role": "user",
+        "message": "Been doing anything you enjoy lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not as much as I’d like. I keep saying I should pick up my camera again, but I haven’t had the energy. Maybe this weekend, though."
+      },
+      {
+        "role": "user",
+        "message": "What do you think gets in the way when you think about picking up the camera?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the thought of getting out of the house, really. It feels like a big effort, even just to go to the park."
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "More of the same, probably. I just want to get through it and then have a proper break, you know?"
+      },
+      {
+        "role": "user",
+        "message": "What does 'getting through it' feel like for you right now?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a lot of tiredness, mostly. I feel like I’m just going through the motions, waiting for the weekend."
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "Yeah, definitely. I’ll be looking at something and think, \"I should do that,\" but then I just won’t. It’s like my brain is just saying, \"Nope, not today.\""
+      },
+      {
+        "role": "user",
+        "message": "Can you give me an example of a small decision where that \"nope, not today\" feeling stopped you?"
+      },
+      {
+        "role": "assistant",
+        "message": "Like trying a new recipe. I saw a picture and thought, \"I should make that,\" but then I just looked at the ingredients and thought, \"Too much effort.\""
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "No, not really. I just get to the end of the day and think, \"I did it, but I’m dead.\""
+      },
+      {
+        "role": "user",
+        "message": "What does a typical day look like for you when you're feeling that drained?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just a lot of sitting and staring. I’ll be at my desk and just think, \"Why am I doing this?\" It’s not the most fun."
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "I try to be, but it’s hard when I’m this tired. I just want to curl up with a book and not think about anything."
+      },
+      {
+        "role": "user",
+        "message": "What kind of books do you find yourself reaching for when you feel that way?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just easy stuff. Mysteries or romances. Nothing too heavy."
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just the feeling that I’m stuck, I guess. I look at my friends who are doing things they love and I think, \"Why can’t I do that?\""
+      },
+      {
+        "role": "user",
+        "message": "What do you think keeps you from doing what you love?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just my own doubts, probably. I worry that I’m too old to start over or that I’m just not good enough."
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit disappointed, to be honest. I thought I'd be further along by now."
+      },
+      {
+        "role": "user",
+        "message": "What specifically feels like it’s falling short of where you expected to be?"
+      },
+      {
+        "role": "assistant",
+        "message": "Just my career, I guess. I thought I'd be more successful or have a bigger impact."
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "It's been okay, I guess. I eat when I need to, but I don't really have the energy to cook anything nice."
+      },
+      {
+        "role": "user",
+        "message": "Have you noticed any change in your weight recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit, yeah. I've lost a bit of muscle, I think. I just feel tired all the time."
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "A bit, yeah. I get irritable over the smallest things. I just snap and then feel bad about it."
+      }
+    ]
+  }
+]

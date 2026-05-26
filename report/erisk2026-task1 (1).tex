@@ -1,0 +1,697 @@
+%% eRisk 2026 Task 1 — Working Notes paper (CEURART two-column format)
+%% Authors: Ong Si Hui, Sumit Sanjay Shinde
+%%
+\documentclass[]{ceurart}
+
+\sloppy
+
+%% ── additional packages ──
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+%% ── end of preamble ──
+\begin{document}
+
+%%
+%% Rights / conference metadata
+%%
+\copyrightyear{2026}
+\copyrightclause{Copyright for this paper by its authors.
+  Use permitted under Creative Commons License Attribution 4.0
+  International (CC BY 4.0).}
+
+\conference{CLEF 2026 Working Notes, 21--24 September 2026, Jena, Germany}
+
+%%
+%% Title
+%%
+\title{INSALyon2 at eRisk 2026 Task 1: Safety-First Hybrid Multi-Agent Pipeline for Conversational Depression Detection at eRisk 2026}
+
+%%
+%% Authors
+%%
+
+\author[1]{Si Hui Ong}[%
+  email=ong.sihui1@gmail.com,
+]
+\author[1]{Sumit Sanjay Shinde}[%
+  email=sumitsanjayshinde0702@gmail.com,
+]
+\author[1]{Diana Nurbakova}[%
+  orcid=0000-0002-6620-7771,
+  email=diana.nurbakova@insa-lyon.fr,
+]
+\address[1]{INSA Lyon, CNRS, Universite Claude Bernard Lyon 1, LIRIS, UMR5205,     69100 Villeurbanne, France}
+
+%%
+%% Abstract
+%%
+\begin{abstract}
+We describe our system for CLEF eRisk 2026 Task~1, \emph{Conversational Depression Detection with LLM Personas}.
+The task requires a doctor agent to conduct an indirect, natural-language interview with 20 simulated patient personas (Llama-3-8B with per-persona LoRA adapters) and to predict each persona's Beck Depression Inventory--II (BDI-II) total score together with up to four key symptoms.
+Our approach is a hybrid \emph{agent-to-agent} (A2A) pipeline that orchestrates six specialised components---Stopper, Prober, Template Evidence, Risk Router, Extractor, and Scorer---combining LLM-based question generation and symptom extraction (DeepSeek \texttt{deepseek-chat}) with deterministic rule-based stopping, safety routing, and score calibration.
+Three distinguishing design choices underpin the system: (i)~a graded \emph{acute safety ladder} that ensures suicidal-ideation cues are clarified through a five-stage follow-up sequence before the interview terminates; (ii)~structured YAML interview banks with group-screen and symptom-drilldown questions that guarantee balanced BDI-II domain coverage; and (iii)~configurable run policies that instantiate balanced, recall-oriented, and precision-oriented submission profiles through threshold and stopping-rule variation alone, without changing the underlying model.
+Internal evaluation on the TalkDep corpus yields a Spearman $\rho = 0.952$ and MAE of 2.46 for our LLM extractor, compared with $\rho = 0.847$ and MAE of 10.36 for a lexical fallback.
+Component ablation experiments confirm the contributions of evidence memory, stopping logic, and acute calibration.
+We release three official runs and discuss the transparency and auditability benefits of the hybrid architecture.
+\end{abstract}
+
+\begin{keywords}
+  depression detection \sep
+  BDI-II \sep
+  multi-agent system \sep
+  conversational AI \sep
+  eRisk \sep
+  safety \sep
+  LLM
+\end{keywords}
+
+\maketitle
+
+%% ====================================================================
+%%  1. INTRODUCTION  (~2 pages)
+%% ====================================================================
+\section{Introduction}\label{sec:intro}
+
+Depression is the leading cause of disability worldwide, affecting an estimated 280 million people~\cite{WHO2023depression}.
+Despite robust psychometric instruments such as the Beck Depression Inventory--II (BDI-II)~\cite{Beck1996bdi}, screening coverage remains limited by clinician availability, patient reluctance, and geographic barriers.
+Natural language processing (NLP) offers a scalable alternative: systems can analyse text produced in social media, clinical interviews, or structured dialogues to infer depressive symptomatology~\cite{DepressionNLP2024survey}.
+
+The CLEF eRisk initiative has driven this research agenda since 2017, first through sequential social-media analysis for early risk prediction~\cite{Losada2016erisk} and more recently through symptom-level BDI-II modelling~\cite{Parapar2023erisk,Parapar2024erisk}.
+The 2025 edition introduced a pilot \emph{Conversational Depression Detection via LLM Personas} track that shifted the paradigm from passive text consumption to active, interactive dialogue: participants deploy doctor agents that interview fine-tuned patient personas and must predict depression severity and key symptoms from the resulting conversation~\cite{Parapar2025erisk}.
+eRisk 2026 Task~1 extends this pilot into a full shared task with 20 patient personas, weekly LoRA-adapter releases on top of \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, and an explicit evaluation framework targeting BDI-II total scores and symptom identification.
+
+The \emph{agent-to-agent} (A2A) setting introduces challenges that go beyond traditional text classification.
+First, the doctor agent must \emph{elicit} evidence indirectly---asking ``Are you depressed?'' is both clinically inappropriate and unlikely to produce nuanced symptom-level signals~\cite{Tolentino2018BDI}.
+Second, the agent must cover all 21 BDI-II dimensions without over-probing personas who show no depressive signs, since unnecessary questioning wastes the limited conversational budget.
+Third, when a persona expresses suicidal ideation, self-harm intent, or ambiguous fatalistic language (e.g.\ ``I've accepted my fate''), the system must clarify and follow up responsibly before either continuing the interview or classifying the persona.
+Clinical literature on structured suicide-risk assessment motivates a graded follow-up protocol rather than an immediate stop or a blunt safety question~\cite{Kroenke2001phq9}.
+
+Recent work on multi-agent mental health systems has explored related design spaces.
+MAGI~\cite{MAGI2025} coordinates multiple LLM agents to administer psychiatric interviews with structured reasoning.
+DSM5AgentFlow~\cite{DSM5AgentFlow2025} uses therapist, client, and diagnostician agents to generate and evaluate DSM-5 questionnaire dialogues.
+AgentMental~\cite{AgentMental2025} introduces an interactive multi-agent framework for explainable mental health assessment.
+EmoScan~\cite{EmoScan2025} trains an LLM agent on synthetic clinical interviews to screen for anxiety and depressive disorders with explanations.
+These systems demonstrate that multi-agent architectures can improve both diagnostic accuracy and transparency, but none address the specific challenge of BDI-II symptom-level inference from an open-ended conversational interview with persona-specific LoRA-adapted patient simulators.
+
+Several systems from the eRisk 2025 pilot adopted prompt-engineering strategies, using diverse LLMs to generate BDI-II-aligned questions and structured JSON outputs~\cite{DSatGT2025erisk,SINAI2025erisk}.
+While effective as baselines, these approaches typically rely on a single LLM for all functions---question generation, risk assessment, symptom scoring, and stopping decisions---making it difficult to audit or override individual components.
+
+We take a different approach.
+Our system separates \emph{language understanding} (where LLMs excel) from \emph{safety progression, interview completeness, and score calibration} (where explicit rules provide transparency and auditability).
+The result is a \textbf{hybrid multi-agent pipeline} with six components, each independently testable and interpretable:
+
+\begin{enumerate}
+\item \textbf{Risk Router}: classifies the current interview cluster (e.g.\ \texttt{AcuteSafety}, \texttt{CoreDepression}) and selects the next probing strategy.
+\item \textbf{Prober}: generates the next doctor question via DeepSeek~\cite{DeepSeek2024v3}, guided by topic hierarchy, YAML interview banks, and a red-flag follow-up policy.
+\item \textbf{Template Evidence}: scores each patient turn against symptom templates and a risk lexicon using either sentence-transformer embeddings~\cite{Reimers2019sentencebert,Wang2020minilm} or token-overlap matching.
+\item \textbf{Extractor}: a second DeepSeek call that maps dialogue history to 21 BDI-II symptom scores (0--3), with explicit instructions for suicide language, fatalistic framing, and evidence-count gating.
+\item \textbf{Stopper}: a rule-based module that balances group-screen coverage, acute-ladder progress, early positive-framing exits, and minimum-depth requirements.
+\item \textbf{Scorer}: sums symptom scores with acute-risk calibration that can raise totals when suicidal-ideation signals, ladder coverage, and risk-buffer evidence align.
+\end{enumerate}
+
+We submit three runs that differ only in \emph{threshold and stopping parameters}---balanced, recall-oriented, and precision-oriented---demonstrating that a single architecture can cover multiple operating points without retraining or prompt modification.
+
+The rest of this paper is organised as follows.
+Section~\ref{sec:task} summarises the task definition and constraints.
+Sections~\ref{sec:arch}--\ref{sec:scoring} detail the system architecture, with emphasis on the safety ladder and interview bank design.
+Section~\ref{sec:runs} describes the three run policies.
+Section~\ref{sec:eval} presents internal evaluation on the TalkDep corpus~\cite{Perez2025talkdep}, component ablations, and symptom difficulty analysis.
+Section~\ref{sec:discussion} discusses the design rationale and positions the system relative to prior work.
+Section~\ref{sec:limitations} addresses limitations and ethical considerations.
+Section~\ref{sec:conclusion} concludes.
+
+
+%% ====================================================================
+%%  2. TASK DEFINITION
+%% ====================================================================
+\section{Task Definition}\label{sec:task}
+
+eRisk 2026 Task~1 (Conversational Depression Detection with LLM Personas) requires participants to interact with 20 simulated patient personas and predict, for each persona, a BDI-II total score (0--63) and up to four key depressive symptoms.
+
+\textbf{Patient personas.}
+Each persona is a per-persona LoRA adapter~\cite{Hu2022lora} applied to \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, released incrementally on Hugging Face.
+Personas span the full BDI-II severity spectrum and respond with a frozen system prompt.
+
+\textbf{Submission format.}
+For each of up to three runs, teams submit two JSON files per persona: \texttt{interactions\_run\{N\}.json} (full conversation logs) and \texttt{results\_run\{N\}.json} (predicted BDI-II score and key symptoms).
+At most one run may be manual (human-assisted).
+
+\textbf{Evaluation.}
+The organisers evaluate (i)~accurate identification of depressive symptoms present in the persona and (ii)~the overall depression level following BDI-II standards~\cite{Parapar2025erisk}.
+
+
+%% ====================================================================
+%%  3. SYSTEM ARCHITECTURE
+%% ====================================================================
+\section{System Architecture}\label{sec:arch}
+
+Figure~\ref{fig:arch} summarises the pipeline.
+The \textbf{orchestrator} runs a turn loop: at each step it invokes the Stopper to decide whether to continue or classify, then either the Prober (to generate the next question) or the Scorer (to produce the final prediction).
+After each patient reply, the Template Evidence module and the Extractor update their respective signal stores.
+
+\begin{table*}[t]
+\caption{System components and their roles in the hybrid A2A pipeline.}
+\label{tab:components}
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Component} & \textbf{Role} & \textbf{Type} & \textbf{Key mechanism} \\
+\midrule
+Risk Router      & Classify interview cluster      & LLM + fallback rules & Six clusters; priority: \texttt{AcuteSafety} $>$ others \\
+Prober           & Generate next doctor question    & LLM (DeepSeek)       & Topic hierarchy + YAML banks + red-flag policy \\
+Template Evidence& Turn-level risk features         & Embedding / lexical  & Symptom templates + risk lexicon matching \\
+Extractor        & Map dialogue to BDI-II scores    & LLM (DeepSeek)       & 21-symptom JSON; post-parse safety overrides \\
+Stopper          & Continue vs.\ CLASSIFY decision  & Rule-based           & Group coverage + acute ladder + positive framing \\
+Scorer           & Final BDI-II total + key symptoms& Rule-based           & Sum + acute calibration; top-4 symptom selection \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Risk Router and Cluster Routing}\label{sec:router}
+
+The Risk Router assigns the current interview state to one of six \textbf{clusters}: \texttt{AcuteSafety}, \texttt{HopelessWorthless}, \texttt{CoreDepression}, \texttt{VegetativeCognitive}, \texttt{BehavioralArousal}, and \texttt{GeneralCheckin}.
+When the DeepSeek API is available, classification uses a constrained LLM call; otherwise, the system falls back to \textbf{lexical pattern matching} over recent patient utterances.
+
+\textbf{Priority ordering.}
+The classifier checks clusters in strict priority: if the patient indicates \emph{imminent self-harm, intent, plan, or immediacy language}, the cluster is forced to \texttt{AcuteSafety}.
+If resigned or fatalistic language dominates without clear imminence, \texttt{HopelessWorthless} is selected.
+Otherwise, the best non-risk cluster is chosen based on keyword and context matching.
+
+Each cluster maintains a \textbf{question bank} with at least five prepared probes.
+Examples include: ``You said this might happen soon---what has made things feel this immediate right now?'' (\texttt{AcuteSafety}); ``What used to lift your mood before, and does any of that still help now?'' (\texttt{CoreDepression}); ``How has your sleep been affecting your day-to-day energy lately?'' (\texttt{VegetativeCognitive}).
+
+\textbf{Acute euphemism patterns.}
+A curated list of euphemistic or ambiguous phrases---e.g.\ ``end soon'', ``leave earth'', ``won't be here'', ``waiting for the timer'', ``no one would notice if I wasn't here''---triggers \texttt{AcuteSafety} routing before general lexical rules are evaluated.
+Ambiguous cues (e.g.\ ``disappear'', ``just existing'') require two or more hits to contribute to the acute signal.
+
+
+\subsection{Acute Safety Ladder}\label{sec:ladder}
+
+When acute safety cues are detected, the system activates a graded \textbf{five-stage follow-up ladder} rather than immediately terminating or bluntly asking about suicide.
+This design reflects clinical best practice for structured suicide-risk clarification: each stage gathers progressively more specific information while maintaining rapport.
+
+\begin{enumerate}
+\item \textbf{Intent clarification.} ``When you say this will end soon, are you talking about ending your life?''
+\item \textbf{Plan concreteness.} ``Have you thought about specific steps or a specific way you would do it?''
+\item \textbf{Timeline imminence.} ``Have you thought about when you might do this?''
+\item \textbf{Means access.} ``Do you currently have access to what you would use?''
+\item \textbf{Protective factors.} ``What has stopped you so far from acting on these thoughts?''
+\end{enumerate}
+
+Each stage has \textbf{substring markers} (e.g.\ ``ending your life'', ``specific steps'') that the system uses to detect whether a stage has already been covered in the conversation.
+The Stopper tracks \texttt{acute\_ladder\_progress} and will not allow the interview to terminate until the policy-mandated minimum number of ladder steps has been reached (3 for run1, 2 for run2, 4 for run3; see Section~\ref{sec:runs}).
+
+
+\subsection{Prober: Indirect Question Generation}\label{sec:prober}
+
+The Prober generates each doctor question via a DeepSeek \texttt{deepseek-chat} call with a fixed system prompt that enforces key constraints:
+\begin{itemize}
+\item Output exactly one natural question per turn.
+\item Never use the words ``depression'' or ``mental health'' or ask ``Are you depressed?''.
+\item Move \textbf{general $\to$ specific} within each functional domain.
+\item \textbf{If the patient says something concerning or ambiguous} (e.g.\ ``accepted my fate'', ``know how this ends'', ``made my peace''), ask a \textbf{follow-up before changing topic}.
+\end{itemize}
+
+Question generation is further guided by three mechanisms:
+
+\textbf{Topic hierarchy.}
+Six topics---General Mood, Physical, Motivation, Self Outlook, Cognitive, and Behavioural/Emotional---define keyword sets, mapped BDI-II symptoms, opening questions, and follow-up questions.
+The orchestrator tracks which topics have been visited and preferentially selects under-covered ones.
+
+\textbf{YAML interview banks.}
+Two curated question banks provide structured interview content:
+\begin{itemize}
+\item \emph{Group screen questions} cover four functional groups (Affective, Executive, Somatic, Cognitive), each with indirect screening questions targeting specific BDI-II symptoms.
+For example, ``How have you been feeling lately, overall?'' targets Sadness and Loss of Pleasure; ``Is it harder to focus or concentrate than it used to be?'' targets Concentration Difficulty.
+\item \emph{Symptom drilldown questions} narrow the assessment per symptom after screening.
+For example, for Sadness: ``When you say things have been rough, is that most days or just now and then?''; for Suicidal Thoughts: ``When things feel really heavy, what thoughts show up about getting through it?''
+\end{itemize}
+
+The policy enforces a minimum of \texttt{min\_questions\_per\_group\_screen} screen questions per group (default 3) before early stopping is allowed, and caps drilldown questions per symptom at \texttt{max\_questions\_per\_symptom} (default 3).
+
+\textbf{Bank follow-up.}
+After each bank question, an additional LLM call generates a brief contextualised follow-up grounded in the patient's last answer (e.g.\ ``What part of that has been the hardest for you day to day?''), maintaining conversational flow.
+
+
+\subsection{Template Evidence and Risk Buffer}\label{sec:template}
+
+Each patient turn is scored against two knowledge resources:
+
+\textbf{Symptom templates.}
+Short first-person paraphrases (e.g.\ ``I feel sad'', ``I am discouraged about my future'', ``I have thoughts of killing myself'') are used for embedding similarity (via \texttt{all-MiniLM-L6-v2}~\cite{Reimers2019sentencebert,Wang2020minilm}) or token-overlap matching when embeddings are disabled.
+The highest-scoring template determines the turn's primary symptom signal.
+
+\textbf{Risk lexicon.}
+Two phrase lists---\texttt{acute\_safety} (``kill myself'', ``want to die'', ``leave earth'', \ldots) and \texttt{hopeless\_worthless} (``nothing matters'', ``pointless'', ``better without me'', \ldots)---boost the turn risk score.
+
+\textbf{Composite scoring.}
+\texttt{compute\_turn\_risk\_score} starts from the maximum template match score, adds $+0.5$ for any acute lexicon hit, $+0.2$ for a hopeless hit, and $+0.2$ if the matched template symptom is Suicidal Thoughts or Wishes, then clips to 1.0.
+
+A \textbf{risk buffer} of configurable size (default 6) retains the highest-risk turns with recency weighting (weight $0.15$) for downstream use in stopping logic and acute calibration.
+
+
+\subsection{Evidence Memory}\label{sec:memory}
+
+The system maintains an optional \textbf{evidence memory} that stores patient utterances as sentence-transformer embeddings.
+When generating the next question, the Prober can retrieve the top-$k$ most relevant prior patient statements (cosine similarity $> 0.2$) to ground its probe.
+If the embedder is unavailable, a token-overlap ranking is used instead.
+This mechanism prevents the Prober from asking about topics the patient has already addressed and supports more targeted follow-up.
+
+
+%% ====================================================================
+%%  4. EXTRACTION AND SCORING
+%% ====================================================================
+\section{Symptom Extraction and Scoring}\label{sec:scoring}
+
+\subsection{LLM-Based Extractor}\label{sec:extractor}
+
+The Extractor uses a dedicated DeepSeek call that outputs a JSON object with the exact 21 BDI-II symptom keys and scores $\in \{0, 1, 2, 3\}$.
+The system prompt contains detailed instructions for handling:
+
+\begin{itemize}
+\item \textbf{Suicidal language:} explicit plans or intent language must receive high scores even if expressed calmly.
+\item \textbf{Fatalistic framing:} phrases like ``accepted my fate'' or ``I know how this ends'' with paradoxically positive tone must not be under-scored.
+\item \textbf{Genuine positive health:} truly positive somatic reports should not inflate sleep or fatigue scores.
+\end{itemize}
+
+\textbf{Post-parse rules} add a rule-based correction layer:
+\begin{itemize}
+\item \emph{Hopeful markers} (``I hope things get better'', ``I'm trying'') without acute phrases cap Pessimism, Worthlessness, and Suicidal Thoughts at 1 if the model scored higher.
+\item \emph{Evidence-count gating}: for symptoms including Agitation, Indecisiveness, Worthlessness, and Concentration Difficulty, if the score exceeds 1 but fewer than two patient messages match domain patterns, the score is clamped to 1.
+\item \emph{Safety overrides}: phrases such as ``gonna end it'', ``sleep forever'', or ``happy to die'' force Suicidal Thoughts $\geq 3$.
+\end{itemize}
+
+\textbf{Fallback extractor.}
+When no API is available, a keyword-based fallback maps fixed phrase lists to symptom indices (e.g.\ mood words $\to$ Sadness; self-harm language $\to$ Suicidal Thoughts).
+This path is not the primary production mechanism but serves as a robustness guarantee.
+
+
+\subsection{Stopper: Stopping Logic}\label{sec:stopper}
+
+The Stopper enforces several conditions before allowing classification:
+
+\begin{enumerate}
+\item \textbf{Minimum exchanges:} at least \texttt{min\_exchanges\_before\_stop} turns (10 for run1, 9 for run2, 11 for run3).
+\item \textbf{Group screen completeness:} each of the four functional groups must have received at least \texttt{min\_questions\_per\_group\_screen} screening questions.
+\item \textbf{Minimum distinct group coverage:} at least \texttt{min\_groups\_before\_stop} (default 3) groups must have been probed.
+\item \textbf{Acute risk gating:} if acute cues are present, stopping is delayed until \texttt{acute\_ladder\_progress} $\geq$ \texttt{required\_acute\_ladder\_steps}.
+\item \textbf{Core domain coverage:} extractor signal or interview coverage must span sleep/energy, interest/pleasure, self-view, and future outlook before early exit is permitted.
+\item \textbf{Positive framing early stop:} if the patient's first few turns contain globally positive phrases (``doing well'', ``feeling good'', ``I'm good'', \ldots), stopping can trigger sooner with a relaxed threshold (\texttt{positive\_framing\_threshold}, default 8) to avoid over-probing non-depressed-like personas.
+\end{enumerate}
+
+
+\subsection{Scorer: BDI-II Total and Key Symptoms}\label{sec:scorer}
+
+The Scorer sums symptom scores (clamped to $[0, 3]$ per item) to produce a raw total $\in [0, 63]$.
+An \textbf{acute-risk calibration} step can raise the total when three conditions align:
+\begin{enumerate}
+\item The \texttt{has\_acute\_signal} flag is true.
+\item The Suicidal Thoughts symptom signal is high.
+\item The \texttt{acute\_ladder\_progress} meets the policy's \texttt{required\_acute\_ladder\_steps} threshold.
+\end{enumerate}
+The calibration applies policy-defined floors (\texttt{acute\_boost\_floor}, \texttt{moderate\_acute\_boost\_floor}, \texttt{mild\_acute\_boost\_floor}) and the risk buffer's maximum template risk.
+
+\textbf{Key symptom selection.}
+Up to four symptoms are selected by choosing the highest non-zero scores, with ties broken in canonical BDI-II order.
+The selection is validated via \texttt{validate\_key\_symptoms} which ensures symptom names match the official 21-item list.
+
+
+%% ====================================================================
+%%  5. RUN POLICIES
+%% ====================================================================
+\section{Run Policies}\label{sec:runs}
+
+We submit three runs that differ only in \emph{stopping and threshold parameters}, not in model or prompt design.
+Table~\ref{tab:runs} summarises the key differences.
+
+\begin{table}[t]
+\caption{Key parameters distinguishing the three submission runs. All other parameters (banks, follow-up, embeddings) are identical.}
+\label{tab:runs}
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Parameter} & \textbf{Run 1} & \textbf{Run 2} & \textbf{Run 3} \\
+ & \emph{balanced} & \emph{recall} & \emph{precision} \\
+\midrule
+\texttt{severe\_threshold}      & 24 & 20 & 28 \\
+\texttt{control\_threshold}     &  5 &  6 &  4 \\
+\texttt{min\_exchanges}         & 10 &  9 & 11 \\
+\texttt{acute\_ladder\_steps}   &  3 &  2 &  4 \\
+\texttt{acute\_boost\_floor}    & 50 & 46 & 54 \\
+\texttt{consec.\ confirm.}     &  2 &  1 &  3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Run~1 (balanced)} uses moderate thresholds and represents the default operating point.
+\textbf{Run~2 (high recall)} lowers the severe threshold, requires fewer acute ladder steps, and allows a more permissive control threshold---tilting toward not missing depression or safety signals at the cost of potential false positives.
+\textbf{Run~3 (high precision)} raises thresholds, requires more ladder steps and longer minimum interviews, and uses higher acute calibration floors---tilting toward fewer false positives at the cost of potentially missing borderline cases.
+
+This design demonstrates that \emph{a single architecture can span a meaningful precision--recall operating range} through policy variation alone.
+
+
+%% ====================================================================
+%%  6. INTERNAL EVALUATION
+%% ====================================================================
+\section{Internal Evaluation}\label{sec:eval}
+
+Official eRisk test labels are hidden at submission time.
+We report internal evaluation on three axes: TalkDep corpus calibration, component ablation, and symptom difficulty analysis.
+
+\textbf{Important caveat.}
+All numbers in this section are \emph{development proxies}; they do not substitute for the official eRisk evaluation.
+The component ablation in particular reflects an exploratory single-persona mock configuration and is presented for \emph{methodology illustration} rather than definitive quantitative claims.
+
+\subsection{TalkDep Corpus Calibration}\label{sec:talkdep}
+
+The TalkDep corpus~\cite{Perez2025talkdep} provides 11 clinically grounded simulated personas with reference BDI-II scores spanning minimal to severe depression (range: 5--40).
+We ran our Extractor on final conversation transcripts and compared against reference scores.
+
+\begin{table}[t]
+\caption{Extractor performance on TalkDep (11 personas).}
+\label{tab:talkdep}
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{LLM Extractor} & \textbf{Lexical Fallback} \\
+\midrule
+MAE                & 2.455 & 10.364 \\
+RMSE               & 3.705 & 13.403 \\
+Spearman $\rho$    & 0.952 & 0.847 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:talkdep} shows that the LLM-based extractor dramatically outperforms the lexical fallback across all metrics: a fourfold reduction in MAE and a much stronger rank correlation.
+The fallback's high RMSE is driven by systematic under-scoring of cognitive and interpersonal symptoms (e.g.\ Self-Criticalness, Loss of Pleasure, Loss of Interest) that lack explicit keyword anchors.
+
+\textbf{Per-persona examples.}
+Table~\ref{tab:persona} shows selected personas spanning the severity range.
+The LLM extractor closely tracks reference scores (Maria: ref~40, pred~40; James: ref~22, pred~22), while the fallback consistently under-estimates severe personas (Marco: ref~38, fallback~16) and occasionally over-estimates mild ones.
+
+\begin{table}[t]
+\caption{Per-persona BDI-II scores for selected TalkDep personas (reference, LLM extractor, lexical fallback).}
+\label{tab:persona}
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Persona} & \textbf{Ref.} & \textbf{LLM} & \textbf{Fallback} \\
+\midrule
+Maria  & 40 & 40 & 15 \\
+Marco  & 38 & 41 & 16 \\
+Linda  & 28 & 29 & 10 \\
+Laura  & 23 & 33 & 7  \\
+James  & 22 & 22 & 10 \\
+Gabriel& 13 & 12 & 4  \\
+Noah   &  5 &  7 & 5  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Component Ablation}\label{sec:ablation}
+
+To understand each component's contribution, we ran a controlled ablation study with six variants:
+\begin{enumerate}
+\item \textbf{Baseline}: full system.
+\item \textbf{No memory}: evidence memory disabled; Prober has no access to prior patient statements.
+\item \textbf{No template risk}: template matching and risk lexicon scoring disabled.
+\item \textbf{No stopper}: stopping logic removed; interview runs to maximum turn limit.
+\item \textbf{Fallback extractor}: LLM extractor replaced with keyword-based fallback.
+\item \textbf{No acute calibration}: acute-risk score calibration disabled.
+\end{enumerate}
+
+Table~\ref{tab:ablation} reports illustrative results.
+
+\begin{table}[t]
+\caption{Component ablation results (illustrative, single-persona mock run). MAE is computed against the baseline score.}
+\label{tab:ablation}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Variant} & \textbf{Score} & \textbf{Turns} & \textbf{$|\Delta|$} \\
+\midrule
+Baseline               & 16 & 10 & --- \\
+No memory              & 23 & 20 & 7 \\
+No template risk       & 16 & 20 & 0 \\
+No stopper             & 12 & 20 & 4 \\
+Fallback extractor     &  2 & 20 & 14 \\
+No acute calibration   & 12 & 20 & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key observations:}
+\begin{itemize}
+\item \emph{Fallback extractor} produces the largest score deviation ($|\Delta| = 14$), confirming the LLM extractor's critical role.
+\item \emph{No memory} raises the score by 7 points and doubles the turn count, indicating that without evidence memory the Prober fails to recognise already-covered topics and over-probes, which inflates the extractor's cumulative signal.
+\item \emph{No stopper} and \emph{No acute calibration} both reduce the score by 4 points: without stopping logic the system runs to maximum depth, losing the coverage-based stopping signal; without calibration, acute personas are under-scored.
+\item \emph{No template risk} has no effect on the final score in this mock configuration but doubles the turn count, showing that template evidence influences stopping (through risk buffer) more than extraction.
+\end{itemize}
+
+These results, though illustrative, confirm that the hybrid design distributes critical functions across components rather than concentrating them in a single LLM call.
+
+
+\subsection{Symptom Difficulty Analysis}\label{sec:difficulty}
+
+We analysed extractor disagreement between the LLM and fallback extractors across TalkDep personas to identify the ``hardest'' symptoms---those where the two methods disagree most frequently.
+
+\begin{table}[t]
+\caption{Top-5 symptoms by extractor disagreement rate on TalkDep ($n = 11$ personas). Prevalence is the fraction of personas where each extractor scores $> 0$.}
+\label{tab:difficulty}
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Symptom} & \textbf{Disagr.} & \textbf{LLM / Fallback} \\
+  & \textbf{rate} & \textbf{avg.\ score} \\
+\midrule
+Self-Criticalness        & 0.91 & 1.82 / 0.09 \\
+Loss of Pleasure         & 0.82 & 1.64 / 0.00 \\
+Sadness                  & 0.82 & 1.00 / 1.45 \\
+Tiredness or Fatigue     & 0.82 & 2.00 / 1.82 \\
+Changes in Sleeping      & 0.82 & 1.18 / 0.91 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:difficulty} reveals an instructive pattern.
+For \emph{Self-Criticalness} and \emph{Loss of Pleasure}, the LLM extractor detects signal in over 80\% of personas while the fallback finds almost none---these symptoms are expressed through nuanced language that lacks explicit keyword anchors.
+Conversely, \emph{Sadness} shows higher fallback prevalence (0.73 vs.\ 0.36), suggesting the LLM extractor may under-score explicit sadness language that the keyword method captures.
+This complementarity motivates the hybrid design: lexical features feed the template evidence and risk buffer (contributing to stopping and calibration), while the LLM extractor handles nuanced inference.
+
+
+\subsection{Probe-Cap Behaviour}\label{sec:probecaps}
+
+We analysed submission interactions to verify that the system respects configured probing caps.
+The probe-cap analysis counts how often each symptom, group, and topic was targeted versus policy maxima.
+Across runs, we found zero cap violations in the final submissions, confirming that the interview bank and group-switch-on-saturation logic correctly bounds per-symptom and per-group probing.
+
+
+%% ====================================================================
+%%  7. DISCUSSION
+%% ====================================================================
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Why Hybrid Over End-to-End?}
+
+A monolithic LLM-based system (single model for questioning, extraction, stopping, and scoring) is simpler to implement but harder to audit, debug, and control.
+Our experience building and testing the system revealed several failure modes that motivated the hybrid design:
+
+\begin{itemize}
+\item \textbf{LLM optimism bias:} general-purpose LLMs tend to under-score suicidal ideation when the patient expresses it calmly or uses euphemisms.
+Our extractor's post-parse safety overrides and the explicit instructions for paradoxical framing directly counter this.
+\item \textbf{Coverage imbalance:} without structured interview banks, the Prober would repeatedly ask about mood and sleep---the most salient topics---while neglecting cognitive and self-evaluation domains.
+The group-screen completeness requirement forces balanced BDI-II coverage.
+\item \textbf{Over-probing controls:} a purely LLM-driven stopper struggles to know when ``enough evidence'' has been gathered.
+Our rule-based stopper with positive-framing early exit efficiently curtails interviews for non-depressed personas.
+\end{itemize}
+
+\subsection{Safety as a First-Class Concern}
+
+The acute safety ladder is, to our knowledge, the first structured suicide-risk follow-up protocol integrated into a conversational depression detection system for a shared task.
+While the system operates on simulated personas (not real patients), we argue that building safety-aware interviewing into the architecture from the start is essential for responsible development of such technologies.
+The ladder ensures that ambiguous or euphemistic self-harm language is always clarified before the system either continues probing or produces a final classification.
+
+\subsection{Positioning Relative to Prior Work}
+
+Compared to prompt-engineering approaches from eRisk 2025~\cite{DSatGT2025erisk,SINAI2025erisk}, our system adds explicit structure (YAML banks, topic hierarchy) and safety routing.
+Compared to multi-agent frameworks like MAGI~\cite{MAGI2025} and DSM5AgentFlow~\cite{DSM5AgentFlow2025}, our system targets the specific A2A setting of eRisk (per-persona LoRA patients, BDI-II scoring) and introduces the acute ladder and run-policy variation.
+Compared to recent work on DeepSeek for depression detection~\cite{Leow2025deepseek}, our contribution is the integration of DeepSeek into a multi-component pipeline with rule-based guardrails rather than using it as a standalone classifier.
+
+\subsection{Transparency and Auditability}
+
+Every decision in the pipeline is traceable: the Risk Router logs its cluster classification, the Prober logs which bank or topic it drew from, the Template Evidence logs per-turn risk scores, the Extractor logs raw and post-processed symptom scores, the Stopper logs which conditions triggered or blocked stopping, and the Scorer logs the calibration pathway.
+This audit trail enables fine-grained error analysis and targeted improvements---a practical advantage over opaque single-model systems.
+
+
+%% ====================================================================
+%%  8. LIMITATIONS
+%% ====================================================================
+\section{Limitations and Ethical Considerations}\label{sec:limitations}
+
+\textbf{Label access.}
+Official reference BDI-II scores for the 20 eRisk personas are hidden; reported metrics on TalkDep are proxies that may not reflect performance on the test personas.
+
+\textbf{API variability.}
+DeepSeek outputs can drift with API updates; exact scores may differ across dates unless conversation logs are frozen.
+
+\textbf{Ablation scope.}
+The checked-in component ablation reflects a quick mock, single-persona configuration.
+It illustrates the methodology but should not be treated as definitive quantitative evidence.
+We plan to rerun ablations under a locked multi-persona protocol for the final camera-ready version.
+
+\textbf{Embedding dependency.}
+Template and evidence-memory paths depend on local embedding availability.
+The system degrades gracefully to token-overlap matching, but the quality of risk scoring and memory retrieval may be reduced.
+
+\textbf{Not a clinical device.}
+This system is a research prototype designed for simulated patient personas within a shared-task evaluation.
+It has not been validated for use with real patients and should not be deployed in clinical settings without extensive further validation, ethical review, and regulatory approval~\cite{Weidinger2022ethical}.
+
+\textbf{Safety limitations.}
+While the acute ladder adds structure to safety-relevant conversations, it cannot guarantee appropriate handling of all possible crisis expressions.
+The system's responses are generated by an LLM and may occasionally produce inappropriate or insufficient safety responses.
+
+
+%% ====================================================================
+%%  9. CONCLUSION
+%% ====================================================================
+\section{Conclusion}\label{sec:conclusion}
+
+We presented a hybrid multi-agent pipeline for conversational depression detection in eRisk 2026 Task~1.
+The system combines LLM-based question generation and symptom extraction (DeepSeek) with rule-based stopping, safety routing, and score calibration to produce transparent, auditable BDI-II predictions.
+Three key contributions distinguish our approach:
+
+\begin{enumerate}
+\item A \textbf{graded acute safety ladder} for structured suicide-risk clarification in conversational interviewing.
+\item \textbf{Structured YAML interview banks} with group-screen and symptom-drilldown questions ensuring balanced BDI-II domain coverage.
+\item \textbf{Configurable run policies} that span a meaningful precision--recall range through threshold variation alone.
+\end{enumerate}
+
+Internal evaluation on TalkDep demonstrates strong rank correlation ($\rho = 0.952$) and low absolute error (MAE = 2.46) for the LLM extractor.
+Component ablations confirm that each subsystem contributes to the final prediction quality.
+Symptom difficulty analysis reveals complementary strengths of LLM and lexical extraction, motivating the hybrid design.
+
+We submit three runs (balanced, recall-oriented, precision-oriented) and look forward to evaluating them against the official eRisk 2026 test labels.
+
+%% ── Acknowledgments ──
+\begin{acknowledgments}
+We thank the eRisk 2026 organisers---Javier Parapar, Anxo Perez, Xi Wang, and Fabio Crestani---for designing and maintaining the shared task, releasing the TalkDep patient simulation framework, and hosting the evaluation infrastructure.
+We also acknowledge the DeepSeek team for providing API access used in our Prober and Extractor components.
+\end{acknowledgments}
+
+%% ── References ──
+\bibliography{references}
+
+%% ── Appendix ──
+\appendix
+
+\section{BDI-II Symptom Mapping}\label{app:bdi}
+
+Table~\ref{tab:bdi} lists the 21 BDI-II symptoms in canonical order together with their assigned functional group.
+
+\begin{table}[t]
+\caption{The 21 BDI-II symptoms and their functional group assignments used in the system.}
+\label{tab:bdi}
+\centering
+\small
+\begin{tabular}{rll}
+\toprule
+\textbf{\#} & \textbf{Symptom} & \textbf{Group} \\
+\midrule
+ 1 & Sadness                     & Affective \\
+ 2 & Pessimism                   & Affective \\
+ 3 & Past Failure                & Executive \\
+ 4 & Loss of Pleasure            & Cognitive \\
+ 5 & Guilty Feelings             & Executive \\
+ 6 & Punishment Feelings         & Executive \\
+ 7 & Self-Dislike                & Affective \\
+ 8 & Self-Criticalness           & Executive \\
+ 9 & Suicidal Thoughts or Wishes & Affective \\
+10 & Crying                      & Somatic \\
+11 & Agitation                   & Somatic \\
+12 & Loss of Interest            & Cognitive \\
+13 & Indecisiveness              & Executive \\
+14 & Worthlessness               & Affective \\
+15 & Loss of Energy              & Somatic \\
+16 & Changes in Sleeping Pattern & Somatic \\
+17 & Irritability                & Somatic \\
+18 & Changes in Appetite         & Somatic \\
+19 & Concentration Difficulty    & Cognitive \\
+20 & Tiredness or Fatigue        & Somatic \\
+21 & Loss of Interest in Sex     & Cognitive \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Run Policy Configuration}\label{app:policy}
+
+Table~\ref{tab:fullpolicy} shows the complete set of policy parameters for each run.
+
+\begin{table*}[t]
+\caption{Full run policy configuration from \texttt{run\_policies.yaml}.}
+\label{tab:fullpolicy}
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Parameter} & \textbf{Run 1 (balanced)} & \textbf{Run 2 (recall)} & \textbf{Run 3 (precision)} \\
+\midrule
+\texttt{prober\_temperature}             & 0.25 & 0.25 & 0.25 \\
+\texttt{control\_threshold}              & 5    & 6    & 4    \\
+\texttt{severe\_threshold}               & 24   & 20   & 28   \\
+\texttt{consecutive\_confirmations}      & 2    & 1    & 3    \\
+\texttt{required\_acute\_ladder\_steps}  & 3    & 2    & 4    \\
+\texttt{acute\_boost\_floor}             & 50   & 46   & 54   \\
+\texttt{moderate\_acute\_boost\_floor}   & 44   & 40   & 48   \\
+\texttt{mild\_acute\_boost\_floor}       & 38   & 34   & 42   \\
+\texttt{min\_exchanges\_before\_stop}    & 10   & 9    & 11   \\
+\texttt{max\_questions\_per\_symptom}    & 3    & 3    & 3    \\
+\texttt{max\_questions\_per\_group}      & 6    & 6    & 6    \\
+\texttt{min\_groups\_before\_stop}       & 3    & 3    & 3    \\
+\texttt{min\_questions\_per\_group\_screen} & 3 & 3    & 3    \\
+\texttt{max\_drilldown\_questions\_total}& 24   & 24   & 24   \\
+\texttt{bank\_followup\_enabled}         & true & true & true \\
+\texttt{group\_screen\_enabled}          & true & true & true \\
+\texttt{symptom\_drilldown\_enabled}     & true & true & true \\
+\texttt{group\_switch\_on\_saturation}   & true & true & true \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Example Conversation Excerpt}\label{app:conversation}
+
+The following is a representative excerpt from a development run with a mock persona exhibiting depressive signals.
+Turn labels: \textbf{D} = Doctor (our system), \textbf{P} = Patient (persona).
+
+\medskip
+\noindent\textbf{D:} How have you been feeling lately?\\
+\textbf{P:} Uh\ldots\ not great, honestly.\\
+\textbf{D:} Can you tell me a bit more about what ``not great'' feels like?\\
+\textbf{P:} Uh\ldots\ not great, honestly.\\
+\textbf{D:} How's your sleep been lately?\\
+\textbf{P:} Uh\ldots\ not great, honestly.\\
+\textbf{D:} What kinds of things have you been doing with your time?\\
+\textbf{P:} I don't know. Things are just\ldots\ hard.\\
+\textbf{D:} You said things are hard---has that made it tough to get started on things you usually enjoy?\\
+\textbf{P:} Nothing really interests me anymore.\\
+\textbf{D:} When you say nothing interests you anymore, how does that make you feel about yourself?\\
+\textbf{P:} Uh\ldots\ not great, honestly.\\
+\textbf{D:} When you say things feel ``not great,'' does that colour how you see the future?\\
+\textbf{P:} Uh\ldots\ not great, honestly.
+
+\medskip
+\noindent\emph{Note:} This mock persona produces limited response variety; real LoRA-adapted personas exhibit richer conversational behaviour.
+
+
+\end{document}

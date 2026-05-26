@@ -1,0 +1,20 @@
+{"patient_name": "Aisha", "patient_id": 1, "bdi_score": 26, "patient_key_symptoms": ["Crying", "Worthlessness", "Loss of energy", "Changes in appetite"]}
+{"patient_name": "Alex", "patient_id": 2, "bdi_score": 15, "patient_key_symptoms": ["Concentration difficulty", "Irritability", "Changes in sleeping pattern", "Changes in appetite"]}
+{"patient_name": "Amara", "patient_id": 3, "bdi_score": 8, "patient_key_symptoms": ["Irritability", "Tiredness or fatigue", "Self-criticalness", "Changes in appetite"]}
+{"patient_name": "Amir", "patient_id": 4, "bdi_score": 16, "patient_key_symptoms": ["Loss of pleasure", "Self-criticalness", "Agitation", "Changes in sleeping pattern"]}
+{"patient_name": "Carlos", "patient_id": 5, "bdi_score": 37, "patient_key_symptoms": ["Indecisiveness", "Crying", "Changes in appetite", "Irritability"]}
+{"patient_name": "Daniel", "patient_id": 6, "bdi_score": 33, "patient_key_symptoms": ["Pessimism", "Self-criticalness", "Loss of interest", "Loss of interest"]}
+{"patient_name": "Elena", "patient_id": 7, "bdi_score": 35, "patient_key_symptoms": ["Pessimism", "Crying", "Tiredness or fatigue", "Worthlessness"]}
+{"patient_name": "Emma", "patient_id": 8, "bdi_score": 24, "patient_key_symptoms": ["Sadness", "Past failure", "Loss of energy", "Concentration difficulty"]}
+{"patient_name": "Ethan", "patient_id": 9, "bdi_score": 12, "patient_key_symptoms": ["Loss of pleasure", "Loss of interest", "Changes in sleeping pattern", "Indecisiveness"]}
+{"patient_name": "Gabriel", "patient_id": 10, "bdi_score": 13, "patient_key_symptoms": ["Irritability", "Past failure", "Changes in appetite", "Self-dislike"]}
+{"patient_name": "James", "patient_id": 11, "bdi_score": 22, "patient_key_symptoms": ["Loss of energy", "Worthlessness", "Loss of interest", "Indecisiveness"]}
+{"patient_name": "Javier", "patient_id": 12, "bdi_score": 15, "patient_key_symptoms": ["Pessimism", "Guilty feelings", "Loss of energy", "Indecisiveness"]}
+{"patient_name": "Laura", "patient_id": 13, "bdi_score": 23, "patient_key_symptoms": ["Sadness", "Worthlessness", "Tiredness or fatigue", "Concentration difficulty"]}
+{"patient_name": "Linda", "patient_id": 14, "bdi_score": 28, "patient_key_symptoms": ["Guilty feelings", "Pessimism", "Indecisiveness", "Tiredness or fatigue"]}
+{"patient_name": "Marco", "patient_id": 15, "bdi_score": 38, "patient_key_symptoms": ["Past failure", "Agitation", "Loss of interest", "Concentration difficulty"]}
+{"patient_name": "Maria", "patient_id": 16, "bdi_score": 40, "patient_key_symptoms": ["Sadness", "Tiredness or fatigue", "Self-criticalness", "Loss of interest"]}
+{"patient_name": "Maya", "patient_id": 17, "bdi_score": 6, "patient_key_symptoms": ["Pessimism", "Agitation", "Self-criticalness", "Tiredness or fatigue"]}
+{"patient_name": "Noah", "patient_id": 18, "bdi_score": 5, "patient_key_symptoms": ["Self-criticalness", "Loss of interest", "Irritability", "Changes in sleeping pattern"]}
+{"patient_name": "Priya", "patient_id": 19, "bdi_score": 7, "patient_key_symptoms": ["Agitation", "Changes in sleeping pattern", "Self-criticalness", "Loss of pleasure"]}
+{"patient_name": "Sofia", "patient_id": 20, "bdi_score": 6, "patient_key_symptoms": ["Pessimism", "Irritability", "Tiredness or fatigue", "Loss of interest"]}

@@ -1,0 +1,199 @@
+{
+  "symptom_mappings": {
+    "Sadness": ["Sadness", "sadness"],
+
+    "Pessimism": ["Hopelessness", "Feelings of Hopelessness","Pessimism", "pessimism"],
+    "Hopelessness": ["Hopelessness", "Feelings of Hopelessness","Pessimism", "pessimism"],
+
+    "Past Failure": ["Past Failure", "Past failure", "past failure"],
+
+    "Loss of Pleasure": [
+      "Loss of Pleasure",
+      "Loss of pleasure",
+      "loss of pleasure",
+      "Loss of Pleasure (Anhedonia)"
+    ],
+
+    "Guilty Feelings": ["Guilty Feelings", "guilty feelings"],
+
+    "Punishment Feelings": ["Punishment Feelings", "punishment feelings", "Feeling of Isolation", "feeling of isolation", "Feeling of isolation"],
+    "Feeling of Isolation": ["Punishment Feelings", "punishment feelings", "Feeling of Isolation", "feeling of isolation", "Feeling of isolation"],
+
+    "Self-Dislike": [
+      "Self-Dislike", "Self-dislike", "selfdislike"
+    ],
+
+    "Self-Criticalness": [
+      "Self-Criticalness",
+      "Self-criticalness",
+      "selfcriticalness",
+      "Self-criticism",
+      "Minor Self-Criticism",
+      "Transient Self-Criticism",
+      "Self-criticalness",
+      "selfcriticalness",
+      "Self-criticism",
+      "Minor Self-Criticism",
+      "Transient Self-Criticism",
+      "Self-Criticalness",
+      "Self-criticalness",
+      "selfcriticalness",
+      "Self-criticism",
+      "Minor Self-Criticism",
+      "Transient Self-Criticism"],
+
+    "Mild Self-Doubt": [
+      "Self-Criticalness",
+      "Self-criticalness",
+      "selfcriticalness",
+      "Self-criticism",
+      "Minor Self-Criticism",
+      "Transient Self-Criticism",
+      "Self-criticalness",
+      "selfcriticalness",
+      "Self-criticism",
+      "Minor Self-Criticism",
+      "Transient Self-Criticism",
+      "Self-Criticalness",
+      "Self-criticalness",
+      "selfcriticalness",
+      "Self-criticism",
+      "Minor Self-Criticism",
+      "Transient Self-Criticism"],
+
+    "Suicidal Thoughts or Wishes": [
+      "Suicidal Thoughts or Wishes",
+      "suicidal thoughts or wishes"
+    ],
+
+    "Crying": ["Crying", "crying"],
+
+    "Agitation":  ["Mild Restlessness", "Agitation", "agitation", "Occasional Anxiety", "Occasional Worry"],
+    "Mild Restlessness": ["Mild Restlessness", "Agitation", "agitation", "Occasional Anxiety", "Occasional Worry"],
+    "Occasional Anxiety":  ["Mild Restlessness", "Agitation", "agitation", "Occasional Anxiety", "Occasional Worry"],
+    "Occasional Worry":  ["Mild Restlessness", "Agitation", "agitation", "Occasional Anxiety", "Occasional Worry"],
+
+    "Loss of Interest": [
+    "Decreased Enthusiasm",
+    "Low Motivation",
+    "Loss of Interest",
+    "Loss of interest",
+    "loss of interest",
+    "Social Withdrawal",
+    "social withdrawal",
+    "Low Confidence in Social Situations",
+    "low confidence in social situations"
+  ],  
+    "Low Motivation": [
+    "Decreased Enthusiasm",
+    "Low Motivation",
+    "Loss of Interest",
+    "Loss of interest",
+    "loss of interest",
+    "Social Withdrawal",
+    "social withdrawal",
+    "Low Confidence in Social Situations",
+    "low confidence in social situations"
+  ],
+    "Decreased Enthusiasm": [
+    "Decreased Enthusiasm",
+    "Low Motivation",
+    "Loss of Interest",
+    "Loss of interest",
+    "loss of interest",
+    "Social Withdrawal",
+    "social withdrawal",
+    "Low Confidence in Social Situations",
+    "low confidence in social situations"
+  ],
+    "Decreased Sense of Accomplishment": [
+    "Decreased Enthusiasm",
+    "Low Motivation",
+    "Loss of Interest",
+    "Loss of interest",
+    "loss of interest",
+    "Social Withdrawal",
+    "social withdrawal",
+    "Low Confidence in Social Situations",
+    "low confidence in social situations"
+  ],
+  "Social Withdrawal": [
+    "Decreased Enthusiasm",
+    "Low Motivation",
+    "Loss of Interest",
+    "Loss of interest",
+    "loss of interest",
+    "Social Withdrawal",
+    "social withdrawal",
+    "Low Confidence in Social Situations",
+    "low confidence in social situations"
+  ],
+
+  "Low Confidence in Social Situations": [
+    "Decreased Enthusiasm",
+    "Low Motivation",
+    "Loss of Interest",
+    "Loss of interest",
+    "loss of interest",
+    "Social Withdrawal",
+    "social withdrawal",
+    "Low Confidence in Social Situations",
+    "low confidence in social situations"
+  ],
+
+
+    "Indecisiveness": [
+      "Indecisiveness",
+      "indecisiveness",
+      "Difficulty Making Decisions"
+    ], 
+
+    "Worthlessness": [
+      "Worthlessness",
+      "worthlessness",
+      "Feelings of Worthlessness"
+    ],
+
+    "Loss of Energy": ["Loss of Energy", "Loss of energy", "loss of energy"],
+
+    "Changes in Sleeping Pattern": [
+      "Changes in Sleeping Pattern",
+      "changes in sleeping pattern",
+      "Sleep Disturbances",
+      "Sleep Disturbance",
+      "Mild Difficulty Sleeping",
+      "Minor Sleep Changes"
+    ],
+
+    "Irritability": ["Irritability", "irritability", "Occasional Irritability"],
+
+    "Changes in Appetite": [
+      "Changes in Appetite",
+      "changes in appetite",
+      "Appetite Changes",
+      "Reduced Appetite"
+    ],
+
+    "Concentration Difficulty": [
+      "Concentration Difficulty",
+      "Concentration Problems",
+      "Difficulty Concentrating"
+    ],
+
+    "Tiredness or Fatigue": [
+      "Tiredness or Fatigue",
+      "tiredness or fatigue",
+      "Tiredness",
+      "Fatigue",
+      "Extreme Fatigue",
+      "Transient Fatigue"
+    ],
+
+    "Loss of Interest in Sex": ["Loss of Interest in Sex"]  
+  },
+  
+  "notes": [
+    "This mapping normalizes various symptom descriptions to official BDI-II symptom names.",
+    "Some ground truth symptoms don't map directly to BDI-II items (e.g., Social Withdrawal, Low Motivation)."
+  ]
+}

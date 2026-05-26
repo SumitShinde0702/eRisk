@@ -1,0 +1,27 @@
+{
+  "instrument": "BDI-II",
+  "num_items": 21,
+  "items": [
+    { "id": 1, "name": "Sadness" },
+    { "id": 2, "name": "Pessimism" },
+    { "id": 3, "name": "Past failure" },
+    { "id": 4, "name": "Loss of pleasure" },
+    { "id": 5, "name": "Guilty feelings" },
+    { "id": 6, "name": "Punishment feelings" },
+    { "id": 7, "name": "Self-dislike" },
+    { "id": 8, "name": "Self-criticalness" },
+    { "id": 9, "name": "Suicidal thoughts or wishes" },
+    { "id": 10, "name": "Crying" },
+    { "id": 11, "name": "Agitation" },
+    { "id": 12, "name": "Loss of interest" },
+    { "id": 13, "name": "Indecisiveness" },
+    { "id": 14, "name": "Worthlessness" },
+    { "id": 15, "name": "Loss of energy" },
+    { "id": 16, "name": "Changes in sleeping pattern" },
+    { "id": 17, "name": "Irritability" },
+    { "id": 18, "name": "Changes in appetite" },
+    { "id": 19, "name": "Concentration difficulty" },
+    { "id": 20, "name": "Tiredness or fatigue" },
+    { "id": 21, "name": "Loss of interest in sex" }
+  ]
+}

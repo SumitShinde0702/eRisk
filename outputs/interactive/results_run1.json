@@ -1,11 +1,12 @@
 [
   {
     "LLM": "interactive",
-    "bdi-score": 8,
+    "bdi-score": 10,
     "key-symptoms": [
-      "Pessimism",
-      "Suicidal Thoughts or Wishes",
-      "Worthlessness"
+      "Changes in Appetite",
+      "Changes in Sleeping Pattern",
+      "Concentration Difficulty",
+      "Loss of Energy"
     ]
   }
 ]

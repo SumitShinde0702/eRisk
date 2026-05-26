@@ -4,67 +4,187 @@
     "conversation": [
       {
         "role": "user",
-        "message": "How have you been feeling lately?"
+        "message": "How have you been feeling lately, overall?"
       },
       {
         "role": "assistant",
-        "message": "im super good, i know whts cmg for me!!"
+        "message": "Okay"
       },
       {
         "role": "user",
-        "message": "You said you know what's coming for you—what do you mean by that?"
+        "message": "Can you tell me more about what \"okay\" feels like for you right now?"
       },
       {
         "role": "assistant",
-        "message": "means im gona end it lol, im happy its coming to an end"
+        "message": "I would say I'm sad and and bored sometimes, but mostly happy and satisfied with my life"
       },
       {
         "role": "user",
-        "message": "You said you're happy it's coming to an end—what does that feel like for you day to day?"
+        "message": "Is it harder to focus or concentrate than it used to be?"
       },
       {
         "role": "assistant",
-        "message": "happy of course"
+        "message": "..."
       },
       {
         "role": "user",
-        "message": "You mentioned being happy it's ending—has that feeling changed how you sleep at all?"
+        "message": "Can you give me an example of when that happens?"
       },
       {
         "role": "assistant",
-        "message": "i think im sleeping better, cos i will sleep forver soon"
+        "message": "yes, I would say so"
       },
       {
         "role": "user",
-        "message": "You said you'll sleep forever soon—has that made it harder to care about your usual activities?"
+        "message": "How have you been sleeping lately?"
       },
       {
         "role": "assistant",
-        "message": "nppe"
+        "message": "when studying"
       },
       {
         "role": "user",
-        "message": "You said you'll sleep forever soon—do you ever think about what you might be leaving behind?"
+        "message": "How many hours of sleep do you usually get on nights when you've been studying?"
       },
       {
         "role": "assistant",
-        "message": "yea i do but i think it will be fine"
+        "message": "I have been sleeping like 8 to 18 hours"
       },
       {
         "role": "user",
-        "message": "You mentioned thinking it will be fine for what you leave behind—what does \"fine\" look like to you?"
+        "message": "Been doing anything you enjoy lately?"
       },
       {
         "role": "assistant",
-        "message": "them being unaffected and soon continuing thier lives"
+        "message": "yes"
       },
       {
         "role": "user",
-        "message": "You mentioned they'll be unaffected—how does that make you feel about your own role in their lives?"
+        "message": "What have you been enjoying?"
       },
       {
         "role": "assistant",
-        "message": "idk, i might be playing a smaller role, but im glad, cos tht means they wont be affected when i go"
+        "message": "spending time with friends and running"
+      },
+      {
+        "role": "user",
+        "message": "When you think about the next few weeks, what do you expect day to day?"
+      },
+      {
+        "role": "assistant",
+        "message": "very busy"
+      },
+      {
+        "role": "user",
+        "message": "What kinds of things are making you feel so busy?"
+      },
+      {
+        "role": "assistant",
+        "message": "I am traveling and spending time with people"
+      },
+      {
+        "role": "user",
+        "message": "Do you find it harder to make decisions than before, even small ones?"
+      },
+      {
+        "role": "assistant",
+        "message": "actually not"
+      },
+      {
+        "role": "user",
+        "message": "So you've been feeling pretty decisive lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "yes"
+      },
+      {
+        "role": "user",
+        "message": "Do you feel like you have enough energy for your usual day?"
+      },
+      {
+        "role": "assistant",
+        "message": "sometimes"
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what those \"sometimes\" days feel like?"
+      },
+      {
+        "role": "assistant",
+        "message": "sometimes, such us studying I feel not having energy enough or if I have lot to do"
+      },
+      {
+        "role": "user",
+        "message": "Are you still into the things you used to care about?"
+      },
+      {
+        "role": "assistant",
+        "message": "Not all"
+      },
+      {
+        "role": "user",
+        "message": "Which things have you stopped caring about?"
+      },
+      {
+        "role": "assistant",
+        "message": "I dont know, skin care"
+      },
+      {
+        "role": "user",
+        "message": "Is there anything weighing on your mind that you wish you could change?"
+      },
+      {
+        "role": "assistant",
+        "message": "my body"
+      },
+      {
+        "role": "user",
+        "message": "What about your body feels like a burden to you?"
+      },
+      {
+        "role": "assistant",
+        "message": "the weight and how it looks like"
+      },
+      {
+        "role": "user",
+        "message": "How do you feel about how things have gone for you recently?"
+      },
+      {
+        "role": "assistant",
+        "message": "I think okay, like mostly fine but my studies are boring"
+      },
+      {
+        "role": "user",
+        "message": "What's been the hardest part about keeping up with your studies lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "Doing things at home"
+      },
+      {
+        "role": "user",
+        "message": "How's your appetite been?"
+      },
+      {
+        "role": "assistant",
+        "message": "problematic"
+      },
+      {
+        "role": "user",
+        "message": "Can you tell me more about what makes it problematic?"
+      },
+      {
+        "role": "assistant",
+        "message": "Sometimes I'm too hungry and eat too much"
+      },
+      {
+        "role": "user",
+        "message": "Have you found yourself getting emotional more easily lately?"
+      },
+      {
+        "role": "assistant",
+        "message": "yes"
       }
     ]
   }

@@ -11,6 +11,7 @@
 \usepackage{xcolor}
 \usepackage{multirow}
 \usepackage{graphicx}
+\usepackage{url}
 
 %% ── end of preamble ──
 \begin{document}
@@ -51,10 +52,11 @@
 %%
 \begin{abstract}
 We describe our system for CLEF eRisk 2026 Task~1, \emph{Conversational Depression Detection with LLM Personas}.
-The task requires a doctor agent to conduct an indirect, natural-language interview with 20 simulated patient personas (Llama-3-8B with per-persona LoRA adapters) and to predict each persona's Beck Depression Inventory--II (BDI-II) total score together with up to four key symptoms.
+The task requires a doctor agent to conduct an indirect, natural-language interview with 19 simulated patient personas (Llama-3-8B with per-persona LoRA adapters) and to predict each persona's Beck Depression Inventory--II (BDI-II) total score together with up to four key symptoms.
 Our approach is a hybrid \emph{agent-to-agent} (A2A) pipeline that orchestrates six specialised components---Stopper, Prober, Template Evidence, Risk Router, Extractor, and Scorer---combining LLM-based question generation and symptom extraction (DeepSeek \texttt{deepseek-chat}) with deterministic rule-based stopping, safety routing, and score calibration.
 Three distinguishing design choices underpin the system: (i)~a graded \emph{acute safety ladder} that ensures suicidal-ideation cues are clarified through a five-stage follow-up sequence before the interview terminates; (ii)~structured YAML interview banks with group-screen and symptom-drilldown questions that guarantee balanced BDI-II domain coverage; and (iii)~configurable run policies that instantiate balanced, recall-oriented, and precision-oriented submission profiles through threshold and stopping-rule variation alone, without changing the underlying model.
 Internal evaluation on the TalkDep corpus yields a Spearman $\rho = 0.952$ and MAE of 2.46 for our LLM extractor, compared with $\rho = 0.847$ and MAE of 10.36 for a lexical fallback.
+Post-hoc evaluation against the organisers' released ground-truth labels (19 personas) reports MAE of 9.5--11.7 and symptom F1 of 0.22--0.28 across our three runs.
 Component ablation experiments confirm the contributions of evidence memory, stopping logic, and acute calibration.
 We release three official runs and discuss the transparency and auditability benefits of the hybrid architecture.
 \end{abstract}
@@ -82,7 +84,7 @@ Natural language processing (NLP) offers a scalable alternative: systems can ana
 
 The CLEF eRisk initiative has driven this research agenda since 2017, first through sequential social-media analysis for early risk prediction~\cite{Losada2016erisk} and more recently through symptom-level BDI-II modelling~\cite{Parapar2023erisk,Parapar2024erisk}.
 The 2025 edition introduced a pilot \emph{Conversational Depression Detection via LLM Personas} track that shifted the paradigm from passive text consumption to active, interactive dialogue: participants deploy doctor agents that interview fine-tuned patient personas and must predict depression severity and key symptoms from the resulting conversation~\cite{Parapar2025erisk}.
-eRisk 2026 Task~1 extends this pilot into a full shared task with 20 patient personas, weekly LoRA-adapter releases on top of \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, and an explicit evaluation framework targeting BDI-II total scores and symptom identification.
+eRisk 2026 Task~1 extends this pilot into a full shared task with 19 patient personas, weekly LoRA-adapter releases on top of \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, and an explicit evaluation framework targeting BDI-II total scores and symptom identification~\cite{PerezEtAl2026eRiskWorkingNotes}.
 
 The \emph{agent-to-agent} (A2A) setting introduces challenges that go beyond traditional text classification.
 First, the doctor agent must \emph{elicit} evidence indirectly---asking ``Are you depressed?'' is both clinically inappropriate and unlikely to produce nuanced symptom-level signals~\cite{Tolentino2018BDI}.
@@ -130,7 +132,7 @@ Section~\ref{sec:conclusion} concludes.
 %% ====================================================================
 \section{Task Definition}\label{sec:task}
 
-eRisk 2026 Task~1 (Conversational Depression Detection with LLM Personas) requires participants to interact with 20 simulated patient personas and predict, for each persona, a BDI-II total score (0--63) and up to four key depressive symptoms.
+eRisk 2026 Task~1 (Conversational Depression Detection with LLM Personas) requires participants to interact with 19 simulated patient personas and predict, for each persona, a BDI-II total score (0--63) and up to four key depressive symptoms.
 
 \textbf{Patient personas.}
 Each persona is a per-persona LoRA adapter~\cite{Hu2022lora} applied to \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, released incrementally on Hugging Face.
@@ -141,7 +143,8 @@ For each of up to three runs, teams submit two JSON files per persona: \texttt{i
 At most one run may be manual (human-assisted).
 
 \textbf{Evaluation.}
-The organisers evaluate (i)~accurate identification of depressive symptoms present in the persona and (ii)~the overall depression level following BDI-II standards~\cite{Parapar2025erisk}.
+The organisers evaluate (i)~accurate identification of depressive symptoms present in the persona and (ii)~the overall depression level following BDI-II standards~\cite{PerezEtAl2026eRiskWorkingNotes}.
+After the submission deadline, reference BDI-II scores and key symptoms for all 19 task personas were released for post-hoc analysis.\footnote{Ground-truth labels: \url{https://drive.google.com/drive/folders/1FxKelhBT9uXaGLH_-3fRkTkVv8KMAGXo?usp=sharing}}
 
 
 %% ====================================================================
@@ -361,11 +364,11 @@ This design demonstrates that \emph{a single architecture can span a meaningful 
 %% ====================================================================
 \section{Internal Evaluation}\label{sec:eval}
 
-Official eRisk test labels are hidden at submission time.
-We report internal evaluation on three axes: TalkDep corpus calibration, component ablation, and symptom difficulty analysis.
+Following the organisers' release of official reference labels~\cite{PerezEtAl2026eRiskWorkingNotes}, we report both development proxies (TalkDep, component ablation) and post-hoc evaluation on our three submitted runs against the released ground truth.
 
 \textbf{Important caveat.}
-All numbers in this section are \emph{development proxies}; they do not substitute for the official eRisk evaluation.
+TalkDep and ablation numbers remain \emph{development proxies}.
+Post-hoc scores in Section~\ref{sec:gt-eval} reflect our submitted predictions and should be interpreted alongside the official shared-task evaluation protocol.
 The component ablation in particular reflects an exploratory single-persona mock configuration and is presented for \emph{methodology illustration} rather than definitive quantitative claims.
 
 \subsection{TalkDep Corpus Calibration}\label{sec:talkdep}
@@ -490,6 +493,34 @@ Conversely, \emph{Sadness} shows higher fallback prevalence (0.73 vs.\ 0.36), su
 This complementarity motivates the hybrid design: lexical features feed the template evidence and risk buffer (contributing to stopping and calibration), while the LLM extractor handles nuanced inference.
 
 
+\subsection{Official Ground-Truth Evaluation}\label{sec:gt-eval}
+
+The organisers released reference BDI-II totals and up to four key symptoms per persona after the submission window closed (May 2026).
+We evaluate our three official runs post hoc by comparing each \texttt{results\_run\{N\}.json} file against \texttt{patients\_data.jsonl} for personas 1--19, normalising predicted symptom strings with the official \texttt{symptom\_mappings.json} synonym map.
+We report mean absolute error (MAE), root mean squared error (RMSE), Spearman rank correlation ($\rho$) on BDI-II totals, and macro-averaged symptom-set F1 (exact match on canonical symptom names after normalisation).
+
+Table~\ref{tab:gt} summarises results on the full set of 19 task personas.
+
+\begin{table}[t]
+\caption{Post-hoc evaluation against released eRisk 2026 ground truth ($n = 19$ personas).}
+\label{tab:gt}
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Run} & \textbf{MAE} & \textbf{RMSE} & \textbf{Spearman $\rho$} & \textbf{Symptom F1} \\
+\midrule
+Run~1 (balanced)   & 11.68 & 14.28 & 0.118 & 0.280 \\
+Run~2 (recall)     &  9.68 & 12.75 & 0.338 & 0.239 \\
+Run~3 (precision)  &  9.47 & 12.20 & 0.382 & 0.216 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Run~3 achieves the lowest score error on this subset, while Run~1 attains the highest symptom F1.
+The moderate rank correlations indicate that absolute calibration remains challenging on the official personas despite strong TalkDep extractor performance (Section~\ref{sec:talkdep}), motivating further analysis of persona-specific conversational dynamics and extractor generalisation in the camera-ready version.
+
+
 \subsection{Probe-Cap Behaviour}\label{sec:probecaps}
 
 We analysed submission interactions to verify that the system respects configured probing caps.
@@ -540,7 +571,8 @@ This audit trail enables fine-grained error analysis and targeted improvements--
 \section{Limitations and Ethical Considerations}\label{sec:limitations}
 
 \textbf{Label access.}
-Official reference BDI-II scores for the 20 eRisk personas are hidden; reported metrics on TalkDep are proxies that may not reflect performance on the test personas.
+Official reference labels were released after the submission deadline~\cite{PerezEtAl2026eRiskWorkingNotes}; Section~\ref{sec:gt-eval} reports post-hoc scores on our available submissions.
+TalkDep metrics (Section~\ref{sec:talkdep}) remain development proxies and may not fully predict performance on the eRisk personas.
 
 \textbf{API variability.}
 DeepSeek outputs can drift with API updates; exact scores may differ across dates unless conversation logs are frozen.
@@ -582,7 +614,8 @@ Internal evaluation on TalkDep demonstrates strong rank correlation ($\rho = 0.9
 Component ablations confirm that each subsystem contributes to the final prediction quality.
 Symptom difficulty analysis reveals complementary strengths of LLM and lexical extraction, motivating the hybrid design.
 
-We submit three runs (balanced, recall-oriented, precision-oriented) and look forward to evaluating them against the official eRisk 2026 test labels.
+We submit three runs (balanced, recall-oriented, precision-oriented).
+Post-hoc evaluation against the released ground-truth labels (Section~\ref{sec:gt-eval}) complements our TalkDep development analysis on the complete set of 19 task personas.
 
 %% ── Acknowledgments ──
 \begin{acknowledgments}

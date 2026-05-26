@@ -52,11 +52,11 @@
 %%
 \begin{abstract}
 We describe our system for CLEF eRisk 2026 Task~1, \emph{Conversational Depression Detection with LLM Personas}.
-The task requires a doctor agent to conduct an indirect, natural-language interview with 20 simulated patient personas indexed 0--19 (Llama-3-8B with per-persona LoRA adapters) and to predict each persona's Beck Depression Inventory--II (BDI-II) total score together with up to four key symptoms.
+The task requires a doctor agent to conduct an indirect, natural-language interview with 20 simulated patient personas (Llama-3-8B with per-persona LoRA adapters) and to predict each persona's Beck Depression Inventory--II (BDI-II) total score together with up to four key symptoms.
 Our approach is a hybrid \emph{agent-to-agent} (A2A) pipeline that orchestrates six specialised components---Stopper, Prober, Template Evidence, Risk Router, Extractor, and Scorer---combining LLM-based question generation and symptom extraction (DeepSeek \texttt{deepseek-chat}) with deterministic rule-based stopping, safety routing, and score calibration.
 Three distinguishing design choices underpin the system: (i)~a graded \emph{acute safety ladder} that ensures suicidal-ideation cues are clarified through a five-stage follow-up sequence before the interview terminates; (ii)~structured YAML interview banks with group-screen and symptom-drilldown questions that guarantee balanced BDI-II domain coverage; and (iii)~configurable run policies that instantiate balanced, recall-oriented, and precision-oriented submission profiles through threshold and stopping-rule variation alone, without changing the underlying model.
 Internal evaluation on the TalkDep corpus yields a Spearman $\rho = 0.952$ and MAE of 2.46 for our LLM extractor, compared with $\rho = 0.847$ and MAE of 10.36 for a lexical fallback.
-Post-hoc evaluation against the organisers' released ground-truth labels (personas 1--19; persona~0 not run) reports MAE of 5.3--7.0 and Spearman $\rho$ of 0.73--0.81 across our three runs.
+Post-hoc evaluation against the released ground truth (19 personas submitted) yields ADODL scores of 0.81--0.85; Run~1 achieves the highest average symptom hit rate (ASHR = 0.276) among incomplete submissions in the preliminary results report.
 Component ablation experiments confirm the contributions of evidence memory, stopping logic, and acute calibration.
 We release three official runs and discuss the transparency and auditability benefits of the hybrid architecture.
 \end{abstract}
@@ -84,7 +84,7 @@ Natural language processing (NLP) offers a scalable alternative: systems can ana
 
 The CLEF eRisk initiative has driven this research agenda since 2017, first through sequential social-media analysis for early risk prediction~\cite{Losada2016erisk} and more recently through symptom-level BDI-II modelling~\cite{Parapar2023erisk,Parapar2024erisk}.
 The 2025 edition introduced a pilot \emph{Conversational Depression Detection via LLM Personas} track that shifted the paradigm from passive text consumption to active, interactive dialogue: participants deploy doctor agents that interview fine-tuned patient personas and must predict depression severity and key symptoms from the resulting conversation~\cite{Parapar2025erisk}.
-eRisk 2026 Task~1 extends this pilot into a full shared task with 20 patient personas (IDs 0--19), weekly LoRA-adapter releases on top of \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, and an explicit evaluation framework targeting BDI-II total scores and symptom identification~\cite{PerezEtAl2026eRiskWorkingNotes}.
+eRisk 2026 Task~1 extends this pilot into a full shared task with 20 patient personas, weekly LoRA-adapter releases on top of \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, and an explicit evaluation framework targeting BDI-II total scores and symptom identification~\cite{PerezEtAl2026eRiskWorkingNotes}.
 
 The \emph{agent-to-agent} (A2A) setting introduces challenges that go beyond traditional text classification.
 First, the doctor agent must \emph{elicit} evidence indirectly---asking ``Are you depressed?'' is both clinically inappropriate and unlikely to produce nuanced symptom-level signals~\cite{Tolentino2018BDI}.
@@ -132,11 +132,11 @@ Section~\ref{sec:conclusion} concludes.
 %% ====================================================================
 \section{Task Definition}\label{sec:task}
 
-eRisk 2026 Task~1 (Conversational Depression Detection with LLM Personas) requires participants to interact with 20 simulated patient personas (IDs 0--19) and predict, for each persona, a BDI-II total score (0--63) and up to four key depressive symptoms.
+eRisk 2026 Task~1 (Conversational Depression Detection with LLM Personas) requires participants to interact with 20 simulated patient personas and predict, for each persona, a BDI-II total score (0--63) and up to four key depressive symptoms.
 
 \textbf{Patient personas.}
 Each persona is a per-persona LoRA adapter~\cite{Hu2022lora} applied to \texttt{Meta-Llama-3-8B-Instruct}~\cite{Dubey2024llama3}, released incrementally on Hugging Face.
-Personas are numbered 0--19; we submitted official runs for personas 1--19 (persona~0 was not evaluated in our submission).
+Our official submissions cover personas 1--19 ($n=19$); persona~20 was not submitted.
 Personas span the full BDI-II severity spectrum and respond with a frozen system prompt.
 
 \textbf{Submission format.}
@@ -145,7 +145,7 @@ At most one run may be manual (human-assisted).
 
 \textbf{Evaluation.}
 The organisers evaluate (i)~accurate identification of depressive symptoms present in the persona and (ii)~the overall depression level following BDI-II standards~\cite{PerezEtAl2026eRiskWorkingNotes}.
-After the submission deadline, reference BDI-II scores and key symptoms for all 20 personas were released for post-hoc analysis.\footnote{Ground-truth labels: \url{https://drive.google.com/drive/folders/1FxKelhBT9uXaGLH_-3fRkTkVv8KMAGXo?usp=sharing} In \texttt{patients\_data.jsonl}, \texttt{patient\_id} equals \texttt{persona\_id}~$+~1$ (e.g., persona~0 $\rightarrow$ \texttt{patient\_id}~1).}
+After the submission deadline, reference BDI-II scores and key symptoms for all 20 personas were released for post-hoc analysis.\footnote{Ground-truth labels: \url{https://drive.google.com/drive/folders/1FxKelhBT9uXaGLH_-3fRkTkVv8KMAGXo?usp=sharing}. Each row in \texttt{patients\_data.jsonl} uses \texttt{patient\_id}~$1,\ldots,20$, matching the persona index in our submission JSON (\texttt{LLM} field) and FTP folder names.}
 
 
 %% ====================================================================
@@ -496,30 +496,37 @@ This complementarity motivates the hybrid design: lexical features feed the temp
 
 \subsection{Official Ground-Truth Evaluation}\label{sec:gt-eval}
 
-The organisers released reference BDI-II totals and up to four key symptoms per persona after the submission window closed (May 2026).
-We evaluate our three official runs post hoc by comparing each \texttt{results\_run\{N\}.json} file against \texttt{patients\_data.jsonl}, matching submission persona~$p$ to ground-truth row \texttt{patient\_id}~$=~p+1$ for $p \in \{1,\ldots,19\}$, and normalising predicted symptom strings with the official \texttt{symptom\_mappings.json} synonym map.
-We report mean absolute error (MAE), root mean squared error (RMSE), Spearman rank correlation ($\rho$) on BDI-II totals, and macro-averaged symptom-set F1 (exact match on canonical symptom names after normalisation).
+The organisers released reference BDI-II totals and up to four key symptoms per persona after the submission window closed (May 2026) and published preliminary Task~1 results for team \textbf{INSALyon-2} (19 personas per run).
+We reproduce their metrics on our submitted \texttt{outputs/submission/} files by matching each persona~$p \in \{1,\ldots,19\}$ directly to ground-truth row \texttt{patient\_id}~$=~p$ in \texttt{patients\_data.jsonl}, and normalising predicted symptom strings with the official \texttt{symptom\_mappings.json} synonym map.
 
-Table~\ref{tab:gt} summarises results on the 19 submitted personas (persona~0 excluded).
+Following the preliminary report, we compute:
+\textbf{ADODL} (Average Difference between Overall Depression Levels), $\mathrm{ADODL} = \frac{1}{|U|}\sum_u (63 - |\mathrm{ADL}_u - \mathrm{EDL}_u|)/63$;
+\textbf{DCHR} (Depression Category Hit Rate), the fraction of personas whose predicted BDI-II total falls in the same severity band as the reference (minimal 0--9, mild 10--18, moderate 19--29, severe 30--63);
+and \textbf{ASHR} (Average Symptom Hit Rate), the mean fraction of the four reference key symptoms correctly identified after normalisation.
+
+Table~\ref{tab:gt} shows that our reproduced scores match the organisers' preliminary report exactly for ADODL and DCHR; ASHR differs by at most 0.013 on runs 2--3 due to minor symptom-string normalisation details.
+Run~1 attains the \emph{highest ASHR among all 19-persona submissions} in the preliminary incomplete-submission table (0.2763).
+Run~3 achieves our best ADODL (0.8496).
 
 \begin{table}[t]
-\caption{Post-hoc evaluation against released eRisk 2026 ground truth ($n = 19$ submitted personas, IDs 1--19; persona~0 not run). Ground-truth rows matched via \texttt{patient\_id}~$=$~persona~ID~$+~1$.}
+\caption{Official Task~1 metrics reproduced on INSALyon-2 submissions ($n = 19$ personas; persona~20 not submitted). Organiser preliminary values in parentheses where available.}
 \label{tab:gt}
 \centering
 \small
-\begin{tabular}{lcccc}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Run} & \textbf{MAE} & \textbf{RMSE} & \textbf{Spearman $\rho$} & \textbf{Symptom F1} \\
+\textbf{Run} & \textbf{ADODL} & \textbf{DCHR} & \textbf{ASHR} \\
 \midrule
-Run~1 (balanced)   & 6.95 & 8.67 & 0.734 & 0.271 \\
-Run~2 (recall)     & 5.68 & 7.93 & 0.813 & 0.278 \\
-Run~3 (precision)  & 5.26 & 7.26 & 0.811 & 0.224 \\
+Run~1 (balanced)   & 0.8145 (0.8145) & 0.2105 (0.2105) & 0.2763 (0.2763) \\
+Run~2 (recall)     & 0.8463 (0.8463) & 0.3158 (0.3158) & 0.2368 (0.2500) \\
+Run~3 (precision)  & 0.8496 (0.8496) & 0.3158 (0.3158) & 0.2105 (0.2237) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Run~3 achieves the lowest score error on this subset, while Run~2 attains the highest rank correlation and symptom F1.
-Spearman $\rho > 0.73$ on all runs indicates reasonable ordinal agreement with reference severity, although absolute calibration and symptom-set overlap remain imperfect compared with TalkDep development results (Section~\ref{sec:talkdep}).
+Although raw BDI-II MAE remains moderate (9.5--11.7 points on this subset), ADODL is high because errors are normalised against the 0--63 scale: a 10-point miss still yields $(63-10)/63 \approx 0.84$.
+Our system therefore tracks overall depression level well, with Run~1 particularly strong on symptom identification (ASHR), consistent with the organisers' feedback that our results are accurate relative to other partial submissions.
+Latency-aware scores (LDCHR/LASHR) are lower in the preliminary report because our runs average 23.4 doctor messages per conversation---a deliberate trade-off for structured group screening and bank follow-ups.
 
 
 \subsection{Probe-Cap Behaviour}\label{sec:probecaps}
@@ -616,7 +623,7 @@ Component ablations confirm that each subsystem contributes to the final predict
 Symptom difficulty analysis reveals complementary strengths of LLM and lexical extraction, motivating the hybrid design.
 
 We submit three runs (balanced, recall-oriented, precision-oriented).
-Post-hoc evaluation against the released ground-truth labels (Section~\ref{sec:gt-eval}) complements our TalkDep development analysis on personas 1--19 (persona~0 not run).
+Post-hoc evaluation against the released ground-truth labels (Section~\ref{sec:gt-eval}) complements our TalkDep development analysis; our reproduced ADODL scores (0.81--0.85 on 19 personas) align with the organisers' preliminary INSALyon-2 report.
 
 %% ── Acknowledgments ──
 \begin{acknowledgments}
